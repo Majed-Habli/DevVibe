@@ -61,4 +61,32 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function UserType(){
+        return $this->hasOne(UserType::class, 'id');
+    }
+
+    public function Images(){
+        return $this->hasMany(Image::class, 'user_id');
+    }
+
+    public function Skills(){
+        return $this->hasMany(UserSkill::class, 'user_id');
+    }
+
+    public function Swipes(){
+        return $this->hasMany(Swipe::class, 'user_id');
+    }
+
+    public function Matchs(){
+        return $this->hasMany(UserMatch::class, 'user_one_id'); // belongs ?
+    }
+
+    // public function SentMessages(){
+    //     return $this->hasMany(Message::class, 'sender_id');
+    // }
+
+    // public function ReceivedMessages(){
+    //     return $this->hasMany(Message::class, 'receiver_id');
+    // }
+
 }

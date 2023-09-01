@@ -72,8 +72,8 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->integer('match_id');
-            $table->integer('user_one_id');
-            $table->integer('user_two_id');
+            $table->integer('sender_id');
+            $table->integer('receiver_id');
             $table->text('message');
             $table->timestamps();
         });
@@ -91,7 +91,7 @@ return new class extends Migration
         Schema::dropIfExists('skills');
         Schema::dropIfExists('user_skills');
         Schema::dropIfExists('swipes');
-        Schema::dropIfExists('matchs');
+        Schema::dropIfExists('user_matchs');
         Schema::dropIfExists('messages');
     }
 };
