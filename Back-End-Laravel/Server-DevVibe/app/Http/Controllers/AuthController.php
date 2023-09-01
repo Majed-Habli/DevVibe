@@ -66,6 +66,7 @@ class AuthController extends Controller
         $user->country = $request->country;
         $user->gender = $request->gender;
         $user->description = $request->description;
+        $user->company_name = $request->company_name;
         $user->profile_image_url = $request->profile_image_url;
 
         $user->save();
