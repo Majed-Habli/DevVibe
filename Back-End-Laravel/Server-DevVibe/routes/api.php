@@ -3,10 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::group(['prefix'=>'user'], function (){
     Route::group(['prefix' => 'developer'], function(){
-
+        Route::get('/profile', [UserController::class, 'profile']);
+        Route::post('/add_skills', [UserController::class, 'addSkills']);
     });
 });
 
