@@ -65,6 +65,9 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->country = $request->country;
         $user->gender = $request->gender;
+        $user->description = $request->description;
+        $user->profile_image_url = $request->profile_image_url;
+
         $user->save();
 
         $token = Auth::login($user);
