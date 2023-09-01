@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserSkill;
+// use App\Models\Skill;
+// use App\Models\User;
 use Auth;
 
 class UserController extends Controller
@@ -34,5 +36,16 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
         ]);
+    }
+
+    function viewUserSkills(){
+        $user = Auth::user();
+
+        $skills = $user->Skills()->with('Skill')->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $skills
+        ]);
+        // $courses = $user->EnrolledCourses()->with(['AttendanceByStudent' => function ($query) use ($user_id) {
     }
 }
