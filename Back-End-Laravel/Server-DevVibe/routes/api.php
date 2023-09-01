@@ -10,6 +10,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('/profile', [UserController::class, 'profile']);
         Route::post('/add_skills', [UserController::class, 'addSkills']);
         Route::get('/view_user_skills', [UserController::class, 'viewUserSkills']);
+        Route::get('/view_all_skills/{search?}', [UserController::class, 'viewAllSkills']);
     });
 });
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserSkill;
-// use App\Models\Skill;
+use App\Models\Skill;
 // use App\Models\User;
 use Auth;
 
@@ -21,6 +21,8 @@ class UserController extends Controller
     }
 
     function addSkills(Request $request){
+
+        //sending the ids of skills as an array json encode
 
         $user = Auth::id();
         $dataArray = json_decode($request->input('user_skills'), true);
@@ -39,6 +41,7 @@ class UserController extends Controller
     }
 
     function viewUserSkills(){
+
         $user = Auth::user();
 
         $skills = $user->Skills()->with('Skill')->get();
@@ -46,6 +49,24 @@ class UserController extends Controller
             'status' => 'success',
             'data' => $skills
         ]);
-        // $courses = $user->EnrolledCourses()->with(['AttendanceByStudent' => function ($query) use ($user_id) {
+    }
+
+    function viewAllSkills($search = NULL){
+
+        if($search == " "){
+            $skill = Skill::all();
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $skill
+            ]);
+        }else{
+            $skill = Skill::where('name', 'LIKE', "%$search%")->get();
+    
+            return response()->json([
+                'status' => 'success',
+                'data' => $skill
+            ]);
+        }
     }
 }
