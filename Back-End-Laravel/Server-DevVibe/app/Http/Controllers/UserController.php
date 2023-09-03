@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserSkill;
 use App\Models\Skill;
-// use App\Models\User;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Auth;
 
 class UserController extends Controller
@@ -68,5 +69,27 @@ class UserController extends Controller
                 'data' => $skill
             ]);
         }
+    }
+
+    function uploadProfilePic(Request $request){
+        
+        $user_id = Auth::id();
+        $image = $request->image;
+        // $image = Str::replace('data:image/jpg;base64,', '', $image);
+        // $image = Str::replace(' ', '+', $image);
+        $type = $request->type;
+        $image_name = Str::random(10).'.'.$type;
+        $imageName = '\app\public/' . $image_name;
+        \File::put(storage_path(). '/' . $imageName, base64_decode($image));
+
+        $user = Auth::user();
+        $user->profile_image_url = $image_name;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'view' => $user,
+        ]);
+
     }
 }
