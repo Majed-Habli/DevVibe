@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserSkill;
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\Image;
 use App\Models\DeveloperDetail;
 use Illuminate\Support\Str;
 use Auth;
@@ -57,15 +58,6 @@ class UserController extends Controller
             'status' => 'success',
             'data' => $user_details
         ]);
-
-        // if($request->has('user_name')){
-        //     $user->user_name = $request->user_name;
-        //     $user->save();
-        // }else{
-            
-            
-        // }
-
 
     }
 
@@ -122,18 +114,39 @@ class UserController extends Controller
     function uploadProfilePic(Request $request){
         
         $user_id = Auth::id();
-        // $path = 'C:\\Users\\user\\Desktop\\GraduationProject\\DevVibe\\Back-End-Laravel\\Server-DevVibe\\public\\storage';
         $path = public_path('storage/users/' . $user_id . '/profile_pic');
+
         $image = $request->image;
-        // $image = Str::replace('data:image/jpg;base64,', '', $image);
-        // $image = Str::replace(' ', '+', $image);
         $type = $request->type;
         $image_name = Str::random(10).'.'.$type;
-        // $imageName = '\\users/' . $user_id . '/profile_pic' . $image_name;
         \File::put($path . '/' . $image_name, base64_decode($image));
 
         $user = Auth::user();
         $user->profile_image_url = $image_name;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'view' => $user,
+            'storage path' => Storage_path(),
+            'path' => $path
+        ]);
+
+    }
+
+    function uploadUsesrImages(Request $request){
+        
+        $user_id = Auth::id();
+        $path = public_path('storage/users/' . $user_id . '/user_images');
+        
+        $image = $request->image;
+        $type = $request->type;
+        $image_name = Str::random(10).'.'.$type;
+        \File::put($path . '/' . $image_name, base64_decode($image));
+
+        $user = new Image;
+        $user->user_id = $user_id;
+        $user->image_url = $image_name;
         $user->save();
 
         return response()->json([

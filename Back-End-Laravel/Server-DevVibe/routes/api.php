@@ -13,6 +13,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('/view_all_skills/{search?}', [UserController::class, 'viewAllSkills']);
         Route::post('/upload_profile_pic', [UserController::class, 'uploadProfilePic']);
         Route::post('/update-details', [UserController::class, 'updateDetails']);
+        Route::post('upload_usesr_images', [UserController::class, 'uploadUsesrImages']);
     });
 });
 
