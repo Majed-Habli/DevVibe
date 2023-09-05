@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserSkill;
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\DeveloperDetail;
 use Illuminate\Support\Str;
 use Auth;
 
@@ -15,10 +16,57 @@ class UserController extends Controller
 
         $user = Auth::User();
 
+        $user_type = $user->user_type_id;
+
+        if($user_type == 2){
+            $user_details = $user->DevDetails()->get();
+        }else{
+            $user_details = $user->RecDetails()->get();
+        }
+
         return response()->json([
             'status' => 'success',
-            'data' => $user
+            'data' => $user,
+            'details' => $user_details
         ]);
+    }
+
+    function updateDetails(Request $request){
+
+        $user = Auth::user();
+        $user_id = Auth::id();
+
+        $user->user_name = $request->user_name;
+        $user->save();
+
+        $user_details = DeveloperDetail::where('user_id', '=', $user_id)->first();
+
+        if($user_details){
+            $user_details->description = $request->description;
+            $user_details->save();
+        }else{
+
+                $user_details = new DeveloperDetail;
+                $user_details->user_id = $user_id;
+                $user_details->description = $request->description;
+                $user_details->gender = $request->gender;
+                $user_details->save();
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $user_details
+        ]);
+
+        // if($request->has('user_name')){
+        //     $user->user_name = $request->user_name;
+        //     $user->save();
+        // }else{
+            
+            
+        // }
+
+
     }
 
     function addSkills(Request $request){
