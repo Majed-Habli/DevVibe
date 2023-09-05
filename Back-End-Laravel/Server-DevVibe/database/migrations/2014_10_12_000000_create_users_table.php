@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('country');
-            $table->string('gender');
-            $table->string('resume')->nullable();
-            $table->string('description')->nullable();
-            $table->string('company_name')->nullable();
+            // $table->string('gender');
+            // $table->string('resume')->nullable();
+            // $table->string('description')->nullable();
+            // $table->string('company_name')->nullable();
             $table->string('profile_image_url')->nullable();
             $table->boolean('has_access')->default(false);
             $table->timestamps();
@@ -78,6 +78,23 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('developer_details', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->string('gender');
+            $table->string('resume');
+            $table->string('description');
+            $table->timestamps();
+        });
+
+        Schema::create('recruiter_details', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->string('company_name');
+            $table->string('description');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -93,5 +110,7 @@ return new class extends Migration
         Schema::dropIfExists('swipes');
         Schema::dropIfExists('user_matchs');
         Schema::dropIfExists('messages');
+        Schema::dropIfExists('developer_details');
+        Schema::dropIfExists('recruiter_details');
     }
 };
