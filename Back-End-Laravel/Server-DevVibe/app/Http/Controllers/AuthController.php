@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -69,6 +70,23 @@ class AuthController extends Controller
 
         $token = Auth::login($user);
         $user->token = $token;
+
+        if($user){
+
+            $folder_name = $user->id;
+            $path = 'users/' . $folder_name;
+            $path_user_profile_pics = $path . '/profile_pic';
+            $path_user_pics = $path . '/user_images';
+            
+            if(!Storage::disk('public')->exists($path)){
+                Storage::disk('public')->makeDirectory($path);
+
+                if(Storage::disk('public')->exists($path)){
+                    Storage::disk('public')->makeDirectory($path_user_profile_pics);
+                    Storage::disk('public')->makeDirectory($path_user_pics);
+                }
+            }
+        }
 
         return response()->json([
             'status' => 'Success',

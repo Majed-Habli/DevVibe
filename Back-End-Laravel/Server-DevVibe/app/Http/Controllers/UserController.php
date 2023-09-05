@@ -122,13 +122,15 @@ class UserController extends Controller
     function uploadProfilePic(Request $request){
         
         $user_id = Auth::id();
+        // $path = 'C:\\Users\\user\\Desktop\\GraduationProject\\DevVibe\\Back-End-Laravel\\Server-DevVibe\\public\\storage';
+        $path = public_path('storage/users/' . $user_id . '/profile_pic');
         $image = $request->image;
         // $image = Str::replace('data:image/jpg;base64,', '', $image);
         // $image = Str::replace(' ', '+', $image);
         $type = $request->type;
         $image_name = Str::random(10).'.'.$type;
-        $imageName = '\app\public/' . $image_name;
-        \File::put(storage_path(). '/' . $imageName, base64_decode($image));
+        // $imageName = '\\users/' . $user_id . '/profile_pic' . $image_name;
+        \File::put($path . '/' . $image_name, base64_decode($image));
 
         $user = Auth::user();
         $user->profile_image_url = $image_name;
@@ -137,6 +139,8 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
             'view' => $user,
+            'storage path' => Storage_path(),
+            'path' => $path
         ]);
 
     }
