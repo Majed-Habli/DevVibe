@@ -81,6 +81,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(UserMatch::class, 'user_one_id'); // belongs ?
     }
 
+    public function DevDetails(){
+        return $this->hasOne(DeveloperDetail::class, 'user_id');
+    }
+
+    public function RecDetails(){
+        return $this->hasOne(RecruiterDetail::class, 'user_id');
+    }
+
     // public function SentMessages(){
     //     return $this->hasMany(Message::class, 'sender_id');
     // }
