@@ -118,7 +118,32 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'status' => 'success',
+            'status' => 'success'
+        ]);
+    }
+
+    function removeSkills(Request $request){
+
+        $user = Auth::user();
+        $dataArray = json_decode($request->input('user_skills'), true);
+
+        foreach($dataArray as $data){
+
+            $is_existing = $user->Skills()->where('skill_id',$data)->first();
+
+            if($is_existing){
+
+                $user_skills = $user->Skills()->where('skill_id',$data)->delete();
+    
+                // $user_skills->save();
+
+                // return response()->json(['status' => 'added'. $data]);
+            }
+            
+        }
+
+        return response()->json([
+            'status' => 'successfully deleted skills',
         ]);
     }
 
