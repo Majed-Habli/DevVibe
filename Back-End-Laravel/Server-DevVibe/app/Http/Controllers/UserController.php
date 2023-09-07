@@ -16,19 +16,20 @@ class UserController extends Controller
     function profile(){
 
         $user = Auth::User();
+        $user_id = Auth::id();
 
         $user_type = $user->user_type_id;
 
         if($user_type == 2){
-            $user_details = $user->DevDetails()->get();
+            $user_details = $user->with('DevDetails')->where('id', '=', $user_id)->get();
         }else{
             $user_details = $user->RecDetails()->get();
         }
 
         return response()->json([
             'status' => 'success',
-            'data' => $user,
-            'details' => $user_details
+            // 'data' => $user,
+            'data' => $user_details
         ]);
     }
 
@@ -40,19 +41,44 @@ class UserController extends Controller
         $user->user_name = $request->user_name;
         $user->save();
 
-        $user_details = DeveloperDetail::where('user_id', '=', $user_id)->first();
+        $user_type = $user->user_type_id;
 
-        if($user_details){
-            $user_details->description = $request->description;
-            $user_details->save();
-        }else{
+        If($user_type == 2){
 
+            $user_details = DeveloperDetail::where('user_id', '=', $user_id)->first();
+
+            if($user_details){
+
+                $user_details->description = $request->description;
+                $user_details->save();
+
+            }else{
+    
                 $user_details = new DeveloperDetail;
                 $user_details->user_id = $user_id;
                 $user_details->description = $request->description;
                 $user_details->gender = $request->gender;
                 $user_details->save();
+            }
+        }else{
+
+            $user_details = RecruiterDetail::where('user_id', '=', $user_id)->first();
+
+            if($user_details){
+
+                $user_details->description = $request->description;
+                $user_details->save();
+
+            }else{
+    
+                $user_details = new RecruiterDetail;
+                $user_details->user_id = $user_id;
+                $user_details->description = $request->description;
+                $user_details->company_name = $request->company_name;
+                $user_details->save();
+            }
         }
+
 
         return response()->json([
             'status' => 'success',
@@ -65,15 +91,30 @@ class UserController extends Controller
 
         //sending the ids of skills as an array json encode
 
-        $user = Auth::id();
+        $user = Auth::user();
         $dataArray = json_decode($request->input('user_skills'), true);
 
         foreach($dataArray as $data){
-            $user_skills = new UserSkill;
-            $user_skills->user_id = $user;
-            $user_skills->skill_id = $data;
 
-            $user_skills->save();
+            $is_existing = $user->Skills()->where('skill_id',$data)->first();
+
+            if(!$is_existing){
+
+                $user_skills = new UserSkill;
+                $user_skills->user_id = $user->id;
+                $user_skills->skill_id = $data;
+    
+                $user_skills->save();
+
+                // return response()->json(['status' => 'added'. $data]);
+            }
+            // else{
+
+            //     return response()->json([
+            //         'status' => $data .'already in user skill set.',
+            //         'user existing' => $is_existing
+            //     ]);
+            // }
         }
 
         return response()->json([
@@ -134,7 +175,7 @@ class UserController extends Controller
 
     }
 
-    function uploadUsesrImages(Request $request){
+    function uploadUserImages(Request $request){
         
         $user_id = Auth::id();
         $path = public_path('storage/users/' . $user_id . '/user_images');
