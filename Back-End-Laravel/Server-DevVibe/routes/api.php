@@ -21,6 +21,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('view_matches', [UserController::class, 'viewMatches']);
         Route::get('view_interested', [UserController::class, 'viewInterested']);
         Route::get('analysis', [UserController::class, 'analysis']);
+        Route::get('display_users', [UserController::class, 'displayUsers']);
     });
 
     Route::group(['prefix' => 'admin'], function(){

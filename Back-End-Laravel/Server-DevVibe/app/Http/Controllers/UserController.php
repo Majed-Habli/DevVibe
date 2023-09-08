@@ -365,4 +365,24 @@ class UserController extends Controller
             'ana'=> $user_id
         ]);
     }
+
+    function displayUsers(){
+
+        $user = Auth::user();
+        $user_id = Auth::id();
+        $user_type = $user->user_type_id;
+
+        $swiped_user = $user->Swipes()->pluck('swiped_user_id')->toArray('swiped_user_id');
+
+        $compare_user = User::whereNotIn('id',function ($query) use ($swiped_user){
+            $query->select('id')->from('users')->whereIn('id', $swiped_user);
+        })->where('user_type_id', '!=', $user_type)->where('user_type_id', '!=', 1)->where('id', '!=', $user_id)->paginate(2);
+
+        return response()->json([
+            'status' => 'success',
+            // 'user' => $user_id,
+            // 'data' => $swiped_user,
+            'compare' => $compare_user
+        ]);
+    }
 }
