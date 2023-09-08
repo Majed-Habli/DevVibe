@@ -94,6 +94,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('blocked_users', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -111,5 +117,6 @@ return new class extends Migration
         Schema::dropIfExists('messages');
         Schema::dropIfExists('developer_details');
         Schema::dropIfExists('recruiter_details');
+        Schema::dropIfExists('blocked_users');
     }
 };
