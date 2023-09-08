@@ -17,4 +17,14 @@ class AnalyticsController extends Controller
             'data' => $user
         ]);
     }
+
+    function newRecruiters(){
+
+        $user = User::all()->where('has_access', false)->where('user_type_id', '=', 3);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
+    }
 }
