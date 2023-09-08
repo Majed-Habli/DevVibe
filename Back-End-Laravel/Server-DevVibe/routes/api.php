@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnalyticsController;
-// use App\Http\Controllers\WatcherController;
-// use App\Http\Controllers\WatcherController;
 
 Route::group(['prefix'=>'user'], function (){
     Route::group(['prefix' => 'developer'], function(){
@@ -24,12 +22,15 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('view_interested', [UserController::class, 'viewInterested']);
         Route::get('analysis', [UserController::class, 'analysis']);
     });
+
     Route::group(['prefix' => 'admin'], function(){
         Route::get('new_developers', [AnalyticsController::class, 'newDevelopers']);
         Route::get('new_recruiters', [AnalyticsController::class, 'newRecruiters']);
         Route::get('old_recruiters', [AnalyticsController::class, 'oldRecruiters']);
         Route::get('old_developers', [AnalyticsController::class, 'oldDevelopers']);
         Route::get('analytics', [AnalyticsController::class, 'analytics']);
+        Route::post('give_access', [AnalyticsController::class, 'giveAccess']);
+        Route::post('deny_access', [AnalyticsController::class, 'denyAccess']);
     });
 
 });

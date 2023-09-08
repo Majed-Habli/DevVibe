@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Skill;
 use App\Models\UserSkill;
+use App\Models\BlockedUser;
 use App\Models\DeveloperDetail;
 use DB;
 
@@ -73,6 +74,34 @@ class AnalyticsController extends Controller
             'female_count' => $female_count,
             'countries' => $countries,
             'popular' => $popular_stacks,
+        ]);
+    }
+
+    function giveAccess(Request $request){
+
+        $user_id = $request->user_id;
+
+        $user = User::find($user_id);
+        $user->has_access = $request->has_access;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'user' => $user
+        ]);
+    }
+
+    function denyAccess(Request $request){
+
+        $user_id = $request->user_id;
+
+        $user = new BlockedUser;
+        $user->user_id = $user_id;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'user' => $user
         ]);
     }
 }
