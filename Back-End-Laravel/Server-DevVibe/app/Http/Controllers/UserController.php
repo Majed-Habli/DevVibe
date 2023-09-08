@@ -15,24 +15,34 @@ use Auth;
 
 class UserController extends Controller
 {
-    function profile(){
+    function profile($id = Null){
 
-        $user = Auth::User();
-        $user_id = Auth::id();
+        if(!$id){
 
-        $user_type = $user->user_type_id;
-
-        if($user_type == 2){
-            $user_details = $user->with('DevDetails')->where('id', '=', $user_id)->get();
+            $user = Auth::User();
+            $user_id = Auth::id();
         }else{
-            $user_details = $user->RecDetails()->get();
+
+            $user_id = $id;
+            $user = User::where('id', '=',$user_id)->first();
+            $user_type = $user->user_type_id;
         }
 
-        return response()->json([
-            'status' => 'success',
-            // 'data' => $user,
-            'data' => $user_details
-        ]);
+        $user_type = $user->user_type_id;
+    
+            if($user_type == 2){
+                $user_details = $user->with('DevDetails')->where('id', '=', $user_id)->get();
+            }else{
+                $user_details = $user->with('RecDetails')->where('id', '=', $user_id)->get();
+            }
+    
+            return response()->json([
+                'status' => 'success',
+                'data' => $user_details
+            ]);
+
+        return response()->json(['status' => 'failes', 'user'=> $id]);
+
     }
 
     function updateDetails(Request $request){
@@ -152,9 +162,15 @@ class UserController extends Controller
         ]);
     }
 
-    function viewUserSkills(){
+    function viewUserSkills($id = Null){
 
-        $user = Auth::user();
+        if(!$id){
+
+            $user = Auth::user();
+        }else{
+            $user = User::where('id', '=', $id)->first();
+        }
+
 
         $skills = $user->Skills()->with('Skill')->get();
         return response()->json([
@@ -229,10 +245,16 @@ class UserController extends Controller
 
     }
 
-    function retrieveUserImages(){
+    function retrieveUserImages($id = Null){
 
-        $user = Auth::user();
+        if($id){
+            $user = User::where('id', '=', $id)->first();
+        }else{
 
+            $user = Auth::user();
+        }
+
+        
         $user_images = $user->Images()->get();
         return response()->json([
             'status' => 'success',
