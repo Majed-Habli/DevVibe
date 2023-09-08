@@ -156,5 +156,11 @@ class DatabaseSeeder extends Seeder
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ]);
+
+        DB::table('blocked_users')->insert([
+            'user_id' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
     }
 }

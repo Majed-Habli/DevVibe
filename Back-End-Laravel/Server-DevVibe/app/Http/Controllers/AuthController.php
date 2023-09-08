@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\BlockedUser;
 
 class AuthController extends Controller
 {
@@ -41,6 +42,14 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
+
+        $is_blocked = BlockedUser::where('user_id', $user->id)->first();
+
+        if($is_blocked){
+            return response()->json([
+                'error' => 'You are blocked.'
+            ], 403);
+        }
         $user->token = $token;
 
         return response()->json([
