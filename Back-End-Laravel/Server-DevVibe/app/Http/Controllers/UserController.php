@@ -253,7 +253,6 @@ class UserController extends Controller
 
             $user = Auth::user();
         }
-
         
         $user_images = $user->Images()->get();
         return response()->json([
@@ -279,12 +278,12 @@ class UserController extends Controller
             $swipe->save();
     
             $is_swiped = Swipe::where(function ($query) use ($user_id, $swiped_user_id){
-                $query->where('user_id', $user_id)->where('swiped_user_id', $swiped_user_id)->where('is_liked', 1);
+                $query->where('user_id', $user_id)->where('swiped_user_id', $swiped_user_id)->where('is_liked', true);
             })->orWhere(function ($query) use ($user_id, $swiped_user_id){
-                $query->where('user_id', $swiped_user_id)->where('swiped_user_id', $user_id)->where('is_liked', 1);
+                $query->where('user_id', $swiped_user_id)->where('swiped_user_id', $user_id)->where('is_liked', true);
             })->count() == 2;
 
-            if(!$is_swiped == 'false'){
+            if($is_swiped){
 
                 $match = new UserMatch;
                 $match->user_one_id = $user_id;
@@ -340,6 +339,30 @@ class UserController extends Controller
             'status' => 'success',
             'data' => $is_interested,
             'my id' => $user_id
+        ]);
+    }
+
+    function analysis(){
+
+        $user = Auth::user();
+        $user_id = Auth::id();
+
+        $matched_count = $user->Matched()->where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
+
+        $skipped_count = Swipe::where('swiped_user_id', '=', $user_id)->where('is_liked', '=', 0)->get()->count();
+
+        $liked_count = Swipe::where('swiped_user_id', '=', $user_id)->where('is_liked', '=', 1)->get()->count();
+
+        // $matched_count = UserMatch::where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
+
+        // $matched_count = UserMatch::where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
+
+        return response()->json([
+            'status' => 'success',
+            'matched count' => $matched_count,
+            'skipped count' => $skipped_count,
+            'liked count' => $liked_count,
+            'ana'=> $user_id
         ]);
     }
 }

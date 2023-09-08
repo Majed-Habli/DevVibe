@@ -19,6 +19,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::post('swipe', [UserController::class, 'swipe']);
         Route::get('view_matches', [UserController::class, 'viewMatches']);
         Route::get('view_interested', [UserController::class, 'viewInterested']);
+        Route::get('analysis', [UserController::class, 'analysis']);
     });
 });
 
