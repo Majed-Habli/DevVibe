@@ -83,6 +83,8 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('resume')->nullable();
             $table->string('description')->nullable();
+            $table->string('github_url')->nullable();
+            $table->string('linkedin_url')->nullable();
             $table->timestamps();
         });
 
@@ -91,6 +93,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('company_name');
             $table->string('description');
+            $table->string('linkedin_url')->nullable();
             $table->timestamps();
         });
 
