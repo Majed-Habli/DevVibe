@@ -51,15 +51,20 @@ class UserController extends Controller
 
             if($user_details){
 
+                $user_details->gender = $request->gender;
+                $user_details->github_url = $request->github_url;
                 $user_details->description = $request->description;
+                $user_details->linkedin_url = $request->linkedin_url;
                 $user_details->save();
 
             }else{
     
                 $user_details = new DeveloperDetail;
                 $user_details->user_id = $user_id;
-                $user_details->description = $request->description;
                 $user_details->gender = $request->gender;
+                $user_details->github_url = $request->github_url;
+                $user_details->description = $request->description;
+                $user_details->linkedin_url = $request->linkedin_url;
                 $user_details->save();
             }
         }else{
@@ -68,6 +73,7 @@ class UserController extends Controller
 
             if($user_details){
 
+                $user_details->company_name = $request->company_name;
                 $user_details->description = $request->description;
                 $user_details->save();
 
@@ -77,6 +83,7 @@ class UserController extends Controller
                 $user_details->user_id = $user_id;
                 $user_details->description = $request->description;
                 $user_details->company_name = $request->company_name;
+                $user_details->linkedin_url = $request->linkedin_url;
                 $user_details->save();
             }
         }
