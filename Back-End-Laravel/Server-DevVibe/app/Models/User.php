@@ -89,6 +89,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(RecruiterDetail::class, 'user_id');
     }
 
+    public function Blocked(){
+        return $this->belongsTo(BlockedUser::class, 'user_id');
+    }
+
     // public function SentMessages(){
     //     return $this->hasMany(Message::class, 'sender_id');
     // }
