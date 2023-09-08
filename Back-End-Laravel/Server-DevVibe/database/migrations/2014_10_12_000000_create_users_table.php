@@ -61,7 +61,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('user_matchs', function (Blueprint $table) {
+        Schema::create('user_matches', function (Blueprint $table) {
             $table->id();
             $table->integer('user_one_id');
             $table->integer('user_two_id');

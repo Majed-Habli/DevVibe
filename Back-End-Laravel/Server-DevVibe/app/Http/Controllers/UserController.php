@@ -7,6 +7,8 @@ use App\Models\UserSkill;
 use App\Models\Skill;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Swipe;
+use App\Models\UserMatch;
 use App\Models\DeveloperDetail;
 use Illuminate\Support\Str;
 use Auth;
@@ -134,10 +136,6 @@ class UserController extends Controller
             if($is_existing){
 
                 $user_skills = $user->Skills()->where('skill_id',$data)->delete();
-    
-                // $user_skills->save();
-
-                // return response()->json(['status' => 'added'. $data]);
             }
             
         }
@@ -220,6 +218,59 @@ class UserController extends Controller
             'view' => $user,
             'storage path' => Storage_path(),
             'path' => $path
+        ]);
+
+    }
+
+    function retrieveUserImages(){
+
+        $user = Auth::user();
+
+        $user_images = $user->Images()->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $user_images
+        ]);
+    }
+
+    function swipe(Request $request){
+
+        $user = Auth::user();
+        $user_id = Auth::id();
+        $swiped_user_id = $request->swiped_user_id;
+
+        $swipe_exists = $user->Swipes()->where('swiped_user_id', $swiped_user_id)->first();
+
+        if(!$swipe_exists){
+
+            $swipe = new Swipe;
+            $swipe->user_id = $user_id;
+            $swipe->swiped_user_id = $swiped_user_id;
+            $swipe->is_liked = $request->is_liked;
+            $swipe->save();
+    
+            $is_swiped = Swipe::where(function ($query) use ($user_id, $swiped_user_id){
+                $query->where('user_id', $user_id)->where('swiped_user_id', $swiped_user_id)->where('is_liked', 1);
+            })->orWhere(function ($query) use ($user_id, $swiped_user_id){
+                $query->where('user_id', $swiped_user_id)->where('swiped_user_id', $user_id)->where('is_liked', 1);
+            })->count() == 2;
+
+            if(!$is_swiped == 'false'){
+
+                $match = new UserMatch;
+                $match->user_one_id = $user_id;
+                $match->user_two_id = $swiped_user_id;
+                $match->save();
+            }
+    
+            return response()->json([
+                'status' => 'success',
+                'data' => $is_swiped
+            ]);
+
+        }
+        return response()->json([
+            'status' => 'already',
         ]);
 
     }
