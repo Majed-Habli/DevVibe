@@ -28,6 +28,8 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('new_developers', [AnalyticsController::class, 'newDevelopers']);
         Route::get('new_recruiters', [AnalyticsController::class, 'newRecruiters']);
         Route::get('old_recruiters', [AnalyticsController::class, 'oldRecruiters']);
+        Route::get('old_developers', [AnalyticsController::class, 'oldDevelopers']);
+        Route::get('analytics', [AnalyticsController::class, 'analytics']);
     });
 
 });
