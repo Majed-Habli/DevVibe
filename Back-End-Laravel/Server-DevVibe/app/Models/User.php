@@ -77,7 +77,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Swipe::class, 'user_id');
     }
 
-    public function Matchs(){
+    public function Matched(){
         return $this->hasMany(UserMatch::class, 'user_one_id'); // belongs ?
     }
 

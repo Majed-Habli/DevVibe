@@ -17,6 +17,8 @@ Route::group(['prefix'=>'user'], function (){
         Route::post('remove_skills', [UserController::class, 'removeSkills']);
         Route::get('retrieve_user_images', [UserController::class, 'retrieveUserImages']);
         Route::post('swipe', [UserController::class, 'swipe']);
+        Route::get('view_matches', [UserController::class, 'viewMatches']);
+        Route::get('view_interested', [UserController::class, 'viewInterested']);
     });
 });
 

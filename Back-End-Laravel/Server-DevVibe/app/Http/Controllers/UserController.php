@@ -274,4 +274,43 @@ class UserController extends Controller
         ]);
 
     }
+
+    function viewMatches(){
+
+        $user_id = Auth::id();
+
+        $my_matches = UserMatch::where(function ($query) use ($user_id){
+            $query->where('user_one_id', $user_id)->orWhere('user_two_id', $user_id);
+        })->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $my_matches,
+        ]);
+    }
+
+    function viewInterested(){
+
+        $user_id = Auth::id();
+
+        // $is_interested = Swipe::whereNot(function ($query) use ($user_id){
+        //     $query->where('user_id', $user_id);
+        // })->where(function ($query) use ($user_id){
+        //     $query->where('swiped_user_id', $user_id)
+        //     ->where('is_liked', 1);
+        // })->get();
+
+        $is_interested = Swipe::where(function ($query) use ($user_id){
+            $query->where('swiped_user_id', $user_id)
+            ->where('is_liked', 1);
+        })->whereNotIn('user_id', function ($query) use ($user_id){
+            $query->select('swiped_user_id')->from('swipes')->where('user_id', $user_id);
+        })->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $is_interested,
+            'my id' => $user_id
+        ]);
+    }
 }
