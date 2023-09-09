@@ -7,7 +7,7 @@ const Navbar = () => {
         <div className={styles.navbar_container}>
             <div className={styles.navbar_content}>
                 <div className={styles.logo_container}>
-                    <img src="" alt="" />
+                    <img src="/Logo.png" alt="brand logo" />
                 </div>
                 <div className={styles.button_container}>
                     <div>button here</div>
