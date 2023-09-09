@@ -10,7 +10,7 @@ const Navbar = () => {
                     <img src="/Logo.png" alt="brand logo" />
                 </div>
                 <div className={styles.button_container}>
-                    <div>button here</div>
+                    <div>Login</div>
                 </div>
             </div>
         </div>
