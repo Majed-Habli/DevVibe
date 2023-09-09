@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './navbar.module.css';
+import CustomButton from "../custom button/custombutton";
 
 const Navbar = () => {
 
@@ -9,9 +10,7 @@ const Navbar = () => {
                 <div className={styles.logo_container}>
                     <img src="/Logo.png" alt="brand logo" />
                 </div>
-                <div className={styles.button_container}>
-                    <div>Login</div>
-                </div>
+                <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
             </div>
         </div>
     )

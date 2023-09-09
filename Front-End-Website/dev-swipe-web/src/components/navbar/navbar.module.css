@@ -31,19 +31,3 @@
     width: 100%;
     height: 100%;
 }
-
-.button_container{
-    width: 93px;
-    height: 27px;
-    border-radius: 4px;
-    display: flex;
-    /* font-size: 14px; */
-    /* font-family: inter; */
-    /* align-items: center; */
-    justify-content: center;
-    background-color: #FCC860;
-}
-
-.button_container:hover{
-    cursor: pointer;
-}
