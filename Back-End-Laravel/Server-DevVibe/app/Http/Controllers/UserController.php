@@ -294,6 +294,28 @@ class UserController extends Controller
         ]);
     }
 
+    function deleteUserImage(Request $request){
+
+        $user_id = Auth::id();
+
+        $image_id = $request->image_id;
+        
+        $image = Image::where('id', '=', $image_id)->first();
+        $image_url = $image->image_url;
+
+        $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
+
+        if (\File::exists($image_path)) {
+            unlink($image_path);
+        }
+
+        $image->delete();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+
     function swipe(Request $request){
 
         $user = Auth::user();

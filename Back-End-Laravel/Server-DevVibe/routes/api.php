@@ -17,6 +17,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::post('upload_user_images', [UserController::class, 'uploadUserImages']);
         Route::post('upload_user_resume', [UserController::class, 'uploadUserResume']);
         Route::post('remove_skills', [UserController::class, 'removeSkills']);
+        Route::post('delete_user_image', [UserController::class, 'deleteUserImage']);
         Route::get('retrieve_user_images/{id?}', [UserController::class, 'retrieveUserImages']);
         Route::post('swipe', [UserController::class, 'swipe']);
         Route::get('view_matches', [UserController::class, 'viewMatches']);
