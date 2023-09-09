@@ -86,12 +86,14 @@ class AuthController extends Controller
             $path = 'users/' . $folder_name;
             $path_user_profile_pics = $path . '/profile_pic';
             $path_user_pics = $path . '/user_images';
+            $path_user_resume = $path . '/user_resume';
             
             if(!Storage::disk('public')->exists($path)){
                 Storage::disk('public')->makeDirectory($path);
 
                 if(Storage::disk('public')->exists($path)){
                     Storage::disk('public')->makeDirectory($path_user_profile_pics);
+                    Storage::disk('public')->makeDirectory($path_user_resume);
                     Storage::disk('public')->makeDirectory($path_user_pics);
                 }
             }

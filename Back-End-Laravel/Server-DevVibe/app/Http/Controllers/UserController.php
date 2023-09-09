@@ -245,6 +245,39 @@ class UserController extends Controller
 
     }
 
+    function uploadUserResume(Request $request){
+        
+        $user_id = Auth::id();
+        $path = public_path('storage/users/' . $user_id . '/user_resume');
+        
+        $resume = $request->resume;
+        $type = $request->type;
+        $resume_name = Str::random(10).'.'.$type;
+        \File::put($path . '/' . $resume_name, base64_decode($resume));
+
+        $user_record = DeveloperDetail::where('user_id', '=', $user_id)->first();
+
+        if($user_record){
+
+            $user_record->resume = $resume_name;
+            $user_record->save();
+        }else{
+
+            $user_record = new DeveloperDetail;
+            $user_record->user_id = $user_id;
+            $user_record->resume = $resume_name;
+            $user_record->save();
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'view' => $user_record,
+            'storage path' => Storage_path(),
+            'path' => $path
+        ]);
+
+    }
+
     function retrieveUserImages($id = Null){
 
         if($id){
