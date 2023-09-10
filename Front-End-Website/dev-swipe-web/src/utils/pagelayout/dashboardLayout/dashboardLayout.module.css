@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Parent_layout{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+}
+
+.navbar_container{
+    width: 100%;
+    z-index: 1;
+}
+
+.outlet_parent{
+    width: 100%;
+    height: 100%;
+    background-color: #F4F6F9;
+}
+
+.top_img{
+    width: 268px;
+    height: 458px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btm_img{
+    width: 306px;
+    height: 238px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
