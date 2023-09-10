@@ -2,7 +2,7 @@ import React from "react";
 import styles from './card.module.css';
 import CustomButton from "../custom button/custombutton";
 
-const Card = () =>{
+const Card = ({button}) =>{
 
     return(
         <div className={styles.card_container}>
@@ -13,7 +13,9 @@ const Card = () =>{
                 <div className={styles.user_name}>majed</div>
             </div>
             {/* <div className={styles.container_rigth}></div> */}
-            <CustomButton title={"view profile"}/>
+            {button &&(
+                <CustomButton title={"view profile"}/>
+            )}
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './matched.module.css';
 import CustomButton from "../custom button/custombutton";
+import Card from "../user card/card";
 
 const MatchedTable = () =>{
 
@@ -8,22 +9,34 @@ const MatchedTable = () =>{
         <div className={styles.matched_container}>
             <div className={styles.table_header}>Matched with</div>
             <div className={styles.table_body}>
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Developer</th>
-                        <th>Skills</th>
-                        <th>Profile</th>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>majed</td>
-                        <td>
-                            <CustomButton width={45} height={45} backgroundColor={'yellow'}/>
-                        </td>
-                    </tr>
-                </table>
+                <div className={styles.inner_table_container}>
+                    <div className={styles.inner_table_header}>
+                        <div className={styles.space}></div>
+                        <div className={`${styles.cell} ${styles.width_username}`}>Developer</div>
+                        <div className={`${styles.cell} ${styles.width_skill}`}>Skills</div>
+                        <div className={`${styles.cell} ${styles.width_profile}`}>Profile</div>
+                    </div>
+                    <div className={styles.inner_table_body}>
+                        <div className={styles.inner_table_row}>
+                            <div className={styles.index}>1</div>
+                            <div className={styles.user_card}>
+                                <Card button={false}/>
+                            </div>
+                            <div className={styles.skills_container}>
+                                <div className={styles.content}>
+                                    <div className={styles.pill}>blender</div>
+                                    <div className={styles.pill}>blender</div>
+                                    <div className={styles.pill}>blender</div>
+                                    <div className={styles.pill}>blender</div>
+                                    <div className={styles.pill}>blender</div>
+                                </div>
+                            </div>
+                            <div className={styles.profile_button}>
+                                <CustomButton width={45} height={45} backgroundColor={'#D4D4D4'}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

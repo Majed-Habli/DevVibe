@@ -12,7 +12,7 @@ const InterestedTable = () => {
                 <CustomButton title={'view all'}/>
             </div>
             <div className={styles.table_body}>
-                <Card/>
+                <Card button={true}/>
             </div>
         </div>
     )
