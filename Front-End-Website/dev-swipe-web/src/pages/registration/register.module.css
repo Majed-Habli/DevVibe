@@ -6,6 +6,10 @@
     justify-content: center;
 }
 
+.comp_width{
+    width: 380px;
+}
+
 .comp_container{
     width: 470px;
     height: 539px;
@@ -34,6 +38,12 @@
 .row{
     display: flex;
     column-gap: 1.5rem;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
 }
 
 .cto{

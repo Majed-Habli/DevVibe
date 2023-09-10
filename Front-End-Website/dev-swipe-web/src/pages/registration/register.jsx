@@ -18,6 +18,10 @@ const Register = () =>{
         }));
     };
 
+    const goToPage = () => {
+        window.location.href = '/';
+    }
+
     const onRegister = async (event) =>{
         event.preventDefault();
 
@@ -50,8 +54,8 @@ const Register = () =>{
                     localStorageAction("token", token);
                     localStorageAction("user_id", id);
                     localStorageAction("user_type", user_type);
-                    // console.log(data.data.token)
-                    console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction(user_type));
+
+                    // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
                     // window.location.href = ''
                 }else{
                     setError('Email already exists!');
@@ -82,7 +86,7 @@ const Register = () =>{
                         <CustomInput label={'Confirm Password :'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={500}/>
                     </div>
                 </div>
-                <div className={styles.cto}>Already have an account? <span>Login now</span></div>
+                <div className={styles.cto}>Already have an account? <span onClick={goToPage}>Login now</span></div>
                 <div className={styles.button_container}>
                     <CustomButton width={220} height={50} title={'Register'} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={onRegister}/>
                 </div>

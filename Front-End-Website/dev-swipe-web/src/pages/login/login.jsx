@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from './register.module.css';
+import styles from '../registration/register.module.css';
 // import axios from 'axios';
 import CustomInput from "../../components/custom input/custominput";
 import CustomButton from "../../components/custom button/custombutton";
@@ -18,11 +18,15 @@ const Login = () =>{
         }));
     };
 
+    const goToPage = () => {
+        window.location.href = '/register';
+    }
+
     const onLogin = async (event) =>{
         event.preventDefault();
 
         try {
-            if(!inputs.name || !inputs.email){
+            if(!inputs.email || !inputs.password){
                 setError('All fields required');
                 console.log(error);
             }else{
@@ -35,18 +39,18 @@ const Login = () =>{
                         }
                 });
                 const data = response;
+                console.log("res", response)
                 const token = " ";
     
-                if(data.status == 'Success'){
-                    const token = data.data.token;
-                    const id = data.data.id;
-                    const user_type = data.data.user_type_id;
+                if(data.status == 'success'){
+                    const token = data.user.token;
+                    const id = data.user.id;
+                    const user_type = data.user.user_type_id;
     
                     localStorageAction("token", token);
                     localStorageAction("user_id", id);
                     localStorageAction("user_type", user_type);
-                    // console.log(data.data.token)
-                    console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction(user_type));
+                    // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
                     // window.location.href = ''
                 }else{
                     setError("Email Doesn't exists!");
@@ -64,12 +68,12 @@ const Login = () =>{
             <div className={styles.comp_container}>
                 <div className={styles.title}>Login</div>
                 <div className={styles.input_container}>
-                    <div className={styles.row}>
-                        <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
-                        <CustomInput label={'Password :'} name={'password'} value={inputs.password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={500}/>
+                    <div className={styles.col}>
+                        <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Password :'} name={'password'} value={inputs.password} handleChange={handleChange} width={424} height={38}fontSize={12} fontWeight={500}/>
                     </div>
                 </div>
-                <div className={styles.cto}>Don't have an account? <span>Register now</span></div>
+                <div className={styles.cto}>Don't have an account? <span onClick={goToPage}>Register now</span></div>
                 <div className={styles.button_container}>
                     <CustomButton width={220} height={50} title={'Login'} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={onLogin}/>
                 </div>
