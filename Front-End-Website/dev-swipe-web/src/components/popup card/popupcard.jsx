@@ -2,11 +2,7 @@ import React from "react";
 import styles from './popupcard.module.css';
 import CustomImageButton from "../custom button/customImageButton";
 
-const PopUpCard = ({isOpen}) =>{
-
-    const hideModel =() =>{
-        isOpen(prev => !prev);
-    }
+const PopUpCard = ({}) =>{
 
     return(
         <div className={styles.container}>
@@ -20,8 +16,8 @@ const PopUpCard = ({isOpen}) =>{
                 </div>
             </div>
             <div className={styles.container_right}>
-                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"} onClick={hideModel}/>
-                <CustomImageButton image_name={"Done.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"} onClick={hideModel}/>
+                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}/>
+                <CustomImageButton image_name={"Done.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}/>
             </div>
         </div>
     )

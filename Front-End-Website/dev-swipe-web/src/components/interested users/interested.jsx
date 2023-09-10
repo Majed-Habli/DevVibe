@@ -3,6 +3,7 @@ import styles from './interested.module.css'
 import CustomButton from "../custom button/custombutton";
 import Card from "../user card/card";
 import PopUpCard from "../popup card/popupcard";
+import ViewAllPopUp from "../models/view users/viewall";
 
 const InterestedTable = () => {
     const [showModel, setShowModel] = useState(false);
@@ -22,7 +23,7 @@ const InterestedTable = () => {
             </div>
             {showModel && (
                 <div className={styles.popup_background}>
-                    <PopUpCard isOpen={setShowModel}/>
+                    <ViewAllPopUp isOpen={setShowModel}/>
                 </div>
             )}
         </div>
