@@ -11,9 +11,9 @@ const DashboardLayoout = () => {
                 <Navbar/>
             </div>
             <div className={styles.outlet_parent}>
-                <div className={styles.page_header}>
+                {/* <div className={styles.page_header}>
                    
-                </div>
+                </div> */}
                 <Outlet/>
             </div>
         </div>
