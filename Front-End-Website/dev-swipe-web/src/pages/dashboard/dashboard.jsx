@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './dashboard.module.css';
+import InterestedTable from "../../components/interested users/interested";
 
 const Dashboard = () =>{
 
@@ -11,7 +12,9 @@ const Dashboard = () =>{
             </div>
             <div className={styles.component_container}>
                 <div className={styles.component_container_left}>
-                    <div className={styles.component_vertical_layout}></div>
+                    <div className={styles.component_vertical_layout}>
+                        <InterestedTable/>
+                    </div>
                 </div>
                 <div className={styles.component_container_right}></div>
             </div>
