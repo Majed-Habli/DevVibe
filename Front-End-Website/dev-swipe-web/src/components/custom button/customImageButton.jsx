@@ -7,7 +7,7 @@ const CustomImageButton = ({image_name, width, height, backgroundColor, borderRa
         <div style={{width, height, backgroundColor, borderRadius, 
         cursor: 'pointer', display, alignItems, justifyContent}}
         onClick={onClick}>
-            <img src= {image_url} alt="" />
+            <img style={{width,height}} src= {image_url} alt="" />
         </div>
     )
 }
