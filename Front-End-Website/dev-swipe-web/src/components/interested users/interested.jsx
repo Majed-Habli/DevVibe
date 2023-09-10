@@ -21,7 +21,9 @@ const InterestedTable = () => {
                 <Card button={true}/>
             </div>
             {showModel && (
-                <PopUpCard isOpen={setShowModel}/>
+                <div className={styles.popup_background}>
+                    <PopUpCard isOpen={setShowModel}/>
+                </div>
             )}
         </div>
     )
