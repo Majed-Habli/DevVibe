@@ -11,12 +11,10 @@ const DashboardLayoout = () => {
                 <Navbar/>
             </div>
             <div className={styles.outlet_parent}>
-                <div className={styles.top_img}>
-                    <img src="/topright-icon.png" alt="top right backgroung-image" />
+                <div className={styles.page_header}>
+                   
                 </div>
-                <div className={styles.btm_img}>
-                    <img src="/btmleft-icon.png" alt="bottom left backgroung-image" />
-                </div>
+
                 <Outlet/>
             </div>
         </div>
