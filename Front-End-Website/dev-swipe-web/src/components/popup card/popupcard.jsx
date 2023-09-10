@@ -1,7 +1,12 @@
 import React from "react";
-import styles from './popup.module.css';
+import styles from './popupcard.module.css';
+import CustomImageButton from "../custom button/customImageButton";
 
-const PopUpCard = () =>{
+const PopUpCard = ({isOpen}) =>{
+
+    const hideModel =() =>{
+        isOpen(prev => !prev);
+    }
 
     return(
         <div className={styles.container}>
@@ -15,7 +20,7 @@ const PopUpCard = () =>{
                 </div>
             </div>
             <div className={styles.container_right}>
-                
+                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"} onClick={hideModel}/>
             </div>
         </div>
     )
