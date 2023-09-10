@@ -1,0 +1,22 @@
+.container{
+    width: 501px;
+    height: 215px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dedede;
+}
+
+.header{
+    width: 100%;
+    height: 46px;
+    display: flex;
+    padding: 0 1.5rem;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+}
+
+.container_body{
+    width: 100%;
+    height: 169px;
+    display: flex;
+}
