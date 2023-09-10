@@ -5,7 +5,7 @@ const CustomButton = ({title, width, height, backgroundColor, borderRadius, disp
     return(
         <div style={{width, height, backgroundColor, borderRadius, 
         cursor: 'pointer', display, alignItems, justifyContent}}
-        onClick={{onClick}}>
+        onClick={onClick}>
             <div style={{ textAlign, fontSize, fontWeight, color}}>{title}</div>
         </div>
     )
