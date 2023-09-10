@@ -12,8 +12,10 @@ const Card = () =>{
                 </div>
                 <div className={styles.user_name}>majed</div>
             </div>
-            <div className={styles.container_rigth}></div>
+            {/* <div className={styles.container_rigth}></div> */}
             <CustomButton title={"view profile"}/>
         </div>
     )
 }
+
+export default Card;
