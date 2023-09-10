@@ -1,0 +1,14 @@
+.table_container{
+    width: 501px;
+    height: 256px;
+    background-color: white;
+}
+
+.table_header{
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #D4D4D4;
+}
