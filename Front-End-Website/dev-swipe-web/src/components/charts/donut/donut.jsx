@@ -7,14 +7,14 @@ ChartJS.register(
     ArcElement, Tooltip, Legend
 );
 
-const Donut = () =>{
+const Donut = ({backgroundColor, value}) =>{
 
     const data  = {
         labels: [],
         datasets: [{
             label: '',
-            data: [30,100],
-            backgroundColor: ['#F56954', '#EEEEEE'],
+            data: [`${value}`,100],
+            backgroundColor: [`${backgroundColor}`, '#EEEEEE'],
         }]
     }
 
@@ -22,7 +22,7 @@ const Donut = () =>{
         responsive: true,
         plugins: {
         tooltip: {
-            enabled: false // <-- this option disables tooltips
+            enabled: false // <-- this option disables tooltips F56954
         }
         }
     }
@@ -33,7 +33,7 @@ const Donut = () =>{
             const {ctx, data} = chart;
             ctx.save();
             ctx.font = 'bolder 12px sans-serif';
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = `${backgroundColor}`;
             ctx.textAlign = 'center';
             ctx.textBaseLine = 'middle';
             ctx.fillText(data.datasets[0].data[0], chart.getDatasetMeta(0).data[0].x, chart.getDatasetMeta(0).data[0].y);
