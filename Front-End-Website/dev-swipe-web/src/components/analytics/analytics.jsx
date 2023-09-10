@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './analytics.module.css';
+import Donut from "../charts/donut/donut";
 
 const AnalyticsComponent = () =>{
 
@@ -8,7 +9,13 @@ const AnalyticsComponent = () =>{
             <div className={styles.header}>
                 Statistics
             </div>
-            <div className={styles.container_body}></div>
+            <div className={styles.container_body}>
+                <Donut/>
+                <Donut/>
+                <Donut/>
+                <Donut/>
+
+            </div>
         </div>
     )
 }
