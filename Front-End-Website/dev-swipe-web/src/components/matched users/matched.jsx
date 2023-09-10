@@ -2,6 +2,7 @@ import React from "react";
 import styles from './matched.module.css';
 import CustomButton from "../custom button/custombutton";
 import Card from "../user card/card";
+import CustomImageButton from "../custom button/customImageButton";
 
 const MatchedTable = () =>{
 
@@ -32,7 +33,7 @@ const MatchedTable = () =>{
                                 </div>
                             </div>
                             <div className={styles.profile_button}>
-                                <CustomButton width={45} height={45} backgroundColor={'#D4D4D4'}/>
+                                <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_hieght={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
                             </div>
                         </div>
                     </div>
