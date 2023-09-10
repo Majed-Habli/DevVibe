@@ -16,8 +16,8 @@ const PopUpCard = ({}) =>{
                 </div>
             </div>
             <div className={styles.container_right}>
-                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}/>
-                <CustomImageButton image_name={"Done.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}/>
+                <CustomImageButton image_name={"Close.png"} width={23} height={23} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}/>
+                <CustomImageButton image_name={"Done.png"} width={23} height={23} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}/>
             </div>
         </div>
     )

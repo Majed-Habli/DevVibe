@@ -29,7 +29,6 @@
     flex-direction: column;
     /* row-gap: ; */
     overflow-y: scroll;
-    background-color: #8e5b5b;
 }
 
 .popup_body::-webkit-scrollbar{
