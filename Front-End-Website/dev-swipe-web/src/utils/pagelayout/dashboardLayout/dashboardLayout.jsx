@@ -14,7 +14,6 @@ const DashboardLayoout = () => {
                 <div className={styles.page_header}>
                    
                 </div>
-
                 <Outlet/>
             </div>
         </div>
