@@ -21,7 +21,14 @@ const MatchedTable = () =>{
                         <div className={styles.inner_table_row}>
                             <div className={styles.index}>1</div>
                             <div className={styles.user_card}>
-                                <Card button={false}/>
+                                <div className={styles.card_container}>
+                                    <div className={styles.container_left}>
+                                        <div className={styles.profile_image_container}>
+                                            <img src="/testuser.png" alt="profile image" />
+                                        </div>
+                                        <div className={styles.user_name}>majed</div>
+                                    </div>
+                                </div>
                             </div>
                             <div className={styles.skills_container}>
                                 <div className={styles.content}>
@@ -33,7 +40,7 @@ const MatchedTable = () =>{
                                 </div>
                             </div>
                             <div className={styles.profile_button}>
-                                <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_hieght={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
+                                <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
                             </div>
                         </div>
                     </div>

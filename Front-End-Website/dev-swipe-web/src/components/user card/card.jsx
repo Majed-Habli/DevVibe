@@ -12,7 +12,6 @@ const Card = ({button}) =>{
                 </div>
                 <div className={styles.user_name}>majed</div>
             </div>
-            {/* <div className={styles.container_rigth}></div> */}
             {button &&(
                 <CustomButton title={"view profile"}/>
             )}
