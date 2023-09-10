@@ -1,10 +1,15 @@
 import React, {useState} from "react";
-import styles from './register.module.css'
+import styles from './register.module.css';
+// import axios from 'axios';
 import CustomInput from "../../components/custom input/custominput";
 import CustomButton from "../../components/custom button/custombutton";
+import { sendRequest } from "../../utils/functions/axios";
+import { requestMethods } from "../../utils/functions/requestMethods.";
+import { localStorageAction } from "../../utils/functions/localStorage";
 
 const Register = () =>{
-    const [ inputs, setInputs] = useState([]);
+    const [inputs, setInputs] = useState([]);
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         setInputs((prev) => ({
@@ -13,8 +18,50 @@ const Register = () =>{
         }));
     };
 
-    const onRegister = () =>{
-        console.log(inputs);
+    const onRegister = async (event) =>{
+        event.preventDefault();
+
+        try {
+            if (inputs.password !== inputs.confirm_password){
+                setError('Passwords dont match!');
+                console.log(error);
+            }else if(!inputs.name || !inputs.email || !inputs.password, !inputs.confirm_password || !inputs.country){
+                setError('All fields required');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: "/guest/register",
+                    method: requestMethods.POST,
+                    body:{user_name: inputs.name,
+                        email: inputs.email,
+                        password: inputs.password,
+                        country: inputs.country,
+                        user_type_id: 2,}
+                });
+                const data = response;
+                const token = " ";
+    
+                if(data.status == 'Success'){
+                    const token = data.data.token;
+                    const id = data.data.id;
+                    const user_type = data.data.user_type_id;
+    
+                    localStorageAction("token", token);
+                    localStorageAction("user_id", id);
+                    localStorageAction("user_type", user_type);
+                    // console.log(data.data.token)
+                    console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction(user_type));
+                    // window.location.href = ''
+                }else{
+                    setError('Email already exists!');
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("Registration failed:", error);
+          }
     }
 
     return (
@@ -23,8 +70,8 @@ const Register = () =>{
                 <div className={styles.title}>Register</div>
                 <div className={styles.input_container}>
                     <div className={styles.row}>
-                        <CustomInput label={'Name :'} name={'name'} value={inputs.name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
-                        <CustomInput label={'Company Name :'} name={'Company_name'} value={inputs.Company_name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Name :'} name={'name'} value={inputs.name} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={500}/>
+                        {/* <CustomInput label={'Gender :'} name={'gender'} value={inputs.gender} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/> */}
                     </div>
                     <div className={styles.row}>
                         <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
