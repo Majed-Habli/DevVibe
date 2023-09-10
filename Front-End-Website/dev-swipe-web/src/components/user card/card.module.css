@@ -3,6 +3,7 @@
     height: 46px;
     display: flex;
     align-items: center;
+    padding: 2.3rem 1.5rem;
     justify-content: space-between;
 }
 
@@ -17,4 +18,8 @@
     height: 46px;
     border-radius: 120px;
     background-color: rgb(117, 130, 214);
+}
+
+.card_container:hover{
+    background-color: #f4f4f4;
 }

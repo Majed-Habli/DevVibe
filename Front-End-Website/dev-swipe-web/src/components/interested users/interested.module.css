@@ -10,7 +10,7 @@
     width: 100%;
     height: 46px;
     display: flex;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #D4D4D4;
@@ -18,12 +18,12 @@
 
 .table_body{
     width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    background-color: aqua;
+    height: 200px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .table_body::-webkit-scrollbar{
-    /* width: ; */
     display: none;
 }
