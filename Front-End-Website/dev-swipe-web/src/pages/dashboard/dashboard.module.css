@@ -38,6 +38,13 @@
     flex: 1;
 }
 
+.component_vertical_layout{
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .component_container_right{
     flex: 1.83;
 }
