@@ -2,6 +2,7 @@ import React from "react";
 import styles from './profile.module.css';
 import HeaderComp from "../../components/profile header/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
+import CarouselComp from "../../components/carousel/carousel";
 
 const Profile = () =>{
 
@@ -25,6 +26,7 @@ const Profile = () =>{
                         </div>
                     </div>
                     <div className={styles.right_container}>
+                        <CarouselComp/>
                     </div>
                 </div>
             </div>
