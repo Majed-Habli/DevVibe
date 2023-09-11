@@ -8,15 +8,21 @@ const HeaderComp = () =>{
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                <CustomButton title={Edit}/>
+                <CustomButton title={'Edit'}/>
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
-                    <div className={styles.image_container}></div>
-                    <div className={styles.details}></div>
+                    <div className={styles.image_container}>
+                        <img src="/Profileimage.png" alt="user profile image" />
+                    </div>
+                    <div className={styles.details}>
+                        <div className={styles.user_name}>Majed habli</div>
+                        <div className={styles.user_email}>majed@gmail.com</div>
+                    </div>
                 </div>
                 <div className={styles.middle_right}>
                     <div className={styles.description}></div>
+                    An over all well rounded developer, with expertise in all phases of development
                 </div>
             </div>
             <div className={styles.bottom_row}>
