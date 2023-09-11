@@ -37,6 +37,17 @@ const HeaderComp = ({data}) =>{
                 </div>
             </div>
             <div className={styles.bottom_row}>
+                {data.rec_details?.company_name ? (
+                    <div className={styles.company_details}>
+                        <div className={styles.company_label}>Works at:</div>
+                        <div className={styles.company_name}>{data.rec_details.company_name} ,{data.country}</div>
+                    </div>
+                ):(
+                    <div className={styles.company_details}>
+                        <div className={styles.company_label}>Lives in:</div>
+                        <div className={styles.company_name}>{data.country}</div>
+                    </div>
+                )}
                 <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36}/>
                 <CustomImageButton image_name={'Google.png'} image_width={36} image_height={36}/>
                 <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36}/>
