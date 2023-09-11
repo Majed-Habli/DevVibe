@@ -15,6 +15,7 @@ const HeaderComp = ({data}) =>{
     const goTo = (url) =>{
         window.location.href = url
     }
+
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
@@ -51,10 +52,13 @@ const HeaderComp = ({data}) =>{
                         <div className={styles.company_name}>{data.country}</div>
                     </div>
                 )}
-                <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(data.rec_details.linkedin_url)}/>
-                <CustomImageButton image_name={'Google.png'} image_width={36} image_height={36}/>
-                <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36}/>
-                <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36}/>
+                {!data.user_type_id == 3 && (
+                    <div className={styles.flex}>
+                        <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(data.rec_details.linkedin_url)} />
+                        <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(data.rec_details.github_url)} />
+                    </div>
+                )}
+                <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(data.rec_details.linkedin_url)}/>
             </div>
             {showModel && (
                 <div className={styles.popup_background}>
