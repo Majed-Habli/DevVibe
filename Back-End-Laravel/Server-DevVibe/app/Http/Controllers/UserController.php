@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Swipe;
 use App\Models\UserMatch;
 use App\Models\DeveloperDetail;
+use App\Models\RecruiterDetail;
 use Illuminate\Support\Str;
 use Auth;
 
