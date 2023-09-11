@@ -7,6 +7,7 @@ import CustomInput from "../../custom input/custominput";
 const EditForm = ({isOpen}) =>{
 
     const [search, setSearch] = useState('');
+    const [ischecked, setIsChecked] = useState([]);
 
     useEffect(()=>{
         // getRecipes();
@@ -41,7 +42,49 @@ const EditForm = ({isOpen}) =>{
                     <div className={styles.top_bar}>
                         <input type="text" placeholder="Search skills here..." value={search} onChange={inputChange}/>
                     </div>
-                    <div className={styles.skill_display}></div>
+                    <div className={styles.skill_display}>
+                        <div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div><div className={styles.box}>
+                            <input id={'lable'} type="checkbox" name="blender"/>
+                            <label htmlFor={'blender'}> Blender</label>
+                            {/* <div>Blender</div> */}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
