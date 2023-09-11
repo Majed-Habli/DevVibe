@@ -7,7 +7,7 @@
 }
 
 .comp_width{
-    width: 380px;
+    width: 380px !important;
 }
 
 .comp_container{

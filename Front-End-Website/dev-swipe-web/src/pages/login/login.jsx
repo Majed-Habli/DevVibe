@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import styles from '../registration/register.module.css';
-// import axios from 'axios';
 import CustomInput from "../../components/custom input/custominput";
 import CustomButton from "../../components/custom button/custombutton";
 import { sendRequest } from "../../utils/functions/axios";
@@ -50,8 +49,7 @@ const Login = () =>{
                     localStorageAction("token", token);
                     localStorageAction("user_id", id);
                     localStorageAction("user_type", user_type);
-                    // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
-                    // window.location.href = ''
+                    window.location.href = '/dashboard';
                 }else{
                     setError("Email Doesn't exists!");
                     console.log(error);
@@ -65,12 +63,12 @@ const Login = () =>{
 
     return (
         <div className={styles.container}>
-            <div className={styles.comp_container}>
+            <div className={`${styles.comp_container} ${styles.comp_width}`}>
                 <div className={styles.title}>Login</div>
                 <div className={styles.input_container}>
                     <div className={styles.col}>
-                        <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={500}/>
-                        <CustomInput label={'Password :'} name={'password'} value={inputs.password} handleChange={handleChange} width={424} height={38}fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={323} height={38} fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Password :'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={500}/>
                     </div>
                 </div>
                 <div className={styles.cto}>Don't have an account? <span onClick={goToPage}>Register now</span></div>
