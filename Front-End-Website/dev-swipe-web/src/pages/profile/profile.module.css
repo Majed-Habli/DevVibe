@@ -14,16 +14,55 @@
 
 .component_container{
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button_container{
     width: 100%;
-    height: 110px;
+    height: 120px;
     display: flex;
     padding: 0.5rem 1.5rem;
     justify-content: space-around;
     align-items: flex-end;
     flex-direction: column;
-    /* background-color: #aa2828; */
+}
+
+.componenet_body{
+    width: 1078px;
+    height: 100%;
+    display: flex;
+    margin-top: 4rem;
+    justify-content: space-between;
+}
+
+.left_container{
+    width: 250px;
+    height: 100%;
+    font-size: 18px;
+}
+
+.title{
+    font-size: 18px;
+}
+
+.skill_cotainer{
+    height: 700px;
+    display: flex;
+    row-gap: 1rem;
+    padding: 1rem 0;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+.skill_cotainer::-webkit-scrollbar{
+    display: none;
+}
+
+.right_container{
+    width: 714px;
+    height: 375px;
+    background-color: #f05050;
 }

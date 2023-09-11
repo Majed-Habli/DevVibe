@@ -9,6 +9,8 @@ import Dashboard from "./pages/dashboard/dashboard";
 import Profile from "./pages/profile/profile";
 
 function App() {
+  const isAuthenticated = false;
+
   return (
     <BrowserRouter>
       <Routes>
