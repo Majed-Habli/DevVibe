@@ -71,7 +71,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 0.4rem;
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
 }
 
 .box{
@@ -86,4 +86,11 @@
 
 .box:hover{
     cursor: pointer;
+}
+
+.button_container{
+    display: flex;
+    padding: 0 1rem;
+    margin-top: -3rem;
+    justify-content: end;
 }

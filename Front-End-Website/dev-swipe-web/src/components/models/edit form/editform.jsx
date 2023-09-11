@@ -3,6 +3,7 @@ import styles from './editform.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 import CustomInput from "../../custom input/custominput";
+import CustomButton from "../../custom button/custombutton";
 
 const EditForm = ({isOpen}) =>{
 
@@ -46,46 +47,12 @@ const EditForm = ({isOpen}) =>{
                         <div className={styles.box}>
                             <input id={'lable'} type="checkbox" name="blender"/>
                             <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
-                        </div><div className={styles.box}>
-                            <input id={'lable'} type="checkbox" name="blender"/>
-                            <label htmlFor={'blender'}> Blender</label>
-                            {/* <div>Blender</div> */}
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={styles.button_container}>
+                <CustomButton title={'save'} backgroundColor={'#E7B54F'} width={90} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4}/>
             </div>
         </div>
     )
