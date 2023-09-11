@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import styles from './editform.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 import CustomInput from "../../custom input/custominput";
 
 const EditForm = ({isOpen}) =>{
+
+    const [search, setSearch] = useState('');
+
+    useEffect(()=>{
+        // getRecipes();
+        // searchFor(search);
+    },[]);
+
+    const inputChange = (event) => {
+        setSearch(event.target.value);
+        // searchFor();
+    };
     
     const hideModel =() =>{
         isOpen(prev => !prev);
@@ -25,7 +37,12 @@ const EditForm = ({isOpen}) =>{
                         <CustomImageButton text={'blender'} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
                     </div>
                 </div>
-                
+                <div className={styles.searchable}>
+                    <div className={styles.top_bar}>
+                        <input type="text" placeholder="Search skills here..." value={search} onChange={inputChange}/>
+                    </div>
+                    <div className={styles.skill_display}></div>
+                </div>
             </div>
         </div>
     )
