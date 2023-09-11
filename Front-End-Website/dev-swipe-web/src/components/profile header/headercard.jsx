@@ -17,12 +17,12 @@ const HeaderComp = () =>{
                     </div>
                     <div className={styles.details}>
                         <div className={styles.user_name}>Majed habli</div>
-                        <div className={styles.user_email}>majed@gmail.com</div>
+                        <div className={styles.user_email}>majedHabli@gmail.com</div>
                     </div>
                 </div>
                 <div className={styles.middle_right}>
-                    <div className={styles.description}></div>
-                    An over all well rounded developer, with expertise in all phases of development
+                    <div className={styles.description}>"An over all well rounded developer, with expertise in all phases of development"</div>
+                    
                 </div>
             </div>
             <div className={styles.bottom_row}>
