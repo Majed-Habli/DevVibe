@@ -15,7 +15,8 @@ const EditForm = ({isOpen, data}) =>{
     const [error, setError] = useState('');
     const [ischecked, setIsChecked] = useState([]);
     const [skills, setSkills] = useState([]);
-    console.log(skills)
+    // console.log(skills)
+    // console.log(search)
 
     const [inputs, setInputs] = useState([]);
     const handleChange = (e) => {
@@ -27,11 +28,11 @@ const EditForm = ({isOpen, data}) =>{
 
     useEffect(()=>{
         getSkills()
-    },[]);
+    },[search]);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
-        // searchFor();
+        getSkills()
     };
     
     const hideModel =() =>{
