@@ -5,7 +5,7 @@ const Profile = () =>{
 
     return(
         <div className={styles.page_container}>
-            <div className={styles.page_header}>
+            <div className={styles.page_header}>    
             </div>
             <div className={styles.component_container}>
             </div>
