@@ -25,16 +25,19 @@ const Navbar = () => {
                 {token ? (
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
                 ):(
-                    <div className={styles.card_container}>
-                        <div className={styles.container_left}>
-                            <div className={styles.profile_image_container}>
-                                <img src="/testuser.png" alt="profile image" />
+                    <div className={styles.routing_pressables}>
+                        <div className={styles.route}>Dashboard</div>
+                        <div className={styles.card_container}>
+                            <div className={styles.container_left}>
+                                <div className={styles.profile_image_container}>
+                                    <img src="/testuser.png" alt="profile image" />
+                                </div>
+                                <div className={styles.user_name}>Majed habli</div>
                             </div>
-                            <div className={styles.user_name}>Majed habli</div>
-                        </div>
-                        <div className={styles.container_right}>
-                            <CustomImageButton image_name={'arrow_white.png'} image_height={20}
-                            image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"}/>
+                            <div className={styles.container_right}>
+                                <CustomImageButton image_name={'arrow_white.png'} image_height={20}
+                                image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"}/>
+                            </div>
                         </div>
                     </div>
                 )}
