@@ -4,18 +4,18 @@ import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
 import EditForm from "../models/edit form/editform";
 
-const HeaderComp = () =>{
+const HeaderComp = ({data}) =>{
 
     const [showModel, setShowModel] = useState(false);
 
-    const veiwAll = async () =>{
+    const ViewModel = () =>{
         setShowModel(true);
     }
 
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                <CustomButton title={'Edit'} onClick={veiwAll}/>
+                <CustomButton title={'Edit'} onClick={ViewModel}/>
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
@@ -23,12 +23,16 @@ const HeaderComp = () =>{
                         <img src="/Profileimage.png" alt="user profile image" />
                     </div>
                     <div className={styles.details}>
-                        <div className={styles.user_name}>Majed habli</div>
-                        <div className={styles.user_email}>majedHabli@gmail.com</div>
+                        <div className={styles.user_name}>{data.user_name}</div>
+                        <div className={styles.user_email}>{data.email}</div>
                     </div>
                 </div>
                 <div className={styles.middle_right}>
-                    <div className={styles.description}>"An over all well rounded developer, with expertise in all phases of development"</div>
+                    {data.rec_details ?(
+                        <div className={styles.description}>{data.rec_details.description}</div>
+                    ):(
+                        <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
+                    )}
                     
                 </div>
             </div>

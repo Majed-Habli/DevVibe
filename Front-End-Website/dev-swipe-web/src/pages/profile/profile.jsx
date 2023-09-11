@@ -10,6 +10,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 const Profile = () =>{
     const [error, setError] = useState('');
     const [skills, setSkills] = useState([]);
+    const [user, setUser] = useState([]);
 
     const getSkills = async () =>{
         const token = localStorageAction("token");
@@ -44,14 +45,49 @@ const Profile = () =>{
           }
     }
 
+    const getUser = async () =>{
+        const token = localStorageAction("token");
+        const userId = localStorageAction("user_id");
+
+        try {
+            if(!token){
+                setError('there is nothing to show here');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: `/user/developer/profile/${userId}`,
+                    method: requestMethods.GET,
+                });
+                const data = response;
+                console.log("hello ther", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    const obj = data.data[0];
+                    console.log("her is the onj",obj)
+                    setUser(obj);
+
+                }else{
+                    setError("failed to get user data!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("failed to get user:", error);
+          }
+    }
+
     useEffect(()=>{
-        getSkills()
+        getSkills();
+        getUser();
     },[]);
 
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}>
-                <HeaderComp/>
+                <HeaderComp data={user}/>
             </div>
             <div className={styles.component_container}>
                 <div className={styles.button_container}>
