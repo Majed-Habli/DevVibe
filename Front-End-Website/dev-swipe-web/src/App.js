@@ -6,6 +6,7 @@ import PageLayout from "./utils/pagelayout/pageLayout/pagelayout";
 import DashboardLayout from "./utils/pagelayout/dashboardLayout/dashboardLayout";
 import Login from "./pages/login/login";
 import Dashboard from "./pages/dashboard/dashboard";
+import Profile from "./pages/profile/profile";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
 
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/dashboard/profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
