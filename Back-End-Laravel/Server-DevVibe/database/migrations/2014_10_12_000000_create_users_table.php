@@ -91,8 +91,8 @@ return new class extends Migration
         Schema::create('recruiter_details', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('company_name');
-            $table->string('description');
+            $table->string('company_name')->nullable();
+            $table->string('description')->nullable();
             $table->string('linkedin_url')->nullable();
             $table->timestamps();
         });
