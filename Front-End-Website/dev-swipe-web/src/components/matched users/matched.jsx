@@ -28,12 +28,10 @@ const MatchedTable = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("hello there", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data;
-                    console.log("here is the onj",obj)
                     setUsers(obj);
 
                 }else{
@@ -50,40 +48,6 @@ const MatchedTable = () =>{
     const viewProfile = ({id}) => {
         window.location.href = `/dashboard/profile/${id}`
     }
-    // 
-    // const viewProfile = async ({id}) =>{
-    //     const token = localStorageAction("token");
-    //     const userId = `${id}`;
-    //     // console.log("user id ", userId)
-
-    //     try {
-    //         if(!token){
-    //             setError('there is nothing to show here');
-    //             console.log(error);
-    //         }else{
-
-    //             const response = await sendRequest({
-    //                 route: `/user/developer/view_user_skills/${userId}`,
-    //                 method: requestMethods.GET,
-    //             });
-    //             const data = response;
-    //             // console.log("res", response)
-    //             const token = " ";
-    
-    //             if(data.status == 'success'){
-    //                 const obj = data.data;
-    //                 setSkills(obj);
-
-    //             }else{
-    //                 setError("no skills exist!");
-    //                 console.log(error);
-    //             }
-    //         }
-            
-    //       } catch (error) {
-    //         console.error("Fetching skills failed:", error);
-    //       }
-    // }
 
     useEffect(()=>{
         getMatched();

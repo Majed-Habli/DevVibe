@@ -3,9 +3,12 @@ import styles from './navbar.module.css';
 import CustomButton from "../custom button/custombutton";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import CustomImageButton from "../custom button/customImageButton";
+import { useParams } from "react-router-dom";
 
 const Navbar = () => {
     let [token, setToken] = useState('');
+    const params = useParams();
+
     const validate = () =>{
         setToken=(localStorageAction("token"));
         // console.log('the token was read', token);
@@ -20,7 +23,7 @@ const Navbar = () => {
         if(value === 'dashboard'){
             window.location.href = `/dashboard`;
         }else{
-            window.location.href = `/dashboard/profile`
+            window.location.href = `/dashboard/profile/${params.id}`
         }
     }
 

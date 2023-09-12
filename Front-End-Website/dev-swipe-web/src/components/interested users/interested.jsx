@@ -10,8 +10,9 @@ import { sendRequest } from "../../utils/functions/axios";
 
 const InterestedTable = () => {
     const [showModel, setShowModel] = useState(false);
+    const  [errorDisplay,setErrorDisplay] =useState('');
     const [users, setUsers] = useState([]);
-    const [error,setError] = useState('')
+    const [error,setError] = useState('');
 
     const veiwAll = async () =>{
         setShowModel(true);
@@ -19,7 +20,6 @@ const InterestedTable = () => {
 
     const getInterestes = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -32,17 +32,18 @@ const InterestedTable = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log("hello there", response)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    const obj = data.data;
-                    // console.log("here is the onj",obj)
-                    setUsers(obj);
+                    if(data.data == ''){
+                        setErrorDisplay("keep waiting...");
+                        console.log(error)
+                    }
 
+                    const obj = data.data;
+                    setUsers(obj);
                 }else{
-                    setError("failed to get user data!");
-                    console.log(error);
+                    setErrorDisplay("no one has shown interest yet");
                 }
             }
             
@@ -63,7 +64,9 @@ const InterestedTable = () => {
                 <CustomButton title={'view all'} onClick={veiwAll}/>
             </div>
             <div className={styles.table_body}>
-                <Card data={users} button={true}/>
+                {!users ?(<Card data={users} button={true}/>):(
+                    <div className={styles.error_container}>{errorDisplay}</div>
+                )}
             </div>
             {showModel && (
                 <div className={styles.popup_background}>
