@@ -122,6 +122,37 @@ const EditForm = ({isOpen, data}) =>{
           }
     }
 
+    const addUserSkills = async (event) =>{
+        event.preventDefault();
+
+        try {
+            if(!selected){
+                setError('no skills to add');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: "/user/developer/add_skills",
+                    method: requestMethods.POST,
+                    body:{user_skills: selected}
+                });
+                const data = response;
+                console.log("res of adding skills", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    console.log("successfully add")
+                }else{
+                    setError("failed to add!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("bad request. failed:", error);
+          }
+    }
+
     return(
         <div className={styles.popup_container}>
             <div className={styles.popup_header}>
