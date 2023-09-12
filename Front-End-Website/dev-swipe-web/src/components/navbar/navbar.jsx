@@ -9,12 +9,20 @@ const Navbar = () => {
     const validate = () =>{
         setToken=(localStorageAction("token"));
         console.log('the token was read', token);
-        // localStorage.removeItem('token');
     }
+
+    const path = 'dashboard'
 
     const userName = localStorageAction('user_name');
     const profileImageUrl = localStorageAction('profile_image');
 
+    const goToPage = ({value}) => {
+        if(value === 'dashboard'){
+            window.location.href = `/dashboard`;
+        }else{
+            window.location.href = `/dashboard/profile`
+        }
+    }
 
     useEffect(()=>{
         validate();
@@ -30,9 +38,9 @@ const Navbar = () => {
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
                 ):(
                     <div className={styles.routing_pressables}>
-                        <div className={styles.route}>Dashboard</div>
+                        <div className={styles.route} onClick={()=>goToPage({value:path})}>Dashboard</div>
                         <div className={styles.card_container}>
-                            <div className={styles.container_left}>
+                            <div className={styles.container_left} onClick={()=>goToPage({})}>
                                 <div className={styles.profile_image_container}>
                                     <img src={`${profileImageUrl}`} alt="profile image" />
                                 </div>

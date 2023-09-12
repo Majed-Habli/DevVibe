@@ -69,3 +69,11 @@
     color: white;
     justify-content: space-between;
 }
+
+.route{
+    transition: all .2s ease-in-out;
+}
+
+.route:hover{
+    transform: scale(1.2);
+}
