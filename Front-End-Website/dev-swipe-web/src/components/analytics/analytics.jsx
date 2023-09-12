@@ -45,7 +45,7 @@ const AnalyticsComponent = () =>{
     console.log(stats.matched_count)
 
     useEffect(()=>{
-        // setStats({liked_count: stats && stats.liked_count ? stats.liked_count: false,matched_count: stats && stats.matched_count ? stats.matched_count: false,skipped_count: stats && stats.skipped_count ? stats.skipped_count: false,viewed_count: stats && stats.viewed_count ? stats.viewed_count: false,})
+        setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',viewed_count: stats && stats.viewed_count ? stats.viewed_count: '0'})
         getStats();
     },[]);
 
@@ -60,15 +60,15 @@ const AnalyticsComponent = () =>{
                     <div>Viewed</div>
                 </div>
                 <div className={styles.chart_container}>
-                    {stats.matched_count || !stats.matched_count &&(<Donut value={stats.matched_count} backgroundColor={'#3C8DBC'}/>)}
+                    <Donut value={stats.matched_count} backgroundColor={'#3C8DBC'}/>
                     <div>matched</div>
                 </div>
                 <div className={`${styles.chart_container} ${styles.spacing}`}>
-                    {stats.skipped_count || !stats.skipped_count  &&(<Donut value={stats.skipped_count} backgroundColor={'#00A65A'}/>)}
+                    <Donut value={stats.skipped_count} backgroundColor={'#00A65A'}/>
                     <div>skipped</div>
                 </div>
                 <div className={styles.chart_container}>
-                    {stats.liked_count &&(<Donut value={stats.liked_count} backgroundColor={'#39CCCC'}/>)}
+                    <Donut value={stats.liked_count} backgroundColor={'#39CCCC'}/>
                     <div>liked</div>
                 </div>
             </div>
