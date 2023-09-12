@@ -196,6 +196,8 @@ const EditForm = ({isOpen, data}) =>{
                 if(data.status == 'success'){
                     console.log("successfully updated")
                     hideModel()
+                    window.location.href = '/dashboard/profile';
+                    
                 }else{
                     setError("failed to update!");
                     console.log(error);
