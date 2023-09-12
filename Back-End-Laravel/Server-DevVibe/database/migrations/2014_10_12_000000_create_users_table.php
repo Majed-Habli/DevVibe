@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('profile_image_url')->nullable();
             $table->boolean('has_access')->default(false);
             $table->integer('view_count')->default(0);
-            $table->integer('device_token');
+            $table->integer('device_token')->nullable();
             $table->timestamps();
         });
 
