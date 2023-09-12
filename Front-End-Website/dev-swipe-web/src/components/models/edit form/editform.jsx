@@ -32,6 +32,7 @@ const EditForm = ({isOpen, data}) =>{
 
     useEffect(()=>{
         getSkills()
+        getUserSkills()
     },[search]);
 
     const inputChange = (event) => {
@@ -81,6 +82,39 @@ const EditForm = ({isOpen, data}) =>{
           }
     }
 
+    const getUserSkills = async () =>{
+        const token = localStorageAction("token");
+        const userId = localStorageAction("user_id");
+
+        try {
+            if(!token){
+                setError('there is nothing to show here');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: `/user/developer/view_user_skills/${userId}`,
+                    method: requestMethods.GET,
+                });
+                const data = response;
+                console.log("res", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    const obj = data.data;
+                    setUserSkills(obj);
+
+                }else{
+                    setError("no skills exist!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("Fetching skills failed:", error);
+          }
+    }
+
     return(
         <div className={styles.popup_container}>
             <div className={styles.popup_header}>
@@ -98,7 +132,10 @@ const EditForm = ({isOpen, data}) =>{
                 <div className={styles.skill_container}>
                     <div className={styles.header}>Skills</div>
                     <div className={styles.scrollable_container}>
-                        <CustomImageButton text={'blender'} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
+                    {userSkills.map((skill)=>(
+
+                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'} />
+                    ))}
                     </div>
                 </div>
                 <div className={styles.searchable}>
