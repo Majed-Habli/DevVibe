@@ -10,31 +10,40 @@ import { requestMethods } from "../../../utils/functions/requestMethods.";
 
 const EditForm = ({isOpen, data}) =>{
     const userType = localStorageAction('user_type');
+    console.log('my data is' , data)
 
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
 
     const [userSkills,setUserSkills] = useState([]); //user skill
-    const [removeSkills,setRemoveSkills] = useState([]); //remove user skill
+    // const [removeSkills,setRemoveSkills] = useState([]); //remove user skill
     const [selected, setSelected] = useState([]); //add
 
     const [skills, setSkills] = useState([]);
     console.log("selected are",selected)
-    // console.log(search)
 
-    const [inputs, setInputs] = useState([]);
+    const [name,setName]= useState('');
+    const [inputs, setInputs] = useState({});
+    
     const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
             [e.target.name]: e.target.value
         }));
     };
+
     console.log("inputs",inputs)
 
     useEffect(()=>{
-        getSkills()
-        getUserSkills()
-    },[search]);
+        getSkills();
+        getUserSkills();
+        if(userType == 3){
+
+            setInputs({user_name : data.user_name,description : data.rec_details.description, company_name : data.rec_details.company_name});
+        }else{
+            setInputs({user_name : data.user_name,description : data.dev_details && data.dev_details.description? data.dev_details.description : "no description yet", gender : data.dev_details && data.dev_details.gender ?data.dev_details.gender : "gender"});
+        }
+    },[search, userType]);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
@@ -188,6 +197,7 @@ const EditForm = ({isOpen, data}) =>{
             console.error("bad request. failed:", error);
           }
     }
+    console.log("my user skills are", userSkills)
 
     const save = async () =>{
         try{
@@ -215,7 +225,7 @@ const EditForm = ({isOpen, data}) =>{
                 ):(
                     <div className={styles.grouping}>
                         <CustomInput label={"Gender"} name={'gender'} value={inputs.gender} placeholder={data.gender} handleChange={handleChange} width={275} height={35}/>
-                        <CustomInput label={"Description"} name={'description'} placeholder={data.dev_details.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
+                        <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     
                 )}
@@ -226,9 +236,11 @@ const EditForm = ({isOpen, data}) =>{
                     {userSkills && userSkills.map((skill)=>(
                         <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
                     ))}
-                    {/* {!userSkills &&(
+                    {!userSkills ?(
                         <div>Starting adding skills to you profile</div>
-                    )} */} fix this
+                    ):(
+                        <div></div>
+                    )}
                     </div>
                 </div>
                 <div className={styles.searchable}>
