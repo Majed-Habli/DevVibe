@@ -11,6 +11,7 @@ const Profile = () =>{
     const [error, setError] = useState('');
     const [skills, setSkills] = useState([]);
     const [user, setUser] = useState([]);
+    const [images, setImages] = useState([]);
 
     const getSkills = async () =>{
         const token = localStorageAction("token");
@@ -80,8 +81,43 @@ const Profile = () =>{
           }
     }
 
+    const getImages = async () =>{
+        const token = localStorageAction("token");
+        const userId = localStorageAction("user_id");
+
+        try {
+            if(!token){
+                setError('there is nothing to show here');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: `/user/developer/retrieve_user_images/${userId}`,
+                    method: requestMethods.GET,
+                });
+                const data = response;
+                console.log("these are my images", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    const obj = data.data;
+                    console.log("her is the onj",obj)
+                    setImages(obj);
+
+                }else{
+                    setError("failed to get user data!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("failed to get user:", error);
+          }
+    }
+
     useEffect(()=>{
         getSkills();
+        getImages();
         getUser();
     },[]);
 
@@ -111,7 +147,7 @@ const Profile = () =>{
                         </div>
                     </div>
                     <div className={styles.right_container}>
-                        <CarouselComp/>
+                        <CarouselComp value={images}/>
                     </div>
                 </div>
             </div>

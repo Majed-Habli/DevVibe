@@ -11,7 +11,7 @@ import './carousel.css';
 // import required modules
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 
-const CarouselComp = () => {
+const CarouselComp = ({value}) => {
 
     const openImage = () =>{
         console.log('hi')
@@ -61,11 +61,11 @@ const CarouselComp = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {/* loop on images here */}
-        <SwiperSlide onClick={openImage}>
-            <img src="/Profileimage.png" alt="" />
-        </SwiperSlide>
-        
+        {value.map((val)=>(
+            <SwiperSlide key={val.id} onClick={openImage}>
+                <img src={`${val.image_url}`} alt="user images" />
+            </SwiperSlide>
+        ))}
         
         {/* <div className='slider-controler'>
             <div className='swiper-button-prev slider-arrow'>
