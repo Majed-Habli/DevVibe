@@ -24,6 +24,8 @@ return new class extends Migration
             // $table->string('company_name')->nullable();
             $table->string('profile_image_url')->nullable();
             $table->boolean('has_access')->default(false);
+            $table->integer('view_count')->default(0);
+            $table->integer('device_token');
             $table->timestamps();
         });
 
