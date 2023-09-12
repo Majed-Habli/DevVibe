@@ -24,12 +24,12 @@ const AnalyticsComponent = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("analysis res", response)
+                // console.log("analysis res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data;
-                    console.log("analysis obj",obj)
+                    // console.log("analysis obj",obj)
                     setStats(obj);
 
                 }else{
@@ -42,7 +42,7 @@ const AnalyticsComponent = () =>{
             console.error("failed to get user:", error);
           }
     }
-    console.log(stats.matched_count)
+    // console.log(stats.matched_count)
 
     useEffect(()=>{
         setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',viewed_count: stats && stats.viewed_count ? stats.viewed_count: '0'})

@@ -32,12 +32,12 @@ const InterestedTable = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("hello there", response)
+                // console.log("hello there", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data;
-                    console.log("here is the onj",obj)
+                    // console.log("here is the onj",obj)
                     setUsers(obj);
 
                 }else{
