@@ -368,9 +368,25 @@ class UserController extends Controller
             $query->where('user_one_id', $user_id)->orWhere('user_two_id', $user_id);
         })->get();
 
+        foreach($my_matches as $match){
+            if($match->user_one_id == $user_id){
+                $get_user = $match->user_two_id;
+            }else{
+                $get_user = $match->user_one_id;
+            }
+            
+            $user = User::find($get_user);
+            $user_data = $user->Skills()->with('Skill')->get();
+            $users = ['id' => $match->id,
+                'matched_with' => $user,
+                'skills' => $user_data
+            ];
+            $data[] = $users;
+        }
+
         return response()->json([
             'status' => 'success',
-            'data' => $my_matches,
+            'data' => $data,
         ]);
     }
 
@@ -394,15 +410,13 @@ class UserController extends Controller
 
         foreach($is_interested as $intersted){
             $liked = $intersted->user_id;
-            $user =User::where('id',$liked)->get();
-            
+            $user =User::where('id',$liked)->first();
+            $user_array[] = $user;
         }
 
         return response()->json([
             'status' => 'success',
-            // 'data' => $is_interested,
-            // 'my id' => $user_id,
-            "data" => $user
+            'data' => $user_array,
         ]);
     }
 
@@ -423,9 +437,9 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'matched count' => $matched_count,
-            'skipped count' => $skipped_count,
-            'liked count' => $liked_count,
+            'matched_count' => $matched_count,
+            'skipped_count' => $skipped_count,
+            'liked_count' => $liked_count,
             'ana'=> $user_id
         ]);
     }
