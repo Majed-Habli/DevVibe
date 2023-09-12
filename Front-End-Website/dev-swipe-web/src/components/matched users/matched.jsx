@@ -60,37 +60,37 @@ const MatchedTable = () =>{
                         <div className={`${styles.cell} ${styles.width_profile}`}>Profile</div>
                     </div>
                     <div className={styles.inner_table_body}>
-                        {/* loop */}
-                        <div className={styles.inner_table_row}>
-                            <div className={styles.index}>1</div>
-                            <div className={styles.user_card}>
-                                <div className={styles.card_container}>
-                                    <div className={styles.container_left}>
-                                        <div className={styles.profile_image_container}>
-                                            {/* {!users.profile_image_url ? ( */}
-                                                {/* // <img src={`${profileImageUrl}`} alt="profile image" /> */}
-                                            {/* // ):( */}
-                                                <img src="/testuser.png" alt="profile image" />
-                                            {/* // )} */}
+                        {users.map((user)=>(
+                            <div key={user.id} className={styles.inner_table_row}>
+                                <div className={styles.index}>1</div>
+                                <div className={styles.user_card}>
+                                    <div className={styles.card_container}>
+                                        <div className={styles.container_left}>
+                                            <div className={styles.profile_image_container}>
+                                                {!user.profile_image_url ? (
+                                                    <img src={`${user.matched_with.profileImageUrl}`} alt="profile image" /> 
+                                                ):(
+                                                    <img src="/testuser.png" alt="profile image" />
+                                                )}
+                                            </div>
+                                            <div className={styles.user_name}>{user.matched_with.user_name}</div>
                                         </div>
-                                        <div className={styles.user_name}>majed</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.skills_container}>
-                                <div className={styles.content}>
-                                    <div className={styles.pill}>blender</div>
-                                    <div className={styles.pill}>blender</div>
-                                    <div className={styles.pill}>blender</div>
-                                    <div className={styles.pill}>blender</div>
-                                    <div className={styles.pill}>blender</div>
+                                <div className={styles.skills_container}>
+                                    <div className={styles.content}>
+                                        <div className={styles.pill}>blender</div>
+                                        <div className={styles.pill}>blender</div>
+                                        <div className={styles.pill}>blender</div>
+                                        <div className={styles.pill}>blender</div>
+                                        <div className={styles.pill}>blender</div>
+                                    </div>
+                                </div>
+                                <div className={styles.profile_button}>
+                                    <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
                                 </div>
                             </div>
-                            <div className={styles.profile_button}>
-                                <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
-                            </div>
-                        </div>
-                        {/* end loop */}
+                        ))}
                     </div>
                 </div>
             </div>
