@@ -19,7 +19,7 @@ const Card = ({button, data}) =>{
                     <div className={styles.user_name}>{dat.user_name}</div>
                 </div>
                 {button &&(
-                    <CustomButton title={"view profile"}/>
+                    <CustomButton key={dat.id} title={"view profile"} />
                 )}
             </div>
             ))}
