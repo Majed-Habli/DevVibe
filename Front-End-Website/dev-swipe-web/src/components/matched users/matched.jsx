@@ -9,7 +9,8 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 
 const MatchedTable = () =>{
     const [users, setUsers] = useState([]);
-    const [error,setError] = useState('')
+    const [error,setError] = useState('');
+    const [skills, setSkills] = useState([]);
 
     const getMatched = async () =>{
         const token = localStorageAction("token");
@@ -44,6 +45,40 @@ const MatchedTable = () =>{
             console.error("failed to get user:", error);
           }
     }
+    // 
+    // const getSkills = async ({id}) =>{
+    //     const token = localStorageAction("token");
+    //     const userId = `${id}`;
+    //     // console.log("user id ", userId)
+
+    //     try {
+    //         if(!token){
+    //             setError('there is nothing to show here');
+    //             console.log(error);
+    //         }else{
+
+    //             const response = await sendRequest({
+    //                 route: `/user/developer/view_user_skills/${userId}`,
+    //                 method: requestMethods.GET,
+    //             });
+    //             const data = response;
+    //             // console.log("res", response)
+    //             const token = " ";
+    
+    //             if(data.status == 'success'){
+    //                 const obj = data.data;
+    //                 setSkills(obj);
+
+    //             }else{
+    //                 setError("no skills exist!");
+    //                 console.log(error);
+    //             }
+    //         }
+            
+    //       } catch (error) {
+    //         console.error("Fetching skills failed:", error);
+    //       }
+    // }
 
     useEffect(()=>{
         getMatched();
@@ -79,11 +114,9 @@ const MatchedTable = () =>{
                                 </div>
                                 <div className={styles.skills_container}>
                                     <div className={styles.content}>
-                                        <div className={styles.pill}>blender</div>
-                                        <div className={styles.pill}>blender</div>
-                                        <div className={styles.pill}>blender</div>
-                                        <div className={styles.pill}>blender</div>
-                                        <div className={styles.pill}>blender</div>
+                                        {user.skills.map((use)=>(
+                                            <div key={use.id} className={styles.pill}>{use.skill.name}</div>
+                                        ))}
                                     </div>
                                 </div>
                                 <div className={styles.profile_button}>
