@@ -3,7 +3,9 @@ import styles from './card.module.css';
 import CustomButton from "../custom button/custombutton";
 
 const Card = ({button, data}) =>{
-
+    const viewProfile = ({id}) => {
+        window.location.href = `/dashboard/profile/${id}`
+    }
     return(
         <div>
             {data.map((dat)=>(
@@ -19,7 +21,7 @@ const Card = ({button, data}) =>{
                     <div className={styles.user_name}>{dat.user_name}</div>
                 </div>
                 {button &&(
-                    <CustomButton key={dat.id} title={"view profile"} />
+                    <CustomButton key={dat.id} title={"view profile"} onClick={()=>viewProfile({id:dat.id})}/>
                 )}
             </div>
             ))}
