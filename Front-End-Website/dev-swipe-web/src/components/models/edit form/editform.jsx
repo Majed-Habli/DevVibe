@@ -41,9 +41,16 @@ const EditForm = ({isOpen, data}) =>{
 
             setInputs({user_name : data.user_name,description : data.rec_details.description, company_name : data.rec_details.company_name});
         }else{
-            setInputs({user_name : data.user_name,description : data.dev_details && data.dev_details.description? data.dev_details.description : "no description yet", gender : data.dev_details && data.dev_details.gender ?data.dev_details.gender : "gender"});
+            setInputs({
+                user_name : data.user_name,
+                description : data.dev_details && data.dev_details.description? data.dev_details.description : "no description yet",
+                gender : data.dev_details && data.dev_details.gender ?data.dev_details.gender : "gender",
+                github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "add your github",
+                linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "add your linkedin",
+            });
         }
     },[search, userType]);
+    console.log(inputs.linkedin_url)
 
     const inputChange = (event) => {
         setSearch(event.target.value);
@@ -134,7 +141,6 @@ const EditForm = ({isOpen, data}) =>{
 
     const addUserSkills = async () =>{
         const mySkills = JSON.stringify(selected);
-        console.log("my skills" ,mySkills)
 
         try {
             if(!selected){
@@ -179,6 +185,8 @@ const EditForm = ({isOpen, data}) =>{
                         description: inputs.description,
                         gender: inputs.gender,
                         company_name: inputs.company_name,
+                        github_url: inputs.github_url,
+                        linkedin_url: inputs.linkedin_url,
                     }
                 });
                 const data = response;
@@ -187,6 +195,7 @@ const EditForm = ({isOpen, data}) =>{
     
                 if(data.status == 'success'){
                     console.log("successfully updated")
+                    hideModel()
                 }else{
                     setError("failed to update!");
                     console.log(error);
@@ -225,6 +234,8 @@ const EditForm = ({isOpen, data}) =>{
                 ):(
                     <div className={styles.grouping}>
                         <CustomInput label={"Gender"} name={'gender'} value={inputs.gender} placeholder={data.gender} handleChange={handleChange} width={275} height={35}/>
+                        <CustomInput label={"Github"} name={'github_url'} value={inputs.github_url} placeholder={data.github_url} handleChange={handleChange} width={275} height={35}/>
+                        <CustomInput label={"Linked in"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={275} height={35}/>
                         <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     
