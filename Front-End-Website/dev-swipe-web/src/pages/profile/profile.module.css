@@ -84,3 +84,16 @@
     margin-top: -5rem;
     justify-content: center;
 }
+
+.custom_buttom{
+    background-color: #007bff; /* Customize background color */
+  color: #fff; /* Text color */
+  border: 1px solid #007bff; /* Border style */
+  padding: 8px 12px; /* Adjust padding as needed */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+customFileInput {
+    display: none;
+  }
