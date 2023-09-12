@@ -14,7 +14,7 @@ const HeaderComp = ({data}) =>{
     const ViewModel = () =>{
         setShowModel(true);
     }
-    console.log('linked', user.profile_image_url)
+    // console.log('linked', user.profile_image_url)
 
     const goTo = (url) =>{
         if(!url == ''){

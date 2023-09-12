@@ -93,7 +93,7 @@
   border-radius: 4px; /* Rounded corners */
   cursor: pointer; /* Change cursor on hover */
 }
-
-customFileInput {
-    display: none;
-  }
+/* .form_control{ */
+    /* display: none; */
+    /* visibility: hidden; */
+/* } */

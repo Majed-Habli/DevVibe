@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from './profile.module.css';
 import HeaderComp from "../../components/profile header/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
@@ -13,6 +13,8 @@ const Profile = () =>{
     const [skills, setSkills] = useState([]);
     const [user, setUser] = useState([]);
     const [images, setImages] = useState([]);
+    const [input, setInput] = useState([]);
+    const [uploadImage, setUploadImage] = useState('');
 
     const getSkills = async () =>{
         const token = localStorageAction("token");
@@ -30,7 +32,7 @@ const Profile = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("res", response)
+                // console.log("res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -63,12 +65,12 @@ const Profile = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("hello ther", response)
+                // console.log("hello ther", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data[0];
-                    console.log("her is the onj",obj)
+                    // console.log("her is the onj",obj)
                     setUser(obj);
 
                 }else{
@@ -97,12 +99,12 @@ const Profile = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("these are my images", response)
+                // console.log("these are my images", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data;
-                    console.log("her is the onj",obj)
+                    // console.log("her is the onj",obj)
                     setImages(obj);
 
                 }else{
@@ -115,6 +117,72 @@ const Profile = () =>{
             console.error("failed to get user:", error);
           }
     }
+
+    // const handleFileRead = async (event) => {
+    //     const file = event.target.files[0]
+    //     const base64 = await convertBase64(file)
+    //     console.log(base64)
+    //   }
+
+    //  const convertBase64 = (file) => {
+    //     return new Promise((resolve, reject) => {
+    //       const fileReader = new FileReader();
+    //       fileReader.readAsDataURL(file)
+    //       fileReader.onload = () => {
+    //         resolve(fileReader.result);
+    //       }
+    //       fileReader.onerror = (error) => {
+    //         reject(error);
+    //       }
+    //     })
+    //   }
+
+    // const handleImageChange = async (e) => {
+    //     const file = e.target.files;
+    //     console.log(file);
+    //     const base64 = await convertBase64(file);
+    //     console.log(base64);
+    //     setUploadImage(base64)
+    // };
+    // const convertBase64 = (file)=>{
+    //     return new Promise((resolve,reject)=>{
+    //         const fileReader = new FileReader();
+    //         fileReader.readAsDataURL(file);
+    //         fileReader.onLoad=()=>{
+    //             resolve(fileReader.result);
+    //         };
+    //         fileReader.onerror=(error)=>{
+    //             reject(error);
+    //         };
+    //     });
+    // }
+    const fileRef = useRef(null);
+    const handleInput = (e) => {
+        if (e.target.files.length > 0) {
+            function getBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = (error) => reject(error);
+                });
+            }
+            // setInput(e.target.files[0])
+            getBase64(e.target.files[0]).then((data) => {
+                // console.log("base shabsdbhasbda",data)
+                setUploadImage(data);
+            });
+
+            // const reader = new FileReader();
+            // reader.onloadend = () => {
+            //     // setUploadImage(reader.result);
+            //     console.log(reader.result)
+            // };
+            // reader.readAsDataURL(e.target.files[0]);
+        }
+    };
+    console.log("this is the images",uploadImage)
+ 
 
     useEffect(()=>{
         getSkills();
@@ -138,7 +206,7 @@ const Profile = () =>{
                         <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                     </label>
 
-                    <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" class="form-control" hidden/>
+                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" class="form-control"  onChange ={handleInput}/>
                     <label class="upload_label" for="upload_file">
                         <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                     </label>
