@@ -16,10 +16,10 @@ const EditForm = ({isOpen, data}) =>{
 
     const [userSkills,setUserSkills] = useState([]); //user skill
     const [removeSkills,setRemoveSkills] = useState([]); //remove user skill
-    const [selected, setSelected] = React.useState([]); //add
+    const [selected, setSelected] = useState([]); //add
 
     const [skills, setSkills] = useState([]);
-    // console.log(skills)
+    console.log("selected are",selected)
     // console.log(search)
 
     const [inputs, setInputs] = useState([]);
@@ -29,6 +29,7 @@ const EditForm = ({isOpen, data}) =>{
             [e.target.name]: e.target.value
         }));
     };
+    console.log("inputs",inputs)
 
     useEffect(()=>{
         getSkills()
@@ -122,8 +123,9 @@ const EditForm = ({isOpen, data}) =>{
           }
     }
 
-    const addUserSkills = async (event) =>{
-        event.preventDefault();
+    const addUserSkills = async () =>{
+        const mySkills = JSON.stringify(selected);
+        console.log("my skills" ,mySkills)
 
         try {
             if(!selected){
@@ -134,7 +136,7 @@ const EditForm = ({isOpen, data}) =>{
                 const response = await sendRequest({
                     route: "/user/developer/add_skills",
                     method: requestMethods.POST,
-                    body:{user_skills: selected}
+                    body:{user_skills: mySkills}
                 });
                 const data = response;
                 console.log("res of adding skills", response)
@@ -153,6 +155,49 @@ const EditForm = ({isOpen, data}) =>{
           }
     }
 
+    const updateUserInfo = async () =>{
+
+        try {
+            if(!inputs){
+                setError('nothing to change');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: "user/developer/update-details",
+                    method: requestMethods.POST,
+                    body:{user_name: inputs.user_name,
+                        description: inputs.description,
+                        gender: inputs.gender,
+                        company_name: inputs.company_name,
+                    }
+                });
+                const data = response;
+                console.log("res of updating", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    console.log("successfully updated")
+                }else{
+                    setError("failed to update!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("bad request. failed:", error);
+          }
+    }
+
+    const save = async () =>{
+        try{
+            await updateUserInfo();
+            await addUserSkills();
+        }catch (error){
+            console.log('faled to save', error);
+        }
+    }
+
     return(
         <div className={styles.popup_container}>
             <div className={styles.popup_header}>
@@ -162,17 +207,28 @@ const EditForm = ({isOpen, data}) =>{
             <div className={styles.popup_body}>
                 <CustomInput label={"Name"} name={'user_name'} placeholder={data.user_name} value={inputs.user_name} handleChange={handleChange} width={275} height={35}/>
                 {userType == 3 ?(
-                    <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} handleChange={handleChange} width={275} height={35}/>
+                    <div className={styles.grouping}>
+                        <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>
+                        <CustomInput label={"Description"} name={'description'} placeholder={data.rec_details.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
+                    </div>
+                    
                 ):(
-                    <CustomInput label={"Gender"} name={'gender'} placeholder={data.gender} handleChange={handleChange} width={275} height={35}/>
+                    <div className={styles.grouping}>
+                        <CustomInput label={"Gender"} name={'gender'} value={inputs.gender} placeholder={data.gender} handleChange={handleChange} width={275} height={35}/>
+                        <CustomInput label={"Description"} name={'description'} placeholder={data.dev_details.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
+                    </div>
+                    
                 )}
-                <CustomInput label={"Description"} placeholder={data.rec_details.description} width={'100%'} textArea={true} height={135}/>
+                
                 <div className={styles.skill_container}>
                     <div className={styles.header}>Skills</div>
                     <div className={styles.scrollable_container}>
-                    {userSkills.map((skill)=>(
+                    {userSkills && userSkills.map((skill)=>(
                         <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
                     ))}
+                    {/* {!userSkills &&(
+                        <div>Starting adding skills to you profile</div>
+                    )} */} fix this
                     </div>
                 </div>
                 <div className={styles.searchable}>
@@ -187,11 +243,12 @@ const EditForm = ({isOpen, data}) =>{
                             <label htmlFor={`${skill.id}`}> {skill.name}</label>
                         </div>
                     ))}
+                    
                     </div>
                 </div>
             </div>
             <div className={styles.button_container}>
-                <CustomButton title={'save'} backgroundColor={'#E7B54F'} width={90} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4}/>
+                <CustomButton title={'save'} backgroundColor={'#E7B54F'} width={90} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} onClick={() => save()}/>
             </div>
         </div>
     )

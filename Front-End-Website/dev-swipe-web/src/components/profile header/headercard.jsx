@@ -7,6 +7,7 @@ import EditForm from "../models/edit form/editform";
 const HeaderComp = ({data}) =>{
 
     const [showModel, setShowModel] = useState(false);
+    console.log("baby data",data)
 
     const ViewModel = () =>{
         setShowModel(true);

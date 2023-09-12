@@ -56,7 +56,7 @@ const Register = () =>{
                     localStorageAction("user_type", user_type);
 
                     // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
-                    // window.location.href = ''
+                    window.location.href = '/dashboard/profile'
                 }else{
                     setError('Email already exists!');
                     console.log(error);

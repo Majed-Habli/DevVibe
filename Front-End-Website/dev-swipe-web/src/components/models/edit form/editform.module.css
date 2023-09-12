@@ -94,3 +94,9 @@
     margin-top: -3rem;
     justify-content: end;
 }
+
+.grouping{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}

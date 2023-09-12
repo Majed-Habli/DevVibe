@@ -15,6 +15,7 @@ const Profile = () =>{
     const getSkills = async () =>{
         const token = localStorageAction("token");
         const userId = localStorageAction("user_id");
+        console.log("user id ", userId)
 
         try {
             if(!token){
