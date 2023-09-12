@@ -408,16 +408,21 @@ class UserController extends Controller
             $query->select('swiped_user_id')->from('swipes')->where('user_id', $user_id);
         })->get();
 
-        foreach($is_interested as $intersted){
-            $liked = $intersted->user_id;
-            $user =User::where('id',$liked)->first();
-            $user_array[] = $user;
+        if(!$is_interested == ' '){
+            foreach($is_interested as $intersted){
+                $liked = $intersted->user_id;
+                $user =User::where('id',$liked)->first();
+                $user_array[] = $user;
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => $user_array,
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'failed'
+            ]);
         }
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $user_array,
-        ]);
     }
 
     function analysis(){
