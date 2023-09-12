@@ -46,6 +46,13 @@ const EditForm = ({isOpen, data}) =>{
         : setSelected([...selected, id]);
     };
 
+    // const remove = id => () => {
+    //     userSkills.includes(id)
+    //       ? setUserSkills(userSkills.filter(x => x !== id))
+    //       : setError('skills doesnt exist, cant remove');
+    //     };
+    //     console.log(userSkills)   onClick={() => remove(skill.skill_id)}
+
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
@@ -133,8 +140,7 @@ const EditForm = ({isOpen, data}) =>{
                     <div className={styles.header}>Skills</div>
                     <div className={styles.scrollable_container}>
                     {userSkills.map((skill)=>(
-
-                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'} />
+                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
                     ))}
                     </div>
                 </div>
