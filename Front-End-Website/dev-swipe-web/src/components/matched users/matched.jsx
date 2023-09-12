@@ -5,6 +5,7 @@ import Card from "../user card/card";
 import CustomImageButton from "../custom button/customImageButton";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { sendRequest } from "../../utils/functions/axios";
+
 import { requestMethods } from "../../utils/functions/requestMethods.";
 
 const MatchedTable = () =>{
@@ -12,9 +13,9 @@ const MatchedTable = () =>{
     const [error,setError] = useState('');
     const [skills, setSkills] = useState([]);
 
+
     const getMatched = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -45,8 +46,12 @@ const MatchedTable = () =>{
             console.error("failed to get user:", error);
           }
     }
+
+    const viewProfile = ({id}) => {
+        window.location.href = `/dashboard/profile/${id}`
+    }
     // 
-    // const getSkills = async ({id}) =>{
+    // const viewProfile = async ({id}) =>{
     //     const token = localStorageAction("token");
     //     const userId = `${id}`;
     //     // console.log("user id ", userId)
@@ -120,7 +125,7 @@ const MatchedTable = () =>{
                                     </div>
                                 </div>
                                 <div className={styles.profile_button}>
-                                    <CustomImageButton image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"}/>
+                                    <CustomImageButton key={user.id} image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"} onClick={()=>viewProfile({id :user.id})}/>
                                 </div>
                             </div>
                         ))}

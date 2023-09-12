@@ -6,20 +6,20 @@ import CarouselComp from "../../components/carousel/carousel";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
-import CustomInput from "../../components/custom input/custominput";
+import { useParams } from "react-router-dom";
 
 const Profile = () =>{
     const [error, setError] = useState('');
+    const [errorSkills, setErrorSkills] = useState('');
+    const [errorImages, setErrorImages] = useState('');
     const [skills, setSkills] = useState([]);
     const [user, setUser] = useState([]);
     const [images, setImages] = useState([]);
-    const [input, setInput] = useState([]);
     const [uploadImage, setUploadImage] = useState('');
+    const params = useParams();
 
     const getSkills = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
-        // console.log("user id ", userId)
 
         try {
             if(!token){
@@ -28,19 +28,22 @@ const Profile = () =>{
             }else{
 
                 const response = await sendRequest({
-                    route: `/user/developer/view_user_skills/${userId}`,
+                    route: `/user/developer/view_user_skills/${params.id}`,
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log("res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
+                    if(data.data == ''){
+                        setErrorSkills(`${user.user_name}, has no skills yet.`)
+                        console.log(error)
+                    }
+
                     const obj = data.data;
                     setSkills(obj);
-
                 }else{
-                    setError("no skills exist!");
+                    setError("something went wrong");
                     console.log(error);
                 }
             }
@@ -52,7 +55,6 @@ const Profile = () =>{
 
     const getUser = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -61,16 +63,14 @@ const Profile = () =>{
             }else{
 
                 const response = await sendRequest({
-                    route: `/user/developer/profile/${userId}`,
+                    route: `/user/developer/profile/${params.id}`,
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log("hello ther", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data[0];
-                    // console.log("her is the onj",obj)
                     setUser(obj);
 
                 }else{
@@ -80,13 +80,12 @@ const Profile = () =>{
             }
             
           } catch (error) {
-            console.error("failed to get user:", error);
+            console.error("Api return with a fail:", error);
           }
     }
 
     const getImages = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -95,20 +94,22 @@ const Profile = () =>{
             }else{
 
                 const response = await sendRequest({
-                    route: `/user/developer/retrieve_user_images/${userId}`,
+                    route: `/user/developer/retrieve_user_images/${params.id}`,
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log("these are my images", response)
                 const token = " ";
     
                 if(data.status == 'success'){
+                    if(data.data == ''){
+                        setErrorImages(`${user.user_name}, has no pics yet.`)
+                        console.log(error)
+                    }
                     const obj = data.data;
-                    // console.log("her is the onj",obj)
                     setImages(obj);
 
                 }else{
-                    setError("failed to get user data!");
+                    setError("something went wrong!");
                     console.log(error);
                 }
             }
@@ -185,10 +186,10 @@ const Profile = () =>{
  
 
     useEffect(()=>{
+        getUser();
         getSkills();
         getImages();
-        getUser();
-    },[]);
+    },[params.id]);
 
     return(
         <div className={styles.page_container}>
@@ -220,10 +221,11 @@ const Profile = () =>{
                             {skills.map((skill)=>(
                                 <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={213} height={56} display={'flex'} alignItems={'center'} columnGap={'1rem'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                             ))}
+                            {errorSkills &&(<div>{errorSkills}</div>)}
                         </div>
                     </div>
                     <div className={styles.right_container}>
-                        <CarouselComp value={images}/>
+                        <CarouselComp value={images} issue={errorImages}/>
                     </div>
                 </div>
             </div>

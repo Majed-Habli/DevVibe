@@ -8,7 +8,7 @@ const Navbar = () => {
     let [token, setToken] = useState('');
     const validate = () =>{
         setToken=(localStorageAction("token"));
-        console.log('the token was read', token);
+        // console.log('the token was read', token);
     }
 
     const path = 'dashboard'

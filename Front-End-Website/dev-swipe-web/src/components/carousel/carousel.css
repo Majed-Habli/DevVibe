@@ -37,3 +37,12 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .error_message{
+    width: 740;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+  }

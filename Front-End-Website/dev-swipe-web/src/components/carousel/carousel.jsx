@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,14 +11,21 @@ import './carousel.css';
 // import required modules
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 
-const CarouselComp = ({value}) => {
+const CarouselComp = ({value ,issue}) => {
+  const [error,setError] = useState('');
+  const openImage = () =>{
+      console.log('hi')
+  }
 
-    const openImage = () =>{
-        console.log('hi')
+  useEffect(()=>{
+    if(issue){
+      setError(issue);
     }
+  },[issue])
+
   return (
     <>
-      <Swiper
+      {!error ? (<Swiper
         centeredSlides={true}
         effect={'coverflow'}
         slidesPerView={3}
@@ -77,7 +84,9 @@ const CarouselComp = ({value}) => {
             </div>
             <div className='swiper-pagination'></div>
         </div> */}
-      </Swiper>
+      </Swiper>):(
+        <div className='error_message'>{error}</div>
+      )}
     </>
   );
 }

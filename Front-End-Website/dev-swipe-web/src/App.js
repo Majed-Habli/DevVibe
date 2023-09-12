@@ -21,7 +21,7 @@ function App() {
 
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="/dashboard/profile" element={<Profile />} />
+          <Route path="/dashboard/profile/:id" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
