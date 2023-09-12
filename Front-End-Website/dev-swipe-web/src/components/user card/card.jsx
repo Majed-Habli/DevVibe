@@ -10,7 +10,11 @@ const Card = ({button, data}) =>{
             <div key={dat.id} className={styles.card_container}>
                 <div className={styles.container_left}>
                     <div className={styles.profile_image_container}>
-                        <img src="/testuser.png" alt="profile image" />
+                        {dat.profile_image_url ? (
+                            <img src={`${dat.profile_image_url}`} alt="profile image" />
+                        ):(
+                            <img src='/testuser.png' alt="profile image" />
+                        )}
                     </div>
                     <div className={styles.user_name}>{dat.user_name}</div>
                 </div>
