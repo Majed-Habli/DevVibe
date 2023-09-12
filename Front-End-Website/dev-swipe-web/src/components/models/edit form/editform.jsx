@@ -13,7 +13,11 @@ const EditForm = ({isOpen, data}) =>{
 
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
-    const [ischecked, setIsChecked] = useState([]);
+
+    const [userSkills,setUserSkills] = useState([]); //user skill
+    const [removeSkills,setRemoveSkills] = useState([]); //remove user skill
+    const [selected, setSelected] = React.useState([]); //add
+
     const [skills, setSkills] = useState([]);
     // console.log(skills)
     // console.log(search)
@@ -34,7 +38,13 @@ const EditForm = ({isOpen, data}) =>{
         setSearch(event.target.value);
         getSkills()
     };
-    
+
+    const onChangeHandler = id => () => {
+      selected.includes(id)
+        ? setSelected(selected.filter(x => x !== id))
+        : setSelected([...selected, id]);
+    };
+
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
@@ -98,7 +108,8 @@ const EditForm = ({isOpen, data}) =>{
                     <div className={styles.skill_display}>
                     {skills.map((skill)=>(
                         <div key={skill.id} className={styles.box}>
-                            <input id={`${skill.id}`} type="checkbox" name={`${skill.name}`}/>
+                            <input id={`${skill.id}`} type="checkbox" name={`${skill.name}`}checked={selected.includes(skill.id)}
+                                onChange={onChangeHandler(skill.id)}/>
                             <label htmlFor={`${skill.id}`}> {skill.name}</label>
                         </div>
                     ))}
