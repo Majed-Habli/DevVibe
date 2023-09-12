@@ -207,7 +207,7 @@ const Profile = () =>{
                         <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                     </label>
 
-                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" class="form-control"  onChange ={handleInput}/>
+                    {/* <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" class="form-control"  onChange ={handleInput}/> */}
                     <label class="upload_label" for="upload_file">
                         <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                     </label>
@@ -221,7 +221,7 @@ const Profile = () =>{
                             {skills.map((skill)=>(
                                 <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={213} height={56} display={'flex'} alignItems={'center'} columnGap={'1rem'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                             ))}
-                            {errorSkills &&(<div>{errorSkills}</div>)}
+                            {errorSkills &&(<div className={styles.error_container}>{errorSkills}</div>)}
                         </div>
                     </div>
                     <div className={styles.right_container}>
