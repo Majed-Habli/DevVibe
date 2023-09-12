@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './viewall.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 
-const ViewAllPopUp = ({isOpen}) =>{
-    
+const ViewAllPopUp = ({isOpen ,users}) =>{
+    console.log("the users",users)
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
+
+    // useEffect
 
     return(
         <div className={styles.popup_container}>
@@ -16,7 +18,9 @@ const ViewAllPopUp = ({isOpen}) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel}/>
             </div>
             <div className={styles.popup_body}>
-                <PopUpCard/>
+                {users.map((user)=>(
+                    <PopUpCard key={user.id} user={user}/>
+                ))}
             </div>
         </div>
     )

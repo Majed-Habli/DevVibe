@@ -3,11 +3,9 @@ import styles from './navbar.module.css';
 import CustomButton from "../custom button/custombutton";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import CustomImageButton from "../custom button/customImageButton";
-import { useParams } from "react-router-dom";
 
 const Navbar = () => {
     let [token, setToken] = useState('');
-    const params = useParams();
 
     const validate = () =>{
         setToken=(localStorageAction("token"));
@@ -18,12 +16,13 @@ const Navbar = () => {
 
     const userName = localStorageAction('user_name');
     const profileImageUrl = localStorageAction('profile_image');
+    const userID = localStorageAction('user_id');
 
     const goToPage = ({value}) => {
         if(value === 'dashboard'){
             window.location.href = `/dashboard`;
         }else{
-            window.location.href = `/dashboard/profile/${params.id}`
+            window.location.href = `/dashboard/profile/${userID}`
         }
     }
 

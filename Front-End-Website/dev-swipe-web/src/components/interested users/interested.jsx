@@ -20,6 +20,7 @@ const InterestedTable = () => {
 
     const getInterestes = async () =>{
         const token = localStorageAction("token");
+        const useriit = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -35,7 +36,7 @@ const InterestedTable = () => {
                 const token = " ";
     
                 if(data.status == 'success'){
-                    if(data.data == ''){
+                    if(data.data == ' '){
                         setErrorDisplay("keep waiting...");
                         console.log(error)
                     }
@@ -64,13 +65,13 @@ const InterestedTable = () => {
                 <CustomButton title={'view all'} onClick={veiwAll}/>
             </div>
             <div className={styles.table_body}>
-                {!users ?(<Card data={users} button={true}/>):(
+                {users ?(<Card data={users} button={true}/>):(
                     <div className={styles.error_container}>{errorDisplay}</div>
                 )}
             </div>
             {showModel && (
                 <div className={styles.popup_background}>
-                    <ViewAllPopUp isOpen={setShowModel}/>
+                    <ViewAllPopUp isOpen={setShowModel} users={users}/>
                 </div>
             )}
         </div>
