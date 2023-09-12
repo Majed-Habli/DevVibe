@@ -36,13 +36,11 @@
     display: flex;
     align-items: center;
     column-gap: 1rem;
-    /* padding: 0 1rem; */
-    /* justify-content: space-between; */
 }
 
 .container_left{
     display: flex;
-    column-gap: 1rem;
+    column-gap: 0.5rem;
     align-items: center;
     cursor: pointer;
 }
@@ -59,6 +57,8 @@
 .profile_image_container img{
     width: 28px;
     height: 28px;
+    object-fit: cover;
+    border-radius: 120px;
 }
 
 .routing_pressables{

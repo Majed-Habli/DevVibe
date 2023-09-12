@@ -44,11 +44,16 @@ const Login = () =>{
                 if(data.status == 'success'){
                     const token = data.user.token;
                     const id = data.user.id;
+                    const userName = data.user.user_name;
+                    const profileImageUrl = data.user.profile_image_url;
                     const user_type = data.user.user_type_id;
     
                     localStorageAction("token", token);
+                    localStorageAction('user_name', userName);
                     localStorageAction("user_id", id);
                     localStorageAction("user_type", user_type);
+                    localStorageAction("profile_image", profileImageUrl);
+
                     // console.log(data.user);
                     // console.log(data.user.token);
                     // const user = data.user;

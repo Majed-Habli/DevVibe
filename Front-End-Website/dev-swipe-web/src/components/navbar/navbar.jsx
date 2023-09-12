@@ -12,6 +12,10 @@ const Navbar = () => {
         // localStorage.removeItem('token');
     }
 
+    const userName = localStorageAction('user_name');
+    const profileImageUrl = localStorageAction('profile_image');
+
+
     useEffect(()=>{
         validate();
     },[]);
@@ -30,9 +34,9 @@ const Navbar = () => {
                         <div className={styles.card_container}>
                             <div className={styles.container_left}>
                                 <div className={styles.profile_image_container}>
-                                    <img src="/testuser.png" alt="profile image" />
+                                    <img src={`${profileImageUrl}`} alt="profile image" />
                                 </div>
-                                <div className={styles.user_name}>Majed habli</div>
+                                <div className={styles.user_name}>{userName}</div>
                             </div>
                             <div className={styles.container_right}>
                                 <CustomImageButton image_name={'arrow_white.png'} image_height={20}

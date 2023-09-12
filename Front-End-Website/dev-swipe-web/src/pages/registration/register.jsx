@@ -49,11 +49,15 @@ const Register = () =>{
                 if(data.status == 'Success'){
                     const token = data.data.token;
                     const id = data.data.id;
+                    const userName = data.user.user_name;
+                    const profileImageUrl = data.user.profile_image_url;
                     const user_type = data.data.user_type_id;
     
                     localStorageAction("token", token);
                     localStorageAction("user_id", id);
                     localStorageAction("user_type", user_type);
+                    localStorageAction('user_name', userName);
+                    localStorageAction("profile_image", profileImageUrl);
 
                     // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
                     window.location.href = '/dashboard/profile'
