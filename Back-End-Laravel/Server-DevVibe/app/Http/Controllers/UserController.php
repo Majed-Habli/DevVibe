@@ -210,14 +210,14 @@ class UserController extends Controller
         \File::put($path . '/' . $image_name, base64_decode($image));
 
         $user = Auth::user();
-        $user->profile_image_url = $image_name;
+        $user->profile_image_url = asset ('storage/users/' . $user_id . '/profile_pic'.'/'.$image_name);
         $user->save();
 
         return response()->json([
             'status' => 'success',
             'view' => $user,
             'storage path' => Storage_path(),
-            'path' => $path
+            'path' => $path,
         ]);
 
     }
@@ -234,7 +234,8 @@ class UserController extends Controller
 
         $user = new Image;
         $user->user_id = $user_id;
-        $user->image_url = $image_name;
+        $user->image_url = asset ('storage/users/' . $user_id . '/user_images'.'/'.$image_name);
+
         $user->save();
 
         return response()->json([
@@ -391,10 +392,17 @@ class UserController extends Controller
             $query->select('swiped_user_id')->from('swipes')->where('user_id', $user_id);
         })->get();
 
+        foreach($is_interested as $intersted){
+            $liked = $intersted->user_id;
+            $user =User::where('id',$liked)->get();
+            
+        }
+
         return response()->json([
             'status' => 'success',
-            'data' => $is_interested,
-            'my id' => $user_id
+            // 'data' => $is_interested,
+            // 'my id' => $user_id,
+            "data" => $user
         ]);
     }
 
