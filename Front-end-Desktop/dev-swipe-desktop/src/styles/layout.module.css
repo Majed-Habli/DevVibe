@@ -24,3 +24,10 @@
     width: 100px;
     height: 33px;
 }
+
+.header{
+    width: 100%;
+    color: #B8C7CE;
+    background-color: #1A2226;
+    padding: 10px 25px 10px 15px;
+}
