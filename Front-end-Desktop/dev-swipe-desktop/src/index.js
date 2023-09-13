@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import TryOut from "./components/layout";
+import Dashboard from "./pages/dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,7 +13,9 @@ root.render(
     {/* <App /> */}
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TryOut />}></Route>
+        <Route path="/" element={<TryOut />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
