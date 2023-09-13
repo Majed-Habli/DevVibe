@@ -3,10 +3,13 @@ import styles from './navbar.module.css';
 import CustomButton from "../custom button/custombutton";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import CustomImageButton from "../custom button/customImageButton";
+import { sendRequest } from "../../utils/functions/axios";
+import { requestMethods } from "../../utils/functions/requestMethods.";
 
 const Navbar = () => {
     let [token, setToken] = useState('');
     const [displayModal, setDisplayModal] = useState(false);
+    const [error, setError] = useState('');
 
     const validate = () =>{
         setToken=(localStorageAction("token"));
@@ -28,6 +31,29 @@ const Navbar = () => {
         }else{
             window.location.href = `/dashboard/profile/${userID}`
         }
+    }
+
+    const onLogout = async () =>{
+
+        try {
+            const response = await sendRequest({
+                route: "/guest/logout",
+                method: requestMethods.POST,
+            });
+            const data = response;
+            console.log("res", response)
+            const token = " ";
+
+            if(data.status == 'success'){
+                console.log("bye")
+                // window.location.href = '/dashboard';
+            }else{
+                setError("Couldn't logout!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("api calling failed:", error);
+          }
     }
 
     useEffect(()=>{
@@ -62,7 +88,7 @@ const Navbar = () => {
                 
                 {
                 displayModal && (<div className={styles.Model}>
-                    <div className={styles.button_container}>
+                    <div className={styles.button_container} onClick={()=>onLogout()}>
                         <div>Logout</div>
                         <img src="/logout.png" alt="" />
                     </div>
