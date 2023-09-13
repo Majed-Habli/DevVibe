@@ -8,12 +8,14 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
 import ViewImages from "../../components/models/images form/viewimages";
+import ViewUpload from "../../components/models/view upload/viewUpload";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
     const [errorImages, setErrorImages] = useState('');
-    const [uploadImage, setUploadImage] = useState('');
+    
     const [showModel, setShowModel] = useState(false);
+    const [showUploadModel, setShowUploadModel] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
@@ -125,7 +127,7 @@ const Profile = () =>{
     //     const file = event.target.files[0]
     //     const base64 = await convertBase64(file)
     //     console.log(base64)
-    //   }
+    //   } 
 
     //  const convertBase64 = (file) => {
     //     return new Promise((resolve, reject) => {
@@ -159,35 +161,14 @@ const Profile = () =>{
     //         };
     //     });
     // }
-    const fileRef = useRef(null);
-    const handleInput = (e) => {
-        if (e.target.files.length > 0) {
-            function getBase64(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = (error) => reject(error);
-                });
-            }
-            // setInput(e.target.files[0])
-            getBase64(e.target.files[0]).then((data) => {
-                // console.log("base shabsdbhasbda",data)
-                setUploadImage(data);
-            });
 
-            // const reader = new FileReader();
-            // reader.onloadend = () => {
-            //     // setUploadImage(reader.result);
-            //     console.log(reader.result)
-            // };
-            // reader.readAsDataURL(e.target.files[0]);
-        }
-    };
-    console.log("this is the images",uploadImage)
+    
     
     const viewModel = async() =>{
         setShowModel(true)
+    }
+    const viewModelUpload = async() =>{
+        setShowUploadModel(true)
     }
 
     useEffect(()=>{
@@ -208,15 +189,13 @@ const Profile = () =>{
                 </div>
                 <div className={styles.button_container}>
                     <CustomImageButton text={'view images'} width={'fit-content'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"gallery.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModel()}/>
-                    <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" className="{styles.form_control}" hidden/>
+                    {/* <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" className="{styles.form_control}" hidden/>
                     <label class="upload_label" htmlFor="upload_file">
-                        <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
-                    </label>
+                    </label> */}
+                        <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModelUpload()}/>
 
-                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
-                    <label class="upload_label" htmlFor="upload_file">
+                    
                         <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
-                    </label>
                 </div>
             </div>
             <div className={styles.component_container}>
@@ -239,6 +218,12 @@ const Profile = () =>{
             {showModel && (
                 <div className={styles.popup_background}>
                     <ViewImages isOpen={setShowModel} imgs={images}/>
+                </div>
+            )}
+
+            {showUploadModel && (
+                <div className={styles.popup_background}>hey
+                    <ViewUpload isOpen={setShowModel} />
                 </div>
             )}
         </div>
