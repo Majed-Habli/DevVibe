@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import styles from './register.module.css';
-// import axios from 'axios';
 import CustomInput from "../../components/custom input/custominput";
 import CustomButton from "../../components/custom button/custombutton";
 import { sendRequest } from "../../utils/functions/axios";
@@ -15,7 +14,6 @@ const Register = () =>{
     const onChangeHandler = (option) => {
         setSelected(option)
     };
-    console.log(selected,'here it is behind me')
     const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
@@ -38,7 +36,7 @@ const Register = () =>{
                 setError('All fields required');
                 console.log(error);
             }else{
-
+                console.log(inputs)
                 const response = await sendRequest({
                     route: "/guest/register",
                     method: requestMethods.POST,
@@ -46,16 +44,20 @@ const Register = () =>{
                         email: inputs.email,
                         password: inputs.password,
                         country: inputs.country,
+                        company_name: inputs.company_name,
+                        gender: inputs.gender,
                         user_type_id: selected,}
                 });
                 const data = response;
+                console.log(data)
                 const token = " ";
     
                 if(data.status == 'Success'){
                     const token = data.data.token;
                     const id = data.data.id;
-                    const userName = data.user.user_name;
-                    const profileImageUrl = data.user.profile_image_url;
+                    const userName = data.data.user_name;
+                    console.log(userName)
+                    const profileImageUrl = data.data.profile_image_url;
                     const user_type = data.data.user_type_id;
     
                     localStorageAction("token", token);
@@ -65,7 +67,7 @@ const Register = () =>{
                     localStorageAction("profile_image", profileImageUrl);
 
                     // console.log("here is my token", localStorageAction("token"), localStorageAction("user_id"), "and", localStorageAction("user_type"));
-                    window.location.href = '/dashboard/profile'
+                    window.location.href = `/dashboard/profile/${id}`
                 }else{
                     setError('Email already exists!');
                     console.log(error);
