@@ -14,7 +14,6 @@ function createMainWindow() {
     protocol: "file",
   });
   mainWindow.loadURL(startUrl);
-  //   mainWindow.loadFile("index.html");
 }
 
 app.whenReady().then(() => {
