@@ -77,3 +77,33 @@
 .route:hover{
     transform: scale(1.2);
 }
+
+.Model{
+    position: absolute;
+    width: 160px;
+    top: 55px;
+    right: 40px;
+    padding: 0.7rem 2rem 0.7rem 1.4rem;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    font-weight: 600;
+    
+}
+
+.button_container{
+    display: flex;
+    padding: 0.6rem 0.7rem;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.button_container:hover{
+    background-color: #FCC860;
+    cursor: pointer;
+}
+
+.Model img{
+    width: 30px;
+    height: 20px;
+    object-fit: contain;
+}

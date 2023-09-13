@@ -6,10 +6,14 @@ import CustomImageButton from "../custom button/customImageButton";
 
 const Navbar = () => {
     let [token, setToken] = useState('');
+    const [displayModal, setDisplayModal] = useState(false);
 
     const validate = () =>{
         setToken=(localStorageAction("token"));
-        // console.log('the token was read', token);
+    }
+
+    const showView = () =>{
+        setDisplayModal((current) => !current);
     }
 
     const path = 'dashboard'
@@ -50,11 +54,20 @@ const Navbar = () => {
                             </div>
                             <div className={styles.container_right}>
                                 <CustomImageButton image_name={'arrow_white.png'} image_height={20}
-                                image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"}/>
+                                image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={()=>showView()}/>
                             </div>
                         </div>
                     </div>
                 )}
+                
+                {
+                displayModal && (<div className={styles.Model}>
+                    <div className={styles.button_container}>
+                        <div>Logout</div>
+                        <img src="/logout.png" alt="" />
+                    </div>
+                </div>)
+                }
             </div>
         </div>
     )
