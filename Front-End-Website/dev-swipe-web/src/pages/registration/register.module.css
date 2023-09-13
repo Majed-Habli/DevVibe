@@ -15,15 +15,15 @@
     height: 539px;
     border-radius: 4px;
     padding: 0 1.3rem;
+    background-color: white;
     border: 1px solid #000000;
 }
 
 .title{
     width: fit-content;
     font-size: 22px;
-    font-weight: 500;
-    padding: 1rem 0;
-    border-bottom: 1.4px solid black;
+    font-weight: 600;
+    padding: 1.5rem 0;
 }
 
 .input_container{
@@ -46,6 +46,12 @@
     row-gap: 1.5rem;
 }
 
+.boxes{
+    display: flex;
+    align-items: center;
+    column-gap: 0.7rem;
+}
+
 .cto{
     font-size: 14px;
     font-weight: 500;
@@ -53,6 +59,7 @@
 
 span{
     color: #FFAA00;
+    font-weight: 600;
 }
 
 span:hover{
@@ -66,4 +73,15 @@ span:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.button_conatiner{
+    display: flex;
+    column-gap: 1rem;
+    font-weight: 600;
+}
+
+.boxes input{
+    width: 16px;
+    height: 16px;
 }

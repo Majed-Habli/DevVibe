@@ -75,19 +75,33 @@ const Register = () =>{
     return (
         <div className={styles.container}>
             <div className={styles.comp_container}>
-                <div className={styles.title}>Register</div>
+                <div className={styles.title_container}>
+                    <div className={styles.title}>Register as</div>
+                    <div className={styles.button_conatiner}>
+                        {/* <CustomButton title={'Developer'} height={20}display={'flex'} alignItems={'center'} fontWeight={600} justifyContent={'center'}/>
+                        <CustomButton title={'Recruiter'} height={20}display={'flex'} alignItems={'center'} fontWeight={600} justifyContent={'center'} /> */}
+                        <div className={styles.boxes}>
+                            <input type="checkbox" id="devCheck"/>
+                            <label htmlFor="devCheck">Developer</label>
+                        </div>
+                        <div className={styles.boxes}>
+                            <input type="checkbox" id="recCheck"/>
+                            <label htmlFor="recCheck">Recruiter</label>
+                        </div>
+                    </div>
+                </div>
                 <div className={styles.input_container}>
                     <div className={styles.row}>
-                        <CustomInput label={'Name :'} name={'name'} value={inputs.name} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Name'} name={'name'} value={inputs.name} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={600}/>
                         {/* <CustomInput label={'Gender :'} name={'gender'} value={inputs.gender} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/> */}
                     </div>
                     <div className={styles.row}>
-                        <CustomInput label={'Email :'} name={'email'} value={inputs.email} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
-                        <CustomInput label={'Country :'} name={'country'} value={inputs.country} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Email'} name={'email'} value={inputs.email} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
+                        <CustomInput label={'Country'} name={'country'} value={inputs.country} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
                     </div>
                     <div className={styles.row}>
-                        <CustomInput label={'Password :'} name={'password'} value={inputs.password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={500}/>
-                        <CustomInput label={'Confirm Password :'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={500}/>
+                        <CustomInput label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
+                        <CustomInput label={'Confirm Password'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
                     </div>
                 </div>
                 <div className={styles.cto}>Already have an account? <span onClick={goToPage}>Login now</span></div>
