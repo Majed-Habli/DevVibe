@@ -34,11 +34,13 @@ const Navbar = () => {
     }
 
     const onLogout = async () =>{
+        const token = localStorageAction("token");
+        console.log(token,'here s the token')
 
         try {
             const response = await sendRequest({
                 route: "/guest/logout",
-                method: requestMethods.POST,
+                method: requestMethods.GET,
             });
             const data = response;
             console.log("res", response)
@@ -46,7 +48,8 @@ const Navbar = () => {
 
             if(data.status == 'success'){
                 console.log("bye")
-                // window.location.href = '/dashboard';
+                localStorage.clear();
+                window.location.href = '/';
             }else{
                 setError("Couldn't logout!");
                 console.log(error);
@@ -58,7 +61,7 @@ const Navbar = () => {
 
     useEffect(()=>{
         validate();
-    },[]);
+    },[token]);
 
     return(
         <div className={styles.navbar_container}>
@@ -66,7 +69,7 @@ const Navbar = () => {
                 <div className={styles.logo_container}>
                     <img src="/Logo2-0.png" alt="brand logo" />
                 </div>
-                {token ? (
+                {token != null ? (
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
                 ):(
                     <div className={styles.routing_pressables}>
