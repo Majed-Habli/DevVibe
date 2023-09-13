@@ -10,6 +10,7 @@ import CustomButton from "../../custom button/custombutton";
 
 const ViewUpload = ({isOpen }) =>{
     const [uploadImage, setUploadImage] = useState('');
+    console.log(uploadImage)
     const [tempView, setTempView] = useState('');
     const params = useParams();
     console.log(params.id)
@@ -25,11 +26,10 @@ const ViewUpload = ({isOpen }) =>{
                     }
             });
             const data = response;
-            console.log("res", response)
             const token = " ";
 
             if(data.status == 'success'){
-                // window.location.href = `/dashboard/profile/${params.id}`;
+                window.location.href = `/dashboard/profile/${params.id}`;
             }
             
           } catch (error) {
@@ -70,7 +70,6 @@ const ViewUpload = ({isOpen }) =>{
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
-    console.log("this is the images",uploadImage)
 
     return(
         <div className={styles.popup_container}>
@@ -83,8 +82,8 @@ const ViewUpload = ({isOpen }) =>{
                     <PopUpCard key={user.id} user={user}/>
                 ))} */}
                 <div className={styles.upload_button}>
-                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} />
-                    <label class="upload_label" htmlFor="upload_file">
+                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
+                    <label class="upload_label" htmlFor="upload_file">hi
                     </label>
                     <CustomButton title={'save'} width={90} height={33} backgroundColor={'#FCC860'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} onClick={()=>{postImage()}}/>
                 </div>
