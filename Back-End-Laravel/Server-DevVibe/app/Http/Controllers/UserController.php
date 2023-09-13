@@ -297,25 +297,42 @@ class UserController extends Controller
     }
 
     function deleteUserImage(Request $request){
-
+        // $user = Auth::user();
         $user_id = Auth::id();
+        $dataArray = json_decode($request->input('image_id'), true);
 
-        $image_id = $request->image_id;
-        
-        $image = Image::where('id', '=', $image_id)->first();
-        $image_url = $image->image_url;
+        foreach($dataArray as $data){
+            $is_existing = Image::where('id', '=', $data)->first();
+            if($is_existing){
+                $image_url = $is_existing->image_url;
+                // $user_skills = $user->Skills()->where('skill_id',$data)->delete();
+                $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
 
-        $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
+            if (\File::exists($image_path)) {
+                unlink($image_path);
+            }
 
-        if (\File::exists($image_path)) {
-            unlink($image_path);
+            $is_existing->delete();
+
+            return response()->json([
+                'status' => 'success'
+            ]);
+            }
         }
+        // $image_id = $request->image_id;
+        // $image = Image::where('id', '=', $image_id)->first();
+        // $image_url = $image->image_url;
+        // $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
 
-        $image->delete();
+        // if (\File::exists($image_path)) {
+        //     unlink($image_path);
+        // }
 
-        return response()->json([
-            'status' => 'success'
-        ]);
+        // $image->delete();
+
+        // return response()->json([
+        //     'status' => 'success'
+        // ]);
     }
 
     function swipe(Request $request){
@@ -407,8 +424,8 @@ class UserController extends Controller
         })->whereNotIn('user_id', function ($query) use ($user_id){
             $query->select('swiped_user_id')->from('swipes')->where('user_id', $user_id);
         })->get();
-
-        if(!$is_interested == ' '){
+        
+        if($is_interested){
             foreach($is_interested as $intersted){
                 $liked = $intersted->user_id;
                 $user =User::where('id',$liked)->first();
