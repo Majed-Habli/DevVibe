@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\DeveloperDetail;
+use App\Models\RecruiterDetail;
 use App\Models\BlockedUser;
 
 class AuthController extends Controller
@@ -76,6 +78,18 @@ class AuthController extends Controller
         $user->profile_image_url = $request->profile_image_url;
 
         $user->save();
+
+        if($request->user_type_id == 3){
+            $user_details = new RecruiterDetail;
+            $user_details->user_id = $user->id;
+            $user_details->company_name = $request->company_name;
+            $user_details->save();
+        }else{
+            $user_details = new DeveloperDetail;
+            $user_details->user_id = $user->id;
+            $user_details->gender = $request->gender;
+            $user_details->save();
+        }
 
         $token = Auth::login($user);
         $user->token = $token;
