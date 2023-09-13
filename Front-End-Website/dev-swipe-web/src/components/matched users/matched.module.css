@@ -157,3 +157,10 @@
     border-radius: 120px;
     background-color: rgb(117, 130, 214);
 }
+
+.profile_image_container img{
+    width: 46px;
+    height: 46px;
+    border-radius: 120px;
+    object-fit: cover;
+}

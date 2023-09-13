@@ -33,6 +33,7 @@ const MatchedTable = () =>{
                 if(data.status == 'success'){
                     const obj = data.data;
                     setUsers(obj);
+                    console.log(obj)
 
                 }else{
                     setError("failed to get user data!");
@@ -72,7 +73,7 @@ const MatchedTable = () =>{
                                         <div className={styles.container_left}>
                                             <div className={styles.profile_image_container}>
                                                 {!user.profile_image_url ? (
-                                                    <img src={`${user.matched_with.profileImageUrl}`} alt="profile image" /> 
+                                                    <img src={`${user.matched_with.profile_image_url}`} alt="profile image" /> 
                                                 ):(
                                                     <img src="/testuser.png" alt="profile image" />
                                                 )}

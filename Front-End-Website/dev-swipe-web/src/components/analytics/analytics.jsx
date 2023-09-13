@@ -11,7 +11,6 @@ const AnalyticsComponent = () =>{
 
     const getStats = async () =>{
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -24,12 +23,10 @@ const AnalyticsComponent = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log("analysis res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data;
-                    // console.log("analysis obj",obj)
                     setStats(obj);
 
                 }else{
@@ -42,10 +39,9 @@ const AnalyticsComponent = () =>{
             console.error("failed to get user:", error);
           }
     }
-    // console.log(stats.matched_count)
 
     useEffect(()=>{
-        setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',viewed_count: stats && stats.viewed_count ? stats.viewed_count: '0'})
+        setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',view_count: stats && stats.view_count ? stats.view_count: '0'});
         getStats();
     },[]);
 
@@ -56,7 +52,7 @@ const AnalyticsComponent = () =>{
             </div>
             <div className={styles.container_body}>
                 <div className={`${styles.chart_container} ${styles.spacing}`}>
-                    <Donut value={30} backgroundColor={'#F56954'}/>
+                    <Donut value={stats.view_count} backgroundColor={'#F56954'}/>
                     <div>Viewed</div>
                 </div>
                 <div className={styles.chart_container}>
