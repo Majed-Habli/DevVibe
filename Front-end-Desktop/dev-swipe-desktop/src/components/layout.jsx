@@ -1,6 +1,6 @@
 import React from "react";
 
-const TryOut = () => {
+const Layout = () => {
 
     return(
         <div>
@@ -9,4 +9,4 @@ const TryOut = () => {
     )
 }
 
-export default TryOut;
+export default Layout;
