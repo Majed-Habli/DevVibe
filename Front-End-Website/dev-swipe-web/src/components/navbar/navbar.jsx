@@ -70,7 +70,7 @@ const Navbar = () => {
                     <img src="/Logo2-0.png" alt="brand logo" />
                 </div>
                 {token != null ? (
-                    <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
+                    <CustomButton title={'Login'} width={93} height={27} borderRadius={4} display={'flex'} justifyContent={'center'} alignItems={'center'} backgroundColor={'#FCC860'}/>
                 ):(
                     <div className={styles.routing_pressables}>
                         <div className={styles.route} onClick={()=>goToPage({value:path})}>Dashboard</div>
