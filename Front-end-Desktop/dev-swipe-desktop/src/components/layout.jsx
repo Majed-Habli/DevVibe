@@ -15,7 +15,27 @@ const Layout = () => {
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/dashboard">Work</a>
+                    <a href="/dashboard"></a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img src="" alt="" />
+                                <span>hey</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="" alt="" />
+                                <span>hey</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="" alt="" />
+                                <span>hey</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <Outlet/>
