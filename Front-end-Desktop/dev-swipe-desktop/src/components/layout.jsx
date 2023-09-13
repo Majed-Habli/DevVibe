@@ -10,33 +10,33 @@ const Layout = () => {
                 <img src="/Logo2-0.png" alt="app logo" />
             </div>
 
-            <ul>
+            <ul className={styles.sidebar}>
                 <li className={styles.header}>Main navigation</li>
-                <li>
+                {/* <li>
                     <a href="/">Home</a>
-                </li>
-                <li>
+                </li> */}
+                <li className={styles.treeview}>
                     <a href="/dashboard">
                         <img src="" alt="icon" />
                         <span>Dashboard</span>
                     </a>
-                    <ul>
+                    <ul className={styles.treeview_menu}>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>New Members</span>
+                                <span className={styles.list_headers}>New Members</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>Developers</span>
+                                <span className={styles.list_headers}>Developers</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>Recruiters</span>
+                                <span className={styles.list_headers}>Recruiters</span>
                             </a>
                         </li>
                     </ul>
