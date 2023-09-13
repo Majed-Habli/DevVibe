@@ -1,5 +1,5 @@
 .popup_container{
-    width: 500px;
+    width: 650px;
     height: 571px;
     border-radius: 4px;
     background-color: #fff;
@@ -26,10 +26,26 @@
     height: 91%;
     padding: 1rem;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     overflow-y: scroll;
 }
 
 .popup_body::-webkit-scrollbar{
     display: none;
+}
+
+.image_container{
+    position: relative;
+}
+
+.image_container img{
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.image_container input{
+    position: absolute;
 }

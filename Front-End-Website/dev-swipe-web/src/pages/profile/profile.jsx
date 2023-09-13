@@ -7,7 +7,7 @@ import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
-import ViewAllPopUp from "../../components/models/view users/viewall";
+import ViewImages from "../../components/models/images form/viewimages";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -238,7 +238,7 @@ const Profile = () =>{
 
             {showModel && (
                 <div className={styles.popup_background}>
-                    <ViewAllPopUp isOpen={setShowModel} users={users}/>
+                    <ViewImages isOpen={setShowModel} imgs={images}/>
                 </div>
             )}
         </div>
