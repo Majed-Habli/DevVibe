@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
 
@@ -11,9 +12,10 @@ const Layout = () => {
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/work">Work</a>
+                    <a href="/dashboard">Work</a>
                 </li>
             </ul>
+            <Outlet/>
         </div>
     )
 }
