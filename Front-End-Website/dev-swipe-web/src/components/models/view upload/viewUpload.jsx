@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from './viewUpload.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
-import PopUpCard from "../../popup card/popupcard";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
 import { sendRequest } from "../../../utils/functions/axios";
 import { useState } from "react";
@@ -48,22 +47,13 @@ const ViewUpload = ({isOpen }) =>{
                     reader.onerror = (error) => reject(error);
                 });
             }
-            // setInput(e.target.files[0])
             getBase64(e.target.files[0]).then((data) => {
-                // console.log("base shabsdbhasbda",data)
                 setTempView(data)
                 const refStringArray = data.split(",");
                 refStringArray.shift();
                 const result = refStringArray.join('');
                 setUploadImage(result);
             });
-
-            // const reader = new FileReader();
-            // reader.onloadend = () => {
-            //     // setUploadImage(reader.result);
-            //     console.log(reader.result)
-            // };
-            // reader.readAsDataURL(e.target.files[0]);
         }
     };
 
@@ -78,9 +68,6 @@ const ViewUpload = ({isOpen }) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel}/>
             </div>
             <div className={styles.popup_body}>
-                {/* {users.map((user)=>(
-                    <PopUpCard key={user.id} user={user}/>
-                ))} */}
                 <div className={styles.upload_button}>
                     <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
                     <label class="upload_label" htmlFor="upload_file">hi
