@@ -1,39 +1,42 @@
 import React from "react";
-import styles from '../styles/layout';
+import styles from '../styles/layout.module.css';
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
 
     return(
         <div className={styles.container}>
-            <p>this is our layout</p>
-            <div>
+            <div className={styles.logo}>
                 <img src="/Logo2-0.png" alt="app logo" />
             </div>
 
             <ul>
+                <li className={styles.header}>Main navigation</li>
                 <li>
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/dashboard"></a>
+                    <a href="/dashboard">
+                        <img src="" alt="icon" />
+                        <span>Dashboard</span>
+                    </a>
                     <ul>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>hey</span>
+                                <span>New Members</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>hey</span>
+                                <span>Developers</span>
                             </a>
                         </li>
                         <li>
                             <a href="">
                                 <img src="" alt="" />
-                                <span>hey</span>
+                                <span>Recruiters</span>
                             </a>
                         </li>
                     </ul>
