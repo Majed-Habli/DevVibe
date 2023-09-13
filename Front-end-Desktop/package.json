@@ -1,0 +1,28 @@
+{
+  "name": "dev-swipe",
+  "version": "0.0.1",
+  "description": "job matching admin app",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dev:watch": "npx electronmon --trace-warnings ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Majed-Habli/DevVibe.git"
+  },
+  "keywords": [
+    "reactjs",
+    "electronjs"
+  ],
+  "author": "Majed-Habli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Majed-Habli/DevVibe/issues"
+  },
+  "homepage": "https://github.com/Majed-Habli/DevVibe#readme",
+  "dependencies": {
+    "electron": "^26.2.1"
+  }
+}
