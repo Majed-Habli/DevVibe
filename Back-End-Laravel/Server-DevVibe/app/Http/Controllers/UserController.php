@@ -18,15 +18,17 @@ class UserController extends Controller
 {
     function profile($id = Null){
 
-        if(!$id){
-
-            $user = Auth::User();
-            $user_id = Auth::id();
-        }else{
-
+            $logged_in_user_id = Auth::id();
+            $logged_in_user = Auth::user();
+            $logged_in_user_type = $logged_in_user->user_type_id;
+            
             $user_id = $id;
             $user = User::where('id', '=',$user_id)->first();
             $user_type = $user->user_type_id;
+
+        if($logged_in_user_id != $user_id && $logged_in_user_type != 1){
+            $user->view_count = $user->view_count +1;
+            $user->save();
         }
 
         $user_type = $user->user_type_id;
@@ -297,7 +299,6 @@ class UserController extends Controller
     }
 
     function deleteUserImage(Request $request){
-        // $user = Auth::user();
         $user_id = Auth::id();
         $dataArray = json_decode($request->input('image_id'), true);
 
@@ -305,18 +306,18 @@ class UserController extends Controller
             $is_existing = Image::where('id', '=', $data)->first();
             if($is_existing){
                 $image_url = $is_existing->image_url;
-                // $user_skills = $user->Skills()->where('skill_id',$data)->delete();
+                
                 $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
 
-            if (\File::exists($image_path)) {
-                unlink($image_path);
-            }
+                if (\File::exists($image_path)) {
+                    unlink($image_path);
+                }
 
-            $is_existing->delete();
+                $is_existing->delete();
 
-            return response()->json([
-                'status' => 'success'
-            ]);
+                return response()->json([
+                    'status' => 'success'
+                ]);
             }
         }
         // $image_id = $request->image_id;
@@ -453,7 +454,7 @@ class UserController extends Controller
 
         $liked_count = Swipe::where('swiped_user_id', '=', $user_id)->where('is_liked', '=', 1)->get()->count();
 
-        // $matched_count = UserMatch::where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
+        $view_count = $user->view_count;
 
         // $matched_count = UserMatch::where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
 
@@ -462,7 +463,7 @@ class UserController extends Controller
             'matched_count' => $matched_count,
             'skipped_count' => $skipped_count,
             'liked_count' => $liked_count,
-            'ana'=> $user_id
+            'view_count'=> $view_count
         ]);
     }
 
