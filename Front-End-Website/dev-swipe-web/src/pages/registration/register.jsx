@@ -10,7 +10,12 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 const Register = () =>{
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState('');
+    const [selected, setSelected] = useState(null);
 
+    const onChangeHandler = (option) => {
+        setSelected(option)
+    };
+    console.log(selected,'here it is behind me')
     const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
@@ -41,7 +46,7 @@ const Register = () =>{
                         email: inputs.email,
                         password: inputs.password,
                         country: inputs.country,
-                        user_type_id: 2,}
+                        user_type_id: selected,}
                 });
                 const data = response;
                 const token = " ";
@@ -78,22 +83,23 @@ const Register = () =>{
                 <div className={styles.title_container}>
                     <div className={styles.title}>Register as</div>
                     <div className={styles.button_conatiner}>
-                        {/* <CustomButton title={'Developer'} height={20}display={'flex'} alignItems={'center'} fontWeight={600} justifyContent={'center'}/>
-                        <CustomButton title={'Recruiter'} height={20}display={'flex'} alignItems={'center'} fontWeight={600} justifyContent={'center'} /> */}
                         <div className={styles.boxes}>
-                            <input type="checkbox" id="devCheck"/>
-                            <label htmlFor="devCheck">Developer</label>
+                            <input type="checkbox" id="Developer" onChange={()=>onChangeHandler(2)} checked={selected === 2}/>
+                            <label htmlFor="Developer">Developer</label>
                         </div>
                         <div className={styles.boxes}>
-                            <input type="checkbox" id="recCheck"/>
-                            <label htmlFor="recCheck">Recruiter</label>
+                            <input type="checkbox" id="3" onChange={()=>onChangeHandler(3)} checked={selected === 3}/>
+                            <label htmlFor="3">Recruiter</label>
                         </div>
                     </div>
                 </div>
                 <div className={styles.input_container}>
                     <div className={styles.row}>
-                        <CustomInput label={'Name'} name={'name'} value={inputs.name} handleChange={handleChange} width={424} height={38} fontSize={12} fontWeight={600}/>
-                        {/* <CustomInput label={'Gender :'} name={'gender'} value={inputs.gender} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/> */}
+                        <CustomInput label={'Name'} name={'name'} value={inputs.name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
+                        {selected == 2 ?(<CustomInput label={'Gender'} name={'gender'} value={inputs.gender} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                        ):(
+                            <CustomInput label={'Conpany_name'} name={'company_name'} value={inputs.company_name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                            )}
                     </div>
                     <div className={styles.row}>
                         <CustomInput label={'Email'} name={'email'} value={inputs.email} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
