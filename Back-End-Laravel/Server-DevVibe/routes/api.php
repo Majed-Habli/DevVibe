@@ -42,4 +42,5 @@ Route::group(['prefix' => 'guest'], function(){
     Route::get('unauthorized', [AuthController::class, 'unauthorized'])->name('unauthorized');
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
