@@ -20,8 +20,13 @@ const ViewImages = ({isOpen ,imgs}) =>{
             ? setSelected(selected.filter(x => x !== id))
             : setSelected([...selected, id]);
         };
+
+        // const onDelete = id => () => {
+        //     selected.includes(id)
+        //       ? setSelected(selected.filter(x => x !== id))
+        //       : setSelected([...selected, id]);
+        //   };
     console.log('deleted images are ', selected);
-    // 
 
     const removeImages = async () =>{
         const mySkills = JSON.stringify(selected);
@@ -35,7 +40,7 @@ const ViewImages = ({isOpen ,imgs}) =>{
                 const response = await sendRequest({
                     route: "/user/developer/delete_user_image",
                     method: requestMethods.POST,
-                    body:{image_id: selected}
+                    body:{image_id: mySkills}
                 });
                 const data = response;
                 console.log("res of removing skills", response)
@@ -43,6 +48,8 @@ const ViewImages = ({isOpen ,imgs}) =>{
     
                 if(data.status == 'success'){
                     console.log("successfully removed images")
+                    hideModel()
+                    hideModel()
                 }else{
                     setError("failed to remove!");
                     console.log(error);
