@@ -6,6 +6,9 @@ const Layout = () => {
     return(
         <div>
             <p>this is our layout</p>
+            <div>
+                <img src="/Logo2-0.png" alt="app logo" />
+            </div>
 
             <ul>
                 <li>
