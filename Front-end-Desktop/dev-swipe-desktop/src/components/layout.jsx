@@ -1,10 +1,11 @@
 import React from "react";
+import styles from '../styles/layout';
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
 
     return(
-        <div>
+        <div className={styles.container}>
             <p>this is our layout</p>
             <div>
                 <img src="/Logo2-0.png" alt="app logo" />
