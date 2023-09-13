@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className={styles.navbar_container}>
             <div className={styles.navbar_content}>
                 <div className={styles.logo_container}>
-                    <img src="/Logo.png" alt="brand logo" />
+                    <img src="/Logo2-0.png" alt="brand logo" />
                 </div>
                 {token ? (
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} textAlign={'center'} backgroundColor={'#FCC860'}/>
