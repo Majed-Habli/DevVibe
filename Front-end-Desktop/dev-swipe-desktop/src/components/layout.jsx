@@ -11,6 +11,7 @@ const Layout = () => {
                 <Sidebar/>
             </div>
             <div className={styles.outlet_container}>
+                <div className={styles.header}>.</div>
                <Outlet/>
             </div>
         </div>
