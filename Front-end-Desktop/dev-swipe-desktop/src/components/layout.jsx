@@ -16,7 +16,7 @@ const Layout = () => {
                     <a href="/">Home</a>
                 </li> */}
                 <li className={styles.treeview}>
-                    <a href="/dashboard">
+                    <a className={styles.treatitle} href="/dashboard">
                         <img src="" alt="icon" />
                         <span>Dashboard</span>
                     </a>
