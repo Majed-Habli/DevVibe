@@ -6,13 +6,13 @@
     justify-content: center;
 }
 
-.comp_width{
-    width: 380px !important;
-}
-
-.comp_container{
-    width: 470px;
+.box_conatiner{
+    width: 380px;
     height: 539px;
+}
+.comp_container{
+    width: 100%;
+    height: 100%;
     border-radius: 4px;
     padding: 0 1.3rem;
     background-color: white;
