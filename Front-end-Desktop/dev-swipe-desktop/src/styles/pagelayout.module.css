@@ -39,3 +39,8 @@
     left: 0;
     bottom: 0;
 }
+
+.name{
+    position: relative;
+    z-index: 1;
+}
