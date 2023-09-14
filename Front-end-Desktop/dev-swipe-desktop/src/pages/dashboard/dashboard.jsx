@@ -1,6 +1,7 @@
 import React from "react";
 import styles from '../../styles/dashboard.module.css'
 import AnalyticsCard from "../../components/analytics card/card";
+import InfoBox from "../../components/widgets/info-box";
 
 const Dashboard = () =>{
 
@@ -11,6 +12,7 @@ const Dashboard = () =>{
             </div>
             <div className={styles.card_conatiner}>
                 <AnalyticsCard/>
+                <InfoBox/>
             </div>
         </div>
     )

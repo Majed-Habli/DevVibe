@@ -7,7 +7,7 @@ const InfoBox = () => {
     return(
         <div className={styles.container}>
             <div className={styles.icon}>
-                <AiOutlineUser fill="white" />
+                <AiOutlineUser fill="white" size={30}/>
             </div>
             <div className={styles.right_container}>
                 <span className={styles.span_header}>Info header</span>
