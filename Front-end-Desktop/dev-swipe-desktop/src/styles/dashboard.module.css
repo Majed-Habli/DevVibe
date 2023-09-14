@@ -22,3 +22,8 @@
 .page_header span{
     font-size: 24px;
 }
+
+.card_conatiner{
+    width: 100vw;
+    padding: 1rem 0;
+}
