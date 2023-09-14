@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from "react";
 import styles from '../../styles/dashboard.module.css'
 import AnalyticsCard from "../../components/analytics card/card";
-import InfoBox from "../../components/widgets/info-box";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
@@ -54,7 +53,7 @@ const Dashboard = () =>{
                 <AnalyticsCard data={info.new_recs_count} type={'recs'} title={'New Recruiters'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
                 <AnalyticsCard data={info.new_devs_count} type={'devs'} title={'New Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
                 <AnalyticsCard data={info.skills_count} type={'skills'} title={'Skills'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
-                <AnalyticsCard data={info.new_recs_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
+                <AnalyticsCard data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
                 {/* <InfoBox/> */}
             </div>
         </div>
