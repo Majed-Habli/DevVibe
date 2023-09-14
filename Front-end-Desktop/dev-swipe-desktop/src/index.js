@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./components/layout";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
