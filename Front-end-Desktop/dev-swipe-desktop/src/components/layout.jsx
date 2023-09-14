@@ -30,7 +30,7 @@ const Layout = () => {
                 <label className={styles.treatitle} htmlFor="dashboardToggle">
                     <AiOutlineUser />
                     
-                    <span>Dashboard</span>
+                    <span>Users</span>
                 </label>
                 <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("users")}}/>
             </div>

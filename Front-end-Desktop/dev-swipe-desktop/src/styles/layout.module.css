@@ -36,24 +36,17 @@
 }
 
 .treeview_menu{
-    width: 100%;
-    padding: 0 10px;
+    padding: 0 3rem;
     position: relative;
     display: block;
-    background-color: #7f4949;
-}
-
-.treeview_menu.close{
-    position: absolute;
-    left: 100%;
-    top: 0;
-    margin-top: 0;
+    color: #8aa4af;
+    background-color: #274c5a;
 }
 
 .treeview_menu li{
-    width: 100%;
-    padding: 8px 0 8px 12px;
-    background-color: #2C3B41;
+    /* width: 100%; */
+    padding: 8px 0 8px 0;
+    background-color: #274c5a;
 }
 
 .treeview{
@@ -71,6 +64,10 @@
 
 .list_headers{
     color: #8aa4af;
+}
+
+.list_headers:hover{
+    color: white;
 }
 
 li a{
