@@ -1,7 +1,7 @@
 .container{
     width: 250px;
     height: 140px;
-    background-color: #00C0EF;
+    background-color: #17A2B8;
 }
 
 .top_container{
@@ -44,9 +44,10 @@
     align-items: center;
     column-gap: 1rem;
     color: white;
-    background-color: #00ACD7;
+    background-color: #1591A5;
 }
 
 .cta:hover{
-    background-color: #00A3CB;
+    background-color: #12889a;
+    cursor: pointer;
 }
