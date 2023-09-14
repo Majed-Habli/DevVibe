@@ -40,7 +40,9 @@
     bottom: 0;
 }
 
-.name{
+.outline_container{
+    width: 100%;
+    height: 100%;
     position: relative;
     z-index: 1;
 }

@@ -13,7 +13,7 @@ const PageLayout = () => {
                 <div className={styles.btm_img}>
                     <img src="/lb2.png" alt="bottom left backgroung-image" />
                 </div>
-                <div className={styles.name}>
+                <div className={styles.outline_container}>
                     <Outlet/>
                 </div>
             </div>
