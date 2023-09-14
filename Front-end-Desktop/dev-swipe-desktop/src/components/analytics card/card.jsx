@@ -3,13 +3,13 @@ import styles from '../../styles/analytics-card.module.css';
 import { TbUsersPlus } from 'react-icons/tb';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-const AnalyticsCard = () => {
+const AnalyticsCard = ({data}) => {
 
     return(
         <div className={styles.container}>
             <div className={styles.top_container}>
                 <div className={styles.left_container}>
-                    <div className={styles.number_container}>120</div>
+                    <div className={styles.number_container}>{120}</div>
                     <div className={styles.statement}>new users</div>
                 </div>
                 <div className={styles.right_container}>
