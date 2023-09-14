@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from '../styles/layout.module.css';
 import { Outlet } from "react-router-dom";
+import { AiOutlineUser } from 'react-icons/ai';
 
 const Layout = () => {
     const [showSubMenu, setShowSubMenu] = useState([]);
@@ -27,7 +28,8 @@ const Layout = () => {
         <li className={styles.treeview}>
             <div className={styles.category_container}>
                 <label className={styles.treatitle} htmlFor="dashboardToggle">
-                    <img src="" alt="icon" />
+                    <AiOutlineUser />
+                    
                     <span>Dashboard</span>
                 </label>
                 <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("users")}}/>
