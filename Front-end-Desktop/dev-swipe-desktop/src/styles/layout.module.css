@@ -7,6 +7,9 @@
 .container{
     width: 250px;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: #1E282C;
 }
 
@@ -34,8 +37,17 @@
 
 .treeview_menu{
     width: 100%;
-    padding: 0 1px;
+    padding: 0 10px;
+    position: relative;
+    display: block;
     background-color: #7f4949;
+}
+
+.treeview_menu.close{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: 0;
 }
 
 .treeview_menu li{
@@ -51,8 +63,6 @@
 }
 
 .treatitle{
-    width: 100%;
-    padding: 10px 0 10px 16px;
     color: #79ADCA;
     display: flex;
     align-items: center;
@@ -71,4 +81,18 @@
 
 li a{
     text-decoration: none;
+}
+
+.category_container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px 10px 16px;
+
+}
+
+.arrow{
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
 }
