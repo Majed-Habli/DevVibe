@@ -2,5 +2,33 @@
     width: 250px;
     padding: 15px;
     height: 140px;
+    display: flex;
+    align-items: center;
     background-color: #00C0EF;
+}
+
+.left_container{
+    width: 50%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.number_container{
+    font-weight: 700;
+    font-size: 38px;
+    padding: 0 0 10px 0;
+}
+
+.statement{
+    padding: 0 0 10px 0;
+    font-size: 15px;
+}
+
+.right_container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
