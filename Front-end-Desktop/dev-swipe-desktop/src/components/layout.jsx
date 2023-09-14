@@ -30,32 +30,69 @@ const Layout = () => {
                 <label className={styles.treatitle} htmlFor="dashboardToggle">
                     <AiOutlineUser />
                     
+                    <span>Dashboard</span>
+                </label>
+                <img className={`${styles.arrow} ${isCategoryExpanded("Dashboard") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("Dashboard")}}/>
+            </div>
+            {isCategoryExpanded("Dashboard") && (
+            <div className={styles.cont}>
+
+                <ul className={styles.treeview_menu}>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>New Members</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>Developers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>Recruiters</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            )}
+        </li>
+        <li className={styles.treeview}>
+            <div className={styles.category_container}>
+                <label className={styles.treatitle} htmlFor="dashboardToggle">
+                    <AiOutlineUser />
+                    
                     <span>Users</span>
                 </label>
                 <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("users")}}/>
             </div>
             {isCategoryExpanded("users") && (
+            <div className={styles.cont}>
 
-            <ul className={styles.treeview_menu}>
-                <li>
-                    <a href="">
-                        <img src="" alt="" />
-                        <span className={styles.list_headers}>New Members</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="" alt="" />
-                        <span className={styles.list_headers}>Developers</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="" alt="" />
-                        <span className={styles.list_headers}>Recruiters</span>
-                    </a>
-                </li>
-            </ul>
+                <ul className={styles.treeview_menu}>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>New Members</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>Developers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="" alt="" />
+                            <span className={styles.list_headers}>Recruiters</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             )}
         </li>
     </ul>
