@@ -56,7 +56,8 @@ class AnalyticsController extends Controller
     function analytics(){
 
         $users_count = User::all()->count();
-
+        $new_devs = User::all()->where('has_access', false)->where('user_type_id', '=', 2)->count();
+        $new_recs = User::all()->where('has_access', false)->where('user_type_id', '=', 3)->count();
         $developers_count = User::all()->where('user_type_id', '=', 2)->count();
         $recruiters_count = User::all()->where('user_type_id', '=', 3)->count();
         $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
@@ -68,6 +69,8 @@ class AnalyticsController extends Controller
         return response()->json([
             'status' => 'success',
             'users_count' => $users_count,
+            'new_devs_count' => $new_devs,
+            'new_recs_count' => $new_recs,
             'developer_count' => $developers_count,
             'recruiters_count' => $recruiters_count,
             'male_count' => $male_count,
