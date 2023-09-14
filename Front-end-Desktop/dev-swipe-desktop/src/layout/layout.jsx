@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from '../styles/layout.module.css';
 import { Outlet } from "react-router-dom";
-import Sidebar from "./sidebar/sidebar";
+import Sidebar from "../components/sidebar/sidebar";
 
 const Layout = () => {
     
