@@ -4,7 +4,11 @@ import styles from '../../styles/dashboard.module.css'
 const Dashboard = () =>{
 
     return(
-        <div className={styles.container}>Dashboard</div>
+        <div className={styles.container}>
+            <div className={styles.page_header}>
+                <span>Dashboard</span>
+            </div>
+        </div>
     )
 }
 
