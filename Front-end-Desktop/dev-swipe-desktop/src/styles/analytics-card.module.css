@@ -44,10 +44,10 @@
     align-items: center;
     column-gap: 1rem;
     color: white;
-    background-color: #1591A5;
+    /* background-color: #1591A5; */
 }
 
 .cta:hover{
-    background-color: #12889a;
+    background-color: rgb(18, 136, 154);
     cursor: pointer;
 }

@@ -5,7 +5,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { TbDeviceDesktopCode } from 'react-icons/tb';
 import { CgSmartphoneChip } from 'react-icons/cg';
 
-const AnalyticsCard = ({data,type,backgroundColor}) => {
+const AnalyticsCard = ({data,type,backgroundColor, color}) => {
 
     return(
         <div className={styles.container}>
@@ -17,20 +17,20 @@ const AnalyticsCard = ({data,type,backgroundColor}) => {
                     </div>
                     <div className={styles.right_container}>
                         {type == 'devs' &&(
-                            <TbDeviceDesktopCode color="#1591A5" size={80}/>
+                            <TbDeviceDesktopCode color={color} size={80}/>
                         )}
                         {type == 'recs' &&(
-                            <TbUsersPlus  color="#1591A5" size={80}/>
+                            <TbUsersPlus color={color} size={80}/>
                         )}
                         {type == 'skills' &&(
-                            <CgSmartphoneChip  color="#1591A5" size={80}/>
+                            <CgSmartphoneChip color={color} size={80}/>
                         )}
                         {type == 'countries' &&(
-                            <TbUsersPlus  color="#1591A5" size={80}/>
+                            <TbUsersPlus color={color} size={80}/>
                         )}
                     </div>
                 </div>
-                <div className={styles.cta} styles={{backgroundColor}}>
+                <div className={styles.cta} style={{backgroundColor:color}}>
                     <span>More info</span>
                     <BsFillArrowRightCircleFill fill="white" color="white" size={14}/>
                 </div>
