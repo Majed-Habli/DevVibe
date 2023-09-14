@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./components/layout";
 import Dashboard from "./pages/dashboard/dashboard";
+import Login from "./pages/login/login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,8 +14,11 @@ root.render(
     {/* <App /> */}
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Login />} />
+
+        <Route path="/dashboard" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
