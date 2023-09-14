@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import Layout from "./layout/layout";
 import Dashboard from "./pages/dashboard/dashboard";
 import Login from "./pages/login/login";
+import PageLayout from "./layout/pagelayout";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     {/* <App /> */}
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<PageLayout />}>
+          <Route index element={<Login />} />
+        </Route>
 
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
