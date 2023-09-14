@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Skill;
 use App\Models\UserSkill;
 use App\Models\BlockedUser;
+use App\Models\UserMatch;
 use App\Models\DeveloperDetail;
 use DB;
 
@@ -64,6 +65,7 @@ class AnalyticsController extends Controller
         $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
         $countries = User::distinct()->pluck('country');
         $countries_count = User::distinct()->pluck('country')->count();
+        $matches_count = UserMatch::all()->count();
         $skills = Skill::all()->count();
 
         $popular_stacks = UserSkill::with('Skill')->select('skill_id', DB::raw('COUNT(skill_id) as count'))->groupBy('skill_id')->orderBy('count', 'desc')->take(10)->get();
@@ -80,6 +82,7 @@ class AnalyticsController extends Controller
             'countries' => $countries,
             'popular' => $popular_stacks,
             'skills_count' => $skills,
+            'matches_count' => $matches_count,
             'countries_count' => $countries_count,
         ]);
     }
