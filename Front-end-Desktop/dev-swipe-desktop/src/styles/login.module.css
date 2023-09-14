@@ -57,12 +57,12 @@
     font-weight: 500;
 }
 
-span{
+.cto span{
     color: #FFAA00;
     font-weight: 600;
 }
 
-span:hover{
+.cto span:hover{
     cursor: pointer;
     text-decoration: underline;
 }
