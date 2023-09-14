@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from '../styles/layout.module.css';
 import { Outlet } from "react-router-dom";
 import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineDashboard } from 'react-icons/ai';
 
 const Layout = () => {
     const [showSubMenu, setShowSubMenu] = useState([]);
@@ -27,11 +28,20 @@ const Layout = () => {
         
         <li className={styles.treeview}>
             <div className={styles.category_container}>
-                <label className={styles.treatitle} htmlFor="dashboardToggle">
-                    <AiOutlineUser />
-                    
-                    <span>Dashboard</span>
-                </label>
+                <div>
+                    {isCategoryExpanded("Dashboard") ?(
+                        <label className={styles.treatitle} htmlFor="dashboardToggle">
+                            <AiOutlineDashboard fill="white" />
+                            <span className={styles.selected}>Dashboard</span>
+                        </label>
+                        ):(
+                            <label className={styles.treatitle} htmlFor="dashboardToggle">
+                                <AiOutlineDashboard/>
+                                <span>Dashboard</span>
+                            </label>
+                        )
+                    }
+                </div>
                 <img className={`${styles.arrow} ${isCategoryExpanded("Dashboard") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("Dashboard")}}/>
             </div>
             {isCategoryExpanded("Dashboard") && (
@@ -62,11 +72,20 @@ const Layout = () => {
         </li>
         <li className={styles.treeview}>
             <div className={styles.category_container}>
-                <label className={styles.treatitle} htmlFor="dashboardToggle">
-                    <AiOutlineUser />
-                    
-                    <span>Users</span>
-                </label>
+                <div>
+                {isCategoryExpanded("Dashboard") ?(
+                        <label className={styles.treatitle} htmlFor="dashboardToggle">
+                            <AiOutlineUser fill="white" />
+                            <span className={styles.selected}>User</span>
+                        </label>
+                        ):(
+                            <label className={styles.treatitle} htmlFor="dashboardToggle">
+                                <AiOutlineUser/>
+                                <span>User</span>
+                            </label>
+                        )
+                    }
+                </div>
                 <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("users")}}/>
             </div>
             {isCategoryExpanded("users") && (

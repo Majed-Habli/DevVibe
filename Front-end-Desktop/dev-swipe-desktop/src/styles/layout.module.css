@@ -30,7 +30,8 @@
 
 .header{
     width: 100%;
-    color: #B8C7CE;
+    font-size: 14px;
+    color: #445D61;
     background-color: #1A2226;
     padding: 10px 25px 10px 15px;
 }
@@ -40,13 +41,12 @@
     position: relative;
     display: block;
     color: #8aa4af;
-    background-color: #274c5a;
+    background-color: #2C3B41;
 }
 
 .treeview_menu li{
-    /* width: 100%; */
     padding: 8px 0 8px 0;
-    background-color: #274c5a;
+    background-color: #2C3B41;
 }
 
 .treeview{
@@ -79,7 +79,14 @@ li a{
     justify-content: space-between;
     width: 100%;
     padding: 10px 16px 10px 16px;
+}
 
+.category_container span{
+    font-size: 14px;
+}
+
+.selected{
+    color: white;
 }
 
 .arrow{
