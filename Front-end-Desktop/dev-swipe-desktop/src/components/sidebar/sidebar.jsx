@@ -1,5 +1,5 @@
-import React from "react";
-import styles from '../styles/sidebar.module.css';
+import React, { useState } from "react";
+import styles from '../../styles/sidebar.module.css';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineDashboard } from 'react-icons/ai';
 
