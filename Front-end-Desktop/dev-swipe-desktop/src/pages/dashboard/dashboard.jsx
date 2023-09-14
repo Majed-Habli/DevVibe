@@ -24,11 +24,11 @@ const Dashboard = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
+                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    const obj = data.data;
-                    setInfo(obj);
+                    setInfo(data);
 
                 }else{
                     setError("failed to get data!");
@@ -40,7 +40,7 @@ const Dashboard = () =>{
             console.error("Api returned with a fail:", error);
           }
     }
-
+// console.log(info,"dev count")
     useEffect(()=>{
         getAnalytics();
     },[]);
@@ -51,7 +51,10 @@ const Dashboard = () =>{
                 <span>Dashboard</span>
             </div>
             <div className={styles.card_conatiner}>
-                <AnalyticsCard/>
+                <AnalyticsCard data={info.new_devs_count} type={'devs'} backgroundColor={'#17A2B8'}/>
+                <AnalyticsCard data={info.new_recs_count} type={'recs'} backgroundColor={'#17A2B8'}/>
+                <AnalyticsCard data={info.new_recs_count} type={'skills'} backgroundColor={'#FCC860'}/>
+                <AnalyticsCard data={info.new_recs_count} type={'recs'} backgroundColor={'#17A2B8'}/>
                 {/* <InfoBox/> */}
             </div>
         </div>
