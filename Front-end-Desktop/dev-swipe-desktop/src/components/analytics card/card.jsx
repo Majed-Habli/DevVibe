@@ -5,7 +5,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { TbDeviceDesktopCode } from 'react-icons/tb';
 import { CgSmartphoneChip } from 'react-icons/cg';
 
-const AnalyticsCard = ({data,type,backgroundColor, color}) => {
+const AnalyticsCard = ({data,type,backgroundColor, color, title}) => {
 
     return(
         <div className={styles.container}>
@@ -13,7 +13,7 @@ const AnalyticsCard = ({data,type,backgroundColor, color}) => {
                 <div className={styles.top_container} style={{backgroundColor}}>
                     <div className={styles.left_container}>
                         <div className={styles.number_container}>{data}</div>
-                        <div className={styles.statement}>new users</div>
+                        <div className={styles.statement}>{title}</div>
                     </div>
                     <div className={styles.right_container}>
                         {type == 'devs' &&(

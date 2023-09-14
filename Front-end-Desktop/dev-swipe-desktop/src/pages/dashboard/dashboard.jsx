@@ -51,10 +51,10 @@ const Dashboard = () =>{
                 <span>Dashboard</span>
             </div>
             <div className={styles.card_conatiner}>
-                <AnalyticsCard data={info.new_recs_count} type={'recs'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
-                <AnalyticsCard data={info.new_devs_count} type={'devs'} backgroundColor={'#28A745'} color={'#228E3B'}/>
-                <AnalyticsCard data={info.new_recs_count} type={'skills'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
-                <AnalyticsCard data={info.new_recs_count} type={'countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
+                <AnalyticsCard data={info.new_recs_count} type={'recs'} title={'New Recruiters'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
+                <AnalyticsCard data={info.new_devs_count} type={'devs'} title={'New Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
+                <AnalyticsCard data={info.skills_count} type={'skills'} title={'Skills'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
+                <AnalyticsCard data={info.new_recs_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
                 {/* <InfoBox/> */}
             </div>
         </div>
