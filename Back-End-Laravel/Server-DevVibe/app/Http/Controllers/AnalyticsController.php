@@ -60,9 +60,10 @@ class AnalyticsController extends Controller
         $new_recs = User::all()->where('has_access', false)->where('user_type_id', '=', 3)->count();
         $developers_count = User::all()->where('user_type_id', '=', 2)->count();
         $recruiters_count = User::all()->where('user_type_id', '=', 3)->count();
-        $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
         $female_count = DeveloperDetail::where('gender', '=', 'female')->count();
-        $countries = User::all()->pluck('country');
+        $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
+        $countries = User::distinct()->pluck('country');
+        $skills = Skill::all()->count();
 
         $popular_stacks = UserSkill::with('Skill')->select('skill_id', DB::raw('COUNT(skill_id) as count'))->groupBy('skill_id')->orderBy('count', 'desc')->take(10)->get();
 
@@ -77,6 +78,7 @@ class AnalyticsController extends Controller
             'female_count' => $female_count,
             'countries' => $countries,
             'popular' => $popular_stacks,
+            'skills_count' => $skills,
         ]);
     }
 
