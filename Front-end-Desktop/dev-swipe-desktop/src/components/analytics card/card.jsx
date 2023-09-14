@@ -1,6 +1,6 @@
 import React from "react";
 import styles from '../../styles/analytics-card.module.css';
-import { TbUsersPlus } from 'react-icons/ai';
+import { TbUsersPlus } from 'react-icons/tb';
 
 const AnalyticsCard = () => {
 
@@ -11,7 +11,7 @@ const AnalyticsCard = () => {
                 <div className={styles.statement}>new users</div>
             </div>
             <div className={styles.right_container}>
-                <TbUsersPlus fill="white" />
+                <TbUsersPlus fill="white" color="white" size={80}/>
             </div>
         </div>
     )
