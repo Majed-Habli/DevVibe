@@ -39,7 +39,6 @@ const Dashboard = () =>{
             console.error("Api returned with a fail:", error);
           }
     }
-// console.log(info,"dev count")
     useEffect(()=>{
         getAnalytics();
     },[]);
