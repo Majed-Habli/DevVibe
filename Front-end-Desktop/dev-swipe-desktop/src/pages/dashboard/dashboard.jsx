@@ -56,10 +56,10 @@ const Dashboard = () =>{
                 <AnalyticsCard data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
             </div>
             <div className={styles.card_conatiner}>
-                <InfoBox data={info.users_count} type={'recs'} title={'Users'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
+                <InfoBox data={info.users_count} type={'user'} title={'Users'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
                 <InfoBox data={info.developer_count} type={'devs'} title={'Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
-                <InfoBox data={info.recruiters_count} type={'skills'} title={'Recruiters'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
-                <InfoBox data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
+                <InfoBox data={info.recruiters_count} type={'recs'} title={'Recruiters'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
+                <InfoBox data={info.matches_count} type={'matches'} title={'Matches'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import { TbUsersPlus } from 'react-icons/tb';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { TbDeviceDesktopCode } from 'react-icons/tb';
 import { CgSmartphoneChip } from 'react-icons/cg';
+import { BiWorld } from 'react-icons/bi';
 
 const AnalyticsCard = ({data,type,backgroundColor, color, title}) => {
 
@@ -26,7 +27,7 @@ const AnalyticsCard = ({data,type,backgroundColor, color, title}) => {
                             <CgSmartphoneChip color={color} size={80}/>
                         )}
                         {type == 'countries' &&(
-                            <TbUsersPlus color={color} size={80}/>
+                            <BiWorld color={color} size={80}/>
                         )}
                     </div>
                 </div>
