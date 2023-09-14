@@ -13,7 +13,7 @@ const AnalyticsCard = ({data}) => {
                     <div className={styles.statement}>new users</div>
                 </div>
                 <div className={styles.right_container}>
-                    <TbUsersPlus  color="#00A3CB" size={80}/>
+                    <TbUsersPlus  color="#1591A5" size={80}/>
                 </div>
             </div>
             <div className={styles.cta}>
