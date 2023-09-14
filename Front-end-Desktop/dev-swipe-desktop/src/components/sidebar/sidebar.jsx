@@ -47,7 +47,7 @@ const Sidebar = () => {
 
                         <ul className={styles.treeview_menu}>
                             <li>
-                                <a href="">
+                                <a href="/dashboard">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>New Members</span>
                                 </a>
