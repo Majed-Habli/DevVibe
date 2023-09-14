@@ -13,12 +13,12 @@ const AnalyticsCard = () => {
                     <div className={styles.statement}>new users</div>
                 </div>
                 <div className={styles.right_container}>
-                    <TbUsersPlus fill="white" color="white" size={80}/>
+                    <TbUsersPlus  color="#00A3CB" size={80}/>
                 </div>
             </div>
             <div className={styles.cta}>
                 <span>More info</span>
-                <BsFillArrowRightCircleFill fill="white" color="white"/>
+                <BsFillArrowRightCircleFill fill="white" color="white" size={14}/>
             </div>
         </div>
     )
