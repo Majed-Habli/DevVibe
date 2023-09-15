@@ -22,7 +22,7 @@ const Sidebar = ({status}) => {
     console.log('inner', navbarOpen)
 
     return(
-        <div className={`${navbarOpen? styles.container: styles.show_menu}`}>
+        <div className={`${navbarOpen? styles.show_menu: styles.container}`}>
             <div className={styles.logo}>
                 <img src="/Logo2-0.png" alt="app logo" />
             </div>

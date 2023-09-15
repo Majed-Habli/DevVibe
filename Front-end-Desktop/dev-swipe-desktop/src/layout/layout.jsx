@@ -5,15 +5,20 @@ import Sidebar from "../components/sidebar/sidebar";
 import { FiMenu } from 'react-icons/fi';
 
 const Layout = () => {
-    const [isOpen,setIsOpen] =useState(true);
+    const [isOpen,setIsOpen] =useState(false);
 
     const handleClick = () => {
         setIsOpen(!isOpen);
     }
+    // useEffect(()=>{
+    //     setIsOpen(status)
+    // },[isOpen])
+    console.log('inner', isOpen)
+
 
     return(
         <div className={styles.container}>
-            <div className={styles.Sidebar_container}>
+            <div className={`${isOpen? styles.show_menu: styles.Sidebar_container}`}>
                 <Sidebar status={isOpen}/>
             </div>
             <div className={styles.outlet_container}>
