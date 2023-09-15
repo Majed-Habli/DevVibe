@@ -41,9 +41,12 @@ class AnalyticsController extends Controller
         
     }
 
-    function oldDevelopers(){
-
-        $user = User::all()->where('has_access', true)->where('user_type_id', '=', 2);
+    function oldDevelopers($search = Null){
+        if($search == " "){
+            $user = User::all()->where('has_access', true)->where('user_type_id', '=',2);
+        }else{
+            $user = User::where('user_name', 'LIKE', "%$search%")->where('has_access', true)->where('user_type_id', '=', 2)->get();
+        }
 
         return response()->json([
             'status' => 'success',
