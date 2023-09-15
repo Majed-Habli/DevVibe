@@ -13,7 +13,7 @@
 
 .Sidebar_container{
     width: 270px;
-    transition:ease-in-out 0.85s;
+    transition:ease-in-out 0.95s;
     height: 100%;
 }
 
@@ -52,7 +52,7 @@
     max-width: 210px;
     overflow: hidden;
     height: 100vh;
-    /* position: absolute; */
+    /* position: fixed; */
     transform: translateX(-100px);
     transition: ease-in-out 1s;
     /* top: 0; */
