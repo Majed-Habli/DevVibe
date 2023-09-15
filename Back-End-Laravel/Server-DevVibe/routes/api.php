@@ -29,8 +29,8 @@ Route::group(['prefix'=>'user'], function (){
     Route::group(['prefix' => 'admin'], function(){
         Route::get('new_developers/{search?}', [AnalyticsController::class, 'newDevelopers']);
         Route::get('new_recruiters/{search?}', [AnalyticsController::class, 'newRecruiters']);
-        Route::get('old_recruiters', [AnalyticsController::class, 'oldRecruiters']);
-        Route::get('old_developers', [AnalyticsController::class, 'oldDevelopers']);
+        Route::get('old_recruiters/{search?}', [AnalyticsController::class, 'oldRecruiters']);
+        Route::get('old_developers/{search?}', [AnalyticsController::class, 'oldDevelopers']);
         Route::get('analytics', [AnalyticsController::class, 'analytics']);
         Route::post('give_access', [AnalyticsController::class, 'giveAccess']);
         Route::post('deny_access', [AnalyticsController::class, 'denyAccess']);
