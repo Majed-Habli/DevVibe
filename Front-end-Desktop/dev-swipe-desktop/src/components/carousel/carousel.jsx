@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import './carousel.css';
+import '../../styles/carousel.css';
 
 // import required modules
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
