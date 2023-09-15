@@ -3,6 +3,7 @@
     height: 226px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #F8F9FA;
     border: 1px solid #DBDBDB;
     border-radius: 4px;
@@ -50,7 +51,7 @@
 .extra_description{
     padding: 0 0.4rem;
     font-size: 12.8px;
-    /* line-height: 1.5rem; */
+    line-height: 1.5rem;
 }
 
 .row{
