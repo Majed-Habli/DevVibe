@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from '../../styles/sidebar.module.css';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineDashboard } from 'react-icons/ai';
 
 const Sidebar = ({status}) => {
     const [showSubMenu, setShowSubMenu] = useState([]);
+    const [navbarOpen, setNavbarOpen] = useState('');
 
     const toggleShowMenu = (category) =>{
         if (showSubMenu.includes(category)) {
@@ -15,8 +16,13 @@ const Sidebar = ({status}) => {
     }
     const isCategoryExpanded = (category) => showSubMenu.includes(category);
 
+    useEffect(()=>{
+        setNavbarOpen(status)
+    },[status])
+    console.log('inner', navbarOpen)
+
     return(
-        <div className={styles.container}>
+        <div className={`${navbarOpen? styles.container: styles.show_menu}`}>
             <div className={styles.logo}>
                 <img src="/Logo2-0.png" alt="app logo" />
             </div>

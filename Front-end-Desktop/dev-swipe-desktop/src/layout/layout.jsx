@@ -5,11 +5,12 @@ import Sidebar from "../components/sidebar/sidebar";
 import { FiMenu } from 'react-icons/fi';
 
 const Layout = () => {
-    const [isOpen,setIsOpen] =useState(false);
+    const [isOpen,setIsOpen] =useState(true);
 
     const handleClick = () => {
-        setIsOpen(true);
+        setIsOpen(!isOpen);
     }
+
     return(
         <div className={styles.container}>
             <div className={styles.Sidebar_container}>

@@ -10,9 +10,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    /* background-color: #343A40; */
     background-color: #1E282C;
-    /* 1E282C */
+    /* transition:ease-in-out 0.2s; */
 }
 
 .logo{
@@ -95,4 +94,23 @@ li a{
     width: 24px;
     height: 24px;
     object-fit: cover;
+}
+
+.show_menu{
+    width: 0;
+    max-width: 230px;
+    overflow: hidden;
+    height: 100vh;
+    position: absolute;
+    transform: translateX(-100px);
+    transition:ease-in-out 0.2s;
+    top: 0;
+    left: 0;
+    background-color: #1E282C;
+}
+
+.container .show_menu{
+    width: 100%;
+    transition:ease-in-out 0.2s;
+    transform: translateX(0px);
 }
