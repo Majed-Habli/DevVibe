@@ -24,7 +24,7 @@ const NewRecruites = () => {
             }else{
 
                 const response = await sendRequest({
-                    route: '/user/admin/new_recruiters/${search}',
+                    route: `/user/admin/new_recruiters/${search}`,
                     method: requestMethods.GET,
                 });
                 const data = response;
