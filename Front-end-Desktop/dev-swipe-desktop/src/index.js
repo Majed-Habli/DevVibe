@@ -9,6 +9,7 @@ import Dashboard from "./pages/dashboard/dashboard";
 import Login from "./pages/login/login";
 import PageLayout from "./layout/pagelayout";
 import Users from "./pages/view users/users";
+import NewRecruites from "./pages/view users/newrecruites";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +23,11 @@ root.render(
 
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="/dashboard/users" element={<Users />} />
+          <Route path="/dashboard/users/new-developers" element={<Users />} />
+          <Route
+            path="/dashboard/users/new-recruiters"
+            element={<NewRecruites />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

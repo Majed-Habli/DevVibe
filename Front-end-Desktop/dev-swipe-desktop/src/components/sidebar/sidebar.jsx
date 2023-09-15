@@ -91,13 +91,13 @@ const Sidebar = () => {
 
                         <ul className={styles.treeview_menu}>
                             <li>
-                                <a href="/dashboard/users">
+                                <a href="/dashboard/users/new-developers">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>New Developers</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="/dashboard/users/new-recruiters">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>New Recruiters</span>
                                 </a>

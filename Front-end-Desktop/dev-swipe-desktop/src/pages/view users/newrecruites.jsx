@@ -5,16 +5,16 @@ import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 
-const Users = () => {
+const NewRecruites = () => {
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
-    const [info,setInfo] = useState([]);
+    const [recruites,setNewRecruites] = useState([]);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
     };
-    
-    const getNewDevelopers = async () =>{
+
+    const getNewRecruiters = async () =>{
         const token = localStorageAction("token");
 
         try {
@@ -24,15 +24,15 @@ const Users = () => {
             }else{
 
                 const response = await sendRequest({
-                    route: '/user/admin/new_developers',
+                    route: '/user/admin/new_recruiters',
                     method: requestMethods.GET,
                 });
                 const data = response;
+                console.log('data.data',data.data)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    setInfo(data.data);
-                    console.log(info)
+                    setNewRecruites(data.data);
 
                 }else{
                     setError("failed to get data!");
@@ -44,23 +44,24 @@ const Users = () => {
             console.error("Api returned with a fail:", error);
           }
     }
-
+    console.log('infooooo',recruites)
+    
     useEffect(()=>{
-        getNewDevelopers();
+        getNewRecruiters();
     },[]);
 
     return(
         <div className={styles.container}>
             <div className={styles.page_header}>
-                <span>New Developers</span>
+                <span>New Recruites</span>
             </div>
             <div className={styles.searchable}>
                 <div className={styles.top_bar}>
                     <input type="text" placeholder="Search users here..." value={search} onChange={inputChange}/>
                 </div>
                 <div className={styles.users_container}>
-                    {info.map((inf)=>(
-                        <UserCard key={inf.id} data={inf}/>
+                    {Object.values(recruites).map((rec)=>(
+                        <UserCard key={rec.id} data={rec}/>
                     ))}
                 </div>
             </div>
@@ -68,4 +69,4 @@ const Users = () => {
     )
 }
 
-export default Users;
+export default NewRecruites;
