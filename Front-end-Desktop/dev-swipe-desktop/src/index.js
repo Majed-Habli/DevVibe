@@ -15,7 +15,6 @@ import Developers from "./pages/view users/developers";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PageLayout />}>
@@ -28,6 +27,10 @@ root.render(
           <Route
             path="/dashboard/users/new-recruiters"
             element={<NewRecruites />}
+          />
+          <Route
+            path="/dashboard/users/old-developers"
+            element={<Developers />}
           />
           <Route
             path="/dashboard/users/old-recruiters"

@@ -103,13 +103,13 @@ const Sidebar = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="/dashboard/users/old-recruiters">
+                                <a href="/dashboard/users/old-developers">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>Developers</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="/dashboard/users/old-recruiters">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>Recruiters</span>
                                 </a>
