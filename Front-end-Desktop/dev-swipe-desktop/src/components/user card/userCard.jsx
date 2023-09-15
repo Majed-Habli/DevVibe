@@ -6,11 +6,11 @@ const UserCard = () =>{
 
     return(
         <div className={styles.container}>
-            <div>role</div>
+            <div className={styles.role}>role</div>
             <div className={styles.user_details}>
                 <div className={styles.left_container}>
                     <div className={styles.user_name}>Majed Habli</div>
-                    <div className={styles.user_description}><span>About:</span>description</div>
+                    <div className={styles.user_description}><span>About:</span>description description description description description</div>
                     <div className={styles.extra_description}>
                         <div className={styles.row}>
                             <img src="" alt="icon-address" />
