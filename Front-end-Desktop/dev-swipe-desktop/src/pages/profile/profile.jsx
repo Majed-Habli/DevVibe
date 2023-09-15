@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from '../../styles/profile.module.css';
-import HeaderComp from "../../components/profile header/headercard";
+import HeaderComp from "../../components/header component/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
 import CarouselComp from "../../components/carousel/carousel";
 import { sendRequest } from "../../utils/functions/axios";
