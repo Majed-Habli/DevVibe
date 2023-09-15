@@ -24,7 +24,7 @@ const NewRecruites = () => {
             }else{
 
                 const response = await sendRequest({
-                    route: '/user/admin/new_recruiters',
+                    route: '/user/admin/new_recruiters/${search}',
                     method: requestMethods.GET,
                 });
                 const data = response;
@@ -48,7 +48,7 @@ const NewRecruites = () => {
     
     useEffect(()=>{
         getNewRecruiters();
-    },[]);
+    },[search]);
 
     return(
         <div className={styles.container}>
