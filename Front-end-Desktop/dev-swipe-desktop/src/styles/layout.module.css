@@ -8,7 +8,7 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    position: relative;
+    /* position: relative; */
 }
 
 .Sidebar_container{

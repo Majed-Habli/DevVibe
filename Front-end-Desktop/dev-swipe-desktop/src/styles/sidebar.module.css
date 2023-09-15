@@ -7,9 +7,9 @@
 .container{
     width: 230px;
     height: 100vh;
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
     background-color: #1E282C;
     transition:ease-in-out 0.8s;
 }
@@ -101,11 +101,11 @@ li a{
     max-width: 230px;
     overflow: hidden;
     height: 100vh;
-    position: absolute;
+    /* position: absolute; */
     transform: translateX(-100px);
     transition:ease-in-out 1.3s;
-    top: 0;
-    left: 0;
+    /* top: 0; */
+    /* left: 0; */
     background-color: #1E282C;
 }
 
