@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import styles from './headercard.module.css';
+import styles from '../../styles/headercard.module.css';
 import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
-import EditForm from "../models/edit form/editform";
+// import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
 
-    const [showModel, setShowModel] = useState(false);
+    // const [showModel, setShowModel] = useState(false);
     const [user, setUser] = useState({});
 
-    const ViewModel = () =>{
-        setShowModel(true);
-    }
+    // const ViewModel = () =>{
+    //     setShowModel(true);
+    // }
     // console.log('linked', user.profile_image_url)
 
     const goTo = (url) =>{
@@ -36,7 +36,7 @@ const HeaderComp = ({data}) =>{
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                <CustomButton title={'Edit'} onClick={ViewModel}/>
+                {/* <CustomButton title={'Edit'} onClick={ViewModel}/> */}
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
@@ -87,11 +87,11 @@ const HeaderComp = ({data}) =>{
                     <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)}/>
                 )}
             </div>
-            {showModel && (
+            {/* {showModel && (
                 <div className={styles.popup_background}>
                     <EditForm isOpen={setShowModel} data={data}/>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }
