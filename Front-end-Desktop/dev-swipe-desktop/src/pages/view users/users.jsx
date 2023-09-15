@@ -4,7 +4,11 @@ import styles from '../../styles/users.module.css';
 const Users = () => {
 
     return(
-        <div>Users</div>
+        <div className={styles.container}>
+            <div className={styles.page_header}>
+                <span>Dashboard</span>
+            </div>
+        </div>
     )
 }
 
