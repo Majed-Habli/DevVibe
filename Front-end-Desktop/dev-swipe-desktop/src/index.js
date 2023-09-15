@@ -12,6 +12,7 @@ import Users from "./pages/view users/users";
 import NewRecruites from "./pages/view users/newrecruites";
 import Developers from "./pages/view users/developers";
 import Recruiters from "./pages/view users/recruiters";
+import Profile from "./pages/profile/profile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +38,7 @@ root.render(
             path="/dashboard/users/old-recruiters"
             element={<Recruiters />}
           />
+          <Route path="/dashboard/users/profile/:id" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
