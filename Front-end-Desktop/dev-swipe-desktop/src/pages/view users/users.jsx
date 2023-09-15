@@ -9,7 +9,7 @@ const Users = () => {
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
     const [info,setInfo] = useState([]);
-
+    // `/user/developer/view_all_skills/
     const inputChange = (event) => {
         setSearch(event.target.value);
     };
@@ -24,10 +24,11 @@ const Users = () => {
             }else{
 
                 const response = await sendRequest({
-                    route: '/user/admin/new_developers',
+                    route: `/user/admin/new_developers/${search}`,
                     method: requestMethods.GET,
                 });
                 const data = response;
+                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -47,7 +48,7 @@ const Users = () => {
 
     useEffect(()=>{
         getNewDevelopers();
-    },[]);
+    },[search]);
 
     return(
         <div className={styles.container}>
