@@ -29,7 +29,7 @@ const UserCard = ({data}) =>{
                 </div>
             </div>
             <div className={styles.cto}>
-                <CustomButton title={'view Profile'}  width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'}/>
+                <CustomButton title={'view Profile'} width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'}/>
             </div>
         </div>
     )
