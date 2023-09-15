@@ -3,7 +3,7 @@ import styles from '../../styles/sidebar.module.css';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineDashboard } from 'react-icons/ai';
 
-const Sidebar = () => {
+const Sidebar = ({status}) => {
     const [showSubMenu, setShowSubMenu] = useState([]);
 
     const toggleShowMenu = (category) =>{
