@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from './profile.module.css';
+import styles from '../../styles/profile.module.css';
 import HeaderComp from "../../components/profile header/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
 import CarouselComp from "../../components/carousel/carousel";
