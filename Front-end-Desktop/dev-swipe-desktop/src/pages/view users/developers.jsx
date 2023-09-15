@@ -8,13 +8,13 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 const Developers = () => {
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
-    const [recruites,setNewRecruites] = useState([]);
+    const [developers,setOldRecruites] = useState([]);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
     };
 
-    const getNewRecruiters = async () =>{
+    const getOldDevelopers = async () =>{
         const token = localStorageAction("token");
 
         try {
@@ -28,11 +28,10 @@ const Developers = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log('data.data',data.data)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    setNewRecruites(data.data);
+                    setOldRecruites(data.data);
 
                 }else{
                     setError("failed to get data!");
@@ -44,24 +43,23 @@ const Developers = () => {
             console.error("Api returned with a fail:", error);
           }
     }
-    console.log('infooooo',recruites)
     
     useEffect(()=>{
-        getNewRecruiters();
+        getOldDevelopers();
     },[search]);
 
     return(
         <div className={styles.container}>
             <div className={styles.page_header}>
-                <span>New Recruites</span>
+                <span>Developers</span>
             </div>
             <div className={styles.searchable}>
                 <div className={styles.top_bar}>
                     <input type="text" placeholder="Search users here..." value={search} onChange={inputChange}/>
                 </div>
                 <div className={styles.users_container}>
-                    {Object.values(recruites).map((rec)=>(
-                        <UserCard key={rec.id} data={rec}/>
+                    {developers.map((dev)=>(
+                        <UserCard key={dev.id} data={dev}/>
                     ))}
                 </div>
             </div>
