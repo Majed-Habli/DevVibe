@@ -14,14 +14,22 @@ use DB;
 class AnalyticsController extends Controller
 {
     //
-    function newDevelopers(){
+    function newDevelopers($search = Null){
 
-        $user = User::all()->where('has_access', false)->where('user_type_id', '=', 2);
-
-        return response()->json([
-            'status' => 'success',
-            'data' => $user
-        ]);
+        if($search == " "){
+            $user = User::all()->where('has_access', false)->where('user_type_id', '=', 2);
+            return response()->json([
+                'status' => 'success',
+                'data' => $user
+            ]);
+            
+        }else{
+            $user = User::where('user_name', 'LIKE', "%$search%")->where('has_access', false)->where('user_type_id', '=', 2)->get();
+            return response()->json([
+                'status' => 'success',
+                'data' => $user
+            ]);
+        }
     }
 
     function newRecruiters(){
