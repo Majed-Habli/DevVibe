@@ -24,7 +24,6 @@
 }
 
 .top_bar{
-    /* background-color: aquamarine; */
     padding: 1rem 0;
 }
 
@@ -43,5 +42,4 @@
     flex-wrap: wrap;
     display: flex;
     gap: 1rem;
-    background-color: #d23838;
 }
