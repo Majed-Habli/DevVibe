@@ -11,6 +11,7 @@ import PageLayout from "./layout/pagelayout";
 import Users from "./pages/view users/users";
 import NewRecruites from "./pages/view users/newrecruites";
 import Developers from "./pages/view users/developers";
+import Recruiters from "./pages/view users/recruiters";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -34,7 +35,7 @@ root.render(
           />
           <Route
             path="/dashboard/users/old-recruiters"
-            element={<Developers />}
+            element={<Recruiters />}
           />
         </Route>
       </Routes>
