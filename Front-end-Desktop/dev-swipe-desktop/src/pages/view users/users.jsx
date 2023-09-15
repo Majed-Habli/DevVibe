@@ -3,6 +3,11 @@ import styles from '../../styles/users.module.css';
 
 const Users = () => {
     const [search, setSearch] = useState('');
+    const [error, setError] = useState('');
+
+    const inputChange = (event) => {
+        setSearch(event.target.value);
+    };
 
     return(
         <div className={styles.container}>
