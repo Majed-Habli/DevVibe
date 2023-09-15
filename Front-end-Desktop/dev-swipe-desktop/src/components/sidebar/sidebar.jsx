@@ -25,7 +25,7 @@ const Sidebar = () => {
                 <li className={styles.header}>Main navigation</li>
                 
                 <li className={styles.treeview}>
-                    <div className={styles.category_container}>
+                    <div className={styles.category_container} onClick={()=>{toggleShowMenu("Dashboard")}}>
                         <div>
                             {isCategoryExpanded("Dashboard") ?(
                                 <label className={styles.treatitle} htmlFor="dashboardToggle">
@@ -40,7 +40,7 @@ const Sidebar = () => {
                                 )
                             }
                         </div>
-                        <img className={`${styles.arrow} ${isCategoryExpanded("Dashboard") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("Dashboard")}}/>
+                        <img className={`${styles.arrow} ${isCategoryExpanded("Dashboard") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon"/>
                     </div>
                     {isCategoryExpanded("Dashboard") && (
                     <div className={styles.cont}>
@@ -69,7 +69,7 @@ const Sidebar = () => {
                     )}
                 </li>
                 <li className={styles.treeview}>
-                    <div className={styles.category_container}>
+                    <div className={styles.category_container}  onClick={()=>{toggleShowMenu("users")}}>
                         <div>
                         {isCategoryExpanded("Dashboard") ?(
                                 <label className={styles.treatitle} htmlFor="dashboardToggle">
@@ -77,14 +77,14 @@ const Sidebar = () => {
                                     <span className={styles.selected}>User</span>
                                 </label>
                                 ):(
-                                    <label className={styles.treatitle} htmlFor="dashboardToggle">
+                                    <label className={styles.treatitle} htmlFor="dashboardToggle" >
                                         <AiOutlineUser/>
                                         <span>User</span>
-                                    </label>
+                                    </label >
                                 )
                             }
                         </div>
-                        <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon" onClick={()=>{toggleShowMenu("users")}}/>
+                        <img className={`${styles.arrow} ${isCategoryExpanded("users") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon"/>
                     </div>
                     {isCategoryExpanded("users") && (
                     <div className={styles.cont}>
@@ -93,7 +93,13 @@ const Sidebar = () => {
                             <li>
                                 <a href="">
                                     <img src="" alt="" />
-                                    <span className={styles.list_headers}>New Members</span>
+                                    <span className={styles.list_headers}>New Developers</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="" alt="" />
+                                    <span className={styles.list_headers}>New Recruiters</span>
                                 </a>
                             </li>
                             <li>
