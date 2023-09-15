@@ -71,13 +71,13 @@ const Sidebar = () => {
                 <li className={styles.treeview}>
                     <div className={styles.category_container}  onClick={()=>{toggleShowMenu("users")}}>
                         <div>
-                        {isCategoryExpanded("Dashboard") ?(
-                                <label className={styles.treatitle} htmlFor="dashboardToggle">
+                        {isCategoryExpanded("users") ?(
+                                <label className={styles.treatitle} htmlFor="usersToggle">
                                     <AiOutlineUser fill="white" />
                                     <span className={styles.selected}>User</span>
                                 </label>
                                 ):(
-                                    <label className={styles.treatitle} htmlFor="dashboardToggle" >
+                                    <label className={styles.treatitle} htmlFor="usersToggle" >
                                         <AiOutlineUser/>
                                         <span>User</span>
                                     </label >
@@ -91,7 +91,7 @@ const Sidebar = () => {
 
                         <ul className={styles.treeview_menu}>
                             <li>
-                                <a href="">
+                                <a href="/dashboard/users">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>New Developers</span>
                                 </a>

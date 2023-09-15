@@ -8,6 +8,7 @@ import Layout from "./layout/layout";
 import Dashboard from "./pages/dashboard/dashboard";
 import Login from "./pages/login/login";
 import PageLayout from "./layout/pagelayout";
+import Users from "./pages/view users/users";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,7 +22,7 @@ root.render(
 
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/dashboard/users" element={<Users />} />
         </Route>
       </Routes>
     </BrowserRouter>
