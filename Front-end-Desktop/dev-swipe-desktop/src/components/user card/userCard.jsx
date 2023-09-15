@@ -23,7 +23,7 @@ const UserCard = () =>{
                     </div>
                 </div>
                 <div className={styles.right_container}>
-                    <img src="/rb2.png" alt="user-profile" />
+                    <img src="/fake-profile.png" alt="user-profile" />
                 </div>
             </div>
             <div className={styles.cto}>
