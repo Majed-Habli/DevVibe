@@ -5,8 +5,9 @@ import { HiOutlineMail } from 'react-icons/hi';
 import CustomButton from '../custom button/custombutton';
 
 const UserCard = ({data}) =>{
-    const viewUserProfile = ()=>{
-        window.location.href = `/dashboard/users/profile/${data.id}`
+    const viewUserProfile = ({id})=>{
+        window.location.href = `/dashboard/users/profile/${id}`;
+
     }
 
     return(
@@ -32,7 +33,7 @@ const UserCard = ({data}) =>{
                 </div>
             </div>
             <div className={styles.cto}>
-                <CustomButton title={'view Profile'} width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={()=>viewUserProfile()}/>
+                <CustomButton title={'view Profile'} width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={()=>viewUserProfile({id:data.id})}/>
             </div>
         </div>
     )
