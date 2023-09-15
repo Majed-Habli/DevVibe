@@ -10,11 +10,6 @@ const Layout = () => {
     const handleClick = () => {
         setIsOpen(!isOpen);
     }
-    // useEffect(()=>{
-    //     setIsOpen(status)
-    // },[isOpen])
-    console.log('inner', isOpen)
-
 
     return(
         <div className={styles.container}>
