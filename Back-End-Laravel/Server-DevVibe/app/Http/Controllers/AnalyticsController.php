@@ -18,28 +18,27 @@ class AnalyticsController extends Controller
 
         if($search == " "){
             $user = User::all()->where('has_access', false)->where('user_type_id', '=', 2);
-            return response()->json([
-                'status' => 'success',
-                'data' => $user
-            ]);
-            
         }else{
             $user = User::where('user_name', 'LIKE', "%$search%")->where('has_access', false)->where('user_type_id', '=', 2)->get();
-            return response()->json([
-                'status' => 'success',
-                'data' => $user
-            ]);
         }
-    }
-
-    function newRecruiters(){
-
-        $user = User::all()->where('has_access', false)->where('user_type_id', '=', 3);
-
         return response()->json([
             'status' => 'success',
             'data' => $user
         ]);
+    }
+
+    function newRecruiters($search = Null){
+
+        if($search == " "){
+            $user = User::all()->where('has_access', false)->where('user_type_id', '=', 3);
+        }else{
+            $user = User::where('user_name', 'LIKE', "%$search%")->where('has_access', false)->where('user_type_id', '=', 3)->get();
+        }
+        return response()->json([
+            'status' => 'success',
+            'data' => $user
+        ]);
+        
     }
 
     function oldDevelopers(){
