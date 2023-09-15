@@ -7,7 +7,6 @@ import CustomButton from '../custom button/custombutton';
 const UserCard = ({data}) =>{
     const viewUserProfile = ({id})=>{
         window.location.href = `/dashboard/users/profile/${id}`;
-
     }
 
     return(
