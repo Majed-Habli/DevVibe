@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from '../../styles/usercard.module.css';
+import { RiBuilding2Line } from 'react-icons/ri';
+import { HiOutlineMail } from 'react-icons/hi';
 import CustomButton from '../custom button/custombutton';
 
 const UserCard = () =>{
@@ -13,12 +15,14 @@ const UserCard = () =>{
                     <div className={styles.user_description}><span>About:</span>description description description description description</div>
                     <div className={styles.extra_description}>
                         <div className={styles.row}>
-                            <img src="" alt="icon-address" />
-                            <div>country</div>
+                            <RiBuilding2Line color="#1f2d3d" size={15}/>
+                            {/* <img src="" alt="icon-address" /> */}
+                            <div>country:</div>
                         </div>
                         <div className={styles.row}>
-                            <img src="" alt="icon-email" />
-                            <div>email</div>
+                            {/* <img src="" alt="icon-email" /> */}
+                            <HiOutlineMail color="#1f2d3d" size={15}/>
+                            <div>email:</div>
                         </div>
                     </div>
                 </div>
@@ -27,7 +31,8 @@ const UserCard = () =>{
                 </div>
             </div>
             <div className={styles.cto}>
-                <CustomButton title={'view Profile'}/>
+                <CustomButton title={'view Profile'}  width={120} height={30} 
+display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'}/>
             </div>
         </div>
     )
