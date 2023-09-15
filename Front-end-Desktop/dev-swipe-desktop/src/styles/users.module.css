@@ -18,3 +18,7 @@
     display: flex;
     align-items: flex-end;
 }
+
+.page_header span{
+    font-size: 24px;
+}
