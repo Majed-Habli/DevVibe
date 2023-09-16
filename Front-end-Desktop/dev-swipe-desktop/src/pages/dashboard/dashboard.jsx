@@ -65,7 +65,11 @@ const Dashboard = () =>{
                 <InfoBox data={info.matches_count} type={'matches'} title={'Matches'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
             </div>
             <div className={styles.card_conatiner}>
-                <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
+                <div className={styles.left_container}></div>
+                <div className={styles.right_container}>
+                    <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
+                    <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
+                </div>
             </div>
 
         </div>
