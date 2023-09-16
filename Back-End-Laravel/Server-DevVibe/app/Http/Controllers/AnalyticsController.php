@@ -108,7 +108,7 @@ class AnalyticsController extends Controller
         $recruitersArr = [];
 
         foreach ($recruiters_chart_count as $key => $value) {
-            $usermcount[(int)$key] = count($value);
+            $recruitersmcount[(int)$key] = count($value);
         }
 
         $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -134,6 +134,8 @@ class AnalyticsController extends Controller
         foreach ($developers_chart_count as $key => $value) {
             $usermcount[(int)$key] = count($value);
         }
+
+        // $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         for ($i = 1; $i <= 12; $i++) {
             if (!empty($usermcount[$i])) {
