@@ -6,6 +6,7 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import InfoBox from "../../components/widgets/info-box";
 import BarChart from "../../components/bar chart/barchart";
+import Map from "../../components/bar chart/map";
 
 const Dashboard = () =>{
     const [error, setError] = useState('');
@@ -49,6 +50,7 @@ const Dashboard = () =>{
 
     return(
         <div className={styles.container}>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.css" type="text/css" media="screen"/>
             <div className={styles.page_header}>
                 <span>Dashboard</span>
             </div>
@@ -64,8 +66,10 @@ const Dashboard = () =>{
                 <InfoBox data={info.recruiters_count} type={'recs'} title={'Recruiters'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
                 <InfoBox data={info.matches_count} type={'matches'} title={'Matches'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
             </div>
-            <div className={styles.card_conatiner}>
-                <div className={styles.left_container}></div>
+            <div className={`${styles.card_conatiner} ${styles.cont}`}>
+                <div className={styles.left_container}>
+                    <Map/>
+                </div>
                 <div className={styles.right_container}>
                     <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
                     <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
