@@ -67,9 +67,9 @@ const HeaderComp = ({data}) =>{
         <div className={styles.container}>
             <div className={styles.top_row}>
                 {blocked ? (
-                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
+                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
                 ):(
-                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
+                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
                 )}
             </div>
             <div className={styles.middle_row}>
