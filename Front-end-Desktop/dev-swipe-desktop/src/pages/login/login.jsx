@@ -68,6 +68,9 @@ const Login = () =>{
 
     return (
         <div className={styles.container}>
+            <div className={styles.header}>
+                <img src="/Logo1-0.png" alt="logo" />
+            </div>
             <div className={styles.box_conatiner}>
                 <div className={styles.comp_container}>
                     <div className={styles.title}>Login</div>
