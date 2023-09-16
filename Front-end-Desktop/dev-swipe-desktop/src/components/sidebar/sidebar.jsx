@@ -55,19 +55,13 @@ const Sidebar = ({status}) => {
                             <li>
                                 <a href="/dashboard">
                                     <img src="" alt="" />
-                                    <span className={styles.list_headers}>New Members</span>
+                                    <span className={styles.list_headers}>Summary</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="">
                                     <img src="" alt="" />
-                                    <span className={styles.list_headers}>Developers</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="" alt="" />
-                                    <span className={styles.list_headers}>Recruiters</span>
+                                    <span className={styles.list_headers}>Stats</span>
                                 </a>
                             </li>
                         </ul>
