@@ -140,7 +140,7 @@ class AnalyticsController extends Controller
 
         $user_id = $request->user_id;
 
-        $blocked_user = BlockedUser::find($user_id)->first();
+        $blocked_user = BlockedUser::where('user_id',$user_id)->first();
 
         if($blocked_user){
             $blocked_user->delete();
