@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from '../../styles/headercard.module.css';
 import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
-// import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
@@ -11,10 +10,10 @@ const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
     const [blocked, setBlocked] =useState(false)
 
-    // const [showModel, setShowModel] = useState(false);
-    const [user, setUser] = useState({});
     const [error, setError] = useState({});
-   const userID = data.id;
+    const [user, setUser] = useState({});
+    const userID = data.id;
+
     const BlockPerson = async () =>{
 
         try {
@@ -25,12 +24,11 @@ const HeaderComp = ({data}) =>{
                     }
             });
             const data = response;
-            console.log("res", response)
             const token = " ";
 
             if(data.status == 'success'){
                 setBlocked(true);
-                window.location.href = '/dashboard';
+                window.location.href = `/dashboard/user/profile/${userID}`;
             }else{
                 setError("Email Doesn't exists!");
                 console.log(error);
@@ -40,11 +38,6 @@ const HeaderComp = ({data}) =>{
             console.error("failed to call the api:", error);
           }
     }
-
-    // const ViewModel = () =>{
-    //     setShowModel(true);
-    // }
-    // console.log('linked', user.profile_image_url)
 
     const goTo = (url) =>{
         if(!url == ''){
@@ -121,11 +114,6 @@ const HeaderComp = ({data}) =>{
                     <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)}/>
                 )}
             </div>
-            {/* {showModel && (
-                <div className={styles.popup_background}>
-                    <EditForm isOpen={setShowModel} data={data}/>
-                </div>
-            )} */}
         </div>
     )
 }
