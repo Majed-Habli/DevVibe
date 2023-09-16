@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-
+import styles from '../../styles/charts.module.css';
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,7 +20,7 @@ const BarChart = ({label1, label2, data1, data2}) =>{
           },
           title: {
             display: true,
-            text: 'Chart.js Bar Chart',
+            text: 'Developers vs Recruiters /year',
           },
         },
       };
@@ -52,7 +44,9 @@ const BarChart = ({label1, label2, data1, data2}) =>{
       };
 
     return(
-        <Bar options={options} data={data} />
+        <div className={styles.container}>
+            <Bar options={options} data={data} />
+        </div>
     )
 }
 
