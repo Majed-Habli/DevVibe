@@ -92,10 +92,12 @@ class AnalyticsController extends Controller
     function analytics(){
 
         $users_count = User::all()->count();
-        $new_devs = User::all()->where('has_access', false)->where('user_type_id', '=', 2)->count();
-        $new_recs = User::all()->where('has_access', false)->where('user_type_id', '=', 3)->count();
-        $developers_count = User::all()->where('user_type_id', '=', 2)->count();
-        $recruiters_count = User::all()->where('user_type_id', '=', 3)->count();
+        $new_devs = User::where('has_access', false)->where('user_type_id', '=', 2)->count();
+        $new_recs = User::where('has_access', false)->where('user_type_id', '=', 3)->count();
+        $developers_count = User::where('has_access', true)->where('user_type_id', '=', 2)->count();
+        $developers_chart_count = User::MonthToDate()->where('has_access', true)->where('user_type_id', '=', 2)->count();
+        $recruiters_chart_count = User::MonthToDate()->where('has_access',true)->where('user_type_id', '=', 3)->count(); 
+        $recruiters_count = User::where('has_access', true)->where('user_type_id', '=', 3)->count();
         $female_count = DeveloperDetail::where('gender', '=', 'female')->count();
         $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
         $countries = User::distinct()->pluck('country');
@@ -119,6 +121,8 @@ class AnalyticsController extends Controller
             'skills_count' => $skills,
             'matches_count' => $matches_count,
             'countries_count' => $countries_count,
+            'developers_chart_count' => $developers_chart_count,
+            'recruiters_chart_count' => $recruiters_chart_count,
         ]);
     }
 

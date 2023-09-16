@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Carbon\Carbon;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -91,6 +92,11 @@ class User extends Authenticatable implements JWTSubject
 
     public function Blocked(){
         return $this->belongsTo(BlockedUser::class, 'user_id');
+    }
+
+    public function scopeMonthToDate($query, $column = 'created_at')
+    {
+        return $query->whereBetween($column, [Carbon::now()->startOfMonth(), Carbon::now()]);
     }
 
     // public function SentMessages(){
