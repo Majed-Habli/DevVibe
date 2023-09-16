@@ -67,6 +67,28 @@ class AnalyticsController extends Controller
 
     }
 
+    function blockedUsers($search = Null){
+        if($search != ''){
+            $user = User::select('id')->where('user_name', 'LIKE', "%$search%")->get();
+            $blocked = blockedUser::whereIn('user_id',$user)->with('User')->first();
+
+            if($blocked){
+
+                return response()->json([
+                    'status' => 'user is blocked',
+                    'searc val' => $blocked
+                ]);
+            }
+        }else{
+
+            $blocked_users = blockedUser::with('User')->get();
+            return response()->json([
+                'status' => 'All blocked',
+                'data' => $blocked_users
+            ]);
+        }
+    }
+
     function analytics(){
 
         $users_count = User::all()->count();

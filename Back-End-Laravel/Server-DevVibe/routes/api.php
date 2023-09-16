@@ -34,6 +34,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::get('analytics', [AnalyticsController::class, 'analytics']);
         Route::post('give_access', [AnalyticsController::class, 'giveAccess']);
         Route::post('deny_access', [AnalyticsController::class, 'denyAccess']);
+        Route::get('blocked_users/{search?}', [AnalyticsController::class, 'blockedUsers']);
     });
 
 });
