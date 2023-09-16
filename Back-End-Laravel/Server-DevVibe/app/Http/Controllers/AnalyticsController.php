@@ -140,13 +140,25 @@ class AnalyticsController extends Controller
 
         $user_id = $request->user_id;
 
-        $user = new BlockedUser;
-        $user->user_id = $user_id;
-        $user->save();
+        $blocked_user = BlockedUser::find($user_id)->first();
 
-        return response()->json([
-            'status' => 'success',
-            'user' => $user
-        ]);
+        if($blocked_user){
+            $blocked_user->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'data' => 'user is unblocked'
+            ]);
+        }else{
+
+            $user = new BlockedUser;
+            $user->user_id = $user_id;
+            $user->save();
+    
+            return response()->json([
+                'status' => 'success',
+                'user' => $user
+            ]);
+        }
     }
 }
