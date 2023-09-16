@@ -29,7 +29,7 @@ const mapData = {
           containerClassName="map"
           regionStyle={{
             initial: {
-              fill: "#e4e4e4",
+              fill: "#1E282C",
               "fill-opacity": 0.9,
               stroke: "none",
               "stroke-width": 0,
