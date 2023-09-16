@@ -4,12 +4,42 @@ import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
 // import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
+import { requestMethods } from "../../utils/functions/requestMethods.";
+import { sendRequest } from "../../utils/functions/axios";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
+    const [blocked, setBlocked] =useState(false)
 
     // const [showModel, setShowModel] = useState(false);
     const [user, setUser] = useState({});
+    const [error, setError] = useState({});
+   const userID = data.id;
+    const BlockPerson = async () =>{
+
+        try {
+            const response = await sendRequest({
+                route: "/user/admin/deny_access",
+                method: requestMethods.POST,
+                body:{user_id: userID,
+                    }
+            });
+            const data = response;
+            console.log("res", response)
+            const token = " ";
+
+            if(data.status == 'success'){
+                setBlocked(true);
+                window.location.href = '/dashboard';
+            }else{
+                setError("Email Doesn't exists!");
+                console.log(error);
+            }
+            
+          } catch (error) {
+            console.error("failed to call the api:", error);
+          }
+    }
 
     // const ViewModel = () =>{
     //     setShowModel(true);
@@ -36,7 +66,11 @@ const HeaderComp = ({data}) =>{
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                {/* <CustomButton title={'Edit'} onClick={ViewModel}/> */}
+                {blocked ? (
+                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
+                ):(
+                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
+                )}
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
