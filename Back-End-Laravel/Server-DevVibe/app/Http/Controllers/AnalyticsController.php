@@ -146,8 +146,7 @@ class AnalyticsController extends Controller
             $blocked_user->delete();
 
             return response()->json([
-                'status' => 'success',
-                'data' => 'user is unblocked'
+                'status' => 'user is unblocked'
             ]);
         }else{
 
