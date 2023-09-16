@@ -59,7 +59,7 @@ const Sidebar = ({status}) => {
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="dashboard/stats">
                                     <img src="" alt="" />
                                     <span className={styles.list_headers}>Stats</span>
                                 </a>

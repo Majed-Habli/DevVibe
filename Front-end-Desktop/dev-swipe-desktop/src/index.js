@@ -13,6 +13,7 @@ import NewRecruites from "./pages/view users/newrecruites";
 import Developers from "./pages/view users/developers";
 import Recruiters from "./pages/view users/recruiters";
 import Profile from "./pages/profile/profile";
+import Stats from "./pages/dashboard/stats";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,7 @@ root.render(
 
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
+          <Route path="/dashboard/stats" element={<Stats />} />
           <Route path="/dashboard/users/new-developers" element={<Users />} />
           <Route
             path="/dashboard/users/new-recruiters"
