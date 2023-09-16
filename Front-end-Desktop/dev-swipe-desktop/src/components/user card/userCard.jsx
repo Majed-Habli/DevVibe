@@ -3,6 +3,7 @@ import styles from '../../styles/usercard.module.css';
 import { RiBuilding2Line } from 'react-icons/ri';
 import { HiOutlineMail } from 'react-icons/hi';
 import CustomButton from '../custom button/custombutton';
+import CustomImageButton from '../custom button/customImageButton';
 
 const UserCard = ({data}) =>{
     const viewUserProfile = ({id})=>{
@@ -32,6 +33,7 @@ const UserCard = ({data}) =>{
                 </div>
             </div>
             <div className={styles.cto}>
+                <CustomImageButton image_name={'Done.png'} width={30} height={30} image_height={25} image_width={25} display={'flex'} alignItems={'center'} justifyContent={'center'} backgroundColor={'#17A2B8'} borderRadius={4}/>
                 <CustomButton title={'view Profile'} width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={()=>viewUserProfile({id:data.id})}/>
             </div>
         </div>
