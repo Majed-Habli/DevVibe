@@ -99,6 +99,11 @@ class User extends Authenticatable implements JWTSubject
         return $query->whereBetween($column, [Carbon::now()->startOfMonth(), Carbon::now()]);
     }
 
+    public function scopeYearToDate($query, $column = 'created_at')
+    {
+        return $query->whereBetween($column, [Carbon::now()->startOfYear(), Carbon::now()]);
+    }
+
     // public function SentMessages(){
     //     return $this->hasMany(Message::class, 'sender_id');
     // }

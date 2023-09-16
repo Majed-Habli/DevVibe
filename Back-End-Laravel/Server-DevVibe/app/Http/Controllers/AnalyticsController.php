@@ -8,6 +8,7 @@ use App\Models\Skill;
 use App\Models\UserSkill;
 use App\Models\BlockedUser;
 use App\Models\UserMatch;
+use Carbon\Carbon;
 use App\Models\DeveloperDetail;
 use DB;
 
@@ -95,8 +96,56 @@ class AnalyticsController extends Controller
         $new_devs = User::where('has_access', false)->where('user_type_id', '=', 2)->count();
         $new_recs = User::where('has_access', false)->where('user_type_id', '=', 3)->count();
         $developers_count = User::where('has_access', true)->where('user_type_id', '=', 2)->count();
-        $developers_chart_count = User::MonthToDate()->where('has_access', true)->where('user_type_id', '=', 2)->count();
-        $recruiters_chart_count = User::MonthToDate()->where('has_access',true)->where('user_type_id', '=', 3)->count(); 
+        // $developers_chart_count = User::MonthToDate()->where('has_access', true)->where('user_type_id', '=', 2)->count();
+
+        $recruiters_chart_count = User::select('id', 'created_at')->where('has_access', true)->where('user_type_id', '=', 3)
+        ->get()
+        ->groupBy(function ($date) {
+            return Carbon::parse($date->created_at)->format('m');
+        });
+
+        $recruitersmcount = [];
+        $recruitersArr = [];
+
+        foreach ($recruiters_chart_count as $key => $value) {
+            $usermcount[(int)$key] = count($value);
+        }
+
+        $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (!empty($recruitersmcount[$i])) {
+                $recruitersArr[$i]['count'] = $recruitersmcount[$i];
+            } else {
+                $recruitersArr[$i]['count'] = 0;
+            }
+            $recruitersArr[$i]['month'] = $month[$i - 1];
+        }
+
+        $developers_chart_count = User::select('id', 'created_at')->where('has_access', true)->where('user_type_id', '=', 2)
+        ->get()
+        ->groupBy(function ($date) {
+            return Carbon::parse($date->created_at)->format('m');
+        });
+
+        $usermcount = [];
+        $developersArr = [];
+
+        foreach ($developers_chart_count as $key => $value) {
+            $usermcount[(int)$key] = count($value);
+        }
+
+        for ($i = 1; $i <= 12; $i++) {
+            if (!empty($usermcount[$i])) {
+                $developersArr[$i]['count'] = $usermcount[$i];
+            } else {
+                $developersArr[$i]['count'] = 0;
+            }
+            $developersArr[$i]['month'] = $month[$i - 1];
+        }
+
+        // return response()->json(array_values($userArr)); 
+
         $recruiters_count = User::where('has_access', true)->where('user_type_id', '=', 3)->count();
         $female_count = DeveloperDetail::where('gender', '=', 'female')->count();
         $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
@@ -121,8 +170,8 @@ class AnalyticsController extends Controller
             'skills_count' => $skills,
             'matches_count' => $matches_count,
             'countries_count' => $countries_count,
-            'developers_chart_count' => $developers_chart_count,
-            'recruiters_chart_count' => $recruiters_chart_count,
+            'developers_chart_count' => array_values($developersArr),
+            'recruiters_chart_count' => array_values($recruitersArr),
         ]);
     }
 
