@@ -10,7 +10,6 @@ const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
     const [blocked, setBlocked] =useState(false)
 
-    const [error, setError] = useState({});
     const [user, setUser] = useState({});
     const userID = data.id;
 
@@ -28,10 +27,31 @@ const HeaderComp = ({data}) =>{
 
             if(data.status == 'success'){
                 setBlocked(true);
-                window.location.href = `/dashboard/user/profile/${userID}`;
             }else{
-                setError("Email Doesn't exists!");
-                console.log(error);
+                setBlocked(false);
+            }
+            
+          } catch (error) {
+            console.error("failed to call the api:", error);
+          }
+    }
+
+    const isBlocked = async () =>{
+
+        try {
+            const response = await sendRequest({
+                route: "/user/admin/is_blocked",
+                method: requestMethods.POST,
+                body:{id: userID,
+                    }
+            });
+            const data = response;
+            const token = " ";
+
+            if(data.status == 'success'){
+                setBlocked(true);
+            }else{
+                setBlocked(false);
             }
             
           } catch (error) {
@@ -53,7 +73,9 @@ const HeaderComp = ({data}) =>{
             setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url
         })
         }
-    },[data]);
+
+        isBlocked()
+    },[data,blocked]);
 
 
     return(
