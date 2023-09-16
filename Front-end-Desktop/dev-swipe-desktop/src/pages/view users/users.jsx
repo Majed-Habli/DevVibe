@@ -61,7 +61,7 @@ const Users = () => {
                 </div>
                 <div className={styles.users_container}>
                     {info.map((inf)=>(
-                        <UserCard key={inf.id} data={inf}/>
+                        <UserCard key={inf.id} data={inf} url={'/dashboard/users/new-developers'}/>
                     ))}
                 </div>
             </div>
