@@ -161,4 +161,22 @@ class AnalyticsController extends Controller
             ]);
         }
     }
+
+    function isBlocked(Request $request){
+
+        $user_id = $request->id;
+
+        $is_blocked = blockedUser::where('user_id','=',$user_id)->first();
+
+        if($is_blocked){
+
+            return response()->json([
+                'status' => 'success',
+            ]);
+        }else{
+            return response()->json([
+                'status' => 'failed'
+            ]);
+        }
+    }
 }
