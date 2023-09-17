@@ -5,7 +5,7 @@ import { VectorMap } from "react-jvectormap";
   const handleClick = (e, countryCode) => {
     console.log(countryCode);
   };
-  
+
   const Map = ({mapData}) => {
 
     return (
@@ -42,7 +42,7 @@ import { VectorMap } from "react-jvectormap";
             regions: [
               {
                 values: mapData, 
-                scale: ["#146804", "#ff0000"],
+                scale: ["#ff0000","#146804", "#ADD8E6"],
                 normalizeFunction: "polynomial"
               }
             ]
