@@ -10,6 +10,7 @@ import BarChart3 from '../../components/bar chart/barchart3';
 const Stats = () =>{
     const [error, setError] = useState('');
     const [info, setInfo] = useState('');
+    const [chart, setChart] = useState('');
 
     const getAnalytics = async () =>{
         const token = localStorageAction("token");
@@ -30,6 +31,7 @@ const Stats = () =>{
     
                 if(data.status == 'success'){
                     setInfo(data);
+                    setChart(data.popular);
 
                 }else{
                     setError("failed to get data!");
@@ -41,9 +43,53 @@ const Stats = () =>{
             console.error("Api returned with a fail:", error);
           }
     }
+
+
+    const labels = [];
+      const obj = [];
+
+      const setLabels = (information) =>{ 
+        console.log(information,"my information is here")
+
+        const lab = information.map((item)=>{
+          return item.skill.name 
+        })
+
+        labels.length = 0; 
+        labels.push(...lab); 
+
+        const info = information.map((item)=>{
+          return {name: item.skill.name ,data: item.count ,background: 'rgba(53, 162, 235, 0.5)'}
+        })
+        
+        obj.length = 0;
+        obj.push(...info)
+
+      return lab
+    }
+
+    // const lolo =[]
+    // const heythere = ()=>{
+    //   const meh = obj.map((item)=>{
+    //     return item.data
+    //   })
+    //   lolo.push(...meh)
+
+    // }
     useEffect(()=>{
         getAnalytics();
     },[]);
+
+    useEffect(()=>{
+        if(chart){
+          setLabels(chart)
+        //   heythere()
+        }
+      console.log(labels,'here u go')
+      console.log(obj,'here u go obj')
+    //   console.log(lolo,'here u go lolo')
+
+      },[chart])
 
     return(
         <div className={styles.container}>
@@ -59,7 +105,7 @@ const Stats = () =>{
             <div className={`${styles.card_conatiner} ${styles.cont}`}>
                 <div className={styles.left_container}>
                     {/* <Map mapData={mapInfo}/> */}
-                    <BarChart3 information={info.popular}/>
+                    {chart && <BarChart3 lab={labels} chartss={obj}/>}
                 </div>
                 <div className={styles.right_container}>
                     {/* <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/> */}

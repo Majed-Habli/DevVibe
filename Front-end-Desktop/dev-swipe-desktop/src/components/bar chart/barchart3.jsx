@@ -11,7 +11,7 @@ ChartJS.register(
   Legend
 );
 
-const BarChart3 = ({information}) =>{
+const BarChart3 = ({lab,chartss}) =>{
     const options = {
         responsive: true,
         plugins: {
@@ -26,48 +26,75 @@ const BarChart3 = ({information}) =>{
       };
       
       const labels = [];
+    //   const obj = [];
 
-      const setLabels = (information) =>{ 
-        console.log(information,"my information is here")
+    //   const setLabels = (information) =>{ 
+    //     console.log(information,"my information is here")
 
-        const here = information.map((item)=>{
-          return item.skill.name 
-        })
+    //     const lab = information.map((item)=>{
+    //       return item.skill.name 
+    //     })
 
-        labels.length = 0; 
-        labels.push(...here); 
+    //     labels.length = 0; 
+    //     labels.push(...lab); 
 
-      return here
-    }
+    //     const info = information.map((item)=>{
+    //       return {label: item.skill.name ,data: item.count ,background: 'rgba(53, 162, 235, 0.5)'}
+    //     })
+        
+    //     obj.length = 0;
+    //     obj.push(...info)
 
-      useEffect(()=>{
-        if(information){
-          setLabels(information)
+    //   return lab
+    // }
 
-        }
-      console.log(labels,'here u go')
+    // const lolo =[]
+    // const heythere = ()=>{
+    //   const meh = obj.map((item)=>{
+    //     return item.data
+    //   })
+    //   lolo.push(...meh)
 
-      },[information])
+    // }
+
+      // useEffect(()=>{
+      //   if(information){
+      //     setLabels(information)
+      //     heythere()
+      //   }
+      console.log(lab,'lab was here u butt')
+      console.log(chartss,'chartssssssss')
+      // console.log(obj,'here u go obj')
+      // console.log(lolo,'here u go lolo')
+
+      // },[information])
 
       const data = {
-        labels,
-        datasets: [
-          // {
-          //   label:`${label1}`,
-          //   data:  `${data1}`,
-          //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          // },
+        labels : lab,
+        datasets:  [
+          chartss ? chartss.map((value)=> ({
+            label: value.name,
+            data:  2,
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          })) : {
+            label:"hey",
+            data:  2,
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          },
+
+        ],
+        // [
           // {
           //   label: `${label2}`,
           //   data:  `${data2}`,
           //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
           // },
-        ],
+        // ],
       };
 
     return(
         <div className={styles.container}>
-            <Bar options={options} data={data} />
+            {data &&<Bar options={options} data={data} />}
         </div>
     )
 }
