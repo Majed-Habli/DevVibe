@@ -63,6 +63,11 @@
     column-gap: 12px;
 }
 
+.treatitle a{
+    text-decoration: none;
+    color: #79ADCA;
+}
+
 .list_headers{
     color: #8aa4af;
 }

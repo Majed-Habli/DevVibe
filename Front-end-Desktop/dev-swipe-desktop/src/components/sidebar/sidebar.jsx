@@ -122,24 +122,29 @@ const Sidebar = ({status}) => {
                     <div className={styles.category_container}  onClick={()=>{toggleShowMenu("Skills")}}>
                         <div>
                         {isCategoryExpanded("Skills") ?(
-                                <label className={styles.treatitle} htmlFor="SkillsToggle">
+                                <label className={styles.treatitle} htmlFor="usersToggle">
                                     <AiOutlineUser fill="white" />
                                     <a href="/dashboard/skills">
+                                    <img src="" alt="" />
                                         <span className={styles.selected}>Skills</span>
                                     </a>
                                 </label>
                                 ):(
-                                    <label className={styles.treatitle} htmlFor="SkillsToggle" >
+                                    <label className={styles.treatitle} htmlFor="usersToggle" >
                                         <AiOutlineUser/>
                                         <a href="/dashboard/skills">
-                                            <span className={styles.selected}>Skills</span>
+                                            <img src="" alt="" />
+                                            <span>Skills</span>
                                         </a>
                                     </label >
                                 )
                             }
                         </div>
+                        {/* <img className={`${styles.arrow} ${isCategoryExpanded("Skills") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon"/> */}
                     </div>
+                    
                 </li>
+                
             </ul>
         </div>
     )
