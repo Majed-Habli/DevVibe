@@ -64,7 +64,7 @@ const Skills = () => {
                         <div key={skill.id} className={styles.box}>
                             {/* <input id={`${skill.id}`} type="checkbox" name={`${skill.name}`}checked={selected.includes(skill.id)}
                                 onChange={onChangeHandler(skill.id)}/> */}
-                            <label htmlFor={`${skill.id}`}> {skill.name}</label>
+                            <div key={skill.id}> {skill.name}</div>
                         </div>
                     ))}
                 </div>
