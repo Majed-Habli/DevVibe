@@ -69,7 +69,7 @@ const Dashboard = () =>{
         <div className={styles.container}>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.css" type="text/css" media="screen"/>
             <div className={styles.page_header}>
-                <span>Dashboard</span>
+                <span>Summary</span>
             </div>
             <div className={styles.card_conatiner}>
                 <InfoBox data={info.users_count} type={'user'} title={'Users'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
