@@ -14,6 +14,7 @@ import Developers from "./pages/view users/developers";
 import Recruiters from "./pages/view users/recruiters";
 import Profile from "./pages/profile/profile";
 import Stats from "./pages/dashboard/stats";
+import Skills from "./pages/skills/skills";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,6 +42,7 @@ root.render(
             element={<Recruiters />}
           />
           <Route path="/dashboard/users/profile/:id" element={<Profile />} />
+          <Route path="/dashboard/skills" element={<Skills />} />
         </Route>
       </Routes>
     </BrowserRouter>
