@@ -62,27 +62,34 @@ const BarChart3 = ({lab,chartss}) =>{
       //     setLabels(information)
       //     heythere()
       //   }
-      console.log(lab,'lab was here u butt')
-      console.log(chartss,'chartssssssss')
+      // console.log(lab,'lab was here u butt')
+      // console.log(chartss,'chartssssssss')
       // console.log(obj,'here u go obj')
       // console.log(lolo,'here u go lolo')
 
       // },[information])
 
       const data = {
-        labels : lab,
-        datasets:  [
-          chartss ? chartss.map((value)=> ({
-            label: value.name,
-            data:  2,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          })) : {
-            label:"hey",
-            data:  2,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          },
+        labels: lab,
+        datasets: chartss
+          ? [
+              {
+                label: "count",
+                data: chartss.map((item) => item.data),
+                backgroundColor: "rgba(53, 162, 235, 0.5)",
+              },
+            ]
+          : [],
+      };
 
-        ],
+      console.log("mak was here", data);
+      console.log("mak chartssss was here", chartss);
+      console.log(
+        "c",
+        chartss.map((item) => item.data)
+      );
+      
+      // console.log('majed', majed)
         // [
           // {
           //   label: `${label2}`,
@@ -90,7 +97,7 @@ const BarChart3 = ({lab,chartss}) =>{
           //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
           // },
         // ],
-      };
+     
 
     return(
         <div className={styles.container}>

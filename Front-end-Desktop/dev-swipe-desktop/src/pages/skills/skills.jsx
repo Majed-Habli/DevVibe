@@ -4,6 +4,7 @@ import UserCard from "../../components/user card/userCard";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
+import CustomButton from "../../components/custom button/custombutton";
 
 const Skills = () => {
     const [search, setSearch] = useState('');
@@ -62,9 +63,11 @@ const Skills = () => {
                 <div className={styles.users_container}>
                     {skills.map((skill)=>(
                         <div key={skill.id} className={styles.box}>
-                            {/* <input id={`${skill.id}`} type="checkbox" name={`${skill.name}`}checked={selected.includes(skill.id)}
-                                onChange={onChangeHandler(skill.id)}/> */}
                             <div key={skill.id}> {skill.name}</div>
+                            <div className={styles.btn_container}>
+                                <CustomButton title={'remove'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'}/>
+                                <CustomButton title={'edit'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'}/>
+                            </div>
                         </div>
                     ))}
                 </div>

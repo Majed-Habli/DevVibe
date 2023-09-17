@@ -46,10 +46,10 @@ const Stats = () =>{
 
 
     const labels = [];
-      const obj = [];
+    const obj = [];
 
       const setLabels = (information) =>{ 
-        console.log(information,"my information is here")
+        // console.log(information,"my information is here")
 
         const lab = information.map((item)=>{
           return item.skill.name 
@@ -85,11 +85,21 @@ const Stats = () =>{
           setLabels(chart)
         //   heythere()
         }
-      console.log(labels,'here u go')
-      console.log(obj,'here u go obj')
+    //   console.log(labels,'here u go')
+    //   console.log(obj,'here u go obj')
     //   console.log(lolo,'here u go lolo')
 
       },[chart])
+
+      const majed = [{name: 'PHP', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'Bootstrap', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'Html', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'C++', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'Node.js', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'Flutter', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'React', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'Git', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+      {name: 'MySQL', data: 1, background: 'rgba(53, 162, 235, 0.5)'}]
 
     return(
         <div className={styles.container}>
@@ -105,7 +115,7 @@ const Stats = () =>{
             <div className={`${styles.card_conatiner} ${styles.cont}`}>
                 <div className={styles.left_container}>
                     {/* <Map mapData={mapInfo}/> */}
-                    {chart && <BarChart3 lab={labels} chartss={obj}/>}
+                    <BarChart3 lab={labels} chartss={majed}/>
                 </div>
                 <div className={styles.right_container}>
                     {/* <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/> */}
