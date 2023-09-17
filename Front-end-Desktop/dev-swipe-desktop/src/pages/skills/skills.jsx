@@ -53,7 +53,7 @@ const Skills = () => {
     return(
         <div className={styles.container}>
             <div className={styles.page_header}>
-                <span>Developers</span>
+                <span>Skills</span>
             </div>
             <div className={styles.searchable}>
                 <div className={styles.top_bar}>

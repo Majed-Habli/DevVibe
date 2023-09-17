@@ -124,7 +124,7 @@ const Sidebar = ({status}) => {
                         {isCategoryExpanded("Skills") ?(
                                 <label className={styles.treatitle} htmlFor="SkillsToggle">
                                     <AiOutlineUser fill="white" />
-                                    <a href="/dashboard/users/new-recruiters">
+                                    <a href="/dashboard/skills">
                                         <span className={styles.selected}>Skills</span>
                                     </a>
                                 </label>
