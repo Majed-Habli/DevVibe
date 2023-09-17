@@ -7,6 +7,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 import InfoBox from "../../components/widgets/info-box";
 import BarChart from "../../components/bar chart/barchart";
 import Map from "../../components/bar chart/map";
+import BarChart2 from "../../components/bar chart/barchart2";
 
 const Dashboard = () =>{
     const [error, setError] = useState('');
@@ -70,12 +71,6 @@ const Dashboard = () =>{
             <div className={styles.page_header}>
                 <span>Dashboard</span>
             </div>
-            {/* <div className={styles.card_conatiner}>
-                <AnalyticsCard data={info.new_recs_count} type={'recs'} title={'New Recruiters'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
-                <AnalyticsCard data={info.new_devs_count} type={'devs'} title={'New Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
-                <AnalyticsCard data={info.skills_count} type={'skills'} title={'Skills'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
-                <AnalyticsCard data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
-            </div> */}
             <div className={styles.card_conatiner}>
                 <InfoBox data={info.users_count} type={'user'} title={'Users'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
                 <InfoBox data={info.developer_count} type={'devs'} title={'Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
@@ -88,7 +83,7 @@ const Dashboard = () =>{
                 </div>
                 <div className={styles.right_container}>
                     <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
-                    <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
+                    <BarChart2 label1={'male'} label2={"female"} data1={info.male_count} data2={info.female_count}/>
                 </div>
             </div>
 
