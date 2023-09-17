@@ -96,7 +96,8 @@ class AnalyticsController extends Controller
         $new_devs = User::where('has_access', false)->where('user_type_id', '=', 2)->count();
         $new_recs = User::where('has_access', false)->where('user_type_id', '=', 3)->count();
         $developers_count = User::where('has_access', true)->where('user_type_id', '=', 2)->count();
-        // $developers_chart_count = User::MonthToDate()->where('has_access', true)->where('user_type_id', '=', 2)->count();
+
+        // new statement
 
         $recruiters_chart_count = User::select('id', 'created_at')->where('has_access', true)->where('user_type_id', '=', 3)
         ->get()
@@ -120,7 +121,9 @@ class AnalyticsController extends Controller
                 $recruitersArr[$i]['count'] = 0;
             }
             $recruitersArr[$i]['month'] = $month[$i - 1];
-        }
+        };
+
+        // new statement
 
         $developers_chart_count = User::select('id', 'created_at')->where('has_access', true)->where('user_type_id', '=', 2)
         ->get()
@@ -135,7 +138,6 @@ class AnalyticsController extends Controller
             $usermcount[(int)$key] = count($value);
         }
 
-        // $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
         for ($i = 1; $i <= 12; $i++) {
             if (!empty($usermcount[$i])) {
@@ -144,14 +146,19 @@ class AnalyticsController extends Controller
                 $developersArr[$i]['count'] = 0;
             }
             $developersArr[$i]['month'] = $month[$i - 1];
-        }
+        };
 
-        // return response()->json(array_values($userArr)); 
+        // new statements
 
         $recruiters_count = User::where('has_access', true)->where('user_type_id', '=', 3)->count();
         $female_count = DeveloperDetail::where('gender', '=', 'female')->count();
         $male_count = DeveloperDetail::where('gender', '=', 'male')->count();
         $countries = User::distinct()->pluck('country');
+
+        $country_people_count = User::groupBy('country')
+        ->selectRaw('country, COUNT(*) as count')
+        ->get();
+
         $countries_count = User::distinct()->pluck('country')->count();
         $matches_count = UserMatch::all()->count();
         $skills = Skill::all()->count();
@@ -172,6 +179,7 @@ class AnalyticsController extends Controller
             'skills_count' => $skills,
             'matches_count' => $matches_count,
             'countries_count' => $countries_count,
+            'country_people_count' => $country_people_count,
             'developers_chart_count' => array_values($developersArr),
             'recruiters_chart_count' => array_values($recruitersArr),
         ]);
