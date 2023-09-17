@@ -5,6 +5,7 @@ import InfoBox from '../../components/widgets/info-box';
 import { localStorageAction } from '../../utils/functions/localStorage';
 import { sendRequest } from '../../utils/functions/axios';
 import { requestMethods } from '../../utils/functions/requestMethods.';
+import BarChart3 from '../../components/bar chart/barchart3';
 
 const Stats = () =>{
     const [error, setError] = useState('');
@@ -24,7 +25,7 @@ const Stats = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log(data)
+                // console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -55,11 +56,15 @@ const Stats = () =>{
                 <AnalyticsCard data={info.skills_count} type={'skills'} title={'Skills'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
                 <AnalyticsCard data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
             </div>
-            <div className={styles.card_conatiner}>
-                <InfoBox data={info.users_count} type={'user'} title={'Users'} backgroundColor={'#17A2B8'} color={'#1591A5'}/>
-                <InfoBox data={info.developer_count} type={'devs'} title={'Developers'} backgroundColor={'#28A745'} color={'#228E3B'}/>
-                <InfoBox data={info.recruiters_count} type={'recs'} title={'Recruiters'} backgroundColor={'#F8B020'} color={'#E5AD06'}/>
-                <InfoBox data={info.matches_count} type={'matches'} title={'Matches'} backgroundColor={'#DC3545'} color={'#C6303E'}/>
+            <div className={`${styles.card_conatiner} ${styles.cont}`}>
+                <div className={styles.left_container}>
+                    {/* <Map mapData={mapInfo}/> */}
+                    <BarChart3 information={info.popular}/>
+                </div>
+                <div className={styles.right_container}>
+                    {/* <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/> */}
+                    {/* <BarChart2 label1={'male'} label2={"female"} data1={info.male_count} data2={info.female_count}/> */}
+                </div>
             </div>
         </div>
     )
