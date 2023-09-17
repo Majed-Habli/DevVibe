@@ -11,6 +11,8 @@ import Map from "../../components/bar chart/map";
 const Dashboard = () =>{
     const [error, setError] = useState('');
     const [info, setInfo] = useState('');
+    const [mapInfo,setMapInfo] = useState('');
+    const [mapData,setMapData] = useState('');
 
     const getAnalytics = async () =>{
         const token = localStorageAction("token");
@@ -31,6 +33,7 @@ const Dashboard = () =>{
     
                 if(data.status == 'success'){
                     setInfo(data);
+                    setMapData(data.country_people_count)
 
                 }else{
                     setError("failed to get data!");
@@ -42,11 +45,24 @@ const Dashboard = () =>{
             console.error("Api returned with a fail:", error);
           }
     }
+
+    function transformCountryPeopleCount(countryPeopleCount) {
+        console.log(countryPeopleCount)
+        return countryPeopleCount.reduce((result, item) => {
+          result[item.country] = item.count;
+          return result;
+        }, {});
+    }
+    
     useEffect(()=>{
         getAnalytics();
     },[]);
-    console.log(info.developers_chart_count,'counting here')
-    console.log(info.recruiters_chart_count,'nthn here')
+
+    useEffect(()=>{
+        if(mapData){
+            setMapInfo(transformCountryPeopleCount(mapData));
+        }
+    },[mapData])
 
     return(
         <div className={styles.container}>
@@ -68,7 +84,7 @@ const Dashboard = () =>{
             </div>
             <div className={`${styles.card_conatiner} ${styles.cont}`}>
                 <div className={styles.left_container}>
-                    <Map/>
+                    <Map mapData={mapInfo}/>
                 </div>
                 <div className={styles.right_container}>
                     <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
