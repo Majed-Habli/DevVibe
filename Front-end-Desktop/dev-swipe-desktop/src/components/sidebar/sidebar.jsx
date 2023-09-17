@@ -118,6 +118,24 @@ const Sidebar = ({status}) => {
                     </div>
                     )}
                 </li>
+                <li className={styles.treeview}>
+                    <div className={styles.category_container}  onClick={()=>{toggleShowMenu("Skills")}}>
+                        <div>
+                        {isCategoryExpanded("Skills") ?(
+                                <label className={styles.treatitle} htmlFor="SkillsToggle">
+                                    <AiOutlineUser fill="white" />
+                                    <span className={styles.selected}>Skills</span>
+                                </label>
+                                ):(
+                                    <label className={styles.treatitle} htmlFor="SkillsToggle" >
+                                        <AiOutlineUser/>
+                                        <span>Skills</span>
+                                    </label >
+                                )
+                            }
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     )
