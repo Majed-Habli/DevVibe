@@ -9,6 +9,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
 import ViewImages from "../../components/models/images form/viewimages";
 import ViewUpload from "../../components/models/view upload/viewUpload";
+import ViewUploadResume from "../../components/models/view upload copy/viewUpload";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -17,6 +18,7 @@ const Profile = () =>{
     const [showModel, setShowModel] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
     const [showUploadModel, setShowUploadModel] = useState(false);
+    const [showUploadResume, setShowUploadResume] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
@@ -131,6 +133,9 @@ const Profile = () =>{
     const viewModelUpload = async() =>{
         setShowUploadModel(true)
     }
+    const viewModelUploadResume = async() =>{
+        setShowUploadResume(true)
+    }
 
     useEffect(()=>{
         getUser();
@@ -161,7 +166,7 @@ const Profile = () =>{
                         <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModelUpload()} cursor={'pointer'}/>
 
                     
-                        <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} cursor={'pointer'}/>
+                        <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
                 </div>}
             </div>
             <div className={styles.component_container}>
@@ -190,6 +195,12 @@ const Profile = () =>{
             {showUploadModel && (
                 <div className={styles.popup_background}>hey
                     <ViewUpload isOpen={setShowUploadModel} type={'2'} />
+                </div>
+            )}
+
+            {showUploadResume && (
+                <div className={styles.popup_background}>hey
+                    <ViewUploadResume isOpen={setShowUploadResume}/>
                 </div>
             )}
         </div>

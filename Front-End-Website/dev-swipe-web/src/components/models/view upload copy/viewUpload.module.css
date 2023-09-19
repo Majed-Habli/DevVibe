@@ -1,0 +1,74 @@
+.popup_container{
+    width: 500px;
+    height: 571px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #D4D4D4;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);
+}
+
+.popup_header{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-bottom: 1px solid #D4D4D4;
+}
+
+.popup_body{
+    width: 100%;
+    height: 91%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.popup_body::-webkit-scrollbar{
+    display: none;
+}
+
+.upload_button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload_button input{
+    /* position: absolute; */
+    background-color: transparent;
+    color: transparent;
+}
+
+.image_container{
+    width: 450px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message_container{
+    width: 450px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image_container img{
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
+
+.container_two{
+    height: 271px;
+}
