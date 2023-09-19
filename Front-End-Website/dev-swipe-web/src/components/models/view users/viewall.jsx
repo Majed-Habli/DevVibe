@@ -4,7 +4,6 @@ import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 
 const ViewAllPopUp = ({isOpen ,users}) =>{
-    console.log("the users",users)
     const [userData, setUserData] = useState([]);
     const hideModel =() =>{
         isOpen(prev => !prev);
@@ -19,7 +18,6 @@ const ViewAllPopUp = ({isOpen ,users}) =>{
 
     useEffect(()=>{
         setUserData(users);
-        console.log(users[0].id)
     },[users])
 
     return(
@@ -29,9 +27,11 @@ const ViewAllPopUp = ({isOpen ,users}) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
-                {userData.map((user)=>(
+                {userData != ' ' ? userData.map((user)=>(
                     <PopUpCard key={user.id} user={user} fun={filtering}/>
-                ))}
+                )) :(
+                    <div className={styles.error_message}>nothing to see here...</div>
+                )}
             </div>
         </div>
     )
