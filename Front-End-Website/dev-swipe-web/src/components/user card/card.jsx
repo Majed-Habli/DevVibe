@@ -12,7 +12,7 @@ const Card = ({button, data}) =>{
             <div key={dat.id} className={styles.card_container}>
                 <div className={styles.container_left}>
                     <div className={styles.profile_image_container}>
-                        {dat.profile_image_url ? (
+                        {dat.profile_image_url && dat.profile_image_url != null ? (
                             <img src={`${dat.profile_image_url}`} alt="profile image" />
                         ):(
                             <img src='/default-user.png' alt="profile image" />

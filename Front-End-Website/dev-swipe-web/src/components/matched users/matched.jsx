@@ -72,10 +72,10 @@ const MatchedTable = () =>{
                                     <div className={styles.card_container}>
                                         <div className={styles.container_left}>
                                             <div className={styles.profile_image_container}>
-                                                {!user.profile_image_url ? (
+                                                {user.profile_image_url ? (
                                                     <img src={`${user.matched_with.profile_image_url}`} alt="profile image" /> 
                                                 ):(
-                                                    <img src="/testuser.png" alt="profile image" />
+                                                    <img src="/default-user.png" alt="profile image" />
                                                 )}
                                             </div>
                                             <div className={styles.user_name}>{user.matched_with.user_name}</div>
