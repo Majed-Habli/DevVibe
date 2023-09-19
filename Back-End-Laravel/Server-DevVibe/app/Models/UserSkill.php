@@ -14,6 +14,6 @@ class UserSkill extends Model
     }
 
     public function Skill(){
-        return $this->belongsTo(Skill::class, 'skill_id');
+        return $this->belongsTo(Skill::class, 'id');
     }
 }

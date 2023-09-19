@@ -15,6 +15,26 @@ use DB;
 class AnalyticsController extends Controller
 {
     //
+    function deleteSkill(Request $request){
+
+        $skill_id = $request->skill_id;
+
+        $skill = Skill::find($skill_id);
+
+        if(!$skill){
+            return response()->json([
+                'status' => 'failed'
+            ]);
+        }
+
+        $skill->UserSkill()->delete();
+        $skill->delete();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+
     function newDevelopers($search = Null){
 
         if($search == " "){
