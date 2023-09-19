@@ -124,47 +124,6 @@ const Profile = () =>{
             console.error("failed to get user:", error);
           }
     }
-
-    // const handleFileRead = async (event) => {
-    //     const file = event.target.files[0]
-    //     const base64 = await convertBase64(file)
-    //     console.log(base64)
-    //   } 
-
-    //  const convertBase64 = (file) => {
-    //     return new Promise((resolve, reject) => {
-    //       const fileReader = new FileReader();
-    //       fileReader.readAsDataURL(file)
-    //       fileReader.onload = () => {
-    //         resolve(fileReader.result);
-    //       }
-    //       fileReader.onerror = (error) => {
-    //         reject(error);
-    //       }
-    //     })
-    //   }
-
-    // const handleImageChange = async (e) => {
-    //     const file = e.target.files;
-    //     console.log(file);
-    //     const base64 = await convertBase64(file);
-    //     console.log(base64);
-    //     setUploadImage(base64)
-    // };
-    // const convertBase64 = (file)=>{
-    //     return new Promise((resolve,reject)=>{
-    //         const fileReader = new FileReader();
-    //         fileReader.readAsDataURL(file);
-    //         fileReader.onLoad=()=>{
-    //             resolve(fileReader.result);
-    //         };
-    //         fileReader.onerror=(error)=>{
-    //             reject(error);
-    //         };
-    //     });
-    // }
-
-    
     
     const viewModel = async() =>{
         setShowModel(true)
@@ -182,6 +141,8 @@ const Profile = () =>{
     useEffect(()=>{
         if(params.id === userId){
             setShowButtons(true);
+        }else{
+            setShowButtons(false);
         }
     })
 
@@ -189,9 +150,6 @@ const Profile = () =>{
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
             <div className={styles.header_comp}>
-                {/* <div className={styles.button_container}>
-                    
-                </div> */}
                 <div className={styles.head}>
                     <HeaderComp data={user}/>
                 </div>

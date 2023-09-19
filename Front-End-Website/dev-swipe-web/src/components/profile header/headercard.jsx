@@ -7,14 +7,15 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
-
+    const [showButtons, setShowButtons] = useState(false);
+    const userId = localStorageAction("user_id")
+    
     const [showModel, setShowModel] = useState(false);
     const [user, setUser] = useState({});
 
     const ViewModel = () =>{
         setShowModel(true);
     }
-    // console.log('linked', user.profile_image_url)
 
     const goTo = (url) =>{
         if(!url == ''){
@@ -32,11 +33,18 @@ const HeaderComp = ({data}) =>{
         }
     },[data]);
 
+    useEffect(()=>{
+        if(`${data.id}` === userId){
+            setShowButtons(true);
+        }else{
+            setShowButtons(false);
+        }
+    })
 
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                <CustomButton title={'Edit'} onClick={ViewModel}/>
+                {showButtons && <CustomButton title={'Edit'} onClick={ViewModel}/>}
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
