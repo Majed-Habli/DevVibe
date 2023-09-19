@@ -127,7 +127,23 @@ const Profile = () =>{
 
     return(
         <div className={styles.page_container}>
-            <div className={styles.page_header}></div>
+            <div className={styles.page_header}>
+                <span>Profile</span>
+            </div>
+            <div className={styles.page_body}>
+                <div className={styles.bofy_left}>
+                    <div className={styles.body_top}></div>
+                    <div className={styles.body_bottom}></div>
+                </div>
+                <div className={styles.bofy_right}></div>
+            </div>
+        </div>
+    )
+}
+
+export default Profile;
+
+{/* <div className={styles.page_header}></div>
             <div className={styles.header_comp}>
                 <div className={styles.head}>
                     <HeaderComp data={user}/>
@@ -151,9 +167,4 @@ const Profile = () =>{
                         <CarouselComp value={images} issue={errorImages}/>
                     </div>
                 </div>
-            </div>
-        </div>
-    )
-}
-
-export default Profile;
+            </div> */}
