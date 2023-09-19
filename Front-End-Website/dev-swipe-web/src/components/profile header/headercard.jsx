@@ -81,7 +81,7 @@ const HeaderComp = ({data}) =>{
             setUser({github_url : data.rec_details && data.rec_details.github_url ?data.rec_details.github_url : "",linkedin_url : data.rec_details && data.rec_details.linkedin_url ?data.rec_details.linkedin_url : "",profile_image_url: data.profile_image_url
         })
         }else{
-            setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url
+            setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url,resume : data.dev_details && data.dev_details.resume ?data.dev_details.resume : ""
         })
         }
     },[data]);
@@ -93,6 +93,8 @@ const HeaderComp = ({data}) =>{
             setShowButtons(false);
         }
     })
+
+    // console.log("the resume", data.dev_details.resume)
 
     return(
         <div className={styles.container}>
@@ -141,9 +143,9 @@ const HeaderComp = ({data}) =>{
                 )}
                 {user && userType == 2 && (
                     <div className={styles.flex}>
-                        {/* {user.resume && (
+                        {user.resume && (
                             <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)} />
-                        )} */}
+                        )}
                         {user.github_url && (
                             <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
                         )}
