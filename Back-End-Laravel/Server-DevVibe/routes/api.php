@@ -38,6 +38,7 @@ Route::group(['prefix'=>'user'], function (){
         Route::post('is_blocked', [AnalyticsController::class, 'isBlocked']);
         Route::post('delete_skill', [AnalyticsController::class, 'deleteSkill']);
         Route::post('insert_skill', [AnalyticsController::class, 'insertSkill']);
+        Route::post('edit_skill', [AnalyticsController::class, 'editSkill']);
     });
 
 });

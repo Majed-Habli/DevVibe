@@ -37,6 +37,37 @@ class AnalyticsController extends Controller
         ]);
     }
 
+    function editSkill(Request $request){
+
+        $skill_id = $request->id;
+
+        $skill = Skill::find($skill_id);
+
+        if(!$skill){
+            
+            return response()->json([
+                'status' => 'failed'
+            ]);
+        }
+
+        $skill_name = $request->name;
+
+        $skills = Skill::find($skill_name);
+
+        if($skills){
+            return response()->json([
+                'status' => 'failed, name is taken'
+            ]);
+        }
+
+        $skill->name = $skill_name;
+        $skill->save();
+
+        return response()->json([
+            'status' => 'skill edited'
+        ]);
+    }
+
     function deleteSkill(Request $request){
 
         $skill_id = $request->skill_id;
