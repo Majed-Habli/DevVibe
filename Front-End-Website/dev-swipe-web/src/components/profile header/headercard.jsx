@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from './headercard.module.css';
 import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
 import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
+import { requestMethods } from "../../utils/functions/requestMethods.";
+import { sendRequest } from "../../utils/functions/axios";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
@@ -12,6 +14,52 @@ const HeaderComp = ({data}) =>{
     
     const [showModel, setShowModel] = useState(false);
     const [user, setUser] = useState({});
+
+    const [uploadImage, setUploadImage] = useState('');
+    const [tempView, setTempView] = useState('');
+
+    const postImage = async () =>{
+
+        try {
+            const response = await sendRequest({
+                route: "/user/developer/upload_profile_pic/",
+                method: requestMethods.POST,
+                body:{image: uploadImage,
+                    type:"png",
+                    }
+            });
+            const data = response;
+            const token = " ";
+
+            if(data.status == 'success'){
+                window.location.href = `/dashboard/profile/${data.id}`;
+            }
+            
+          } catch (error) {
+            console.error("api calling failed:", error);
+          }
+    }
+
+    const fileRef = useRef(null);
+    const handleInput = (e) => {
+        if (e.target.files.length > 0) {
+            function getBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = (error) => reject(error);
+                });
+            }
+            getBase64(e.target.files[0]).then((data) => {
+                setTempView(data)
+                const refStringArray = data.split(",");
+                refStringArray.shift();
+                const result = refStringArray.join('');
+                setUploadImage(result);
+            });
+        }
+    };
 
     const ViewModel = () =>{
         setShowModel(true);
@@ -49,6 +97,15 @@ const HeaderComp = ({data}) =>{
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
                     <div className={styles.image_container}>
+                        <div className={styles.inner_container}>
+                            <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
+                            <label className={styles.upload_label} htmlFor="upload_file" > hi
+                            </label>
+                            <div className={styles.upload} onClick={()=>{postImage()}}> </div>
+                            {/* <CustomButton title={''} width={10} height={10} backgroundColor={'#FCC860'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4}/> */}
+                        </div>
+                        
+
                         {!user.profile_image_url ? (
                             <img src="/default-user.png" alt="user profile image" />
                         ):(
