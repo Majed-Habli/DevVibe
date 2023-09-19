@@ -7,13 +7,14 @@ import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 
 const Navbar = () => {
-    let [token, setToken] = useState('');
+    const token = localStorageAction("token");
     const [displayModal, setDisplayModal] = useState(false);
     const [error, setError] = useState('');
 
-    const validate = () =>{
-        setToken=(localStorageAction("token"));
-    }
+    // const validate = () =>{
+    //     setToken=();
+    // }
+    console.log(token)
 
     const showView = () =>{
         setDisplayModal((current) => !current);
@@ -59,9 +60,9 @@ const Navbar = () => {
           }
     }
 
-    useEffect(()=>{
-        validate();
-    },[token]);
+    // useEffect(()=>{
+    //     validate();
+    // },[token]);
 
     return(
         <div className={styles.navbar_container}>
@@ -69,7 +70,7 @@ const Navbar = () => {
                 <div className={styles.logo_container}>
                     <img src="/Logo2-0.png" alt="brand logo" />
                 </div>
-                {token != null ? (
+                {token == null ? (
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} display={'flex'} justifyContent={'center'} alignItems={'center'} backgroundColor={'#FCC860'}/>
                 ):(
                     <div className={styles.routing_pressables}>
