@@ -80,61 +80,55 @@ const HeaderComp = ({data}) =>{
 
     return(
         <div className={styles.container}>
-            <div className={styles.top_row}>
-                {blocked ? (
-                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
-                ):(
-                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={80}  onClick={()=>BlockPerson()}/>
-                )}
-            </div>
-            <div className={styles.middle_row}>
-                <div className={styles.middle_left}>
+            {/* <div className={styles.middle_row}>
                     <div className={styles.image_container}>
                         {!user.profile_image_url ? (
                             <img src="/default-user.png" alt="user-profile-image" />
                         ):(
                             <img src={`${user.profile_image_url}`} alt="profile-img" />
                         )}
-                    </div>
-                    <div className={styles.details}>
-                        <div className={styles.user_name}>{data.user_name}</div>
-                        <div className={styles.user_email}>{data.email}</div>
-                    </div>
-                </div>
                 <div className={styles.middle_right}>
-                    {data.rec_details ?(
+                    {/* {data.rec_details ?(
                         <div className={styles.description}>{data.rec_details.description}</div>
                     ):(
                         <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
-                    )}
-                    
-                </div>
-            </div>
-            <div className={styles.bottom_row}>
-                {data.rec_details?.company_name ? (
-                    <div className={styles.company_details}>
-                        <div className={styles.company_label}>Works at:</div>
-                        <div className={styles.company_name}>{data.rec_details.company_name} ,{data.country}</div>
-                    </div>
-                ):(
-                    <div className={styles.company_details}>
-                        <div className={styles.company_label}>Lives in:</div>
-                        <div className={styles.company_name}>{data.country}</div>
-                    </div>
-                )}
-                {user && userType == 2 && (
-                    <div className={styles.flex}>
+                    )} */}
+
+                {/* {user && userType == 2 && ( */}
+                    {/* // <div className={styles.flex}> */}
                         {/* {user.resume && (
                             <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)} />
                         )} */}
-                        {user.github_url && (
+                        {/* {user.github_url && (
                             <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} />
-                        )}
+                        )} */}
+                    {/* </div> */}
+                {/* )} */}
+                {/* {user.linkedin_url &&(
+                    <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)}/>
+                )} */}
+            <div className={styles.header_section}>
+                {user.profile_image_url ? (<img src={`${data.profile_image_url}`} alt="profile-image" />) : (
+                    <div>
+                        <img src="/default-user.png" alt="profile-image" />
                     </div>
                 )}
-                {user.linkedin_url &&(
-                    <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)}/>
+                <div className={styles.profile_username}>{data.user_name}</div>
+                {user.user_type_id === 2 ? (<div className={styles.profile_role}>Developer</div>):(
+                    <div className={styles.profile_role}>Recruiter</div>
                 )}
+                <div className={styles.body_section}>
+                    <div className={styles.user_details}>Email: {data.email}</div>
+                    <div className={styles.user_details}>Lives at: {data.country}</div>
+                    <div className={styles.line}></div>
+                </div>
+                <div className={styles.button_container}>
+                    {blocked ? (
+                        <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                    ):(
+                        <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                    )}
+                </div>
             </div>
         </div>
     )

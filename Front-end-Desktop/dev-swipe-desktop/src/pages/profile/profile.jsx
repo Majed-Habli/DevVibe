@@ -7,6 +7,7 @@ import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
+import CustomButton from "../../components/custom button/custombutton";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -132,10 +133,16 @@ const Profile = () =>{
             </div>
             <div className={styles.page_body}>
                 <div className={styles.bofy_left}>
-                    <div className={styles.body_top}></div>
-                    <div className={styles.body_bottom}></div>
+                    <div className={styles.body_top}>
+                        <div className={styles.header_section}>
+                            <HeaderComp data={user}/>
+                        </div>
+                    </div>
+                    <div className={styles.body_bottom}>
+                    </div>
                 </div>
-                <div className={styles.bofy_right}></div>
+                <div className={styles.body_right}>
+                </div>
             </div>
         </div>
     )
