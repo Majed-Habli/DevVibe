@@ -6,13 +6,13 @@ import { sendRequest } from "../../../utils/functions/axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import CustomButton from "../../custom button/custombutton";
+import { localStorageAction } from "../../../utils/functions/localStorage";
 
 const ViewUpload = ({isOpen }) =>{
     const [uploadImage, setUploadImage] = useState('');
-    console.log(uploadImage)
     const [tempView, setTempView] = useState('');
+    const userId = localStorageAction("user_id");
     const params = useParams();
-    console.log(params.id)
 
     const postImage = async () =>{
 
@@ -20,7 +20,8 @@ const ViewUpload = ({isOpen }) =>{
             const response = await sendRequest({
                 route: "/user/developer/upload_user_images",
                 method: requestMethods.POST,
-                body:{image_url: uploadImage,
+                body:{user_id: userId,
+                    image: uploadImage,
                     type:"png",
                     }
             });
@@ -56,7 +57,7 @@ const ViewUpload = ({isOpen }) =>{
             });
         }
     };
-
+    
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
@@ -69,7 +70,7 @@ const ViewUpload = ({isOpen }) =>{
             </div>
             <div className={styles.popup_body}>
                 <div className={styles.upload_button}>
-                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
+                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} />
                     <label class="upload_label" htmlFor="upload_file">hi
                     </label>
                     <CustomButton title={'save'} width={90} height={33} backgroundColor={'#FCC860'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} onClick={()=>{postImage()}}/>

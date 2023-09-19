@@ -20,6 +20,7 @@ const Navbar = () => {
     const userName = localStorageAction('user_name');
     const profileImageUrl = localStorageAction('profile_image');
     const userID = localStorageAction('user_id');
+    console.log("imagess",profileImageUrl)
 
     const goToPage = ({value}) => {
         if(value === 'dashboard'){
