@@ -46,8 +46,8 @@ const PopUpCard = ({user}) =>{
                 </div>
             </div>
             <div className={styles.container_right}>
-                <CustomImageButton image_name={"Close.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}onClick={()=>swipe({id:user.id, value: 0})}/>
-                <CustomImageButton image_name={"Done.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}onClick={()=>swipe({id:user.id, value: 1})}/>
+                <CustomImageButton image_name={"Close.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}onClick={()=>swipe({id:user.id, value: 0})} cursor={'pointer'}/>
+                <CustomImageButton image_name={"Done.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}onClick={()=>swipe({id:user.id, value: 1})} cursor={'pointer'}/>
             </div>
         </div>
     )

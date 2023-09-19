@@ -65,7 +65,7 @@ const ViewImages = ({isOpen ,imgs}) =>{
         <div className={styles.popup_container}>
             <div className={styles.popup_header}>
                 <div>My images</div>
-                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel}/>
+                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
                 <div className={styles.statment}>

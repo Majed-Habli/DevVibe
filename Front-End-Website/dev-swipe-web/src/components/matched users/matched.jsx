@@ -90,7 +90,7 @@ const MatchedTable = () =>{
                                     </div>
                                 </div>
                                 <div className={styles.profile_button}>
-                                    <CustomImageButton key={user.id} image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"} onClick={()=>viewProfile({id :user.id})}/>
+                                    <CustomImageButton key={user.id} image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"} onClick={()=>viewProfile({id :user.id})} cursor={'pointer'}/>
                                 </div>
                             </div>
                         ))}

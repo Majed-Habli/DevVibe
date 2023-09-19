@@ -223,7 +223,7 @@ const EditForm = ({isOpen, data}) =>{
         <div className={styles.popup_container}>
             <div className={styles.popup_header}>
                 <div>Edit profile</div>
-                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel}/>
+                <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
                 <CustomInput label={"Name"} name={'user_name'} placeholder={data.user_name} value={inputs.user_name} handleChange={handleChange} width={275} height={35}/>
@@ -247,7 +247,7 @@ const EditForm = ({isOpen, data}) =>{
                     <div className={styles.header}>Skills</div>
                     <div className={styles.scrollable_container}>
                     {userSkills && userSkills.map((skill)=>(
-                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'}/>
+                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'} cursor={'pointer'}/>
                     ))}
                     {!userSkills ?(
                         <div>Starting adding skills to you profile</div>
