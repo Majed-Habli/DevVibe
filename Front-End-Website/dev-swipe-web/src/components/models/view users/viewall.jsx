@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './viewall.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 
 const ViewAllPopUp = ({isOpen ,users}) =>{
     console.log("the users",users)
+    // const [userData, setUserData] = useState([]);
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
 
-    // useEffect
+    // useEffect(()=>{
+    //     setUserData(users);
+    // },[users])
 
     return(
         <div className={styles.popup_container}>
