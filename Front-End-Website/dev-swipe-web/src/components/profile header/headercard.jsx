@@ -144,7 +144,10 @@ const HeaderComp = ({data}) =>{
                 {user && userType == 2 && (
                     <div className={styles.flex}>
                         {user.resume && (
-                            <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)} />
+                            // <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onclick="window.open('file.doc')" cursor={'pointer'} />
+                            <a href = "file_path" download = {user.resume}>
+                                <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onclick="window.open('file.doc')" cursor={'pointer'}/>
+                            </a>
                         )}
                         {user.github_url && (
                             <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
