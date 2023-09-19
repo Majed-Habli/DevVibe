@@ -15,12 +15,14 @@ const Profile = () =>{
     const [errorImages, setErrorImages] = useState('');
     
     const [showModel, setShowModel] = useState(false);
+    const [showButtons, setShowButtons] = useState(false);
     const [showUploadModel, setShowUploadModel] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
     const params = useParams();
+    const userId = localStorageAction("user_id");
 
     const getSkills = async () =>{
         const token = localStorageAction("token");
@@ -177,6 +179,12 @@ const Profile = () =>{
         getImages();
     },[params.id]);
 
+    useEffect(()=>{
+        if(params.id === userId){
+            setShowButtons(true);
+        }
+    })
+
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
@@ -187,7 +195,7 @@ const Profile = () =>{
                 <div className={styles.head}>
                     <HeaderComp data={user}/>
                 </div>
-                <div className={styles.button_container}>
+                {showButtons && <div className={styles.button_container}>
                     <CustomImageButton text={'view images'} width={'fit-content'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"gallery.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModel()}/>
                     {/* <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" className="{styles.form_control}" hidden/>
                     <label class="upload_label" htmlFor="upload_file">
@@ -196,7 +204,7 @@ const Profile = () =>{
 
                     
                         <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
-                </div>
+                </div>}
             </div>
             <div className={styles.component_container}>
                 <div className={styles.componenet_body}>
