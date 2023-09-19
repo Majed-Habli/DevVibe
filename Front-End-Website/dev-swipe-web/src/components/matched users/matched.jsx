@@ -65,9 +65,9 @@ const MatchedTable = () =>{
                         <div className={`${styles.cell} ${styles.width_profile}`}>Profile</div>
                     </div>
                     {!error? (<div className={styles.inner_table_body}>
-                        {users.map((user)=>(
+                        {users.map((user,index)=>(
                             <div key={user.id} className={styles.inner_table_row}>
-                                <div className={styles.index}>1</div>
+                                <div className={styles.index}>{index}</div>
                                 <div className={styles.user_card}>
                                     <div className={styles.card_container}>
                                         <div className={styles.container_left}>
