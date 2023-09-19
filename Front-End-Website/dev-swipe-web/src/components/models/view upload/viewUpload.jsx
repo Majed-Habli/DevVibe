@@ -69,17 +69,18 @@ const ViewUpload = ({isOpen }) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
+                <div className={styles.image_container}>
+                    {tempView ?(<img src={tempView} alt="" />) : (
+                        <div>Choose an image</div>
+                    )}
+                </div>
+
                 <div className={styles.upload_button}>
-                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} />
-                    <label class="upload_label" htmlFor="upload_file">hi
+                    <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" onChange ={handleInput} />
+                    <label class="upload_label" htmlFor="upload_file">
                     </label>
                     <CustomButton title={'save'} width={90} height={33} backgroundColor={'#FCC860'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} onClick={()=>{postImage()}}/>
                 </div>
-
-                <div className={styles.image_container}>
-                    <img src={tempView} alt="" />
-                </div>
-                
             </div>
         </div>
     )

@@ -37,7 +37,14 @@
 .upload_button{
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+}
+
+.upload_button input{
+    position: absolute;
+    background-color: transparent;
+    color: transparent;
 }
 
 .image_container{
