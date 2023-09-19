@@ -27,9 +27,9 @@ const ViewAllPopUp = ({isOpen ,users}) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
-                {userData != ' ' ? userData.map((user)=>(
+                {userData != '' ? (userData.map((user)=>(
                     <PopUpCard key={user.id} user={user} fun={filtering}/>
-                )) :(
+                ))) :(
                     <div className={styles.error_message}>nothing to see here...</div>
                 )}
             </div>
