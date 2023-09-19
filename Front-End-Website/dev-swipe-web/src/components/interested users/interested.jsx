@@ -61,7 +61,7 @@ const InterestedTable = () => {
             </div>
             <div className={styles.table_body}>
                 {!errorDisplay ?(<Card data={users} button={true}/>):(
-                    <div className={styles.error_container}>{errorDisplay}</div>
+                    <div className={styles.error_message}>{errorDisplay}</div>
                 )}
             </div>
             {showModel && (
