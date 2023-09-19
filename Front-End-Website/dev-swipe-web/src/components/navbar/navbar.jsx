@@ -11,11 +11,6 @@ const Navbar = () => {
     const [displayModal, setDisplayModal] = useState(false);
     const [error, setError] = useState('');
 
-    // const validate = () =>{
-    //     setToken=();
-    // }
-    console.log(token)
-
     const showView = () =>{
         setDisplayModal((current) => !current);
     }
@@ -59,10 +54,6 @@ const Navbar = () => {
             console.error("api calling failed:", error);
           }
     }
-
-    // useEffect(()=>{
-    //     validate();
-    // },[token]);
 
     return(
         <div className={styles.navbar_container}>
