@@ -20,7 +20,6 @@ const InterestedTable = () => {
 
     const getInterestes = async () =>{
         const token = localStorageAction("token");
-        const useriit = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -33,7 +32,6 @@ const InterestedTable = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("my data is :",data)
                 const token = " ";
     
                 if(data.status === 'success'){
