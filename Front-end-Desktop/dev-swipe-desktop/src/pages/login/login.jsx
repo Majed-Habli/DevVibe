@@ -80,7 +80,6 @@ const Login = () =>{
                             <CustomInput label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={600}/>
                         </div>
                     </div>
-                    <div className={styles.cto}>Don't have an account? <span onClick={goToPage}>Register now</span></div>
                     <div className={styles.button_container}>
                         <CustomButton width={220} height={50} title={'Login'} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={onLogin}/>
                     </div>

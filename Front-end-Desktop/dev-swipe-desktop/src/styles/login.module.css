@@ -67,21 +67,6 @@
     column-gap: 0.7rem;
 }
 
-.cto{
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.cto span{
-    color: #FFAA00;
-    font-weight: 600;
-}
-
-.cto span:hover{
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 .button_container{
     width: 100%;
     height: 30%;
