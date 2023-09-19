@@ -11,6 +11,8 @@ const Stats = () =>{
     const [error, setError] = useState('');
     const [info, setInfo] = useState('');
     const [chart, setChart] = useState('');
+    const [labels,setLabels] = useState([])
+    const [obj,setObj] = useState([])
 
     const getAnalytics = async () =>{
         const token = localStorageAction("token");
@@ -26,7 +28,6 @@ const Stats = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                // console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -45,49 +46,34 @@ const Stats = () =>{
     }
 
 
-    const labels = [];
-    const obj = [];
-
-      const setLabels = (information) =>{ 
-        // console.log(information,"my information is here")
+      const mapLabels = (information) =>{ 
 
         const lab = information.map((item)=>{
           return item.skill.name 
         })
 
-        labels.length = 0; 
+        let labels = []; 
         labels.push(...lab); 
 
         const info = information.map((item)=>{
           return {name: item.skill.name ,data: item.count ,background: 'rgba(53, 162, 235, 0.5)'}
         })
         
-        obj.length = 0;
+        let obj= [];
         obj.push(...info)
 
-      return lab
+      setLabels(labels)
+      setObj(obj)
     }
 
-    // const lolo =[]
-    // const heythere = ()=>{
-    //   const meh = obj.map((item)=>{
-    //     return item.data
-    //   })
-    //   lolo.push(...meh)
-
-    // }
     useEffect(()=>{
         getAnalytics();
     },[]);
 
     useEffect(()=>{
         if(chart){
-          setLabels(chart)
-        //   heythere()
+          mapLabels(chart)
         }
-    //   console.log(labels,'here u go')
-    //   console.log(obj,'here u go obj')
-    //   console.log(lolo,'here u go lolo')
 
       },[chart])
 
@@ -114,8 +100,7 @@ const Stats = () =>{
             </div>
             <div className={`${styles.card_conatiner} ${styles.cont}`}>
                 <div className={styles.left_container}>
-                    {/* <Map mapData={mapInfo}/> */}
-                    <BarChart3 lab={labels} chartss={majed}/>
+                    <BarChart3 lab={labels} chartss={obj}/>
                 </div>
                 <div className={styles.right_container}>
                     {/* <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/> */}
