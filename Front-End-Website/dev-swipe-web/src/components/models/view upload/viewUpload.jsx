@@ -8,8 +8,9 @@ import { useParams } from "react-router-dom";
 import CustomButton from "../../custom button/custombutton";
 import { localStorageAction } from "../../../utils/functions/localStorage";
 
-const ViewUpload = ({isOpen }) =>{
+const ViewUpload = ({isOpen ,type}) =>{
     const [uploadImage, setUploadImage] = useState('');
+    const [route, setRoute] = useState('');
     const [tempView, setTempView] = useState('');
     const userId = localStorageAction("user_id");
     const params = useParams();
@@ -18,7 +19,7 @@ const ViewUpload = ({isOpen }) =>{
 
         try {
             const response = await sendRequest({
-                route: "/user/developer/upload_user_images",
+                route: route,
                 method: requestMethods.POST,
                 body:{user_id: userId,
                     image: uploadImage,
@@ -29,6 +30,8 @@ const ViewUpload = ({isOpen }) =>{
             const token = " ";
 
             if(data.status == 'success'){
+                const profileImageUrl = data.view.profile_image_url;
+                localStorageAction("profile_image", profileImageUrl);
                 window.location.href = `/dashboard/profile/${params.id}`;
             }
             
@@ -61,6 +64,14 @@ const ViewUpload = ({isOpen }) =>{
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
+
+    useEffect(()=>{
+        if(type == '1'){
+            setRoute("/user/developer/upload_profile_pic/")
+        }else{
+            setRoute("/user/developer/upload_user_images")
+        }
+    },[type])
 
     return(
         <div className={styles.popup_container}>

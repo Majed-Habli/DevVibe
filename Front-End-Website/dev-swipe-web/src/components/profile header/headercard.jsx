@@ -6,13 +6,18 @@ import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
+import ViewUpload from "../models/view upload/viewUpload";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
     const [showButtons, setShowButtons] = useState(false);
     const userId = localStorageAction("user_id")
     
-    const [showModel, setShowModel] = useState(false);
+    const [showModel, setShowModel] = useState(false);    const [showUploadModel, setShowUploadModel] = useState(false);
+    const viewModelUpload = async() =>{
+            setShowUploadModel(true)
+        }
+
     const [user, setUser] = useState({});
 
     const [uploadImage, setUploadImage] = useState('');
@@ -98,11 +103,7 @@ const HeaderComp = ({data}) =>{
                 <div className={styles.middle_left}>
                     <div className={styles.image_container}>
                         <div className={styles.inner_container}>
-                            <input ref={fileRef} type="file" name="upload_file[]" id="upload_file" className="{styles.form_control}"  onChange ={handleInput} hidden/>
-                            <label className={styles.upload_label} htmlFor="upload_file" > hi
-                            </label>
-                            <div className={styles.upload} onClick={()=>{postImage()}}> </div>
-                            {/* <CustomButton title={''} width={10} height={10} backgroundColor={'#FCC860'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4}/> */}
+                            <CustomImageButton image_width={20} image_height={20} image_name={'profile-upload.png'} onClick={()=>viewModelUpload()}/>
                         </div>
                         
 
@@ -155,6 +156,11 @@ const HeaderComp = ({data}) =>{
             {showModel && (
                 <div className={styles.popup_background}>
                     <EditForm isOpen={setShowModel} data={data}/>
+                </div>
+            )}
+            {showUploadModel && (
+                <div className={styles.popup_background}>hey
+                    <ViewUpload isOpen={setShowUploadModel} type={'1'}/>
                 </div>
             )}
         </div>

@@ -189,7 +189,7 @@ const Profile = () =>{
 
             {showUploadModel && (
                 <div className={styles.popup_background}>hey
-                    <ViewUpload isOpen={setShowUploadModel} />
+                    <ViewUpload isOpen={setShowUploadModel} type={'2'} />
                 </div>
             )}
         </div>
