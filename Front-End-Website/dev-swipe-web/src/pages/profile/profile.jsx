@@ -43,7 +43,7 @@ const Profile = () =>{
                 if(data.status == 'success'){
                     if(data.data == ''){
                         setErrorSkills(`${user.user_name}, has no skills yet.`)
-                        console.log(error)
+                        // console.log(error)
                     }
 
                     const obj = data.data;
@@ -109,7 +109,7 @@ const Profile = () =>{
                 if(data.status == 'success'){
                     if(data.data == ''){
                         setErrorImages(`${user.user_name}, has no pics yet.`)
-                        console.log(error)
+                        // console.log(error)
                     }
                     const obj = data.data;
                     setImages(obj);
