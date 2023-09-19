@@ -28,6 +28,7 @@ const MatchedTable = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
+                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -36,8 +37,7 @@ const MatchedTable = () =>{
                     console.log(obj)
 
                 }else{
-                    setError("failed to get user data!");
-                    console.log(error);
+                    setError("no matches yet!");
                 }
             }
             
@@ -64,7 +64,7 @@ const MatchedTable = () =>{
                         <div className={`${styles.cell} ${styles.width_skill}`}>Skills</div>
                         <div className={`${styles.cell} ${styles.width_profile}`}>Profile</div>
                     </div>
-                    <div className={styles.inner_table_body}>
+                    {!error? (<div className={styles.inner_table_body}>
                         {users.map((user)=>(
                             <div key={user.id} className={styles.inner_table_row}>
                                 <div className={styles.index}>1</div>
@@ -94,7 +94,9 @@ const MatchedTable = () =>{
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div>):(
+                        <div className={styles.error_message}>{error}</div>
+                    )}
                 </div>
             </div>
         </div>

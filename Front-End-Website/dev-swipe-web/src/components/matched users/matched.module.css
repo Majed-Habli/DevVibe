@@ -50,7 +50,7 @@
 .user_card{
     width: 270px;
     height: 73px;
-    border: 0.5px solid #D4D4D4;
+    border: 0.3px solid #D4D4D4;
 }
 
 .skills_container{
@@ -62,7 +62,7 @@
     display: flex;
     align-items: center;
     padding: 0 1rem;
-    border: 0.5px solid #D4D4D4;
+    border: 0.3px solid #D4D4D4;
 }
 
 .content{
@@ -87,7 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0.5px solid #D4D4D4;
+    border: 0.3px solid #D4D4D4;
 }
 
 .pill{
@@ -163,4 +163,13 @@
     height: 46px;
     border-radius: 120px;
     object-fit: cover;
+}
+
+.error_message{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a6a6a6;
 }
