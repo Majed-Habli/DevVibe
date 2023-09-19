@@ -27,3 +27,18 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.user_profile{
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_profile img{
+    width: 46px;
+    height: 46px;
+    border-radius: 120px;
+    object-fit: cover;
+}

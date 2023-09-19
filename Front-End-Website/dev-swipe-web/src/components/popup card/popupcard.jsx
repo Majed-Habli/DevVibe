@@ -9,7 +9,7 @@ const PopUpCard = ({user}) =>{
     const readableDate = date.toLocaleString().split('T')[0];
     const [message, setMessage] = useState('')
     const swipe = async ({id,value}) =>{
-
+ 
         try {
             const response = await sendRequest({
                 route: "/user/developer/swipe",
@@ -38,7 +38,9 @@ const PopUpCard = ({user}) =>{
         <div className={styles.container}>
             <div className={styles.container_left}>
                 <div className={styles.user_profile}>
-                    <img src="/default-user.png" alt="profile image" />
+                    {user.profile_image_url ? (<img src={`${user.profile_image_url}`} alt="profile image" />):(
+                        <img src="/default-user.png"/>
+                    )}
                 </div>
                 <div className={styles.user_detail}>
                     <div className={styles.user_name}>{user.user_name}</div>
