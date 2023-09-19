@@ -33,13 +33,10 @@ const InterestedTable = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
+                console.log("my data is :",data)
                 const token = " ";
     
-                if(data.status == 'success'){
-                    if(data.data == ' '){
-                        setErrorDisplay("keep waiting...");
-                        console.log(error)
-                    }
+                if(data.status === 'success'){
 
                     const obj = data.data;
                     setUsers(obj);
@@ -65,7 +62,7 @@ const InterestedTable = () => {
                 <CustomButton title={'view all'} onClick={veiwAll}/>
             </div>
             <div className={styles.table_body}>
-                {users ?(<Card data={users} button={true}/>):(
+                {!errorDisplay ?(<Card data={users} button={true}/>):(
                     <div className={styles.error_container}>{errorDisplay}</div>
                 )}
             </div>
