@@ -69,7 +69,9 @@ const Navbar = () => {
                         <div className={styles.card_container}>
                             <div className={styles.container_left} onClick={()=>goToPage({})}>
                                 <div className={styles.profile_image_container}>
-                                    <img src={`${profileImageUrl}`} alt="profile image" />
+                                    {profileImageUrl != null ?(<img src={`${profileImageUrl}`} alt="profile image" />):(
+                                        <img src='/default-user.png' alt="profile image" />
+                                    )}
                                 </div>
                                 <div className={styles.user_name}>{userName}</div>
                             </div>

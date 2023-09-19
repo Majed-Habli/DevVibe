@@ -38,7 +38,7 @@ const PopUpCard = ({user}) =>{
         <div className={styles.container}>
             <div className={styles.container_left}>
                 <div className={styles.user_profile}>
-                    <img src="/testuser.png" alt="profile image" />
+                    <img src="/default-user.png" alt="profile image" />
                 </div>
                 <div className={styles.user_detail}>
                     <div className={styles.user_name}>{user.user_name}</div>

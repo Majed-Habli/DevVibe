@@ -42,7 +42,7 @@ const HeaderComp = ({data}) =>{
                 <div className={styles.middle_left}>
                     <div className={styles.image_container}>
                         {!user.profile_image_url ? (
-                            <img src="/Profileimage.png" alt="user profile image" />
+                            <img src="/default-user.png" alt="user profile image" />
                         ):(
                             <img src={`${user.profile_image_url}`} alt="recipe img" />
                         )}
