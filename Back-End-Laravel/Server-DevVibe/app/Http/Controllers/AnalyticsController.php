@@ -15,6 +15,28 @@ use DB;
 class AnalyticsController extends Controller
 {
     //
+    function insertSkill(Request $request){
+
+        $skill_name = $request->name;
+
+        $skill = Skill::find($skill_name);
+
+        if(!$skill){
+            
+            $skill = new Skill;
+            $skill->name = $skill_name;
+            $skill->save();
+
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'skill exists'
+        ]);
+    }
+
     function deleteSkill(Request $request){
 
         $skill_id = $request->skill_id;
