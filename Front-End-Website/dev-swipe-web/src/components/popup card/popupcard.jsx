@@ -4,7 +4,7 @@ import CustomImageButton from "../custom button/customImageButton";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 
-const PopUpCard = ({user}) =>{
+const PopUpCard = ({user, fun}) =>{
     const date = user.created_at;
     const readableDate = date.toLocaleString().split('T')[0];
     const [message, setMessage] = useState('')
@@ -25,6 +25,7 @@ const PopUpCard = ({user}) =>{
             if(data.status == 'success'){
                 console.log(data)
                 setMessage('liked')
+                fun(id)
             }else{
                 setMessage('disliked');
                 console.log(message);
@@ -33,6 +34,8 @@ const PopUpCard = ({user}) =>{
           } catch (error) {
             console.error("swiping failed:", error);
           }
+
+
     }
     return(
         <div className={styles.container}>
