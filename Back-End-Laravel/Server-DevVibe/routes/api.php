@@ -36,7 +36,6 @@ Route::group(['prefix'=>'user'], function (){
         Route::post('deny_access', [AnalyticsController::class, 'denyAccess']);
         Route::get('blocked_users/{search?}', [AnalyticsController::class, 'blockedUsers']);
         Route::post('is_blocked', [AnalyticsController::class, 'isBlocked']);
-        // Route::get('map', [AnalyticsController::class, 'map']);
     });
 
 });
@@ -47,3 +46,4 @@ Route::group(['prefix' => 'guest'], function(){
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+Route::post('sendNotificationrToUser', [UserController::class, 'sendNotificationrToUser']);

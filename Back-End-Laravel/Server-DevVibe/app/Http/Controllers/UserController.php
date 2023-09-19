@@ -11,6 +11,7 @@ use App\Models\Swipe;
 use App\Models\UserMatch;
 use App\Models\DeveloperDetail;
 use App\Models\RecruiterDetail;
+use App\Services\FCMService;
 use Illuminate\Support\Str;
 use Auth;
 
@@ -485,5 +486,26 @@ class UserController extends Controller
             // 'data' => $swiped_user,
             'compare' => $compare_user
         ]);
+    }
+
+    //notification 2nd try
+    public function sendNotificationrToUser(Request $request)
+    {
+       
+       $user = $request->token;
+
+      FCMService::send(
+          $user,
+          [
+              'title' => 'hey there beautiful',
+              'body' => 'your body is tired',
+          ]
+      );
+
+      return response()->json([
+        'status' => 'success',
+        'user' => $user
+      ]);
+
     }
 }
