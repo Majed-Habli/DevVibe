@@ -227,7 +227,9 @@ class UserController extends Controller
 
     function uploadUserImages(Request $request){
         
-        $user_id = Auth::id();
+        // $user_id = Auth::id();
+        $user_id = $request->user_id;
+
         $path = public_path('storage/users/' . $user_id . '/user_images');
         
         $image = $request->image;
@@ -252,7 +254,9 @@ class UserController extends Controller
 
     function uploadUserResume(Request $request){
         
-        $user_id = Auth::id();
+        // $user_id = Auth::id();
+        $user_id = $request->user_id;
+        
         $path = public_path('storage/users/' . $user_id . '/user_resume');
         
         $resume = $request->resume;
@@ -264,7 +268,7 @@ class UserController extends Controller
 
         if($user_record){
 
-            $user_record->resume = $resume_name;
+            $user_record->resume = asset ('storage/users/' . $user_id . '/user_resume'.'/'.$resume_name);
             $user_record->save();
         }else{
 
@@ -387,6 +391,8 @@ class UserController extends Controller
             $query->where('user_one_id', $user_id)->orWhere('user_two_id', $user_id);
         })->get();
 
+        $data = [];
+
         foreach($my_matches as $match){
             if($match->user_one_id == $user_id){
                 $get_user = $match->user_two_id;
@@ -403,10 +409,19 @@ class UserController extends Controller
             $data[] = $users;
         }
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $data,
-        ]);
+        if($data != null){
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $data,
+            ]);
+        }else{
+
+            return response()->json([
+                'status' => 'failed',
+            ]);
+        }
+
     }
 
     function viewInterested(){
