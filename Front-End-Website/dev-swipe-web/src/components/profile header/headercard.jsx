@@ -23,48 +23,48 @@ const HeaderComp = ({data}) =>{
     const [uploadImage, setUploadImage] = useState('');
     const [tempView, setTempView] = useState('');
 
-    const postImage = async () =>{
+    // const postImage = async () =>{
 
-        try {
-            const response = await sendRequest({
-                route: "/user/developer/upload_profile_pic/",
-                method: requestMethods.POST,
-                body:{image: uploadImage,
-                    type:"png",
-                    }
-            });
-            const data = response;
-            const token = " ";
+    //     try {
+    //         const response = await sendRequest({
+    //             route: "/user/developer/upload_profile_pic/",
+    //             method: requestMethods.POST,
+    //             body:{image: uploadImage,
+    //                 type:"png",
+    //                 }
+    //         });
+    //         const data = response;
+    //         const token = " ";
 
-            if(data.status == 'success'){
-                window.location.href = `/dashboard/profile/${data.id}`;
-            }
+    //         if(data.status == 'success'){
+    //             window.location.href = `/dashboard/profile/${data.id}`;
+    //         }
             
-          } catch (error) {
-            console.error("api calling failed:", error);
-          }
-    }
+    //       } catch (error) {
+    //         console.error("api calling failed:", error);
+    //       }
+    // }
 
-    const fileRef = useRef(null);
-    const handleInput = (e) => {
-        if (e.target.files.length > 0) {
-            function getBase64(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = (error) => reject(error);
-                });
-            }
-            getBase64(e.target.files[0]).then((data) => {
-                setTempView(data)
-                const refStringArray = data.split(",");
-                refStringArray.shift();
-                const result = refStringArray.join('');
-                setUploadImage(result);
-            });
-        }
-    };
+    // const fileRef = useRef(null);
+    // const handleInput = (e) => {
+    //     if (e.target.files.length > 0) {
+    //         function getBase64(file) {
+    //             return new Promise((resolve, reject) => {
+    //                 const reader = new FileReader();
+    //                 reader.readAsDataURL(file);
+    //                 reader.onload = () => resolve(reader.result);
+    //                 reader.onerror = (error) => reject(error);
+    //             });
+    //         }
+    //         getBase64(e.target.files[0]).then((data) => {
+    //             setTempView(data)
+    //             const refStringArray = data.split(",");
+    //             refStringArray.shift();
+    //             const result = refStringArray.join('');
+    //             setUploadImage(result);
+    //         });
+    //     }
+    // };
 
     const ViewModel = () =>{
         setShowModel(true);
@@ -74,6 +74,18 @@ const HeaderComp = ({data}) =>{
         if(!url == ''){
             window.location.href = url
         }
+    }
+
+    const downloadPdf = (url) => {
+        console.log(url)
+        const pdfName = url.split('/').pop();
+        const alink = document.createElement('a');
+        alink.href = url;
+        alink.setAttribute("download", pdfName);
+        document.body.appendChild(alink);
+        alink.click();
+        alink.remove();
+        // window.location.href = pdfUrl
     }
 
     useEffect(()=>{
@@ -144,10 +156,9 @@ const HeaderComp = ({data}) =>{
                 {user && userType == 2 && (
                     <div className={styles.flex}>
                         {user.resume && (
-                            // <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onclick="window.open('file.doc')" cursor={'pointer'} />
-                            <a href = "file_path" download = {user.resume}>
-                                <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onclick="window.open('file.doc')" cursor={'pointer'}/>
-                            </a>
+                            // <a href = {`${user.resume}`} download = {`${user.resume}`}>
+                                <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} cursor={'pointer'} onClick={()=>{downloadPdf(user.resume)}}/>
+                            // </a>
                         )}
                         {user.github_url && (
                             <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>

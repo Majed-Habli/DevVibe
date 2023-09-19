@@ -20,7 +20,8 @@ const ViewUploadResume = ({isOpen ,type}) =>{
             const response = await sendRequest({
                 route: '/user/developer/upload_user_resume',
                 method: requestMethods.POST,
-                body:{image: uploadResume,
+                body:{user_id: userId,
+                    resume: uploadResume,
                     type:"pdf",
                     }
             });
@@ -58,6 +59,7 @@ const ViewUploadResume = ({isOpen ,type}) =>{
                 refStringArray.shift();
                 const result = refStringArray.join('');
                 setUploadResume(result);
+                console.log(result)
             });
         }
     };
