@@ -60,11 +60,11 @@ const Skills = () => {
         <div className={styles.container}>
             <div className={styles.page_header}>
                 <span>Skills</span>
+                <CustomButton title={'add skill'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} onClick={()=>toggleModel()}/>
             </div>
             <div className={styles.searchable}>
                 <div className={styles.top_bar}>
                     <input type="text" placeholder="Search users here..." value={search} onChange={inputChange}/>
-                    <CustomButton title={'add skill'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} onClick={()=>toggleModel()}/>
                 </div>
                 <div className={styles.users_container}>
                     {skills.map((skill)=>(
