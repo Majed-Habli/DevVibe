@@ -12,6 +12,8 @@ const Skills = () => {
     const [error, setError] = useState('');
     const [skills, setSkills] = useState([]);
     const [showModel, setShowModel] = useState(false);
+    const [showModelEdit, setShowModelEdit] = useState(false);
+    const [skilllInfo, setSkillInfo] = useState(false);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
@@ -19,6 +21,11 @@ const Skills = () => {
 
     const toggleModel = () => {
         setShowModel(true);
+    }
+
+    const toggleModelEdit = (skillInformation) => {
+        setShowModelEdit(true);
+        setSkillInfo(skillInformation);
     }
 
     const getSkills = async () => {
@@ -97,8 +104,8 @@ const Skills = () => {
                         <div key={skill.id} className={styles.box}>
                             <div key={skill.id}> {skill.name}</div>
                             <div className={styles.btn_container}>
-                                <CustomImageButton image_name={'bin.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} onClick={()=>removeSkill(skill.id)} cursor={'pointer'}/> 
-                                <CustomImageButton image_name={'edit.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} cursor={'pointer'}/>
+                                <CustomImageButton image_name={'bin.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} cursor={'pointer'} onClick={()=>removeSkill(skill.id)}/> 
+                                <CustomImageButton image_name={'edit.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} cursor={'pointer'} onClick={()=>toggleModelEdit(skill)}/>
                             </div>
                         </div>
                     ))}
@@ -107,7 +114,13 @@ const Skills = () => {
 
             {showModel && (
                 <div className={styles.popup_background}>
-                    <AddSkill isOpen={setShowModel}/>
+                    <AddSkill isOpen={setShowModel} type={'add'}/>
+                </div>
+            )}
+
+            {showModelEdit && (
+                <div className={styles.popup_background}>
+                    <AddSkill isOpen={setShowModelEdit} type={'edit'} data={skilllInfo}/>
                 </div>
             )}
         </div>
