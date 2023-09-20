@@ -238,6 +238,15 @@ class AnalyticsController extends Controller
         $skills = Skill::all()->count();
 
         $popular_stacks = UserSkill::with('Skill')->select('skill_id', DB::raw('COUNT(skill_id) as count'))->groupBy('skill_id')->orderBy('count', 'desc')->take(10)->get();
+        
+        // $popular_users = User::with('Swipes')->select('id', DB::raw('COUNT(id) as count'))->groupBy('id')->orderBy('count', 'desc')->take(10)->get();
+        $popular_users = Swipe::with('User')->select('swiped_user_id',DB::raw('COUNT(swiped_user_id) as count'))->where('is_liked',true)->groupBy('swiped_user_id')->orderby('count', 'desc')->take(10)->get();
+        // $popular_users = Swipe::where(function ($query) use ($user_id){
+        //     $query->where('swiped_user_id', $user_id)
+        //     ->where('is_liked', 1);
+        // })->whereNotIn('user_id', function ($query) use ($user_id){
+        //     $query->select('swiped_user_id')->from('swipes')->where('user_id', $user_id);
+        // })->get();
 
         return response()->json([
             'status' => 'success',
@@ -253,6 +262,7 @@ class AnalyticsController extends Controller
             'skills_count' => $skills,
             'matches_count' => $matches_count,
             'countries_count' => $countries_count,
+            'popular_users' => $popular_users,
             'country_people_count' => $country_people_count,
             'developers_chart_count' => array_values($developersArr),
             'recruiters_chart_count' => array_values($recruitersArr),
