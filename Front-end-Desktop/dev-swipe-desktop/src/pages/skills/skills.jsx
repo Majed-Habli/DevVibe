@@ -5,6 +5,7 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import CustomButton from "../../components/custom button/custombutton";
 import AddSkill from "../../components/model/insert form/insertform";
+import CustomImageButton from "../../components/custom button/customImageButton";
 
 const Skills = () => {
     const [search, setSearch] = useState('');
@@ -51,6 +52,31 @@ const Skills = () => {
             console.error("failed to get user:", error);
           }
     }
+
+    const removeSkill = async (id) =>{
+
+        try {
+            const response = await sendRequest({
+                route: "user/admin/delete_skill",
+                method: requestMethods.POST,
+                body:{skill_id: id}
+            });
+            const data = response;
+            console.log("res of updating", response)
+            const token = " ";
+
+            if(data.status == 'success'){
+                console.log("successfully deleted")
+                window.location.href = '/dashboard/skills';
+            }else{
+                setError("failed to delete!");
+                console.log(error);
+            }
+            }
+        catch (error) {
+            console.error("bad request. failed:", error);
+          }
+    }
     
     useEffect(()=>{
         getSkills();
@@ -71,8 +97,8 @@ const Skills = () => {
                         <div key={skill.id} className={styles.box}>
                             <div key={skill.id}> {skill.name}</div>
                             <div className={styles.btn_container}>
-                                <CustomButton title={'remove'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'}/>
-                                <CustomButton title={'edit'} width={70} height={27} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'}/>
+                                <CustomImageButton image_name={'bin.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} onClick={()=>removeSkill(skill.id)} cursor={'pointer'}/> 
+                                <CustomImageButton image_name={'edit.png'} image_width={20} image_height={20} width={50} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={12} fontWeight={600} backgroundColor={'#FCC860'} cursor={'pointer'}/>
                             </div>
                         </div>
                     ))}
