@@ -14,6 +14,7 @@ const Profile = () =>{
     const [errorImages, setErrorImages] = useState('');
     
     const [skills, setSkills] = useState([]);
+    const [stats, setStats] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
@@ -120,11 +121,53 @@ const Profile = () =>{
           }
     }
 
+    const getStats = async () =>{
+        const token = localStorageAction("token");
+
+        try {
+            if(!token){
+                setError('there is nothing to show here');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: '/user/admin/stats',
+                    method: requestMethods.POST,
+                    body:{user_id: params.id}
+                });
+                const data = response;
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    if(data.data == ''){
+                        setError('user has no data')
+                    }
+                    const obj = data.data;
+                    setStats(obj);
+
+                }else{
+                    setError("something went wrong!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("failed to get user:", error);
+          }
+    }
+
     useEffect(()=>{
         getUser();
         getSkills();
         getImages();
     },[params.id]);
+
+    useEffect(()=>{
+        setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',view_count: stats && stats.view_count ? stats.view_count: '0'});
+        getStats();
+    },[]);
+
+    console.log(stats)
 
     return(
         <div className={styles.page_container}>
@@ -134,9 +177,7 @@ const Profile = () =>{
             <div className={styles.page_body}>
                 <div className={styles.bofy_left}>
                     <div className={styles.body_top}>
-                        <div className={styles.header_section}>
-                            <HeaderComp data={user}/>
-                        </div>
+                        <HeaderComp data={user} stats={stats}/>
                     </div>
                     <div className={styles.body_bottom}>
                     </div>

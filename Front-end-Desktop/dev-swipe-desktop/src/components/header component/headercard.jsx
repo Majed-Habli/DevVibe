@@ -6,7 +6,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
 
-const HeaderComp = ({data}) =>{
+const HeaderComp = ({data, stats}) =>{
     const [blocked, setBlocked] =useState(false)
 
     const [user, setUser] = useState({});
@@ -118,15 +118,31 @@ const HeaderComp = ({data}) =>{
             </div>
 
             <div className={styles.body_section}>
-                <div className={styles.user_details}>Email: {data.email}</div>
-                <div className={styles.user_details}>Lives at: {data.country}</div>
+                <div className={styles.user_details}>
+                    <div>Likes:</div>
+                    <div>{stats.liked_count}</div>
+                </div>
+                <div className={styles.user_details}>
+                    <div>Matches:</div>
+                    <div>{stats.matched_count}</div>
+                </div>
+                <div className={styles.user_details}>
+                    <div>Views:</div>
+                    <div>{stats.view_count}</div>
+                </div>
+                <div className={styles.user_details}>
+                    <div>Skips:</div>
+                    <div>{stats.skipped_count}</div>
+                </div>
+                {/* <div className={styles.user_details}>Email: {data.email}</div> */}
+                {/* <div className={styles.user_details}>Lives at: {data.country}</div> */}
                 <div className={styles.line}></div>
             </div>
             <div className={styles.button_container}>
                 {blocked ? (
-                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={'100%'} height={'100%'} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
                 ):(
-                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={'100%'} height={'100%'} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
                 )}
 
                 

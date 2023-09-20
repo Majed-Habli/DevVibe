@@ -26,8 +26,7 @@
 }
 
 .bofy_left{
-    flex: 1;
-    max-width: 250px;
+    width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -36,71 +35,11 @@
 
 .body_top{
     width: 100%;
-    height: 369px;
     background-color: white;
     border: 1px solid #CCCCCC;
     border-radius: 4px;
 }
 
-.header_section{
-    width: 100%;
-    /* display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    align-items: center;
-    padding: 2rem 1rem;     */
-}
-
-/* .header_section img{
-    width: 80px;
-    height: 80px;
-    border-radius: 120px;
-    object-fit: cover;
-}
-
-.body_section{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.user_details{
-    width: 100%;
-    padding: 0.7rem 0;
-    border-top-color: #CCCCCC;
-    border-top-style: solid;
-    border-top-width:1px ;
-    
-}
-
-.line{
-    border-bottom-color: #CCCCCC;
-    border-bottom-style: solid;
-    border-bottom-width:1px ;
-}
-
-.profile_username{
-    font-size: 22px;
-}
-
-.profile_role{
-    font-size: 18px;
-    color: #CCCCCC;
-}
-
-.user_details{
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.button_container{
-    width: 100%;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: rgb(60, 105, 145); */
-/* } */ 
 .body_bottom{
     width: 100%;
     height: 320px;
