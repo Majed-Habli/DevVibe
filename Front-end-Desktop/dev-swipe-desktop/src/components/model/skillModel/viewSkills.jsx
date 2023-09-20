@@ -23,9 +23,9 @@ const ViewSkills = ({isOpen, skills}) =>{
             <div className={styles.popup_body}>
                 <div className={styles.body_container}>
                     {skills ?(
-                        <div>
+                        <div className={styles.skill_container}>
                             {skills.map((skill)=>(
-                                <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={'fit-content'} height={56} display={'flex'} alignItems={'center'} padding={'0.5rem 1rem'} backgroundColor={'#FCC860'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
+                                <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={'fit-content'} height={36} display={'flex'} alignItems={'center'} padding={'0 1rem'} backgroundColor={'#FCC860'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                             ))}
                         </div>
                     ) : (
