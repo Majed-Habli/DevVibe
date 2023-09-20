@@ -5,9 +5,15 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { TbDeviceDesktopCode } from 'react-icons/tb';
 import { CgSmartphoneChip } from 'react-icons/cg';
 import { BiWorld } from 'react-icons/bi';
+import { Navigate, useNavigate } from "react-router-dom";
 
-const AnalyticsCard = ({data,type,backgroundColor, color, title}) => {
+const AnalyticsCard = ({data,type,backgroundColor, color, title, location}) => {
+    const nav = useNavigate();
 
+    const gotToPage = () => {
+        nav(`/${location}`);
+    }
+    
     return(
         <div className={styles.container}>
              <div>
@@ -31,7 +37,7 @@ const AnalyticsCard = ({data,type,backgroundColor, color, title}) => {
                         )}
                     </div>
                 </div>
-                <div className={styles.cta} style={{backgroundColor:color}}>
+                <div className={styles.cta} style={{backgroundColor:color}} onClick={()=>gotToPage()}>
                     <span>More info</span>
                     <BsFillArrowRightCircleFill fill="white" color="white" size={14}/>
                 </div>
