@@ -139,12 +139,7 @@ const Profile = () =>{
                 const token = " ";
     
                 if(data.status == 'success'){
-                    if(data.data == ''){
-                        setError('user has no data')
-                    }
-                    const obj = data.data;
-                    setStats(obj);
-
+                    setStats(data);
                 }else{
                     setError("something went wrong!");
                     console.log(error);
@@ -166,8 +161,6 @@ const Profile = () =>{
         setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',view_count: stats && stats.view_count ? stats.view_count: '0'});
         getStats();
     },[]);
-
-    console.log(stats)
 
     return(
         <div className={styles.page_container}>

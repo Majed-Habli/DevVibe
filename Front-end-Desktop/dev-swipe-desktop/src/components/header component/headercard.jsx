@@ -75,8 +75,7 @@ const HeaderComp = ({data, stats}) =>{
 
         isBlocked()
     },[data,blocked]);
-    console.log(user.github_url)
-
+    // console.log(user.github_url)
 
     return(
         <div className={styles.container}>
