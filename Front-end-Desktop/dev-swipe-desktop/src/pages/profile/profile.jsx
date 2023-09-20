@@ -20,6 +20,7 @@ const Profile = () =>{
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
     const [showSkillModel, setShowSkillModel] = useState(false);
+    const [showInfoModel, setShowInfoModel] = useState(false);
     const params = useParams();
 
     const getSkills = async () =>{
@@ -157,6 +158,10 @@ const Profile = () =>{
         setShowSkillModel(true)
     }
 
+    const showUserInfo = () => {
+        setShowInfoModel(true)
+    }
+
     useEffect(()=>{
         getUser();
         getSkills();
@@ -179,7 +184,7 @@ const Profile = () =>{
                         <HeaderComp data={user} stats={stats}/>
                     </div>
                     <div className={styles.body_bottom}>
-                        <CustomImageButton text={'user info'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"details.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'}/>
+                        <CustomImageButton text={'user info'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"details.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'} onClick={()=>showUserInfo()}/>
                         <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'} onClick={()=>showUserSkills()}/>
                     </div>
                 </div>
@@ -190,6 +195,11 @@ const Profile = () =>{
             {showSkillModel && (
                 <div className={styles.popup_background}>
                     <ViewSkills isOpen={setShowSkillModel} skills={skills}/>
+                </div>
+            )}
+            {showInfoModel && (
+                <div className={styles.popup_background}>
+                    <ViewSkills isOpen={setShowInfoModel} skills={skills}/>
                 </div>
             )}
         </div>
