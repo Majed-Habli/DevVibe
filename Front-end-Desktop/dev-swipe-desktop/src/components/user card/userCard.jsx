@@ -58,7 +58,7 @@ const UserCard = ({data,url}) =>{
                 </div>
             </div>
             <div className={styles.cto}>
-                {data.has_access != 1 &&(<CustomImageButton image_name={'Done1.png'} width={30} height={30} image_height={22} image_width={22} display={'flex'} alignItems={'center'} justifyContent={'center'} backgroundColor={'#FCC860'} borderRadius={4} onClick={()=>giveAccess()}/>)}
+                {data.has_access != 1 &&(<CustomImageButton image_name={'Done1.png'} width={30} height={30} image_height={22} image_width={22} display={'flex'} alignItems={'center'} justifyContent={'center'} backgroundColor={'#FCC860'} borderRadius={4} onClick={()=>giveAccess()} cursor={'pointer'}/>)}
                 <CustomButton title={'view Profile'} width={120} height={30} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={()=>viewUserProfile({id:data.id})}/>
             </div>
         </div>

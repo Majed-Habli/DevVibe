@@ -103,15 +103,15 @@ const HeaderComp = ({data, stats}) =>{
                     {user && data.user_type_id == 2 && (
                         <div className={styles.flex}>
                             {user.resume && (
-                                <CustomImageButton image_name={'Uploadfile.png'} image_width={25} image_height={25} onClick={() => goTo(user.linkedin_url)} />
+                                <CustomImageButton image_name={'Uploadfile.png'} image_width={25} image_height={25} onClick={() => goTo(user.linkedin_url)} cursor={'pointer'}/>
                             )}
                             {user.github_url && (
-                                <CustomImageButton image_name={'Github.png'} image_width={25} image_height={25} onClick={() => goTo(user.github_url)} />
+                                <CustomImageButton image_name={'Github.png'} image_width={25} image_height={25} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
                             )}
                         </div>
                     )}
                     {user.linkedin_url &&(
-                        <CustomImageButton image_name={'Linkedin.png'} image_width={25} image_height={25} onClick={() => goTo(data.linkedin_url)}/>
+                        <CustomImageButton image_name={'Linkedin.png'} image_width={25} image_height={25} onClick={() => goTo(data.linkedin_url)} cursor={'pointer'}/>
                     )}
                 </div>
             </div>
