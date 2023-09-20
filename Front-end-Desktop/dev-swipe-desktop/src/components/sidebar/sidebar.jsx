@@ -19,7 +19,6 @@ const Sidebar = ({status}) => {
     useEffect(()=>{
         setNavbarOpen(status)
     },[status])
-    console.log('inner', navbarOpen)
 
     return(
         <div className={`${navbarOpen? styles.show_menu: styles.container}`}>
