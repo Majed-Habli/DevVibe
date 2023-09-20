@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
 import styles from '../../styles/users.module.css';
-import UserCard from "../../components/user card/userCard";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import CustomButton from "../../components/custom button/custombutton";
+import AddSkill from "../../components/model/insert form/insertform";
 
 const Skills = () => {
     const [search, setSearch] = useState('');
@@ -80,7 +80,9 @@ const Skills = () => {
             </div>
 
             {showModel && (
-                <div ></div>
+                <div className={styles.popup_background}>
+                    <AddSkill isOpen={setShowModel}/>
+                </div>
             )}
         </div>
     )
