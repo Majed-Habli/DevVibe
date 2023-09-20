@@ -173,12 +173,12 @@ const Profile = () =>{
                         <HeaderComp data={user} stats={stats}/>
                     </div>
                     <div className={styles.body_bottom}>
+                        <CustomImageButton text={'user info'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"details.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4}/>
+                        <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4}/>
                     </div>
                 </div>
                 <div className={styles.body_right}>
-                    {/* <div className={styles.right_container}> */}
-                        <CarouselComp value={images} issue={errorImages}/>
-                    {/* </div> */}
+                    <CarouselComp value={images} issue={errorImages}/>
                 </div>
             </div>
         </div>
