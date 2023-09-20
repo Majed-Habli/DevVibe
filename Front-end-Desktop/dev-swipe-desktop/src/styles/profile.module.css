@@ -110,10 +110,13 @@
 
 .body_right{
     flex: 2;
+    height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: burlywood;
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
 }
 /* 
 .page_header{

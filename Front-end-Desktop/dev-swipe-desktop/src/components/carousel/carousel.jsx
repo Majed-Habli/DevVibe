@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 import '../../styles/carousel.css';
 
-// import required modules
-import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
+import { Navigation, Pagination, EffectCoverflow, Mousewheel } from 'swiper/modules';
 
 const CarouselComp = ({value ,issue}) => {
   const [error,setError] = useState('');
@@ -26,46 +23,15 @@ const CarouselComp = ({value ,issue}) => {
   return (
     <>
       {!error ? (<Swiper
-        centeredSlides={true}
-        effect={'coverflow'}
-        slidesPerView={3}
-        spaceBetween={25}
-        navigation={{
-            nextEl:'.swiper-button-next',
-            prevElEl:'.swiper-button-prev',
-            clickable: true
-        }}
+        direction='vertical'
+        slidesPerView={1}
+        spaceBetween={10}
+        mousewheel={true}
         pagination={{
           clickable: false,
-        //   el: '.swiper-pagination'
         }}
-        loop= { true}
-        initialSlide={1}
-        coverflowEffect={{
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5
-        }}
-        // breakpoints={{
-        //   '@0.00': {
-        //     slidesPerView: 1,
-        //     spaceBetween: 10,
-        //   },
-        //   '@0.75': {
-        //     slidesPerView: 2,
-        //     spaceBetween: 20,
-        //   },
-        //   '@1.00': {
-        //     slidesPerView: 3,
-        //     spaceBetween: 40,
-        //   },
-        //   '@1.50': {
-        //     slidesPerView: 4,
-        //     spaceBetween: 50,
-        //   },
-        // }} EffectCoverflow
-        modules={[Pagination, Navigation]}
+
+        modules={[Mousewheel,Pagination, Navigation]}
         className="mySwiper"
       >
         {value.map((val)=>(
@@ -74,16 +40,6 @@ const CarouselComp = ({value ,issue}) => {
             </SwiperSlide>
         ))}
         
-        {/* <div className='slider-controler'>
-            <div className='swiper-button-prev slider-arrow'>
-                <ion-icon nmme="arrow-back-outline"></ion-icon>
-                <img src="/arrow.png" alt="" />
-            </div>
-            <div className='swiper-button-next slider-arrow'>
-                <ion-icon na  me="arrow-forward-outline"></ion-icon>
-            </div>
-            <div className='swiper-pagination'></div>
-        </div> */}
       </Swiper>):(
         <div className='error_message'>{error}</div>
       )}

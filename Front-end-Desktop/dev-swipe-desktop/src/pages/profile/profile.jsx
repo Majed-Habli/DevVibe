@@ -142,6 +142,9 @@ const Profile = () =>{
                     </div>
                 </div>
                 <div className={styles.body_right}>
+                    {/* <div className={styles.right_container}> */}
+                        <CarouselComp value={images} issue={errorImages}/>
+                    {/* </div> */}
                 </div>
             </div>
         </div>
