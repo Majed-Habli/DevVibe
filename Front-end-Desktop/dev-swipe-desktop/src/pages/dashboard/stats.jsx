@@ -71,11 +71,11 @@ const Stats = () =>{
     },[]);
 
     useEffect(()=>{
-        if(chart){
-          mapLabels(chart)
-        }
+    if(chart){
+        mapLabels(chart)
+    }
 
-      },[chart])
+    },[chart])
 
       const majed = [{name: 'PHP', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
       {name: 'Bootstrap', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
