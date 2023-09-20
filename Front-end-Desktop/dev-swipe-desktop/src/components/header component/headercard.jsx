@@ -7,7 +7,6 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
 
 const HeaderComp = ({data}) =>{
-    const userType = localStorageAction('user_type');
     const [blocked, setBlocked] =useState(false)
 
     const [user, setUser] = useState({});
@@ -66,7 +65,7 @@ const HeaderComp = ({data}) =>{
     }
 
     useEffect(()=>{
-        if(userType == 3){
+        if(data.user_type_id == 3){
             setUser({github_url : data.rec_details && data.rec_details.github_url ?data.rec_details.github_url : "",linkedin_url : data.rec_details && data.rec_details.linkedin_url ?data.rec_details.linkedin_url : "",profile_image_url: data.profile_image_url
         })
         }else{
@@ -76,59 +75,61 @@ const HeaderComp = ({data}) =>{
 
         isBlocked()
     },[data,blocked]);
+    console.log(user.github_url)
 
 
     return(
         <div className={styles.container}>
-            {/* <div className={styles.middle_row}>
-                    <div className={styles.image_container}>
-                        {!user.profile_image_url ? (
-                            <img src="/default-user.png" alt="user-profile-image" />
-                        ):(
-                            <img src={`${user.profile_image_url}`} alt="profile-img" />
-                        )}
-                <div className={styles.middle_right}>
-                    {/* {data.rec_details ?(
-                        <div className={styles.description}>{data.rec_details.description}</div>
-                    ):(
-                        <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
-                    )} */}
-
-                {/* {user && userType == 2 && ( */}
-                    {/* // <div className={styles.flex}> */}
-                        {/* {user.resume && (
-                            <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)} />
-                        )} */}
-                        {/* {user.github_url && (
-                            <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} />
-                        )} */}
-                    {/* </div> */}
-                {/* )} */}
-                {/* {user.linkedin_url &&(
-                    <CustomImageButton image_name={'Linkedin.png'} image_width={36} image_height={36} onClick={() => goTo(user.linkedin_url)}/>
-                )} */}
+            
             <div className={styles.header_section}>
-                {user.profile_image_url ? (<img src={`${data.profile_image_url}`} alt="profile-image" />) : (
-                    <div>
-                        <img src="/default-user.png" alt="profile-image" />
-                    </div>
-                )}
-                <div className={styles.profile_username}>{data.user_name}</div>
-                {user.user_type_id === 2 ? (<div className={styles.profile_role}>Developer</div>):(
-                    <div className={styles.profile_role}>Recruiter</div>
-                )}
-                <div className={styles.body_section}>
-                    <div className={styles.user_details}>Email: {data.email}</div>
-                    <div className={styles.user_details}>Lives at: {data.country}</div>
-                    <div className={styles.line}></div>
-                </div>
-                <div className={styles.button_container}>
-                    {blocked ? (
-                        <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
-                    ):(
-                        <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                <div className={styles.header}>
+                    {user.profile_image_url ? (<img src={`${data.profile_image_url}`} alt="profile-image" />) : (
+                        <div>
+                            <img src="/default-user.png" alt="profile-image" />
+                        </div>
+                    )}
+                    <div className={styles.profile_username}>{data.user_name}</div>
+                    {data.user_type_id == 2 ? (<div className={styles.profile_role}>Developer</div>):(
+                        <div className={styles.profile_role}>Recruiter</div>
                     )}
                 </div>
+
+                <div className={styles.socials}>
+                        {/* {data.rec_details ?(
+                            <div className={styles.description}>{data.rec_details.description}</div>
+                        ):(
+                            <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
+                        )} */}
+
+                    {user && data.user_type_id == 2 && (
+                        <div className={styles.flex}>
+                            {user.resume && (
+                                <CustomImageButton image_name={'Uploadfile.png'} image_width={25} image_height={25} onClick={() => goTo(user.linkedin_url)} />
+                            )}
+                            {user.github_url && (
+                                <CustomImageButton image_name={'Github.png'} image_width={25} image_height={25} onClick={() => goTo(user.github_url)} />
+                            )}
+                        </div>
+                    )}
+                    {user.linkedin_url &&(
+                        <CustomImageButton image_name={'Linkedin.png'} image_width={25} image_height={25} onClick={() => goTo(data.linkedin_url)}/>
+                    )}
+                </div>
+            </div>
+
+            <div className={styles.body_section}>
+                <div className={styles.user_details}>Email: {data.email}</div>
+                <div className={styles.user_details}>Lives at: {data.country}</div>
+                <div className={styles.line}></div>
+            </div>
+            <div className={styles.button_container}>
+                {blocked ? (
+                    <CustomButton title={'Un Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                ):(
+                    <CustomButton title={'Block'} backgroundColor={'#DC3545'} color={'white'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={4} width={108} height={31} fontWeight={'bold'} onClick={()=>BlockPerson()}/>
+                )}
+
+                
             </div>
         </div>
     )
