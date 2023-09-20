@@ -9,6 +9,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
 import CustomButton from "../../components/custom button/custombutton";
 import ViewSkills from "../../components/model/skillModel/viewSkills";
+import EditForm from "../../components/edit form/editform";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -168,6 +169,8 @@ const Profile = () =>{
         getImages();
     },[params.id]);
 
+    console.log(user)
+
     useEffect(()=>{
         setStats({liked_count: stats && stats.liked_count ? stats.liked_count: '0',matched_count: stats && stats.matched_count ? stats.matched_count: '0',skipped_count: stats && stats.skipped_count ? stats.skipped_count: '0',view_count: stats && stats.view_count ? stats.view_count: '0'});
         getStats();
@@ -199,7 +202,7 @@ const Profile = () =>{
             )}
             {showInfoModel && (
                 <div className={styles.popup_background}>
-                    <ViewSkills isOpen={setShowInfoModel} skills={skills}/>
+                    <EditForm isOpen={setShowInfoModel} data={user}/>
                 </div>
             )}
         </div>
