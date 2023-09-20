@@ -20,7 +20,7 @@ const BarChart3 = ({lab,chartss}) =>{
           },
           title: {
             display: true,
-            text: 'Developers vs Recruiters /year',
+            text: 'Top 10 skills w/ user count',
           },
         },
       };

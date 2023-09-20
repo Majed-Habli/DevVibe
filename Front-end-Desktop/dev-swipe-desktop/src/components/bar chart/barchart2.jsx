@@ -20,7 +20,7 @@ const BarChart2 = ({label1, label2, data1, data2}) =>{
           },
           title: {
             display: true,
-            text: 'Developers vs Recruiters /year',
+            text: 'Male vs Female',
           },
         },
       };
