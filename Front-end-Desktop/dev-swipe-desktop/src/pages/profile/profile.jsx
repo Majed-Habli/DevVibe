@@ -8,6 +8,7 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
 import CustomButton from "../../components/custom button/custombutton";
+import ViewSkills from "../../components/model/skillModel/viewSkills";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -18,6 +19,7 @@ const Profile = () =>{
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
+    const [showSkillModel, setShowSkillModel] = useState(false);
     const params = useParams();
 
     const getSkills = async () =>{
@@ -151,6 +153,10 @@ const Profile = () =>{
           }
     }
 
+    const showUserSkills = () => {
+        setShowSkillModel(true)
+    }
+
     useEffect(()=>{
         getUser();
         getSkills();
@@ -174,13 +180,18 @@ const Profile = () =>{
                     </div>
                     <div className={styles.body_bottom}>
                         <CustomImageButton text={'user info'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"details.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4}/>
-                        <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4}/>
+                        <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} onClick={()=>showUserSkills()}/>
                     </div>
                 </div>
                 <div className={styles.body_right}>
                     <CarouselComp value={images} issue={errorImages}/>
                 </div>
             </div>
+            {showSkillModel && (
+                <div className={styles.popup_background}>
+                    <ViewSkills isOpen={setShowSkillModel} />
+                </div>
+            )}
         </div>
     )
 }
