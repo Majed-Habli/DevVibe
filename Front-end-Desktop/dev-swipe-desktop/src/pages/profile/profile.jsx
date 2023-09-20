@@ -189,7 +189,7 @@ const Profile = () =>{
             </div>
             {showSkillModel && (
                 <div className={styles.popup_background}>
-                    <ViewSkills isOpen={setShowSkillModel} />
+                    <ViewSkills isOpen={setShowSkillModel} skills={skills}/>
                 </div>
             )}
         </div>
