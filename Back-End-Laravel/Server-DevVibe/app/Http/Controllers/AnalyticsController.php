@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Skill;
+use App\Models\Swipe;
 use App\Models\UserSkill;
 use App\Models\BlockedUser;
 use App\Models\UserMatch;
@@ -313,5 +314,28 @@ class AnalyticsController extends Controller
                 'status' => 'failed'
             ]);
         }
+    }
+
+    function stats(Request $request){
+
+        $user_id = $request->user_id;
+        $user = User::find($user_id)->first();
+
+        $matched_count = $user->Matched()->where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
+
+        $skipped_count = Swipe::where('swiped_user_id', '=', $user_id)->where('is_liked', '=', 0)->get()->count();
+
+        $liked_count = Swipe::where('swiped_user_id', '=', $user_id)->where('is_liked', '=', 1)->get()->count();
+
+        $view_count = $user->view_count;
+
+        return response()->json([
+            'status' => 'success',
+            'matched_count' => $matched_count,
+            'skipped_count' => $skipped_count,
+            'liked_count' => $liked_count,
+            'view_count'=> $view_count,
+            'user'=> $user,
+        ]);
     }
 }
