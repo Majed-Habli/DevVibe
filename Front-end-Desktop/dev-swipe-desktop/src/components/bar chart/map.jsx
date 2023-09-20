@@ -13,10 +13,10 @@ import { VectorMap } from "react-jvectormap";
         <VectorMap
           map={"world_mill"}
           backgroundColor="transparent" 
-          zoomOnScroll={false}
+          zoomOnScroll={true}
           containerStyle={{
             width: "100%",
-            height: "520px"
+            height: "450px",
           }}
           onRegionClick={handleClick}
           containerClassName="map"
