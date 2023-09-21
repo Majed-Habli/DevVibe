@@ -33,13 +33,12 @@ function TabNavigator() {
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
-        style: {
-          height: 80,
-          backgroundColor: "red",
-        },
+        // style: {
+        //   height: 80,
+        //   backgroundColor: "red",
+        // },
       }}
     >
-      {/* <Tab.Screen name="Home" component={HomeStackNavigator} /> */}
       <Tab.Screen
         name="Dashboard"
         component={Dashboard}
@@ -147,22 +146,11 @@ function TabNavigator() {
     </Tab.Navigator>
   );
 }
-// const tabNav = () => {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator>
-//         <Tab.Screen name="Home" component={HomeScreen} />
-//         <Tab.Screen name="Settings" component={SettingsScreen} />
-//       </Tab.Navigator>
-//     </NavigationContainer>
-//   );
-// };
 
 export default function App() {
   return (
     <NavigationContainer>
       <HomeStackNavigator />
-      {/* <tabNav /> */}
     </NavigationContainer>
   );
 }
