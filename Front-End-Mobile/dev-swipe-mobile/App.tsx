@@ -3,13 +3,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Hero from './pages/login/login';
+import Dashboard from './pages/dashboard/dashboard';
 
 const Stack = createStackNavigator();
 
 function HomeStackNavigator() {
   return (
-  <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Home" component={Hero} options={{title: 'Welcome'}}/>
+  <Stack.Navigator >
+    <Stack.Screen name="Home" component={Hero} options={{headerShown: false}}/>
+    <Stack.Screen name="Dashboard" component={Dashboard}/>
   {/* Add more screens as needed */}
   </Stack.Navigator>
   );

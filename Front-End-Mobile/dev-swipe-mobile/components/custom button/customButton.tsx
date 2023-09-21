@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Button, Text, Pressable} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 interface CustomInputProps{
     title: string;
@@ -7,11 +8,15 @@ interface CustomInputProps{
 }
 
 const CustomButton : React.FC<CustomInputProps> =({title, route}: CustomInputProps) =>{
+    const navigation = useNavigation();
+
     const goToPage = () =>{
-        window.location.href = `${route}`
+        navigation.navigate(`${route}`)
     }
+
+    
     return(
-        <Pressable style={({pressed}) =>[ styles.container, pressed && {opacity: 0.8}]} onPress={()=>goToPage()}>
+        <Pressable style={({pressed}) =>[ styles.container, pressed && {opacity: 0.8}]} onPress={goToPage}>
             <Text style={styles.statement}>{title}</Text>
         </Pressable>
     )
