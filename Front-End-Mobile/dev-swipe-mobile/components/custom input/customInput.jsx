@@ -1,15 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} from 'react-native';
 
-interface CustomInputProps{
-    label : string;
-    name: string;
-    placeholder : string;
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const CustomInput : React.FC<CustomInputProps> =({name, label, placeholder, onChange ,value}: CustomInputProps) =>{
+const CustomInput =({name, label, placeholder, onChange ,value}) =>{
 
     return(
         <View style={styles.container}>

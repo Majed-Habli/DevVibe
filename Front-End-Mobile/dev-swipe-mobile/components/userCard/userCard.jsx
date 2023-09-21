@@ -1,11 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} from 'react-native';
 
-interface UserCardProps{
-    label : string;
-}
-
-const UserCard : React.FC<UserCardProps> =({label}: UserCardProps) =>{
+const UserCard =({label}) =>{
     const profile_image = ''
     return(
         <View style={styles.container}>

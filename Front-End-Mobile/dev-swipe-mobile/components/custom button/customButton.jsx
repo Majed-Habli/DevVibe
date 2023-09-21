@@ -2,12 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Button, Text, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-interface CustomInputProps{
-    title: string;
-    route: string;
-}
-
-const CustomButton : React.FC<CustomInputProps> =({title, route}: CustomInputProps) =>{
+const CustomButton =({title, route}) =>{
     const navigation = useNavigation();
 
     const goToPage = () =>{

@@ -9,7 +9,7 @@ const windowWidth = Dimensions.get('window').width;
 const Hero = () => {
     const [inputs, setInputs] = useState([]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
             [e.target.name]: e.target.value
@@ -33,9 +33,9 @@ const Hero = () => {
                     />
                 </View>
                 <View style={styles.form}>
-                    <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={ethis.handleChange(e,'h')} value={inputs.email}/>
+                    <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/>
                     <View style={styles.password_container}>
-                        <CustomInput label='Password' name={'password'} placeholder='Password' onChange={ethis.handleChange(e,'h')} value={inputs.password}/>
+                        <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/>
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>
