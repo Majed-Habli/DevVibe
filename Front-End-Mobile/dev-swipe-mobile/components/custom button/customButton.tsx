@@ -8,7 +8,7 @@ interface CustomInputProps{
 const CustomButton : React.FC<CustomInputProps> =({title}: CustomInputProps) =>{
 
     return(
-        <Pressable style={styles.container}>
+        <Pressable style={({pressed}) =>[ styles.container, pressed && {opacity: 0.8}]}>
             <Text style={styles.statement}>{title}</Text>
         </Pressable>
     )
