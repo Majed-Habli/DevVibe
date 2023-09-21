@@ -21,10 +21,7 @@ const Hero = () => {
                     />
                 </View>
                 <View style={styles.form}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../../assets/logo1-0.png')}
-                    />
+                    
                 </View>
                 {/* <Text>hello from hero</Text> */}
 
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     form:{
-        
+
     }
     // button: {
     // backgroundColor: '#007AFF',
