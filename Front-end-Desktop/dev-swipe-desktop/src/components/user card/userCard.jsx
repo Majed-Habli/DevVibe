@@ -8,6 +8,8 @@ import { sendRequest } from '../../utils/functions/axios';
 import { requestMethods } from '../../utils/functions/requestMethods.';
 
 const UserCard = ({data,url}) =>{
+    const date = data.created_at;
+    const readableDate = date.toLocaleString().split('T')[0];
     const [error, setError] = useState('');
     const user = data;
 
@@ -34,14 +36,15 @@ const UserCard = ({data,url}) =>{
             console.log(error);
         }
     }
+    console.log("theeeeeeeee ", data)
 
     return(
         <div className={styles.container}>
-            <div className={styles.role}>role</div>
+            <div className={styles.role}></div>
             <div className={styles.user_details}>
                 <div className={styles.left_container}>
                     <div className={styles.user_name}>{data.user_name}</div>
-                    <div className={styles.user_description}><span>About:</span>{data.description}</div>
+                    <div className={styles.user_description}><span>Joined:</span>{readableDate}</div>
                     <div className={styles.extra_description}>
                         <div className={styles.row}>
                             <RiBuilding2Line color="#1f2d3d" size={15}/>
@@ -54,7 +57,7 @@ const UserCard = ({data,url}) =>{
                     </div>
                 </div>
                 <div className={styles.right_container}>
-                    <img src="/fake-profile.png" alt="user-profile" />
+                    {data.profile_image_url ? (<img src={`${data.profile_image_url}`} alt="user-profile" />):(<img src='/default-user.png' alt="user-profile" />)}
                 </div>
             </div>
             <div className={styles.cto}>

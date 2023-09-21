@@ -8,7 +8,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 const Developers = () => {
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
-    const [developers,setOldRecruites] = useState([]);
+    const [developers,setOldDevelopers] = useState([]);
 
     const inputChange = (event) => {
         setSearch(event.target.value);
@@ -31,7 +31,7 @@ const Developers = () => {
                 const token = " ";
     
                 if(data.status == 'success'){
-                    setOldRecruites(data.data);
+                    setOldDevelopers(data.data);
 
                 }else{
                     setError("failed to get data!");
