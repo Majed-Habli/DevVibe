@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard/dashboard";
 import UserCard from "./components/userCard/userCard";
 import CustomImageButton from "./components/custom button/customImageButton";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Matches from "./pages/matches/matches";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -76,10 +77,9 @@ function TabNavigator() {
 
       <Tab.Screen
         name="Messaging"
-        component={Dashboard}
+        component={Matches}
         options={{
-          headerTitle: (props) => <UserCard label="majed" {...props} />,
-          headerLeft: () => null,
+          title: "Matches",
           headerRight: (props) => (
             <CustomImageButton
               image_name={"Notify-button.png"}
