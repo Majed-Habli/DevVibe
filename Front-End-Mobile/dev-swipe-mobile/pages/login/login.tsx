@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
@@ -7,7 +7,16 @@ const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Hero = () => {
+    const [inputs, setInputs] = useState([]);
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputs((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+    };
+
+    console.log(inputs)
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.background}>
@@ -24,9 +33,9 @@ const Hero = () => {
                     />
                 </View>
                 <View style={styles.form}>
-                    <CustomInput label='Email' placeholder='Enter your email'/>
+                    <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={ethis.handleChange(e,'h')} value={inputs.email}/>
                     <View style={styles.password_container}>
-                        <CustomInput label='Password' placeholder='Password'/>
+                        <CustomInput label='Password' name={'password'} placeholder='Password' onChange={ethis.handleChange(e,'h')} value={inputs.password}/>
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>

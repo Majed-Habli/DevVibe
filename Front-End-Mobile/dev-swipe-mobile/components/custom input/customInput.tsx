@@ -3,15 +3,18 @@ import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} fro
 
 interface CustomInputProps{
     label : string;
-    placeholder : string
+    name: string;
+    placeholder : string;
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CustomInput : React.FC<CustomInputProps> =({label, placeholder}: CustomInputProps) =>{
+const CustomInput : React.FC<CustomInputProps> =({name, label, placeholder, onChange ,value}: CustomInputProps) =>{
 
     return(
         <View style={styles.container}>
             <Text style={styles.input_header}>{label}</Text>
-            <TextInput style={styles.input} placeholder={placeholder}></TextInput>
+            <TextInput name={name} style={styles.input} placeholder={placeholder} onChange={onChange} defaultValue={value}></TextInput>
         </View>
     )
 }
