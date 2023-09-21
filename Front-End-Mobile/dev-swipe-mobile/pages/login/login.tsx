@@ -24,7 +24,10 @@ const Hero = () => {
                 </View>
                 <View style={styles.form}>
                     <CustomInput label='Email' placeholder='Enter your email'/>
-                    <CustomInput label='Password' placeholder='Password'/>
+                    <View style={styles.password_container}>
+                        <CustomInput label='Password' placeholder='Password'/>
+                        <Text style={styles.cto}>Forgot password?</Text>
+                    </View>
                 </View>
 
             </View>
@@ -59,8 +62,8 @@ const styles = StyleSheet.create({
         left:0
     },
     logo:{
-        width: 160,
-        height: 55,
+        // width: 160,
+        // height: 55,
         objectFit: 'contain'
     },
     page_body:{
@@ -68,6 +71,9 @@ const styles = StyleSheet.create({
         height: windowHeight/1.5,
         marginTop: 60,
         paddingTop: 28,
+        display: 'flex',
+        rowGap: 40,
+        // backgroundColor: '#ffcede'
     },
     logo_container:{
         width: '100%',
@@ -76,6 +82,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     form:{
-
+        rowGap: 20,
+    },
+    password_container: {
+        rowGap: 10,
+    },
+    cto: {
+        color: '#FFAA00',
+        fontSize: 14
     }
     });
