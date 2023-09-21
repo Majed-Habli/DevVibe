@@ -98,7 +98,7 @@ const Stats = () =>{
                 <AnalyticsCard data={info.skills_count} type={'skills'} title={'Skills'} backgroundColor={'#F8B020'} color={'#E5AD06'} location={'dashboard/skills'}/>
                 <AnalyticsCard data={info.countries_count} type={'countries'} title={'Countries'} backgroundColor={'#DC3545'} color={'#C6303E'} location={'dashboard'}/>
             </div>
-            <div className={`${styles.card_conatiner} ${styles.cont}`}>
+            <div className={`${styles.card_conatiner} ${styles.cont_two}`}>
                 <div className={styles.left_container}>
                     <BarChart3 lab={labels} chartss={obj}/>
                 </div>

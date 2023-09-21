@@ -41,7 +41,7 @@ const BarChart3 = ({lab,chartss}) =>{
       };
       
     return(
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.container_two}`}>
             {data &&<Bar options={options} data={data} />}
         </div>
     )
