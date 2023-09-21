@@ -3,10 +3,13 @@ import styles from '../../styles/sidebar.module.css';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import CustomButton from "../custom button/custombutton";
+import { sendRequest } from "../../utils/functions/axios";
+import { requestMethods } from "../../utils/functions/requestMethods.";
 
 const Sidebar = ({status}) => {
     const [showSubMenu, setShowSubMenu] = useState([]);
     const [navbarOpen, setNavbarOpen] = useState('');
+    const [error, setError] = useState('');
 
     const toggleShowMenu = (category) =>{
         if (showSubMenu.includes(category)) {
@@ -16,6 +19,33 @@ const Sidebar = ({status}) => {
         }
     }
     const isCategoryExpanded = (category) => showSubMenu.includes(category);
+
+    const LogOut = async () =>{
+        try {
+            const response = await sendRequest({
+                route: "/guest/logout",
+                method: requestMethods.GET,
+            });
+            const data = response;
+            console.log("res", response)
+            const token = " ";
+
+            if(data.status == 'success'){
+                console.log("bye")
+                localStorage.clear();
+                window.location.href = '/';
+            }else{
+                setError("Couldn't logout!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("api calling failed:", error);
+            if(error.response.status === 401){
+                localStorage.clear();
+                window.location.href = '/'
+            }
+          }
+    }
 
     useEffect(()=>{
         setNavbarOpen(status)
@@ -150,7 +180,7 @@ const Sidebar = ({status}) => {
                 </ul>
             </div>
             <div className={styles.button_container}>
-                <CustomButton title={'Logout'} width={100} height={35} display={'flex'} alignItems={'center'} justifyContent={'center'} backgroundColor={'#FCC860'}/>
+                <CustomButton title={'Logout'} width={120} height={35} display={'flex'} alignItems={'center'} justifyContent={'center'} backgroundColor={'#FCC860'} onClick={()=>LogOut()}/>
             </div>
         </div>
     )
