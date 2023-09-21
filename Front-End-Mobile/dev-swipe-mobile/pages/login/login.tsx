@@ -2,11 +2,16 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
+// import {navig}
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Hero = () => {
+
+    const goToPage = () => {
+        window.location.href = 'Home'
+    }
 
     return(
         <SafeAreaView style={styles.container}>
@@ -31,7 +36,7 @@ const Hero = () => {
                     </View>
                 </View>
                 <View style={styles.button_container}>
-                    <CustomButton title='Sign in'/>
+                    <CustomButton title='Sign in' route='/dashboard'/>
                     <View style={styles.line}></View>
                     <View style={styles.statement}>
                         <Text>
