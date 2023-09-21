@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
+import MatchedCard from '../../components/userCard/matchedCard';
 // import {navig}
 
 const windowHeight = Dimensions.get('window').height;
@@ -24,8 +25,15 @@ const Matches = () => {
                 </View>
             </View>
             <View style={styles.page_body}>
-                <View style={styles.headr_container}>
+                <View style={styles.header_container}>
                     <Text style={styles.header}>Matches</Text>
+                </View>
+                <View style={styles.cards_container}>
+                    <MatchedCard/>
+                    <MatchedCard/>
+                    <MatchedCard/>
+                    <MatchedCard/>
+                    <MatchedCard/>
                 </View>
             </View>
         </SafeAreaView>
@@ -72,7 +80,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: windowHeight,
     },
-    headr_container: {
+    header_container: {
         width: '100%',
         height: 53,
         justifyContent: 'center',
@@ -81,5 +89,11 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 20,
+    },
+    cards_container: {
+        height: '100%',
+        padding: 20,
+        rowGap: 10, 
+        backgroundColor: 'lightyellow'
     }
     });
