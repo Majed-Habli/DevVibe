@@ -7,9 +7,10 @@
 .container{
     width: 230px;
     height: 100vh;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2rem;
     background-color: #1E282C;
     transition:ease-in-out 0.8s;
 }
@@ -106,16 +107,25 @@ li a{
     max-width: 230px;
     overflow: hidden;
     height: 100vh;
-    /* position: absolute; */
+
     transform: translateX(-100px);
     transition:ease-in-out 1.3s;
-    /* top: 0; */
-    /* left: 0; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2rem;
     background-color: #1E282C;
 }
 
 .container .show_menu{
     width: 100%;
-    /* transition:ease-in-out 0.9s; */
     transform: translateX(0px);
+}
+
+.button_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
