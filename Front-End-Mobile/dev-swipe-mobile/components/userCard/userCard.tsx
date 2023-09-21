@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        columnGap: 26,
+        columnGap: 20,
         alignItems: 'center'
     },
     input_header: {

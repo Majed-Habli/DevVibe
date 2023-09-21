@@ -12,7 +12,7 @@ function HomeStackNavigator() {
   return (
   <Stack.Navigator >
     <Stack.Screen name="Home" component={Hero} options={{headerShown: false}}/>
-    <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerTitle: (props) => <UserCard label='majed' {...props} />, headerLeft: ()=> null }}/>
+    <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerTitle: (props) => <UserCard label='majed' {...props} />, headerLeft: ()=> null, headerStyle: { borderBottomWidth: 1, borderBottomColor: '#c7c7c7'} }}/>
   {/* Add more screens as needed */}
   </Stack.Navigator>
   );
