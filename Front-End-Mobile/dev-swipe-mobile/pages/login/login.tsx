@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
+import CustomInput from '../../components/custom input/customInput';
 
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const Hero = () => {
 
@@ -21,9 +23,9 @@ const Hero = () => {
                     />
                 </View>
                 <View style={styles.form}>
-                    
+                    <CustomInput label='Email' placeholder='Enter your email'/>
+                    <CustomInput label='Password' placeholder='Password'/>
                 </View>
-                {/* <Text>hello from hero</Text> */}
 
             </View>
             
@@ -36,10 +38,12 @@ export default Hero;
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
+    width: windowWidth,
+    height: windowHeight,
+    // marginTop:30,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
     },
     background:{
         width: '100%',
@@ -47,8 +51,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     background_image:{
-        width: '55%',
-        height: '25%',
+        width: 230,
+        height: 222,
         objectFit: 'fill',
         position: 'absolute',
         top: 0,
@@ -62,27 +66,16 @@ const styles = StyleSheet.create({
     page_body:{
         width: '75%',
         height: windowHeight/1.5,
-        backgroundColor: '#ababab',
-        paddingTop: 23,
+        marginTop: 60,
+        paddingTop: 28,
     },
     logo_container:{
         width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:'white'
     },
     form:{
 
     }
-    // button: {
-    // backgroundColor: '#007AFF',
-    // paddingHorizontal: 16,
-    // paddingVertical: 8,
-    // borderRadius: 8,
-    // },
-    // buttonText: {
-    // color: '#FFF',
-    // fontSize: 18,
-    // },
     });
