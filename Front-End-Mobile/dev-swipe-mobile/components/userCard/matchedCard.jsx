@@ -23,7 +23,7 @@ const MatchedCard = () => {
             )}
             <View style={styles.user_info}>
                 <Text style={styles.header}>User name</Text>
-                <Text style={styles.date}>date</Text>
+                <Text style={styles.date}>12/5/2023</Text>
             </View>
         </View>
     )
@@ -34,15 +34,17 @@ export default MatchedCard;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        display: 'flex',
         flexDirection: 'row',
         columnGap: 20,
         alignItems: 'center',
-        marginLeft: 10
     },
-    input_header: {
-        fontSize: 19,
+    header: {
+        fontSize: 16,
         fontWeight: 'bold'
+    },
+    date: {
+        fontSize: 12,
+        color: '#adadad'
     },
     profile_image: {
         width: 45,
