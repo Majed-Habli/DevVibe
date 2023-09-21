@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Hero from "./pages/login/login";
 import Dashboard from "./pages/dashboard/dashboard";
 import UserCard from "./components/userCard/userCard";
+import CustomImageButton from "./components/custom button/customImageButton";
 
 const Stack = createStackNavigator();
 
@@ -22,10 +23,22 @@ function HomeStackNavigator() {
         options={{
           headerTitle: (props) => <UserCard label="majed" {...props} />,
           headerLeft: () => null,
-          headerStyle: { borderBottomWidth: 1, borderBottomColor: "#c7c7c7" },
+          headerRight: (props) => (
+            <CustomImageButton
+              image_name={"Notify-button.png"}
+              image_height={30}
+              image_width={30}
+              margin={20}
+            />
+          ),
+          headerStyle: {
+            borderBottomWidth: 1,
+            borderBottomColor: "#c7c7c7",
+            // paddingHorizontal: 40,
+          },
+          // headerTitleContainerStyle: { paddingRight: 20 },
         }}
       />
-      {/* Add more screens as needed */}
     </Stack.Navigator>
   );
 }
@@ -34,10 +47,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <HomeStackNavigator />
-      {/* <View style={styles.container}>
-        <Text>Hello World</Text>
-        <StatusBar style="auto" />
-      </View> */}
     </NavigationContainer>
   );
 }

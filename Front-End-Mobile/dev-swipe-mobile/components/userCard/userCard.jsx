@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         columnGap: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: 10
     },
     input_header: {
         fontSize: 19,
