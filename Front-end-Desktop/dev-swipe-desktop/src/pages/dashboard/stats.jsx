@@ -6,11 +6,13 @@ import { localStorageAction } from '../../utils/functions/localStorage';
 import { sendRequest } from '../../utils/functions/axios';
 import { requestMethods } from '../../utils/functions/requestMethods.';
 import BarChart3 from '../../components/bar chart/barchart3';
+import CardCarouselComp from '../../components/carousel/card';
 
 const Stats = () =>{
     const [error, setError] = useState('');
     const [info, setInfo] = useState('');
     const [chart, setChart] = useState('');
+    const [carousel, setCarousel] = useState([]);
     const [labels,setLabels] = useState([])
     const [obj,setObj] = useState([])
 
@@ -33,6 +35,7 @@ const Stats = () =>{
                 if(data.status == 'success'){
                     setInfo(data);
                     setChart(data.popular);
+                    setCarousel(data.popular_users);
 
                 }else{
                     setError("failed to get data!");
@@ -74,18 +77,19 @@ const Stats = () =>{
     if(chart){
         mapLabels(chart)
     }
-
     },[chart])
 
-      const majed = [{name: 'PHP', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'Bootstrap', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'Html', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'C++', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'Node.js', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'Flutter', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'React', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'Git', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
-      {name: 'MySQL', data: 1, background: 'rgba(53, 162, 235, 0.5)'}]
+    console.log('carosuel',carousel)
+
+    //   const majed = [{name: 'PHP', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'Bootstrap', data: 2, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'Html', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'C++', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'Node.js', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'Flutter', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'React', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'Git', data: 1, background: 'rgba(53, 162, 235, 0.5)'},
+    //   {name: 'MySQL', data: 1, background: 'rgba(53, 162, 235, 0.5)'}]
 
     return(
         <div className={styles.container}>
@@ -103,6 +107,7 @@ const Stats = () =>{
                     <BarChart3 lab={labels} chartss={obj}/>
                 </div>
                 <div className={styles.right_container}>
+                    <CardCarouselComp information={carousel} issue={error}/>
                     {/* <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/> */}
                     {/* <BarChart2 label1={'male'} label2={"female"} data1={info.male_count} data2={info.female_count}/> */}
                 </div>
