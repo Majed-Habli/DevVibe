@@ -8,6 +8,7 @@ import UserCard from "./components/userCard/userCard";
 import CustomImageButton from "./components/custom button/customImageButton";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Matches from "./pages/matches/matches";
+import Profile from "./pages/profile/profile";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -111,10 +112,10 @@ function TabNavigator() {
 
       <Tab.Screen
         name="Profile"
-        component={Dashboard}
+        component={Profile}
         options={{
-          headerTitle: (props) => <UserCard label="majed" {...props} />,
-          headerLeft: () => null,
+          // headerTitle: (props) => <UserCard label="majed" {...props} />,
+          // headerLeft: () => null,
           headerRight: (props) => (
             <CustomImageButton
               image_name={"Notify-button.png"}
