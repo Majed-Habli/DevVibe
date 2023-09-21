@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
+import CustomButton from '../../components/custom button/customButton';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -29,6 +30,9 @@ const Hero = () => {
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>
+                <View>
+                    <CustomButton title='Sign in'/>
+                </View>
 
             </View>
             
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
     container: {
     width: windowWidth,
     height: windowHeight,
-    // marginTop:30,
+    marginTop:30,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -73,7 +77,6 @@ const styles = StyleSheet.create({
         paddingTop: 28,
         display: 'flex',
         rowGap: 40,
-        // backgroundColor: '#ffcede'
     },
     logo_container:{
         width: '100%',
