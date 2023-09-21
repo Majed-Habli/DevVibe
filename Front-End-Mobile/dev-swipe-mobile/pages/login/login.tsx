@@ -30,8 +30,15 @@ const Hero = () => {
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>
-                <View>
+                <View style={styles.button_container}>
                     <CustomButton title='Sign in'/>
+                    <View style={styles.line}></View>
+                    <View style={styles.statement}>
+                        <Text>
+                            <Text style={styles.text_content}>Dont have an account?</Text>
+                            <Text style={styles.text_content_span}> Register now</Text>
+                        </Text>
+                    </View>
                 </View>
 
             </View>
@@ -58,23 +65,20 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     background_image:{
-        width: 230,
-        height: 222,
+        width: 190,
+        height: 182,
         objectFit: 'fill',
         position: 'absolute',
         top: 0,
         left:0
     },
     logo:{
-        // width: 160,
-        // height: 55,
         objectFit: 'contain'
     },
     page_body:{
         width: '75%',
         height: windowHeight/1.5,
-        marginTop: 60,
-        paddingTop: 28,
+        paddingTop: 20,
         display: 'flex',
         rowGap: 40,
     },
@@ -93,5 +97,26 @@ const styles = StyleSheet.create({
     cto: {
         color: '#FFAA00',
         fontSize: 14
+    },
+    button_container: {
+        rowGap: 30,
+        alignItems: 'center'
+    },
+    line: {
+        width: '80%',
+        height: 1,
+        backgroundColor: 'black'
+    },
+    statement: {
+        width: '100%',
+        justifyContent: 'flex-start'
+    },
+    text_content: {
+        fontSize: 14,
+    },
+    text_content_span: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#FCC860',
     }
     });
