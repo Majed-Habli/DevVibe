@@ -22,18 +22,21 @@ const Profile = () => {
                         <Text style={styles.user_location}>Saida,Lebanon</Text>
                         <View style={styles.image_group}>
                             <View style={styles.image_button}>
-                                <Image style={styles.icons}></Image>
+                                <Image style={styles.icons} source={require("../../assets/Send.png")}/>
                             </View>
                             <View style={styles.image_button}>
-                                <Image style={styles.icons}></Image>
+                                <Image style={styles.icons} source={require("../../assets/Mail.png")}/>
                             </View>
                             <View style={styles.image_button}>
-                                <Image style={styles.icons}></Image>
+                                <Image style={styles.icons} source={require("../../assets/Github.png")}/>
                             </View>
                             <View style={styles.image_button}>
-                                <Image style={styles.icons}></Image>
+                                <Image style={styles.icons} source={require("../../assets/LinkedIn.png")}/>
                             </View>
                         </View>
+                    </View>
+                    <View style={styles.skill_container}>
+                        
                     </View>
                 </View>
             </ScrollView>
@@ -57,24 +60,27 @@ const styles = StyleSheet.create({
     },
     profile_body: {
         height: '100%',
-        backgroundColor: 'pink'
+        // backgroundColor: 'pink'
     },
     body_header: {
-        height: 150,
+        height: 160,
         alignItems: 'center',
         justifyContent: 'center',
-        // rowGap: 30,
+        rowGap: 10,
         backgroundColor: 'lightyellow'
     },
     user_name: {
         fontSize: 28,
+    },
+    user_location: {
+        fontSize: 18
     },
     image_group: {
         width: '100%',
         height: 65,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'lightblue',
+        // backgroundColor: 'lightblue',
         flexDirection: 'row',
         columnGap: 10
     },
@@ -84,6 +90,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 14,
-        backgroundColor: 'grey'
+        backgroundColor: '#E8E8E8',
+        // objectFit: 'cover'
+    },
+    icons: {
+        width: 40,
+        height: 40,
     }
     });
