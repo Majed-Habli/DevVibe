@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     cards_container: {
         flex: 1,
-        padding: 20,
+        paddingHorizontal: 20,
     },
     scroll_view: {
         flex: 1,
