@@ -37,10 +37,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         columnGap: 20,
         alignItems: 'center',
+        paddingVertical: 5
     },
     header: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: '500'
     },
     date: {
         fontSize: 12,

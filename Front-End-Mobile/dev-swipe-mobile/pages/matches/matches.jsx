@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, ScrollView} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import MatchedCard from '../../components/userCard/matchedCard';
-// import {navig}
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -15,27 +14,43 @@ const Matches = () => {
 
     return(
         <SafeAreaView style={styles.container}>
-            <View style={styles.searchbar_container}>
-                <View style={styles.searchbar}>
-                    <Image
-                        style={styles.search_icon}
-                        source={require('../../assets/Search.png')}
-                    />
-                    <TextInput name="{name} "style={styles.searcbar_input} placeholder='{placeholder}' onChange={onChange} defaultValue={"hey there"} />
+            <ScrollView style={styles.scroll_view} automaticallyAdjustContentInsets={true} showsVerticalScrollIndicator={false}>
+
+                <View style={styles.searchbar_container}>
+                    <View style={styles.searchbar}>
+                        <Image
+                            style={styles.search_icon}
+                            source={require('../../assets/Search.png')}
+                        />
+                        <TextInput name="{name} "style={styles.searcbar_input} placeholder='{placeholder}' onChange={onChange} defaultValue={"hey there"} />
+                    </View>
                 </View>
-            </View>
-            <View style={styles.page_body}>
-                <View style={styles.header_container}>
-                    <Text style={styles.header}>Matches</Text>
+                <View style={styles.page_body}>
+                    <View style={styles.header_container}>
+                        <Text style={styles.header}>Matches</Text>
+                    </View>
+                    <View style={styles.cards_container}>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                            <MatchedCard/>
+                    </View>
                 </View>
-                <View style={styles.cards_container}>
-                    <MatchedCard/>
-                    <MatchedCard/>
-                    <MatchedCard/>
-                    <MatchedCard/>
-                    <MatchedCard/>
-                </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     )
 } 
@@ -45,7 +60,8 @@ export default Matches;
 const styles = StyleSheet.create({
     container: {
     width: windowWidth,
-    height: windowHeight,
+    // height: windowHeight,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
     },
@@ -85,15 +101,15 @@ const styles = StyleSheet.create({
         height: 53,
         justifyContent: 'center',
         paddingLeft: 20,
-        // backgroundColor: 'lightgreen',
     },
     header: {
         fontSize: 20,
     },
     cards_container: {
-        height: '100%',
+        flex: 1,
         padding: 20,
-        rowGap: 10, 
-        backgroundColor: 'lightyellow'
+    },
+    scroll_view: {
+        flex: 1,
     }
     });
