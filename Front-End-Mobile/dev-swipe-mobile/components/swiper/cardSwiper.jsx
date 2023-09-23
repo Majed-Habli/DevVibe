@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View, Image, Button } from 'react-native'
+import { AppRegistry, StyleSheet, Text, View, Image, Button, Dimensions } from 'react-native'
+const windowHeight = Dimensions.get('window').height;
  
 import Swiper from 'react-native-deck-swiper'
-
 function* range(start,end){
   for (let i= start ; i<= end; i++){
     yield i;
@@ -59,11 +59,15 @@ export default class CardSwiperComponent extends Component {
         onTapCard={this.swipeLeft}
         cards={this.state.cards}
         cardIndex={this.state.cardIndex}
-        cardVerticalMargin={80}
+        cardVerticalMargin={20}
         renderCard={this.renderCard}
         onSwipedAll={this.onSwipedAllCards}
         stackSize={3}
-        stackSeparation={15}
+        disableBottomSwipe
+        disableTopSwipe
+        stackSeparation={2}
+        containerStyle={{ height: windowHeight, backgroundColor:"white", overflow: 'hidden'}}
+        
         overlayLabels={{
           bottom: {
             title: 'Bleah',
@@ -138,7 +142,7 @@ export default class CardSwiperComponent extends Component {
         animateCardOpacity
         swipeBackCard
         >
-          <Button onPress={()=>this.swiper.swipeBack()} title='swipeBack'></Button>
+          {/* <Button onPress={()=>this.swiper.swipeBack()} title='swipeBack'></Button> */}
 
         </Swiper>
       </View>
@@ -149,11 +153,13 @@ export default class CardSwiperComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red"
+    // backgroundColor: "red"
   },
   card: {
-    flex: 1,
-    borderRadius: 4,
+    // flex: 1,
+    width: '100%',
+    height: 550,
+    borderRadius: 54,
     borderWidth: 2,
     borderColor: "#E8E8E8",
     justifyContent: "center",

@@ -17,9 +17,9 @@ const Dashboard = () => {
                 <View style={styles.swiper_container}>
                     <Swiper/>
                 </View>
-                <View style={styles.swiper_buttons}>
+                {/* <View style={styles.swiper_buttons}>
                     <Text>hi</Text>
-                </View>
+                </View> */}
             </View>
         </SafeAreaView>
     )
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     height: windowHeight,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     },
     dashboard_container: {
         width: '100%',
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
         height: 130,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'pink'
+        // backgroundColor: 'pink'
     }
     });
