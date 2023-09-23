@@ -25,7 +25,7 @@ function HomeStackNavigator() {
         component={Hero}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Dashboard" component={TabNavigator} />
+      <Tab.Screen name="main_navigation" component={TabNavigator} />
     </Stack.Navigator>
   );
 }

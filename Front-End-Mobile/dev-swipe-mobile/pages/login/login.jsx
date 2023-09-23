@@ -40,7 +40,7 @@ const Hero = () => {
                     </View>
                 </View>
                 <View style={styles.button_container}>
-                    <CustomButton title='Sign in' route='Dashboard'/>
+                    <CustomButton title='Sign in' route='main_navigation'/>
                     <View style={styles.line}></View>
                     <View style={styles.statement}>
                         <Text>

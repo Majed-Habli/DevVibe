@@ -36,7 +36,26 @@ const Profile = () => {
                         </View>
                     </View>
                     <View style={styles.skill_container}>
-                        
+                        <Text style={styles.category_header}>Skills</Text> 
+                        <ScrollView style={styles.scrollable} >
+                            <View style={styles.pill_container}>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>blender</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Javascript</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>CSS</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Html</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Typescript</Text>
+                                </View>
+                            </View>
+                        </ScrollView>
                     </View>
                 </View>
             </ScrollView>
@@ -60,17 +79,16 @@ const styles = StyleSheet.create({
     },
     profile_body: {
         height: '100%',
-        // backgroundColor: 'pink'
     },
     body_header: {
         height: 160,
         alignItems: 'center',
         justifyContent: 'center',
-        rowGap: 10,
-        backgroundColor: 'lightyellow'
+        rowGap: 6,
     },
     user_name: {
         fontSize: 28,
+        fontWeight: '600'
     },
     user_location: {
         fontSize: 18
@@ -80,21 +98,50 @@ const styles = StyleSheet.create({
         height: 65,
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'lightblue',
         flexDirection: 'row',
         columnGap: 10
     },
     image_button: {
-        width: 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 14,
-        backgroundColor: '#E8E8E8',
-        // objectFit: 'cover'
-    },
-    icons: {
         width: 40,
         height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 12,
+        backgroundColor: '#E8E8E8',
+    },
+    icons: {
+        width: 30,
+        height: 30,
+    },
+    skill_container: {
+        width: '100%',
+        height: 120,
+        paddingHorizontal: 15,
+    },
+    scrollable: {
+        flex: 1
+    },
+    category_header: {
+        fontSize: 20,
+        fontWeight: '500',
+        marginBottom: 10
+    },
+    pill_container: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+        columnGap: 5,
+        gap: 10,
+    },
+    pill: {
+        alignSelf: "flex-start",
+        padding: 6,
+        borderRadius: 8,
+        backgroundColor: '#FCC860',
+    },
+    pill_name:{
+        fontSize: 16,
+        fontWeight: '600'
     }
     });
