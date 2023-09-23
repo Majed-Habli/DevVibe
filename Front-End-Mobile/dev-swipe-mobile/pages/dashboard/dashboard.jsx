@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button} from '
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import CardSwiperComponent from '../../components/swiper/cardSwiper';
+import Swiper from '../../components/swiper/cardSwiper';
 // import {navig}
 
 const windowHeight = Dimensions.get('window').height;
@@ -14,7 +15,7 @@ const Dashboard = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.dashboard_container}>
                 <View style={styles.swiper_container}>
-                    <CardSwiperComponent/>
+                    <Swiper/>
                 </View>
                 <View style={styles.swiper_buttons}>
                     <Text>hi</Text>
