@@ -36,8 +36,14 @@ const Profile = () => {
                         </View>
                     </View>
                     <View style={styles.skill_container}>
-                        <Text style={styles.category_header}>Skills</Text> 
-                        <ScrollView style={styles.scrollable} >
+                        <View style={styles.container_header}>
+                            <Text style={styles.category_header}>Skills</Text> 
+                            <View style={styles.model_button}>
+                                <Text>Edit</Text>
+                                <Image source={require("../../assets/Edit-icon.png")}/>
+                            </View>
+                        </View>
+                        <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
                                 <View style={styles.pill}>
                                     <Text style={styles.pill_name}>blender</Text>
@@ -54,8 +60,38 @@ const Profile = () => {
                                 <View style={styles.pill}>
                                     <Text style={styles.pill_name}>Typescript</Text>
                                 </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Html</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Typescript</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Html</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Typescript</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Html</Text>
+                                </View>
+                                <View style={styles.pill}>
+                                    <Text style={styles.pill_name}>Typescript</Text>
+                                </View>
                             </View>
                         </ScrollView>
+                    </View>
+                    <View style={styles.bio_container}>
+                        <View style={styles.container_header}>
+                            <Text style={styles.category_header}>Biography</Text> 
+                            <View style={styles.model_button}>
+                                <Text>Edit</Text>
+                                <Image source={require("../../assets/Edit-icon.png")}/>
+                            </View>
+                        </View>
+                        <View style={styles.pill_container}>
+                            <Text style={styles.pill_name}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -79,12 +115,12 @@ const styles = StyleSheet.create({
     },
     profile_body: {
         height: '100%',
+        gap: 5
     },
     body_header: {
-        height: 160,
+        height: 150,
         alignItems: 'center',
         justifyContent: 'center',
-        rowGap: 6,
     },
     user_name: {
         fontSize: 28,
@@ -115,23 +151,34 @@ const styles = StyleSheet.create({
     },
     skill_container: {
         width: '100%',
-        height: 120,
+        height: 90,
+        // backgroundColor: 'lightblue',
         paddingHorizontal: 15,
     },
+    container_header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10
+    },
+    model_button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     scrollable: {
-        flex: 1
+        flex: 1,
+        maxHeight: 40,
     },
     category_header: {
         fontSize: 20,
         fontWeight: '500',
-        marginBottom: 10
     },
     pill_container: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        alignSelf: 'center',
         flexWrap: 'wrap',
         columnGap: 5,
+        backgroundColor: 'yellow',
         gap: 10,
     },
     pill: {
@@ -143,5 +190,10 @@ const styles = StyleSheet.create({
     pill_name:{
         fontSize: 16,
         fontWeight: '600'
+    },
+    bio_container: {
+        width: '100%',
+        justifyContent: 'flex-start',
+        paddingHorizontal: 15,
     }
     });
