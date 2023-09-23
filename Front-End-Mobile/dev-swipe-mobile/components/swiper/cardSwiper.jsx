@@ -13,7 +13,8 @@ export default class CardSwiperComponent extends Component {
   constructor(props){
     super (props);
     this.state = {
-      cards: [...range(1,50)],
+      // cards: [...range(1,50)],
+      cards:['Saida, Lebanon', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY'],
       swipedAllCards: false,
       swipeDirection: '',
       cardIndex: 0,
@@ -24,9 +25,16 @@ export default class CardSwiperComponent extends Component {
   renderCard = (card, index) => {
     return (
       <View style={styles.card}>
-        <Text style={styles.text}>
-          {card} - {index}
-        </Text>
+        <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
+        {/* <View > */}
+          <Image style={styles.pressable_btn} source={require("../../assets/profile-btn.png")}/>
+        {/* </View> */}
+        <View style={styles.statements}>
+          <Text style={styles.user_name}>Majed Habli</Text>
+          <Text style={styles.text}>
+            {card} - {index}
+          </Text>
+        </View>
       </View>
     )
   };
@@ -59,7 +67,7 @@ export default class CardSwiperComponent extends Component {
         onTapCard={this.swipeLeft}
         cards={this.state.cards}
         cardIndex={this.state.cardIndex}
-        cardVerticalMargin={20}
+        cardVerticalMargin={50}
         renderCard={this.renderCard}
         onSwipedAll={this.onSwipedAllCards}
         stackSize={3}
@@ -69,22 +77,22 @@ export default class CardSwiperComponent extends Component {
         containerStyle={{ height: windowHeight, backgroundColor:"white", overflow: 'hidden'}}
         
         overlayLabels={{
-          bottom: {
-            title: 'Bleah',
-            style: {
-              label: {
-                backgroundColor: 'black',
-                borderColor: 'black',
-                color: 'white',
-                borderWidth: 1
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-              },
-            },
-          },
+          // bottom: {
+          //   title: 'Bleah',
+          //   style: {
+          //     label: {
+          //       backgroundColor: 'black',
+          //       borderColor: 'black',
+          //       color: 'white',
+          //       borderWidth: 1
+          //     },
+          //     wrapper: {
+          //       flexDirection: 'column',
+          //       alignItems: 'center',
+          //       justifyContent: 'center',
+          //     },
+          //   },
+          // },
           left: {
             title: 'NOPE',
             style: {
@@ -121,22 +129,22 @@ export default class CardSwiperComponent extends Component {
               },
             }
           },
-          top: {
-            title: 'Super LIKE',
-            style: {
-              label: {
-                backgroundColor: 'black',
-                borderColor: 'black',
-                color: 'white',
-                borderWidth: 1,
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-              },
-            }
-          }
+          // top: {
+          //   title: 'Super LIKE',
+          //   style: {
+          //     label: {
+          //       backgroundColor: 'black',
+          //       borderColor: 'black',
+          //       color: 'white',
+          //       borderWidth: 1,
+          //     },
+          //     wrapper: {
+          //       flexDirection: 'column',
+          //       alignItems: 'center',
+          //       justifyContent: 'center',
+          //     },
+          //   }
+          // }
         }}
         animateOverlayLabelsOpacity
         animateCardOpacity
@@ -153,22 +161,43 @@ export default class CardSwiperComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "red"
   },
   card: {
-    // flex: 1,
     width: '100%',
-    height: 550,
+    height: 450,
     borderRadius: 54,
     borderWidth: 2,
     borderColor: "#E8E8E8",
     justifyContent: "center",
-    backgroundColor: "white"
+    backgroundColor: "#FCC860"
+  },
+  statements: {
+    bottom:30,
+    left:20,
+    position: 'absolute',
+  },
+  user_name: {
+    fontSize: 25,
+    color: 'white',
   },
   text: {
-    textAlign: "center",
-    fontSize: 50,
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '500',
     backgroundColor: "transparent"
+  },
+  icons: {
+    width: '100%',
+    height: '100%',
+    alignSelf: 'center',
+    borderRadius: 54
+  },
+  pressable_btn: {
+    width: 55,
+    height: 55,
+    position: 'absolute',
+    top: 30,
+    left: 20
   }
 });
  
