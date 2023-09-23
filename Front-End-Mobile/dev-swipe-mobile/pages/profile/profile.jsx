@@ -35,6 +35,7 @@ const Profile = () => {
                             </View>
                         </View>
                     </View>
+                    {/* add company name here */}
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
@@ -91,6 +92,26 @@ const Profile = () => {
                         </View>
                         <View style={styles.pill_container}>
                             <Text style={styles.pill_name}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.bio_container}>
+                        <View style={styles.container_header}>
+                            <Text style={styles.category_header}>Details</Text> 
+                            <View style={styles.model_button}>
+                                <Text>Edit</Text>
+                                <Image source={require("../../assets/Edit-icon.png")}/>
+                            </View>
+                        </View>
+                        <View style={styles.detail_container}>
+                            <View style={styles.row}>
+                                <Text style={styles.statement}>majedhabli@gmail.com</Text>
+                                <Text style={styles.statement}>male</Text>
+                            </View>
+                            <View style={styles.row}>
+                                <Text style={styles.statement}>lebanon</Text>
+                                <Text style={styles.statement}>12/2/2023</Text>
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -152,7 +173,6 @@ const styles = StyleSheet.create({
     skill_container: {
         width: '100%',
         height: 90,
-        // backgroundColor: 'lightblue',
         paddingHorizontal: 15,
     },
     container_header: {
@@ -178,7 +198,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         flexWrap: 'wrap',
         columnGap: 5,
-        backgroundColor: 'yellow',
         gap: 10,
     },
     pill: {
@@ -195,5 +214,17 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'flex-start',
         paddingHorizontal: 15,
+    },
+    detail_container: {
+        width: '100%',
+        marginBottom: 10
+    },
+    row: {
+        height: 25,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    statement: {
+        fontSize: 16
     }
     });
