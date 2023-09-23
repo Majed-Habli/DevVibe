@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native'
  
 import Swiper from 'react-native-swiper'
  
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  icons: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover'
   }
 })
  
@@ -35,7 +40,7 @@ export default class SwiperComponent extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+          <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
         </View>
         <View style={styles.slide2}>
           <Text style={styles.text}>Beautiful</Text>

@@ -91,7 +91,7 @@ const Profile = () => {
                             </View>
                         </View>
                         <View style={styles.pill_container}>
-                            <Text style={styles.pill_name}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                            <Text style={styles.description}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
                         </View>
                     </View>
 
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     images_container: {
-        height: 250
+        height: 280
     },
     profile_body: {
         height: '100%',
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     user_name: {
-        fontSize: 28,
+        fontSize: 27,
         fontWeight: '600'
     },
     user_location: {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        columnGap: 10
+        columnGap: 15
     },
     image_button: {
         width: 40,
@@ -218,6 +218,10 @@ const styles = StyleSheet.create({
     detail_container: {
         width: '100%',
         marginBottom: 10
+    },
+    description: {
+        fontSize: 16,
+        fontWeight: '400'
     },
     row: {
         height: 25,
