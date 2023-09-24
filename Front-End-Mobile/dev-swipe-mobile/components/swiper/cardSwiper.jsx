@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { AppRegistry, StyleSheet, Text, View, Image, Button, Dimensions } from 'react-native'
+import Swiper from 'react-native-deck-swiper'
 const windowHeight = Dimensions.get('window').height;
  
-import Swiper from 'react-native-deck-swiper'
 function* range(start,end){
   for (let i= start ; i<= end; i++){
     yield i;
@@ -10,6 +10,7 @@ function* range(start,end){
 }
 
 export default class CardSwiperComponent extends Component {
+
   constructor(props){
     super (props);
     this.state = {

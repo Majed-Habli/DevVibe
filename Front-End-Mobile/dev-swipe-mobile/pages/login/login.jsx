@@ -21,8 +21,8 @@ const Hero = ({navigation}) => {
         setPassword(text)
     };
     
-    console.log(email)
-    console.log(password)
+    // console.log(email)
+    // console.log(password)
     const goToPage = () => {
         window.location.href = '/register';
     }
@@ -46,7 +46,7 @@ const Hero = ({navigation}) => {
                 );
 
                 const data = response.data;
-                console.log("res", data)
+                // console.log("res", data)
     
                 if(data.status == 'success'){
                     const token = data.user.token;
@@ -54,7 +54,7 @@ const Hero = ({navigation}) => {
                     const userName = data.user.user_name;
                     const profileImageUrl = data.user.profile_image_url;
                     const user_type = data.user.user_type_id;
-                    console.log("token is ", token)
+                    // console.log("token is ", token)
 
                     try {
                         await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {

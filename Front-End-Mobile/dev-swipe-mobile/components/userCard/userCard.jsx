@@ -10,7 +10,7 @@ const UserCard = ({label}) =>{
       const value = await AsyncStorage.getItem("user");
       if (value !== null) {
         // We have data!!
-        console.log("we hav dattaaa", JSON.parse(value));
+        // console.log("we hav dattaaa", JSON.parse(value));
         setUser(JSON.parse(value));
         // console.log(value);
       }
@@ -23,10 +23,10 @@ const UserCard = ({label}) =>{
   useEffect(() => {
     getData();
   },[]);
-  console.log("My use is ", user);
+//   console.log("My use is ", user);
 
-    const profile_image = user.user.profile_image_url;
-    console.log("my profile image", profile_image)
+    const profile_image = '';
+    // console.log("my profile image", profile_image)
     return(
         <View style={styles.container}>
             {profile_image !=  '' ?(
