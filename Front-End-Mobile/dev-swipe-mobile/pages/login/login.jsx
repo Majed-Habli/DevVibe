@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
+import axios from 'react-native-axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Hero = () => {
+const Hero = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -20,12 +22,13 @@ const Hero = () => {
     };
     
     console.log(email)
+    console.log(password)
     const goToPage = () => {
         window.location.href = '/register';
     }
 
-    const onLogin = async (event) =>{
-        event.preventDefault();
+    const onLogin = async () =>{
+        // event.preventDefault();
 
         try {
             if(!email || !password){
@@ -33,16 +36,25 @@ const Hero = () => {
                 console.log(error);
             }else{
 
-                const response = await sendRequest({
-                    route: "/guest/login",
-                    method: requestMethods.POST,
-                    body:{email: email,
-                        password: password,
-                        }
-                });
-                const data = response;
-                console.log("res", response)
-                const token = " ";
+                const response = await axios.post("https://674b-78-40-183-51.ngrok-free.app/api/guest/login", {
+                    
+                        email: email,
+                        password: password
+                    }, {
+                        headers: {'Content-Type': 'application/json'}
+                    }
+                );
+
+                // const response = await sendRequest({
+                //     route: "/guest/login",
+                //     method: requestMethods.POST,
+                //     body:{email: email,
+                //         password: password,
+                //         }
+                // });
+                const data = response.data;
+                console.log("res", data)
+                // const token = " ";
     
                 if(data.status == 'success'){
                     const token = data.user.token;
@@ -50,12 +62,29 @@ const Hero = () => {
                     const userName = data.user.user_name;
                     const profileImageUrl = data.user.profile_image_url;
                     const user_type = data.user.user_type_id;
-    
-                    localStorageAction("token", token);
-                    localStorageAction('user_name', userName);
-                    localStorageAction("user_id", id);
-                    localStorageAction("user_type", user_type);
-                    localStorageAction("profile_image", profileImageUrl);
+                    console.log("token is ", token)
+
+                    try {
+                        // await AsyncStorage.setItem('loginToken',token);
+                        const man = await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
+                            if(err){
+                                console.log("an error");
+                                throw err;
+                            }
+                            console.log("success saving");
+                            navigation.navigate('main_navigation')
+                        }).catch((err)=> {
+                            console.log("error is: " + err);
+                        });
+                    }catch (error){
+                        console.log("didnt save in storage ",error)
+                    }
+
+                    // localStorageAction("token", token);
+                    // localStorageAction('user_name', userName);
+                    // localStorageAction("user_id", id);
+                    // localStorageAction("user_type", user_type);
+                    // localStorageAction("profile_image", profileImageUrl);
 
                     // console.log(data.user);
                     // console.log(data.user.token);
@@ -65,7 +94,8 @@ const Hero = () => {
                     // console.log('her is the user',ahmad.user_name)
 
                     // localStorage.setItem("userData", JSON.stringify(data));
-                    window.location.href = '/dashboard';
+
+                    // window.location.href = '/dashboard';
                 }else{
                     setError("Email Doesn't exists!");
                     console.log(error);
