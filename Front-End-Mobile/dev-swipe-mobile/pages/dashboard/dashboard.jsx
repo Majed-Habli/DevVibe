@@ -14,61 +14,49 @@ const windowWidth = Dimensions.get('window').width;
 
 const Dashboard = () => {
     const [users, setUsers] = useState([]);
-    const [loggedin, setLoggedin] = useState({});
+    // const [loggedin, setLoggedin] = useState({});
     const [token, setToken] = useState('')
 
-    const getData = async () => {
-        try {
-          const value = await AsyncStorage.getItem("user");
-          if (value !== null) {
-            // We have data!!
-            setLoggedin(JSON.parse(value));
-            console.log("my user data", JSON.parse(value));
-          }
-        } catch (error) {
-          // Error retrieving data
-          console.log("retrieving data");
-        }
-      };
-
-    const getUsers = async () =>{
-        try {
-          const response = await axios.get("https://674b-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
-            headers: {
-            'Authorization': `Bearer ${token}`
-            }}
-          );
     
-          const data = response.data;
-          console.log("my response", data)
-    
-          if(data.status == 'success'){
-                setUsers(data.compare.data)
-            console.log("yayy")
-          }else{
-              setError("no success!");
-              console.log(error);
-          }
-          } catch (error) {
-            console.error("get users failed:", error);
-          }
-    }
-
     useEffect(() => {
+        const getData = async () => {
+            try {
+              const value = await AsyncStorage.getItem("user");
+              const user= JSON.parse(value)
+                setToken(user.user.token)
+            } catch (error) {
+              // Error retrieving data
+              console.log("retrieving data");
+            }
+          };
         getData();
     },[]);
 
     useEffect(()=>{
-        if(loggedin != ' '){
-            console.log('here w have the example of the data we need to get',loggedin)
-            setToken(loggedin?.user?.token)
-        }else{
-            console.log('smthn went wrong')
+        const getUsers = async () =>{
+            try {
+              const response = await axios.get("https://674b-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }}
+              );
+        
+              const data = response.data;
+              console.log("my response", data)
+        
+                if(data.status == 'success'){
+                        setUsers(data.compare.data)
+                    console.log("yayy")
+                }else{
+                    setError("no success!");
+                    console.log(error);
+                }
+              } catch (error) {
+                console.error("get users failed:", error);
+              }
         }
-    },[loggedin])
 
-    useEffect(()=>{
-        if(token != ' '){
+        if(token != ''){
             getUsers();
         }
     },[token])

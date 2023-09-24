@@ -20,6 +20,7 @@
     "react-native": "0.72.4",
     "react-native-axios": "^0.17.1",
     "react-native-deck-swiper": "^2.0.16",
+    "react-native-swipe-cards-deck": "^0.3.0",
     "react-native-swiper": "^1.6.0"
   },
   "devDependencies": {

@@ -1,177 +1,115 @@
-import React, { Component, useEffect } from 'react'
-import { AppRegistry, StyleSheet, Text, View, Image, Button, Dimensions } from 'react-native'
-import Swiper from 'react-native-deck-swiper'
-const windowHeight = Dimensions.get('window').height;
- 
-function* range(start,end){
-  for (let i= start ; i<= end; i++){
-    yield i;
-  }
-}
+import React, { Component } from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
-export default class CardSwiperComponent extends Component {
+import SwipeCards from "react-native-swipe-cards-deck";
 
-  constructor(props){
-    super (props);
-    this.state = {
-      // cards: [...range(1,50)],
-      // cards:['Saida, Lebanon', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY'],
-      cards:[this.props.users],
-      swipedAllCards: false,
-      swipeDirection: '',
-      cardIndex: 0,
-    };
+class Card extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
-
-  renderCard = (card, index) => {
+  render() {
     return (
+      // <View key={this.props.id} style={styles.card}>
+      //   <Text>{this.props.user_name}</Text>
+      // </View>
       <View style={styles.card}>
-        <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
-        {/* <View > */}
-          <Image style={styles.pressable_btn} source={require("../../assets/profile-btn.png")}/>
-        {/* </View> */}
-        <View style={styles.statements}>
-          <Text style={styles.user_name}>{card.user_name}</Text>
-          <Text style={styles.text}>
-            {card} - {index}
-          </Text>
-        </View>
+      <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
+      {/* <View > */}
+        <Image style={styles.pressable_btn} source={require("../../assets/profile-btn.png")}/>
+      {/* </View> */}
+      <View style={styles.statements}>
+        <Text style={styles.user_name}>{this.props.user_name}</Text>
+        <Text style={styles.text}>
+          {this.props.country}
+        </Text>
       </View>
+    </View>
     )
-  };
+  }
+}
 
-  onSwiped = type => {
-    console.log(`on swiped ${type}`);
-  };
+class NoMoreCards extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  onSwipedAllCards = () => {
-    this.setState({
-      swipedAllCards: true,
-    });
-  };
-
-  SwipeLeft = () => {
-    this.swiper.swipeLeft();
-  };
-
-  render(){
+  render() {
     return (
-      <View style={styles.container}>
-        <Swiper ref={swiper => {
-          this.swiper = swiper;
-        }}
-        onSwiped={()=> this.onSwiped('general')}
-        onSwipedLeft={()=> this.onSwiped('Left')}
-        onSwipedRight={()=> this.onSwiped('right')}
-        onSwipedTop={()=> this.onSwiped('top')}
-        onSwipedBottom={()=> this.onSwiped('bottom')}
-        onTapCard={this.swipeLeft}
-        cards={this.state.cards}
-        cardIndex={this.state.cardIndex}
-        cardVerticalMargin={50}
-        renderCard={this.renderCard}
-        onSwipedAll={this.onSwipedAllCards}
-        stackSize={3}
-        disableBottomSwipe
-        disableTopSwipe
-        stackSeparation={2}
-        containerStyle={{ height: windowHeight, backgroundColor:"white", overflow: 'hidden'}}
-        
-        overlayLabels={{
-          // bottom: {
-          //   title: 'Bleah',
-          //   style: {
-          //     label: {
-          //       backgroundColor: 'black',
-          //       borderColor: 'black',
-          //       color: 'white',
-          //       borderWidth: 1
-          //     },
-          //     wrapper: {
-          //       flexDirection: 'column',
-          //       alignItems: 'center',
-          //       justifyContent: 'center',
-          //     },
-          //   },
-          // },
-          left: {
-            title: 'NOPE',
-            style: {
-              label: {
-                backgroundColor: 'black',
-                borderColor: 'black',
-                color: 'white',
-                borderWidth: 1,
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-start',
-                marginTop: 30,
-                marginLeft: -30,
-              },
-            },
-          },
-          right: {
-            title: 'LIKE',
-            style: {
-              label: {
-                backgroundColor: 'black',
-                borderColor: 'black',
-                color: 'white',
-                borderWidth: 1,
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-start',
-                marginTop: 30,
-                marginLeft: +30,
-              },
-            }
-          },
-          // top: {
-          //   title: 'Super LIKE',
-          //   style: {
-          //     label: {
-          //       backgroundColor: 'black',
-          //       borderColor: 'black',
-          //       color: 'white',
-          //       borderWidth: 1,
-          //     },
-          //     wrapper: {
-          //       flexDirection: 'column',
-          //       alignItems: 'center',
-          //       justifyContent: 'center',
-          //     },
-          //   }
-          // }
-        }}
-        animateOverlayLabelsOpacity
-        animateCardOpacity
-        swipeBackCard
-        >
-          {/* <Button onPress={()=>this.swiper.swipeBack()} title='swipeBack'></Button> */}
-
-        </Swiper>
+      <View>
+        <Text style={styles.noMoreCardsText}>No more cards</Text>
       </View>
     )
   }
 }
- 
+
+export default class extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     cards: [{"country": "KE", "created_at": "2023-09-19T09:19:54.000000Z", "device_token": null, "email": "ahmad@gmail.com", "has_access": 1, "id": 6, "profile_image_url": "http://127.0.0.1:8000/storage/users/3/profile_pic/z5pvlhbgOU.png", "updated_at": "2023-09-20T21:12:37.000000Z", "user_name": "ahmad", "user_type_id": 3, "view_count": 0}, {"country": "LB", "created_at": "2023-09-19T09:19:54.000000Z", "device_token": null, "email": "ali@gmail.com", "has_access": 1, "id": 7, "profile_image_url": "http://127.0.0.1:8000/storage/users/3/profile_pic/z5pvlhbgOU.png", "updated_at": "2023-09-20T21:12:37.000000Z", "user_name": "ali", "user_type_id": 3, "view_count": 0}]
+  //   };
+  // }
+
+  handleYup (card) {
+    console.log(`Yup for ${card.text}`)
+    return true;
+  }
+  handleNope (card) {
+    console.log(`Nope for ${card.text}`)
+    return true;
+  }
+  handleMaybe (card) {
+    console.log(`Maybe for ${card.text}`)
+    return true;
+  }
+  render() {
+    // If you want a stack of cards instead of one-per-one view, activate stack mode
+    // stack={true}
+    return (
+      <SwipeCards
+        cards={this.props.users}
+        renderCard={(cardData) => <Card {...cardData} />}
+        keyExtractor={(cardData) => String(cardData.text)}
+        renderNoMoreCards={() => <NoMoreCards />}
+
+        handleYup={this.handleYup}
+        handleNope={this.handleNope}
+        handleMaybe={this.handleMaybe}
+        stack={true}
+        stackOffsetX={0}
+        // hasMaybeAction
+      />
+    )
+  }
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  // card: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   width: 300,
+  //   height: 300,
+  // },
   card: {
-    width: '100%',
+    width: 340,
     height: 450,
     borderRadius: 54,
     borderWidth: 2,
     borderColor: "#E8E8E8",
     justifyContent: "center",
-    backgroundColor: "#FCC860"
+    alignItems: 'center',
+    backgroundColor: "red"
+    // alignItems: 'center',
+    // borderRadius: 5,
+    // overflow: 'hidden',
+    // borderColor: 'grey',
+    // backgroundColor: 'red',
+    // borderWidth: 4,
+    // elevation: 1,
+  },
+  noMoreCardsText: {
+    fontSize: 22,
   },
   statements: {
     bottom:30,
@@ -201,33 +139,4 @@ const styles = StyleSheet.create({
     top: 30,
     left: 20
   }
-});
- 
-// export default class CardSwiperComponent extends Component {
-//   render () {
-//     <View style={styles.container}>
-//         <Swiper
-//             cards={['DO', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY']}
-//             renderCard={(card) => {
-//                 return (
-//                     <View style={styles.card}>
-//                         <Text style={styles.text}>{card}</Text>
-//                     </View>
-//                 )
-//             }}
-//             onSwiped={(cardIndex) => {console.log(cardIndex)}}
-//             onSwipedAll={() => {console.log('onSwipedAll')}}
-//             cardIndex={0}
-//             backgroundColor={'#4FD0E9'}
-//             stackSize= {3}>
-//             <Button
-//                 onPress={() => {console.log('oulala')}}
-//                 title="Press me">
-//                 You can press me
-//             </Button>
-//         </Swiper>
-//     </View>
-// }
-// }
- 
-AppRegistry.registerComponent('myproject', () => CardSwiperComponent)
+})

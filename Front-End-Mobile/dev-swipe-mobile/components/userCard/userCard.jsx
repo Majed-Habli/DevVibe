@@ -25,7 +25,7 @@ const UserCard = ({label}) =>{
   },[]);
 //   console.log("My use is ", user);
 
-    const profile_image = '';
+    const profile_image = 'h';
     // console.log("my profile image", profile_image)
     return(
         <View style={styles.container}>
