@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 import SwipeCards from "react-native-swipe-cards-deck";
 
-const handleClicked = (cardId) => {
-  console.log(`got clicked ${cardId}`)
-  // return true
-}
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
+
+const Card = (props) => {
+  const navigation = useNavigation();
+
+  const handleClicked = (cardId) => {
+    console.log(`got clicked ${cardId}`)
+    navigation.navigate('Profile');
   }
 
-  render() {
-    return (
-      <View style={styles.card}>
-      <Image style={styles.user_image} source={require("../../assets/Profileimage.png")}/>
-      <Pressable style={styles.pressable_btn} onPress={()=>handleClicked(this.props.id)}>
-        <Image style={styles.icons} source={require("../../assets/profile-btn.png")}/>
-      </Pressable>
-      <View style={styles.statements}>
-        <Text style={styles.user_name}>{this.props.user_name}</Text>
-        <Text style={styles.text}>
-          {this.props.country}
-        </Text>
-      </View>
+  return (
+    <View style={styles.card}>
+    <Image style={styles.user_image} source={require("../../assets/Profileimage.png")}/>
+    <Pressable style={styles.pressable_btn} onPress={()=>handleClicked(props.id)}>
+      <Image style={styles.icons} source={require("../../assets/profile-btn.png")}/>
+    </Pressable>
+    <View style={styles.statements}>
+      <Text style={styles.user_name}>{props.user_name}</Text>
+      <Text style={styles.text}>
+        {props.country}
+      </Text>
     </View>
-    )
-  }
+  </View>
+  )
 }
 
 class NoMoreCards extends Component {
@@ -43,8 +41,6 @@ class NoMoreCards extends Component {
     )
   }
 }
-
-
 
 export default class extends React.Component {
 
@@ -68,7 +64,6 @@ export default class extends React.Component {
         handleYup={this.handleYup}
         handleNope={this.handleNope}
         handleMaybe={this.handleMaybe}
-        // onClickHandler={this.handleClicked}
         stack={true}
         stackOffsetX={0}
       />
