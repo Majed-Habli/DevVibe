@@ -46,6 +46,16 @@ function TabNavigator() {
           headerStyle: {
             borderBottomWidth: 1,
             borderBottomColor: "#c7c7c7",
+            height: 100,
+          },
+          headerRight: (props) => (
+            <Image
+              style={{ width: 28, height: 28, margin: 20 }}
+              source={require("./assets/Notify-button.png")}
+            />
+          ),
+          tabBarStyle: {
+            height: 50,
           },
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>
@@ -58,7 +68,6 @@ function TabNavigator() {
                   tintColor: focused ? "#e32f45" : "#748c94",
                 }}
               />
-              <Text>Home</Text>
             </View>
           ),
         }}
@@ -74,13 +83,17 @@ function TabNavigator() {
           title: "Matches",
           headerRight: (props) => (
             <Image
-              style={{ width: 30, height: 30, margin: 20 }}
+              style={{ width: 28, height: 28, margin: 20 }}
               source={require("./assets/Notify-button.png")}
             />
           ),
           headerStyle: {
             borderBottomWidth: 1,
+            height: 100,
             borderBottomColor: "#c7c7c7",
+          },
+          tabBarStyle: {
+            height: 50,
           },
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>
@@ -93,7 +106,6 @@ function TabNavigator() {
                   tintColor: focused ? "#e32f45" : "#748c94",
                 }}
               />
-              <Text>Chats</Text>
             </View>
           ),
         }}
@@ -104,7 +116,15 @@ function TabNavigator() {
         component={Profile}
         options={{
           headerTitle: (props) => (
-            <Text style={{ fontSize: 20, marginLeft: "40%" }}>Majed</Text>
+            <View style={styles.container}>
+              <Text
+                style={{
+                  fontSize: 20,
+                }}
+              >
+                Majed's Profile
+              </Text>
+            </View>
           ),
           headerLeft: (props) => (
             <Image
@@ -120,13 +140,17 @@ function TabNavigator() {
             //   margin={20}
             // />
             <Image
-              style={{ width: 30, height: 30, margin: 20 }}
+              style={{ width: 28, height: 28, margin: 20 }}
               source={require("./assets/Notify-button.png")}
             />
           ),
           headerStyle: {
             borderBottomWidth: 1,
             borderBottomColor: "#c7c7c7",
+            height: 100,
+          },
+          tabBarStyle: {
+            height: 50,
           },
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>
@@ -139,7 +163,6 @@ function TabNavigator() {
                   tintColor: focused ? "#e32f45" : "#748c94",
                 }}
               />
-              <Text>Profile</Text>
             </View>
           ),
         }}
@@ -159,7 +182,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    minWidth: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
