@@ -45,16 +45,8 @@ const Hero = ({navigation}) => {
                     }
                 );
 
-                // const response = await sendRequest({
-                //     route: "/guest/login",
-                //     method: requestMethods.POST,
-                //     body:{email: email,
-                //         password: password,
-                //         }
-                // });
                 const data = response.data;
                 console.log("res", data)
-                // const token = " ";
     
                 if(data.status == 'success'){
                     const token = data.user.token;
@@ -65,8 +57,7 @@ const Hero = ({navigation}) => {
                     console.log("token is ", token)
 
                     try {
-                        // await AsyncStorage.setItem('loginToken',token);
-                        const man = await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
+                        await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
                             if(err){
                                 console.log("an error");
                                 throw err;
@@ -80,22 +71,6 @@ const Hero = ({navigation}) => {
                         console.log("didnt save in storage ",error)
                     }
 
-                    // localStorageAction("token", token);
-                    // localStorageAction('user_name', userName);
-                    // localStorageAction("user_id", id);
-                    // localStorageAction("user_type", user_type);
-                    // localStorageAction("profile_image", profileImageUrl);
-
-                    // console.log(data.user);
-                    // console.log(data.user.token);
-                    // const user = data.user;
-                    // localStorageAction("user", JSON.stringify(user));
-                    // const ahmad = JSON.parse(localStorageAction("user"));
-                    // console.log('her is the user',ahmad.user_name)
-
-                    // localStorage.setItem("userData", JSON.stringify(data));
-
-                    // window.location.href = '/dashboard';
                 }else{
                     setError("Email Doesn't exists!");
                     console.log(error);
