@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
 
 import SwipeCards from "react-native-swipe-cards-deck";
 
+const handleClicked = (cardId) => {
+  console.log(`got clicked ${cardId}`)
+  // return true
+}
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -11,10 +15,10 @@ class Card extends React.Component {
   render() {
     return (
       <View style={styles.card}>
-      <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
-      {/* <View > */}
-        <Image style={styles.pressable_btn} source={require("../../assets/profile-btn.png")}/>
-      {/* </View> */}
+      <Image style={styles.user_image} source={require("../../assets/Profileimage.png")}/>
+      <Pressable style={styles.pressable_btn} onPress={()=>handleClicked(this.props.id)}>
+        <Image style={styles.icons} source={require("../../assets/profile-btn.png")}/>
+      </Pressable>
       <View style={styles.statements}>
         <Text style={styles.user_name}>{this.props.user_name}</Text>
         <Text style={styles.text}>
@@ -40,6 +44,8 @@ class NoMoreCards extends Component {
   }
 }
 
+
+
 export default class extends React.Component {
 
   handleYup (card) {
@@ -51,23 +57,18 @@ export default class extends React.Component {
     return true;
   }
 
-  handleClicked (card) {
-    console.log(`got clicked ${card.id}`)
-    return true
-  }
-
   render() {
     return (
       <SwipeCards
         cards={this.props.users}
         renderCard={(cardData) => <Card {...cardData} />}
-        keyExtractor={(cardData) => String(cardData.text)}
+        keyExtractor={(cardData) => String(cardData.id)}
         renderNoMoreCards={() => <NoMoreCards />}
 
         handleYup={this.handleYup}
         handleNope={this.handleNope}
         handleMaybe={this.handleMaybe}
-        onClickHandler={()=>handleClicked()}
+        // onClickHandler={this.handleClicked}
         stack={true}
         stackOffsetX={0}
       />
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     backgroundColor: "transparent"
   },
-  icons: {
+  user_image: {
     width: '100%',
     height: '100%',
     alignSelf: 'center',
@@ -113,8 +114,16 @@ const styles = StyleSheet.create({
   pressable_btn: {
     width: 55,
     height: 55,
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
     top: 30,
     left: 20
+  },
+  icons:{
+    width: 55,
+    height: 55,
+    borderRadius: 120
   }
+
 })
