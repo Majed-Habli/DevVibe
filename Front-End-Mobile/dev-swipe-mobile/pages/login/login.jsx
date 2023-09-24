@@ -11,8 +11,12 @@ const Hero = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleChange = (text) => {
+    const handleTextChange = (text) => {
         setEmail(text)
+    };
+
+    const handlePasswordChange = (text) => {
+        setPassword(text)
     };
     
     console.log(email)
@@ -24,7 +28,7 @@ const Hero = () => {
         event.preventDefault();
 
         try {
-            if(!inputs.email || !inputs.password){
+            if(!email || !password){
                 setError('All fields required');
                 console.log(error);
             }else{
@@ -32,8 +36,8 @@ const Hero = () => {
                 const response = await sendRequest({
                     route: "/guest/login",
                     method: requestMethods.POST,
-                    body:{email: inputs.email,
-                        password: inputs.password,
+                    body:{email: email,
+                        password: password,
                         }
                 });
                 const data = response;
@@ -90,9 +94,9 @@ const Hero = () => {
                 </View>
                 <View style={styles.form}>
                     {/* <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/> */}
-                    <CustomInput label={'Email'} value={email} handleChange={handleChange}/>
+                    <CustomInput label={'Email'} value={email} handleChange={handleTextChange}/>
                     <View style={styles.password_container}>
-                        <CustomInput label={'Password'} value={password} handleChange={handleChange}/>
+                        <CustomInput label={'Password'} value={password} handleChange={handlePasswordChange}/>
 
                         {/* <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/> */}
                         <Text style={styles.cto}>Forgot password?</Text>
