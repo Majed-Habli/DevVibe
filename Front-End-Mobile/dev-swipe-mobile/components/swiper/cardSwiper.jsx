@@ -10,9 +10,6 @@ class Card extends React.Component {
 
   render() {
     return (
-      // <View key={this.props.id} style={styles.card}>
-      //   <Text>{this.props.user_name}</Text>
-      // </View>
       <View style={styles.card}>
       <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
       {/* <View > */}
@@ -44,12 +41,6 @@ class NoMoreCards extends Component {
 }
 
 export default class extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     cards: [{"country": "KE", "created_at": "2023-09-19T09:19:54.000000Z", "device_token": null, "email": "ahmad@gmail.com", "has_access": 1, "id": 6, "profile_image_url": "http://127.0.0.1:8000/storage/users/3/profile_pic/z5pvlhbgOU.png", "updated_at": "2023-09-20T21:12:37.000000Z", "user_name": "ahmad", "user_type_id": 3, "view_count": 0}, {"country": "LB", "created_at": "2023-09-19T09:19:54.000000Z", "device_token": null, "email": "ali@gmail.com", "has_access": 1, "id": 7, "profile_image_url": "http://127.0.0.1:8000/storage/users/3/profile_pic/z5pvlhbgOU.png", "updated_at": "2023-09-20T21:12:37.000000Z", "user_name": "ali", "user_type_id": 3, "view_count": 0}]
-  //   };
-  // }
 
   handleYup (card) {
     console.log(`Yup for ${card.text}`)
@@ -59,13 +50,13 @@ export default class extends React.Component {
     console.log(`Nope for ${card.text}`)
     return true;
   }
-  handleMaybe (card) {
-    console.log(`Maybe for ${card.text}`)
-    return true;
+
+  handleClicked (card) {
+    console.log(`got clicked ${card.id}`)
+    return true
   }
+
   render() {
-    // If you want a stack of cards instead of one-per-one view, activate stack mode
-    // stack={true}
     return (
       <SwipeCards
         cards={this.props.users}
@@ -76,21 +67,15 @@ export default class extends React.Component {
         handleYup={this.handleYup}
         handleNope={this.handleNope}
         handleMaybe={this.handleMaybe}
+        onClickHandler={()=>handleClicked()}
         stack={true}
         stackOffsetX={0}
-        // hasMaybeAction
       />
     )
   }
 }
 
 const styles = StyleSheet.create({
-  // card: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   width: 300,
-  //   height: 300,
-  // },
   card: {
     width: 340,
     height: 450,
@@ -99,14 +84,7 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     justifyContent: "center",
     alignItems: 'center',
-    backgroundColor: "red"
-    // alignItems: 'center',
-    // borderRadius: 5,
-    // overflow: 'hidden',
-    // borderColor: 'grey',
-    // backgroundColor: 'red',
-    // borderWidth: 4,
-    // elevation: 1,
+    backgroundColor: "transparent"
   },
   noMoreCardsText: {
     fontSize: 22,
