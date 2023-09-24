@@ -15,7 +15,8 @@ export default class CardSwiperComponent extends Component {
     super (props);
     this.state = {
       // cards: [...range(1,50)],
-      cards:['Saida, Lebanon', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY'],
+      // cards:['Saida, Lebanon', 'MORE', 'OF', 'WHAT', 'MAKES', 'YOU', 'HAPPY'],
+      cards:[this.props.users],
       swipedAllCards: false,
       swipeDirection: '',
       cardIndex: 0,
@@ -31,7 +32,7 @@ export default class CardSwiperComponent extends Component {
           <Image style={styles.pressable_btn} source={require("../../assets/profile-btn.png")}/>
         {/* </View> */}
         <View style={styles.statements}>
-          <Text style={styles.user_name}>Majed Habli</Text>
+          <Text style={styles.user_name}>{card.user_name}</Text>
           <Text style={styles.text}>
             {card} - {index}
           </Text>

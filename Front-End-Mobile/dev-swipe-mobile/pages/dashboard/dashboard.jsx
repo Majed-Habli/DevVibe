@@ -80,7 +80,7 @@ const Dashboard = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.dashboard_container}>
                 <View style={styles.swiper_container}>
-                    <Swiper users={users}/>
+                    {users? <Swiper users={users}/>: (<Text>nothing to see here</Text>)}
                 </View>
                 {/* <View style={styles.swiper_buttons}>
                     <Text>hi</Text>
