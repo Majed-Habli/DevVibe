@@ -7,16 +7,72 @@ const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Hero = () => {
-    const [inputs, setInputs] = useState([]);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleChange = (e) => {
-        setInputs((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
+    const handleChange = (text) => {
+        setEmail(text)
     };
+    
+    console.log(email)
+    const goToPage = () => {
+        window.location.href = '/register';
+    }
 
-    console.log(inputs)
+    const onLogin = async (event) =>{
+        event.preventDefault();
+
+        try {
+            if(!inputs.email || !inputs.password){
+                setError('All fields required');
+                console.log(error);
+            }else{
+
+                const response = await sendRequest({
+                    route: "/guest/login",
+                    method: requestMethods.POST,
+                    body:{email: inputs.email,
+                        password: inputs.password,
+                        }
+                });
+                const data = response;
+                console.log("res", response)
+                const token = " ";
+    
+                if(data.status == 'success'){
+                    const token = data.user.token;
+                    const id = data.user.id;
+                    const userName = data.user.user_name;
+                    const profileImageUrl = data.user.profile_image_url;
+                    const user_type = data.user.user_type_id;
+    
+                    localStorageAction("token", token);
+                    localStorageAction('user_name', userName);
+                    localStorageAction("user_id", id);
+                    localStorageAction("user_type", user_type);
+                    localStorageAction("profile_image", profileImageUrl);
+
+                    // console.log(data.user);
+                    // console.log(data.user.token);
+                    // const user = data.user;
+                    // localStorageAction("user", JSON.stringify(user));
+                    // const ahmad = JSON.parse(localStorageAction("user"));
+                    // console.log('her is the user',ahmad.user_name)
+
+                    // localStorage.setItem("userData", JSON.stringify(data));
+                    window.location.href = '/dashboard';
+                }else{
+                    setError("Email Doesn't exists!");
+                    console.log(error);
+                }
+            }
+            
+          } catch (error) {
+            console.error("Login failed:", error);
+          }
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.background}>
@@ -33,14 +89,17 @@ const Hero = () => {
                     />
                 </View>
                 <View style={styles.form}>
-                    <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/>
+                    {/* <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/> */}
+                    <CustomInput label={'Email'} value={email} handleChange={handleChange}/>
                     <View style={styles.password_container}>
-                        <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/>
+                        <CustomInput label={'Password'} value={password} handleChange={handleChange}/>
+
+                        {/* <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/> */}
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>
                 <View style={styles.button_container}>
-                    <CustomButton title='Sign in' route='main_navigation'/>
+                    <CustomButton title='Sign in' route='main_navigation' onPress={onLogin}/>
                     <View style={styles.line}></View>
                     <View style={styles.statement}>
                         <Text>
