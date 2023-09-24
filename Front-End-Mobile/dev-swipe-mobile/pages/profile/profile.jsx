@@ -1,14 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import SwiperComponent from '../../components/swiper/swiper';
-// import {navig}
+import { useRoute } from '@react-navigation/native';
+import axios from 'react-native-axios';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Profile = () => {
+    const route = useRoute();
+    const [user, setUser] = useState([]);
+    const [error, setError] = useState('');
+    const [token, setToken] = useState('')
+    const {cardId} = route.params;
+    console.log('my user id 2 is ',cardId)
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+              const value = await AsyncStorage.getItem("user");
+              const user= JSON.parse(value)
+                setToken(user.user.token)
+            } catch (error) {
+              console.log("retrieving data2");
+            }
+          };
+        getData();
+    },[]);
+
+    useEffect(()=>{
+
+        const getUserProfile = async () =>{
+            try {
+              const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }}
+              );
+        
+              const data = response.data;
+        
+                if(data.status == 'success'){
+                    setUser(data)
+                    console.log("yayy2")
+                }else{
+                    setError("no success2!");
+                    console.log(error);
+                }
+              } catch (error) {
+                console.error("get users failed2:", error);
+              }
+        }
+        if(token != ''){
+            getUserProfile()
+        }
+    },[token])
+
+    console.log('line 64',user)
+    console.log('the token line 65',token)
+
 
     return(
         <SafeAreaView style={styles.container}>
@@ -18,8 +71,8 @@ const Profile = () => {
                 </View>
                 <View style={styles.profile_body}>
                     <View style={styles.body_header}>
-                        <Text style={styles.user_name}>Majed habli</Text>
-                        <Text style={styles.user_location}>Saida,Lebanon</Text>
+                        <Text style={styles.user_name}>{user.user_name}</Text>
+                        <Text style={styles.user_location}>{user.country}</Text>
                         <View style={styles.image_group}>
                             <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Send.png")}/>
@@ -105,11 +158,11 @@ const Profile = () => {
                         </View>
                         <View style={styles.detail_container}>
                             <View style={styles.row}>
-                                <Text style={styles.statement}>majedhabli@gmail.com</Text>
+                                <Text style={styles.statement}>{user.email}</Text>
                                 <Text style={styles.statement}>male</Text>
                             </View>
                             <View style={styles.row}>
-                                <Text style={styles.statement}>lebanon</Text>
+                                <Text style={styles.statement}>{user.country}</Text>
                                 <Text style={styles.statement}>12/2/2023</Text>
                             </View>
                         </View>

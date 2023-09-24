@@ -62,7 +62,7 @@ const Hero = ({navigation}) => {
                                 console.log("an error");
                                 throw err;
                             }
-                            console.log("success saving");
+                            // console.log("success saving");
                             navigation.navigate('main_navigation')
                         }).catch((err)=> {
                             console.log("error is: " + err);

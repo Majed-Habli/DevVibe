@@ -26,7 +26,7 @@ const Dashboard = () => {
                 setToken(user.user.token)
             } catch (error) {
               // Error retrieving data
-              console.log("retrieving data");
+              console.log("retrieving data1");
             }
           };
         getData();
@@ -42,17 +42,17 @@ const Dashboard = () => {
               );
         
               const data = response.data;
-              console.log("my response", data)
+              console.log("my response1", data)
         
                 if(data.status == 'success'){
                         setUsers(data.compare.data)
-                    console.log("yayy")
+                    console.log("yayy1")
                 }else{
-                    setError("no success!");
+                    setError("no success1!");
                     console.log(error);
                 }
               } catch (error) {
-                console.error("get users failed:", error);
+                console.error("get users failed1:", error);
               }
         }
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
     },[token])
 
     console.log(token)
-    console.log("the users                                               ",users)
+    console.log("the users 1                                              ",users)
   
     return(
         <SafeAreaView style={styles.container}>
