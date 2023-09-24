@@ -25,20 +25,21 @@ const UserCard = ({label}) =>{
   },[]);
   console.log("My use is ", user);
 
-    const profile_image = ''
+    const profile_image = user.user.profile_image_url;
+    console.log("my profile image", profile_image)
     return(
         <View style={styles.container}>
             {profile_image !=  '' ?(
             <Image
                 style={styles.profile_image}
-                source={require('../../assets/default-user.png')}
+                source={{uri: 'https://674b-78-40-183-51.ngrok-free.app/storage/users/2/profile_pic/w8Vg1nGRC1.png'}}
             />):(
             <Image
                 style={styles.profile_image}
                 source={require('../../assets/default-user.png')}
             />
             )}
-            <Text style={styles.input_header}>{user?.user?.user_name}</Text>
+            {user?.user?.user_name ? (<Text style={styles.input_header}>{user.user.user_name}</Text>):(<Text style={styles.input_header}>user name</Text>)}
         </View>
     )
 }
@@ -59,9 +60,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     profile_image: {
-        width: 45,
-        height: 45,
+        width: 50,
+        height: 50,
         backgroundColor: 'red',
-        borderRadius: 120
+        borderRadius: 120,
+        resizeMode: 'cover',
+        borderWidth: 1,
+        // borderColor: '#FCC860'
+        borderColor: 'black'
     }
     });
