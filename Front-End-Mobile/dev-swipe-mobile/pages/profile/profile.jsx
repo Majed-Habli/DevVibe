@@ -13,6 +13,7 @@ const windowWidth = Dimensions.get('window').width;
 const Profile = ({navigation}) => {
     const route = useRoute();
     const [user, setUser] = useState([]);
+    const [skills, setSkills] = useState([]);
     const [error, setError] = useState('');
     const [details, setDetails] = useState([]);
     const [loggedinID, setLoggedinID] = useState('');
@@ -65,8 +66,37 @@ const Profile = ({navigation}) => {
                 console.error("get users failed2:", error);
               }
         }
+
+        const getSkills = async () =>{
+            try {
+                const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
+                    headers: {
+                    'Authorization': `Bearer ${token}`
+                    }}
+                  );
+                const data = response;
+                // console.log('user skills response ',data.data.data)
+    
+                if(data.data.status == 'success'){
+                    if(data.data.data == ''){
+                        setErrorSkills(`user has no skills yet.`)
+                    }
+
+                    const obj = data.data.data;
+                    // console.log('skillssssssssssss     ', obj)
+                    setSkills(obj);
+                }else{
+                    setError("something went wrong");
+                    console.log(error);
+                }
+                
+              } catch (error) {
+                console.error("Fetching skills failed:", error);
+              }
+        }
         if(token != '' ){
-            getUserProfile()
+            getUserProfile();
+            getSkills();
         }
     },[cardId, token
     ])
@@ -142,39 +172,16 @@ const Profile = ({navigation}) => {
                         </View>
                         <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>blender</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Javascript</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>CSS</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Html</Text>
-                                </View>
-                                <View style={styles.pill}>
+                                {skills != '' ? (skills.map((skill)=>(
+                                    <View style={styles.pill}>
+                                        <Text style={styles.pill_name}>{skill.skill.name}</Text>
+                                    </View>
+                                ))):(
+                                    <Text>no Skills to display</Text>
+                                )}
+                                {/* <View style={styles.pill}>
                                     <Text style={styles.pill_name}>Typescript</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Html</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Typescript</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Html</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Typescript</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Html</Text>
-                                </View>
-                                <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Typescript</Text>
-                                </View>
+                                </View> */}
                             </View>
                         </ScrollView>
                     </View>
