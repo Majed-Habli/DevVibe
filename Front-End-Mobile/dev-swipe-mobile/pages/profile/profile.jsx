@@ -12,7 +12,7 @@ const windowWidth = Dimensions.get('window').width;
 
 const Profile = () => {
     const route = useRoute();
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState([]);
     const [error, setError] = useState('');
     const [details, setDetails] = useState([]);
     const [loggedinID, setLoggedinID] = useState('');
@@ -48,7 +48,7 @@ const Profile = () => {
               const data = response.data;
         
                 if(data.status == 'success'){
-                    setUser(data.data)
+                    setUser(data.data[0])
                     console.log("yayy2")
                 }else{
                     setError("no success2!");
@@ -83,14 +83,12 @@ const Profile = () => {
         }
     },[])
 
-    console.log('line 64',user)
-    console.log('line 65 user name',user.user_name)
-    console.log('line 66 user email',user.email)
-    console.log('the token line 67',token)
-    console.log('the details line 68',details)
-    console.log('line 64',user)
-
-
+    // console.log('line 64',user)
+    // console.log('line 65 user name',user.user_name)
+    // console.log('line 66 user email',user.email)
+    // console.log('the token line 67',token)
+    // console.log('the details line 68',details)
+    // console.log('line 64',user)
 
     return(
         <SafeAreaView style={styles.container}>
@@ -100,7 +98,6 @@ const Profile = () => {
                 </View>
                 <View style={styles.profile_body}>
                     <View style={styles.body_header}>
-                        {user && user.user_name && user.email ?(<Text>hello man</Text>):(<Text>bye man</Text>)}
                         <Text style={styles.user_name}>{user?.user_name}</Text>
                         <Text style={styles.user_location}>{user.country}</Text>
                         <View style={styles.image_group}>
