@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
     alignItems: 'center',
-    // justifyContent: 'center',
     },
     page_header: {
         width: windowWidth,
