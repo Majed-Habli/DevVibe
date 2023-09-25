@@ -2,16 +2,38 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { styles } from "react-native-swipe-cards-deck/Styles";
 
-const Message = () => {
+const Message = ({time, isLeft, message}) => {
+    const isOnLeft = type =>{
+        if(isLeft = true && type === 'message_container'){
+            return{
+                alignSelf: 'flex-start',
+                backgroundColor: '#f0f0f0',
+                borderTopLeftRadius: 0
+            }
+        }else if (isLeft = true && type === 'message'){
+            return{
+                color: '#000'
+            };
+        }
+        else if (isLeft = true && type === 'time'){
+            return {
+                color: 'darkgrey'
+            }
+        }else {
+            return {
+                borderTopRightRadius: 0
+            }
+        }
+    }
 
     return(
         <View style={styles.container}>
-            <View style={styles.message_container}>
+            <View style={[styles.message_container, isOnLeft('message_container')]}>
                 <View style={styles.message_view}>
-                    <Text style={styles.message}>{message}</Text>
+                    <Text style={[styles.message, isOnLeft('message')]}>{message}</Text>
                 </View>
                 <View style={styles.time_view}>
-                    <Text style={styles.time}>{time}</Text>
+                    <Text style={[styles.time, isOnLeft('time')]}>{time}</Text>
                 </View>
             </View>
         </View>
