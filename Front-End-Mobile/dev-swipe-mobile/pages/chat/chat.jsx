@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable, ScrollView} from 'react-native';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
@@ -43,20 +43,23 @@ const Chat = () => {
                 </View>
             </View>
 
-            <View style={styles.body_container}>
-                <View style={styles.swiper_container}> 
+            <View style={styles.message_list}>
+                <ScrollView style={styles.scrollable_area} ref={ref => ScrollView.current = ref} onContentChange={()=>{
+                    ScrollView.current.scrollToEnd({animated: true})
+                }}> 
                 {/* messages go here */}
                     {/* {users? <Swiper users={users}/>: (<Text>nothing to see here</Text>)} */}
-                </View>
-                <View style={styles.input_field}>
-                    <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
-                    <Pressable style={styles.button_container}>
-                        <Image
-                        style={{ width: 28, height: 28, margin: 20 }}
-                        source={require("../../assets/Send.png")}
-                        />
-                    </Pressable>
-                </View>
+                </ScrollView>
+            </View>
+
+            <View style={styles.input_field}>
+                <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
+                <Pressable style={styles.button_container}>
+                    <Image
+                    style={{ width: 28, height: 28, margin: 20 }}
+                    source={require("../../assets/Send.png")}
+                    />
+                </Pressable>
             </View>
         </SafeAreaView>
     )
@@ -78,16 +81,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
         borderBottomColor: "#c7c7c7",
     },
     header_title: {
-        flex: 1,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
     },
-    body_container: {
+    message_list: {
         flex:1,
+    },
+    scrollable_area: {
         backgroundColor: 'lightblue'
     },
     input_field: {

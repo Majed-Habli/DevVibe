@@ -4,7 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 
 const UserCard = () =>{
-    const [user, setLoggedinID] = useState({});
+    const [user, setLoggedinID] = useState('');
+    const [userName, setUserName] = useState('');
     const [profileImage, setProfileImage] = useState('');
     const navigation = useNavigation();
 
@@ -14,6 +15,7 @@ const UserCard = () =>{
             const value = await AsyncStorage.getItem("user");
             const user= JSON.parse(value)
               setLoggedinID(user.user.id)
+              setUserName(user.user.user_name)
               setProfileImage(user.user.profile_image_url)
           } catch (error) {
             console.log("retrieving data2");
@@ -42,7 +44,7 @@ const UserCard = () =>{
                 source={require('../../assets/default-user.png')}
             />
             )}
-            {user?.user?.user_name ? (<Text style={styles.input_header}>{user.user.user_name}</Text>):(<Text style={styles.input_header}>user name</Text>)}
+            {userName ? (<Text style={styles.input_header}>{userName}</Text>):(<Text style={styles.input_header}>user name</Text>)}
           </Pressable>
         </View>
     )
