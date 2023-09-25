@@ -4,17 +4,22 @@ import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
 import Message from '../../components/message/message';
+import { useNavigation } from '@react-navigation/native';
 
-const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Chat = () => {
     const route = useRoute();
+    const navigation = useNavigation();
+
     // const [users, setUsers] = useState([]);
     // const [loggedin, setLoggedin] = useState({});
     let chatId = route.params?.id;
     const [token, setToken] = useState('')
 
+    const goBack = () => {
+        navigation.navigate('Matches');
+      };
     
     useEffect(() => {
         const getData = async () => {
@@ -23,7 +28,6 @@ const Chat = () => {
               const user= JSON.parse(value)
                 setToken(user.user.token)
             } catch (error) {
-              // Error retrieving data
               console.log("retrieving data1");
             }
           };
@@ -140,15 +144,14 @@ const Chat = () => {
                 </View>
             </View>
 
-            {/* <View style={styles.message_list}> */}
-                <ScrollView style={styles.scrollable_area} ref={ref => scrollView.current = ref} onContentChange={()=>{
-                    scrollView.current.scrollToEnd({animated: true})
-                }}> 
-                    {messages.map((message, index)=>(
-                        <Message key={index} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
-                    ))}
-                </ScrollView>
-            {/* </View> */}
+            <ScrollView style={styles.scrollable_area} ref={ref => scrollView.current = ref} onContentChange={()=>{
+                scrollView.current.scrollToEnd({animated: true})
+            }}> 
+                {messages.map((message, index)=>(
+                    <Message key={index} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
+                ))}
+            </ScrollView>
+            
             <KeyboardAvoidingView>
                 <View style={styles.input_field}>
                     <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
