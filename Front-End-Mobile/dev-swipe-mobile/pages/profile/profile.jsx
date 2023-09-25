@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -10,7 +10,7 @@ import axios from 'react-native-axios';
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Profile = () => {
+const Profile = ({navigation}) => {
     const route = useRoute();
     const [user, setUser] = useState([]);
     const [error, setError] = useState('');
@@ -18,8 +18,14 @@ const Profile = () => {
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
     const [token, setToken] = useState('');
-    const {cardId} = route.params;
-    console.log('my user id 2 is ',cardId)
+    let cardId = route.params?.cardId || loggedinID;
+
+    const goBack = () => {
+        cardId = loggedinID;
+        navigation.navigate('Dashboard');
+        console.log('hey')
+        console.log(cardId)
+      };
 
     useEffect(() => {
         const getData = async () => {
@@ -33,9 +39,10 @@ const Profile = () => {
             }
           };
         getData();
-    },[]);
+    });
 
     useEffect(()=>{
+        console.log('before getting data', cardId)
 
         const getUserProfile = async () =>{
             try {
@@ -61,7 +68,8 @@ const Profile = () => {
         if(token != '' ){
             getUserProfile()
         }
-    },[token])
+    },[cardId, token
+    ])
     
     useEffect(()=>{
         console.log('before setting details ',user)
@@ -83,15 +91,23 @@ const Profile = () => {
         }
     },[])
 
-    // console.log('line 64',user)
-    // console.log('line 65 user name',user.user_name)
-    // console.log('line 66 user email',user.email)
-    // console.log('the token line 67',token)
-    // console.log('the details line 68',details)
-    // console.log('line 64',user)
-
     return(
         <SafeAreaView style={styles.container}>
+            <View style={styles.page_header}>
+                <Pressable onPress={() => goBack()}>
+                    <Image
+                        style={{ width: 30, height: 30, margin: 20 }}
+                        source={require("../../assets/backArrow.png")}
+                    />
+                </Pressable>
+                <View style={styles.header_title}>
+                    <Text style={{fontSize: 20}}>{user?.user_name}'s Profile</Text>
+                </View>
+                <Image
+                style={{ width: 28, height: 28, margin: 20 }}
+                source={require("../../assets/Notify-button.png")}
+                />
+            </View>
             <ScrollView style={styles.Scroll_view}>
                 <View style={styles.images_container}>
                     <SwiperComponent/>
@@ -107,12 +123,12 @@ const Profile = () => {
                             <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Mail.png")}/>
                             </View>
-                            <View style={styles.image_button}>
+                            {details?.github_url && <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Github.png")}/>
-                            </View>
-                            <View style={styles.image_button}>
+                            </View>}
+                            {details?.linkedin_url && <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/LinkedIn.png")}/>
-                            </View>
+                            </View>}
                         </View>
                     </View>
                     {/* add company name here */}
@@ -310,5 +326,20 @@ const styles = StyleSheet.create({
     },
     statement: {
         fontSize: 16
+    },
+    page_header: {
+        width: windowWidth,
+        height: 50,
+        marginTop: 50,
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        borderBottomColor: "#c7c7c7",
+    },
+    header_title: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     }
     });
