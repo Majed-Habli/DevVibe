@@ -77,6 +77,7 @@ function TabNavigator() {
         name="Messaging"
         component={ChatNavigator}
         options={{
+          tabBarStyle: { display: "none" },
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>
@@ -129,7 +130,7 @@ function ChatNavigator() {
         name="Matches"
         component={Matches}
         options={{
-          headerShown: true,
+          headerShown: false,
           headerRight: (props) => (
             <Image
               style={{ width: 28, height: 28, margin: 20 }}
