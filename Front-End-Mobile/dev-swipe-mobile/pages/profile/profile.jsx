@@ -12,9 +12,12 @@ const windowWidth = Dimensions.get('window').width;
 
 const Profile = () => {
     const route = useRoute();
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [error, setError] = useState('');
-    const [token, setToken] = useState('')
+    const [details, setDetails] = useState([]);
+    const [loggedinID, setLoggedinID] = useState('');
+    const [showButtons, setShowButtons] = useState(false);
+    const [token, setToken] = useState('');
     const {cardId} = route.params;
     console.log('my user id 2 is ',cardId)
 
@@ -24,6 +27,7 @@ const Profile = () => {
               const value = await AsyncStorage.getItem("user");
               const user= JSON.parse(value)
                 setToken(user.user.token)
+                setLoggedinID(user.user.id)
             } catch (error) {
               console.log("retrieving data2");
             }
@@ -44,7 +48,7 @@ const Profile = () => {
               const data = response.data;
         
                 if(data.status == 'success'){
-                    setUser(data)
+                    setUser(data.data)
                     console.log("yayy2")
                 }else{
                     setError("no success2!");
@@ -54,13 +58,38 @@ const Profile = () => {
                 console.error("get users failed2:", error);
               }
         }
-        if(token != ''){
+        if(token != '' ){
             getUserProfile()
         }
     },[token])
+    
+    useEffect(()=>{
+        console.log('before setting details ',user)
+        if(user){
+        if(user.user_type_id == 3){
+            setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "",description : user.rec_details && user.rec_details.description ?user.rec_details.description : ""
+        })
+        }else{
+            setDetails({github_url : user.dev_details && user.dev_details.github_url ?user.dev_details.github_url : "",linkedin_url : user.dev_details && user.dev_details.linkedin_url ?user.dev_details.linkedin_url : "",resume : user.dev_details && user.dev_details.resume ?user.dev_details.resume : "",description : user.dev_details && user.dev_details.description ?user.dev_details.description : ""
+        })
+        }}
+    },[user]);
+
+    useEffect(()=>{
+        if(cardId === loggedinID){
+            setShowButtons(true);
+        }else{
+            setShowButtons(false);
+        }
+    },[])
 
     console.log('line 64',user)
-    console.log('the token line 65',token)
+    console.log('line 65 user name',user.user_name)
+    console.log('line 66 user email',user.email)
+    console.log('the token line 67',token)
+    console.log('the details line 68',details)
+    console.log('line 64',user)
+
 
 
     return(
@@ -71,7 +100,8 @@ const Profile = () => {
                 </View>
                 <View style={styles.profile_body}>
                     <View style={styles.body_header}>
-                        <Text style={styles.user_name}>{user.user_name}</Text>
+                        {user && user.user_name && user.email ?(<Text>hello man</Text>):(<Text>bye man</Text>)}
+                        <Text style={styles.user_name}>{user?.user_name}</Text>
                         <Text style={styles.user_location}>{user.country}</Text>
                         <View style={styles.image_group}>
                             <View style={styles.image_button}>
@@ -92,10 +122,10 @@ const Profile = () => {
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
-                            <View style={styles.model_button}>
+                            {showButtons && <View style={styles.model_button}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>
+                            </View>}
                         </View>
                         <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
@@ -138,28 +168,28 @@ const Profile = () => {
                     <View style={styles.bio_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Biography</Text> 
-                            <View style={styles.model_button}>
+                            {showButtons && <View style={styles.model_button}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>
+                            </View>}
                         </View>
                         <View style={styles.pill_container}>
-                            <Text style={styles.description}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+                            {details?.description ?(<Text style={styles.description}>{details.description}</Text>):(<Text>No description yet.</Text>)}
                         </View>
                     </View>
 
                     <View style={styles.bio_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Details</Text> 
-                            <View style={styles.model_button}>
+                            {showButtons && <View style={styles.model_button}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>
+                            </View>}
                         </View>
                         <View style={styles.detail_container}>
                             <View style={styles.row}>
                                 <Text style={styles.statement}>{user.email}</Text>
-                                <Text style={styles.statement}>male</Text>
+                                {details?.gender && <Text style={styles.statement}>{details.gender}</Text>}
                             </View>
                             <View style={styles.row}>
                                 <Text style={styles.statement}>{user.country}</Text>
