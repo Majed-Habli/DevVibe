@@ -8,6 +8,7 @@ import UserCard from "./components/userCard/userCard";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Matches from "./pages/matches/matches";
 import Profile from "./pages/profile/profile";
+import Chat from "./pages/chat/chat";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -74,7 +75,7 @@ function TabNavigator() {
 
       <Tab.Screen
         name="Messaging"
-        component={Matches}
+        component={chatNavigator}
         options={{
           headerTitleStyle: {
             paddingLeft: "45%",
@@ -131,6 +132,23 @@ function TabNavigator() {
         }}
       />
     </Tab.Navigator>
+  );
+}
+
+function chatNavigator() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen
+        name="Matches_page"
+        component={Matches}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="chat" component={Chat} />
+    </Stack.Navigator>
   );
 }
 

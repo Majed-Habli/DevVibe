@@ -10,7 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Dashboard = () => {
+const Chat = () => {
     // const [users, setUsers] = useState([]);
     // const [loggedin, setLoggedin] = useState({});
     const [token, setToken] = useState('')
@@ -67,7 +67,7 @@ const Dashboard = () => {
     )
 } 
 
-export default Dashboard;
+export default Chat;
 
 const styles = StyleSheet.create({
     container: {
