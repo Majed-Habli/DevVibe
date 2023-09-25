@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable, ScrollView} from 'react-native';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
+import Message from '../../components/message/message';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -29,6 +30,31 @@ const Chat = () => {
         getData();
     },[]);
 
+    const [messages, setMessages] = useState([
+        {
+            user:0,
+            time:"10:00",
+            content: "hey"
+        },
+        {
+            user:1,
+            time:"10:50",
+            content: "dont talk to me"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+    ])
+    const user = useRef(0);
+    const scrollView = useRef();
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.page_header}>
@@ -43,14 +69,15 @@ const Chat = () => {
                 </View>
             </View>
 
-            <View style={styles.message_list}>
-                <ScrollView style={styles.scrollable_area} ref={ref => ScrollView.current = ref} onContentChange={()=>{
-                    ScrollView.current.scrollToEnd({animated: true})
+            {/* <View style={styles.message_list}> */}
+                <ScrollView style={styles.scrollable_area} ref={ref => scrollView.current = ref} onContentChange={()=>{
+                    scrollView.current.scrollToEnd({animated: true})
                 }}> 
-                {/* messages go here */}
-                    {/* {users? <Swiper users={users}/>: (<Text>nothing to see here</Text>)} */}
+                    {messages.map((message, index)=>(
+                        <Message key={index} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
+                    ))}
                 </ScrollView>
-            </View>
+            {/* </View> */}
 
             <View style={styles.input_field}>
                 <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
@@ -88,8 +115,11 @@ const styles = StyleSheet.create({
     },
     message_list: {
         flex:1,
+        backgroundColor: 'red'
     },
     scrollable_area: {
+        width: '100%',
+        flex:1,
         backgroundColor: 'lightblue'
     },
     input_field: {
