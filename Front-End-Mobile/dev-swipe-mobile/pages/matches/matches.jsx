@@ -1,13 +1,77 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, ScrollView} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import MatchedCard from '../../components/userCard/matchedCard';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'react-native-axios';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const Matches = () => {
+const Matches = () => { 
+    const [token, setToken] = useState(''); 
+    const [error, setError] = useState(''); 
+    const [matches, setMatches] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+              const value = await AsyncStorage.getItem("user");
+              const user= JSON.parse(value)
+                setToken(user.user.token)
+                // setLoggedinID(user.user.id)
+            } catch (error) {
+              console.log("retrieving data2");
+            }
+          };
+        getData();
+    });
+
+    useEffect(()=>{
+
+        const getUserMatches = async () =>{
+            try {
+              const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/view_matches`,{
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }}
+              );
+        
+              const data = response.data;
+              console.log('matches data', data)
+        
+                if(data.status == 'success'){
+                    setMatches(data.data)
+                    console.log("yayy3")
+                }else{
+                    setError("no success3!");
+                    console.log(error);
+                }
+              } catch (error) {
+                console.error("get users failed3:", error);
+              }
+        }
+        
+        if(token != '' ){
+            getUserMatches();
+        }
+    },[token])
+
+    console.log('my matches', matches)
+    
+    // useEffect(()=>{
+    //     console.log('before setting details ',user)
+    //     if(user){
+    //     if(user.user_type_id == 3){
+    //         setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "",description : user.rec_details && user.rec_details.description ?user.rec_details.description : ""
+    //     })
+    //     }else{
+    //         setDetails({github_url : user.dev_details && user.dev_details.github_url ?user.dev_details.github_url : "",linkedin_url : user.dev_details && user.dev_details.linkedin_url ?user.dev_details.linkedin_url : "",resume : user.dev_details && user.dev_details.resume ?user.dev_details.resume : "",description : user.dev_details && user.dev_details.description ?user.dev_details.description : ""
+    //     })
+    //     }}
+    // },[user]);
+
     const onChange = (e) => {
         console.log('hey')
     }
@@ -30,24 +94,9 @@ const Matches = () => {
                         <Text style={styles.header}>Matches</Text>
                     </View>
                     <View style={styles.cards_container}>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
-                            <MatchedCard/>
+                            {matches ? (matches.map((match)=>(<MatchedCard key={match.id} user={match}/>))):(
+                                <Text>No matches yet</Text>
+                            )}
                     </View>
                 </View>
             </ScrollView>

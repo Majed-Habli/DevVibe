@@ -1,31 +1,32 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput} from 'react-native';
-import CustomInput from '../../components/custom input/customInput';
-import CustomButton from '../../components/custom button/customButton';
-// import {navig}
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, Pressable} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
+const MatchedCard = ({user}) => {
+    const navigation = useNavigation();
 
-const MatchedCard = () => {
-    const profile_image = ''
+    const goToPage = (id) => {
+        // navigation.navigate('Chat')
+    };
+
     return(
-        <View style={styles.container}>
-            {profile_image !=  '' ?(
-            <Image
-                style={styles.profile_image}
-                source={require('../../assets/default-user.png')}
-            />):(
-            <Image
-                style={styles.profile_image}
-                source={require('../../assets/default-user.png')}
-            />
-            )}
-            <View style={styles.user_info}>
-                <Text style={styles.header}>User name</Text>
-                <Text style={styles.date}>12/5/2023</Text>
+        <Pressable onPress={()=>goToPage(user.id)}>
+            <View style={styles.container}>
+                {user.matched_with.profile_image_url !=  null ?(
+                <Image
+                    style={styles.profile_image}
+                    source={{uri:`${user.profile_image_url}`}}
+                />):(
+                <Image
+                    style={styles.profile_image}
+                    source={require('../../assets/default-user.png')}
+                />
+                )}
+                <View style={styles.user_info}>
+                    <Text style={styles.header}>{user.matched_with.user_name}</Text>
+                </View>
             </View>
-        </View>
+        </Pressable>
     )
 } 
 
