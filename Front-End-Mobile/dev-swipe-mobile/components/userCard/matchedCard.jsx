@@ -6,7 +6,7 @@ const MatchedCard = ({user}) => {
     const navigation = useNavigation();
 
     const goToPage = (id) => {
-        // navigation.navigate('Chat')
+        navigation.navigate('Chat',{id})
     };
 
     return(

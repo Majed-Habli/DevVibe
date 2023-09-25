@@ -75,26 +75,9 @@ function TabNavigator() {
 
       <Tab.Screen
         name="Messaging"
-        component={chatNavigator}
+        component={ChatNavigator}
         options={{
-          headerTitleStyle: {
-            paddingLeft: "45%",
-          },
-          title: "Matches",
-          headerRight: (props) => (
-            <Image
-              style={{ width: 28, height: 28, margin: 20 }}
-              source={require("./assets/Notify-button.png")}
-            />
-          ),
-          headerStyle: {
-            borderBottomWidth: 1,
-            height: 100,
-            borderBottomColor: "#c7c7c7",
-          },
-          tabBarStyle: {
-            height: 50,
-          },
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>
               <Image
@@ -135,7 +118,7 @@ function TabNavigator() {
   );
 }
 
-function chatNavigator() {
+function ChatNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -143,11 +126,24 @@ function chatNavigator() {
       }}
     >
       <Stack.Screen
-        name="Matches_page"
+        name="Matches"
         component={Matches}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: true,
+          headerRight: (props) => (
+            <Image
+              style={{ width: 28, height: 28, margin: 20 }}
+              source={require("./assets/Notify-button.png")}
+            />
+          ),
+          headerStyle: {
+            borderBottomWidth: 1,
+            height: 100,
+            borderBottomColor: "#c7c7c7",
+          },
+        }}
       />
-      <Stack.Screen name="chat" component={Chat} />
+      <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
 }
