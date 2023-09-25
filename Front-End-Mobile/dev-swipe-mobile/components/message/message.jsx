@@ -6,17 +6,17 @@ const Message = ({time, isLeft, message}) => {
         if(isLeft === true && type === 'message_container'){
             return{
                 alignSelf: 'flex-start',
-                backgroundColor: '#f0f0f0',
+                backgroundColor: '#FCC860',
                 borderTopLeftRadius: 0
             }
         }else if (isLeft === true && type === 'message'){
             return{
-                color: '#000'
+                color: '#fff'
             };
         }
         else if (isLeft === true && type === 'time'){
             return {
-                color: 'darkgrey'
+                color: 'black'
             }
         }else {
             return {
@@ -41,11 +41,11 @@ const Message = ({time, isLeft, message}) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingVertical: 10,
+        paddingVertical: 5,
         marginVertical: 5
     },
     message_container: {
-        backgroundColor: '#FCC860',
+        backgroundColor: '#E5E4E4',
         maxWidth: '80%',
         alignSelf: 'flex-end',
         flexDirection: 'row',
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     message: {
-        color: 'white',
+        color: 'black',
         alignSelf: 'flex-start',
         fontSize: 15
     },
     time: {
-        color: 'lightgray',
+        color: 'darkgray',
         alignSelf: 'flex-start',
         fontSize: 10
     }

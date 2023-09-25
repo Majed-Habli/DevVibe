@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable, ScrollView} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable, ScrollView, KeyboardAvoidingView} from 'react-native';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
@@ -51,6 +51,77 @@ const Chat = () => {
             time:"12:02",
             content: "bye"
         },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
+        {
+            user:0,
+            time:"12:00",
+            content: "fine"
+        },
+        {
+            user:1,
+            time:"12:02",
+            content: "bye"
+        },
     ])
     const user = useRef(0);
     const scrollView = useRef();
@@ -78,16 +149,17 @@ const Chat = () => {
                     ))}
                 </ScrollView>
             {/* </View> */}
-
-            <View style={styles.input_field}>
-                <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
-                <Pressable style={styles.button_container}>
-                    <Image
-                    style={{ width: 28, height: 28, margin: 20 }}
-                    source={require("../../assets/Send.png")}
-                    />
-                </Pressable>
-            </View>
+            <KeyboardAvoidingView>
+                <View style={styles.input_field}>
+                    <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
+                    <Pressable style={styles.button_container}>
+                        <Image
+                        style={{ width: 28, height: 28, margin: 20 }}
+                        source={require("../../assets/Send.png")}
+                        />
+                    </Pressable>
+                </View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     )
 } 
@@ -96,9 +168,7 @@ export default Chat;
 
 const styles = StyleSheet.create({
     container: {
-    width: windowWidth,
-    height: windowHeight,
-    alignItems: 'center',
+    flex:1
     },
     page_header: {
         width: windowWidth,
@@ -120,17 +190,16 @@ const styles = StyleSheet.create({
     scrollable_area: {
         width: '100%',
         flex:1,
-        backgroundColor: 'lightblue'
     },
     input_field: {
         width: windowWidth,
         height: 66,
-        backgroundColor:'yellow',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         gap:10,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        backgroundColor: 'white'
     },
     input_area: {
         height: 45,
