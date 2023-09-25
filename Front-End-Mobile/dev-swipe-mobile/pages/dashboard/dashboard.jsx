@@ -6,6 +6,8 @@ import CardSwiperComponent from '../../components/swiper/cardSwiper';
 import Swiper from '../../components/swiper/cardSwiper';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import UserSwiper from '../../components/swiper/cardSwiper';
+import SwiperComponent from '../../components/swiper/dashboardSwiper';
 
 // import {navig}
 
@@ -68,7 +70,7 @@ const Dashboard = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.dashboard_container}>
                 <View style={styles.swiper_container}>
-                    {users? <Swiper users={users}/>: (<Text>nothing to see here</Text>)}
+                    {users? <SwiperComponent users={users}/>: (<Text>nothing to see here</Text>)}
                 </View>
                 {/* <View style={styles.swiper_buttons}>
                     <Text>hi</Text>
