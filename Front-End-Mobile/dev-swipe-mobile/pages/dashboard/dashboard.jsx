@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     const getUsers = async () =>{
         try {
-          const response = await axios.get("https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
+          const response = await axios.get("https://899d-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
             headers: {
             'Authorization': `Bearer ${token}`
             }}

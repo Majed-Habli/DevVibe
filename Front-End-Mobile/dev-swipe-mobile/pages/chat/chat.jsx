@@ -155,7 +155,7 @@ const Chat = () => {
                 scrollView.current.scrollToEnd({animated: true})
             }}> 
                 {messages && messages.map((message)=>(
-                    <Message key={message.id} time={message.time} isLeft={message.user !== user.current} message={message}/>
+                    <Message key={message.id} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
                 ))}
             </ScrollView>
 

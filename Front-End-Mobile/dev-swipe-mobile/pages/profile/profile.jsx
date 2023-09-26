@@ -18,6 +18,7 @@ const Profile = ({navigation}) => {
     const [details, setDetails] = useState([]);
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
+    const [showSkillsModel, setShowSkillsModel] = useState(false);
     const [token, setToken] = useState('');
     let cardId = route.params?.cardId || loggedinID;
 
@@ -26,7 +27,11 @@ const Profile = ({navigation}) => {
         navigation.navigate('Dashboard');
         console.log('hey')
         console.log(cardId)
-      };
+    };
+
+    const showSkillModel = () => {
+        setShowSkillsModel(true)
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -47,7 +52,7 @@ const Profile = ({navigation}) => {
 
         const getUserProfile = async () =>{
             try {
-              const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
+              const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
                 headers: {
                 'Authorization': `Bearer ${token}`
                 }}
@@ -69,7 +74,7 @@ const Profile = ({navigation}) => {
 
         const getSkills = async () =>{
             try {
-                const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
+                const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
                     headers: {
                     'Authorization': `Bearer ${token}`
                     }}
@@ -161,7 +166,7 @@ const Profile = ({navigation}) => {
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
-                            {showButtons && <View style={styles.model_button}>
+                            {showButtons && <View style={styles.model_button} onPress={()=>showSkillModel()}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
                             </View>}
@@ -175,9 +180,6 @@ const Profile = ({navigation}) => {
                                 ))):(
                                     <Text>no Skills to display</Text>
                                 )}
-                                {/* <View style={styles.pill}>
-                                    <Text style={styles.pill_name}>Typescript</Text>
-                                </View> */}
                             </View>
                         </ScrollView>
                     </View>
@@ -197,10 +199,6 @@ const Profile = ({navigation}) => {
                     <View style={styles.bio_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Details</Text> 
-                            {showButtons && <View style={styles.model_button}>
-                                <Text>Edit</Text>
-                                <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>}
                         </View>
                         <View style={styles.detail_container}>
                             <View style={styles.row}>
@@ -215,6 +213,7 @@ const Profile = ({navigation}) => {
                     </View>
                 </View>
             </ScrollView>
+            {/* show model */}
         </SafeAreaView>
     )
 } 
@@ -223,12 +222,14 @@ export default Profile;
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
+        width:windowWidth,
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'white',
     },
     Scroll_view: {
-        flex: 1
+        flex: 1,
+        width:windowWidth
     },
     images_container: {
         height: 280

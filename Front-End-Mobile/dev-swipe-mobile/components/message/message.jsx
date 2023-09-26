@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 const Message = ({time, isLeft, message}) => {
-    const {text,id} = message;
+    // const {text,id} = message;
     const isOnLeft = type =>{
         if(isLeft === true && type === 'message_container'){
             return{
@@ -30,10 +30,10 @@ const Message = ({time, isLeft, message}) => {
         <View style={styles.container}>
             <View style={[styles.message_container, isOnLeft('message_container')]}>
                 <View style={styles.message_view}>
-                    <Text style={[styles.message, isOnLeft('message')]}>{text}</Text>
+                    <Text style={[styles.message, isOnLeft('message')]}>{message}</Text>
                 </View>
                 <View style={styles.time_view}>
-                    <Text style={[styles.time, isOnLeft('time')]}>{id}</Text>
+                    <Text style={[styles.time, isOnLeft('time')]}>{time}</Text>
                 </View>
             </View>
         </View>
