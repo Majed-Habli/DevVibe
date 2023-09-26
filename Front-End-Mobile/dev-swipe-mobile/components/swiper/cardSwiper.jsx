@@ -42,34 +42,38 @@ class NoMoreCards extends Component {
   }
 }
 
-export default class extends React.Component {
-
-  handleYup (card) {
-    console.log(`Yup for ${card.text}`)
+const CardSwiper = ({users, remove}) => {
+  
+  const handleYup = (card) => {
+    remove(card.id)
+    console.log(`Yup for ${card.id}`)
     return true;
   }
-  handleNope (card) {
-    console.log(`Nope for ${card.text}`)
+  const handleNope = (card) =>{
+    remove(card.id)
+    console.log(`Nope for ${card.id}`)
     return true;
   }
 
-  render() {
     return (
       <SwipeCards
-        cards={this.props.users}
+        cards={users}
         renderCard={(cardData) => <Card {...cardData} />}
         keyExtractor={(cardData) => String(cardData.id)}
         renderNoMoreCards={() => <NoMoreCards />}
 
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
-        handleMaybe={this.handleMaybe}
         stack={true}
         stackOffsetX={0}
+        actions={{
+          nope: { onAction: handleNope },
+          yup: { onAction: handleYup },
+        }}
       />
     )
-  }
+
 }
+
+export default CardSwiper;
 
 const styles = StyleSheet.create({
   card: {

@@ -5,12 +5,19 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
 import Message from '../../components/message/message';
 import { useNavigation } from '@react-navigation/native';
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const windowWidth = Dimensions.get('window').width;
+// const firestore = firebase.firestore();
 
 const Chat = () => {
     const route = useRoute();
     const navigation = useNavigation();
+    // const messagesRef = firestore.collection('messages');
+    // const query = messagesRef.orderBy('createdAt').limit(25);
+    // const [messages] = useCollectionData(query, {idField: 'id'});
 
     // const [users, setUsers] = useState([]);
     // const [loggedin, setLoggedin] = useState({});
@@ -147,11 +154,11 @@ const Chat = () => {
             <ScrollView style={styles.scrollable_area} ref={ref => scrollView.current = ref} onContentChange={()=>{
                 scrollView.current.scrollToEnd({animated: true})
             }}> 
-                {messages.map((message, index)=>(
-                    <Message key={index} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
+                {messages && messages.map((message)=>(
+                    <Message key={message.id} time={message.time} isLeft={message.user !== user.current} message={message}/>
                 ))}
             </ScrollView>
-            
+
             <KeyboardAvoidingView>
                 <View style={styles.input_field}>
                     <TextInput style={styles.input_area} placeholder='type here...'></TextInput>

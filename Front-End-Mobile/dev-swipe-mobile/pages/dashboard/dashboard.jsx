@@ -8,6 +8,7 @@ import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import UserSwiper from '../../components/swiper/cardSwiper';
 import SwiperComponent from '../../components/swiper/dashboardSwiper';
+import CardSwiper from '../../components/swiper/cardSwiper';
 
 // import {navig}
 
@@ -34,29 +35,30 @@ const Dashboard = () => {
         getData();
     },[]);
 
+    const getUsers = async () =>{
+        try {
+          const response = await axios.get("https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }}
+          );
+    
+          const data = response.data;
+          console.log("my response1", data)
+    
+            if(data.status == 'success'){
+                    setUsers(data.compare.data)
+                console.log("yayy1")
+            }else{
+                setError("no success1!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("get users failed1:", error);
+          }
+    }
+
     useEffect(()=>{
-        const getUsers = async () =>{
-            try {
-              const response = await axios.get("https://674b-78-40-183-51.ngrok-free.app/api/user/developer/display_users",{
-                headers: {
-                'Authorization': `Bearer ${token}`
-                }}
-              );
-        
-              const data = response.data;
-              console.log("my response1", data)
-        
-                if(data.status == 'success'){
-                        setUsers(data.compare.data)
-                    console.log("yayy1")
-                }else{
-                    setError("no success1!");
-                    console.log(error);
-                }
-              } catch (error) {
-                console.error("get users failed1:", error);
-              }
-        }
 
         if(token != ''){
             getUsers();
@@ -65,12 +67,19 @@ const Dashboard = () => {
 
     console.log(token)
     console.log("the users 1                                              ",users)
+
+    const removeUserCard = (id) => {
+        setUsers((prev)=>prev.filter(user => user.id != id))
+        if(users.length <= 3){
+            getUsers();
+        }
+    }
   
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.dashboard_container}>
                 <View style={styles.swiper_container}>
-                    {users? <SwiperComponent users={users}/>: (<Text>nothing to see here</Text>)}
+                    {users? <CardSwiper users={users} remove={removeUserCard}/>: (<Text>nothing to see here</Text>)}
                 </View>
                 {/* <View style={styles.swiper_buttons}>
                     <Text>hi</Text>

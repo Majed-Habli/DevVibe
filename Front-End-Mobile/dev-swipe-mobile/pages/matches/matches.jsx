@@ -45,7 +45,7 @@ const Matches = () => {
 
         const getUserMatches = async () =>{
             try {
-              const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/view_matches`,{
+              const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/view_matches`,{
                 headers: {
                 'Authorization': `Bearer ${token}`
                 }}

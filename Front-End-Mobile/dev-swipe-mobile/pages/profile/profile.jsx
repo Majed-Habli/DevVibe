@@ -47,7 +47,7 @@ const Profile = ({navigation}) => {
 
         const getUserProfile = async () =>{
             try {
-              const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
+              const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
                 headers: {
                 'Authorization': `Bearer ${token}`
                 }}
@@ -69,7 +69,7 @@ const Profile = ({navigation}) => {
 
         const getSkills = async () =>{
             try {
-                const response = await axios.get(`https://674b-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
+                const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
                     headers: {
                     'Authorization': `Bearer ${token}`
                     }}
@@ -78,10 +78,6 @@ const Profile = ({navigation}) => {
                 // console.log('user skills response ',data.data.data)
     
                 if(data.data.status == 'success'){
-                    if(data.data.data == ''){
-                        setErrorSkills(`user has no skills yet.`)
-                    }
-
                     const obj = data.data.data;
                     // console.log('skillssssssssssss     ', obj)
                     setSkills(obj);
@@ -172,7 +168,7 @@ const Profile = ({navigation}) => {
                         </View>
                         <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
-                                {skills != '' ? (skills.map((skill)=>(
+                                {skills.length > 0 ? (skills.map((skill)=>(
                                     <View style={styles.pill}>
                                         <Text style={styles.pill_name}>{skill.skill.name}</Text>
                                     </View>
