@@ -6,23 +6,14 @@ import axios from 'react-native-axios';
  
 const styles = StyleSheet.create({
   wrapper: {},
-  slide1: {
+  slide: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#9DD6EB'
   },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
+  notify: {
+    fontSize: 14
   },
   text: {
     color: '#fff',
@@ -38,6 +29,7 @@ const styles = StyleSheet.create({
  
 const ProfileSwiper = ({userID, token}) => {
     const [images, setImages] = useState([]);
+    const [error, setError] = useState('');
     const fetchUserImages = async () =>{
 
         try {
@@ -68,17 +60,15 @@ const ProfileSwiper = ({userID, token}) => {
 
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
-        {images && images.map((img)=>(
-            <View key={img.id} style={styles.slide1}>
+        {images.length > 0 ? images.map((img)=>(
+            <View key={img.id} style={styles.slide}>
                 <Image style={styles.icons} source={{uri: img.image_url}}/>
             </View>
-        ))}
-        {/* <View style={styles.slide2}>
-          <Text style={styles.text}>majed</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View> */}
+        )): (
+            <View style={styles.slide}>
+                <Text style={styles.notify}>User has no images yet</Text>
+            </View>
+        )}
       </Swiper>
     )
 }
