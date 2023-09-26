@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pr
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import SwiperComponent from '../../components/swiper/swiper';
+import ProfileSwiper from '../../components/swiper/swiper';
 import { useRoute } from '@react-navigation/native';
 import axios from 'react-native-axios';
 
@@ -57,7 +57,7 @@ const Profile = ({navigation}) => {
         
                 if(data.status == 'success'){
                     setUser(data.data[0])
-                    console.log("yayy2")
+                    // console.log("yayy2")
                 }else{
                     setError("no success2!");
                     console.log(error);
@@ -98,7 +98,7 @@ const Profile = ({navigation}) => {
     ])
     
     useEffect(()=>{
-        console.log('before setting details ',user)
+        // console.log('before setting details ',user)
         if(user){
         if(user.user_type_id == 3){
             setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "",description : user.rec_details && user.rec_details.description ?user.rec_details.description : ""
@@ -136,7 +136,7 @@ const Profile = ({navigation}) => {
             </View>
             <ScrollView style={styles.Scroll_view}>
                 <View style={styles.images_container}>
-                    <SwiperComponent/>
+                    {cardId && <ProfileSwiper userID={cardId} token={token}/>}
                 </View>
                 <View style={styles.profile_body}>
                     <View style={styles.body_header}>
@@ -169,7 +169,7 @@ const Profile = ({navigation}) => {
                         <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
                                 {skills.length > 0 ? (skills.map((skill)=>(
-                                    <View style={styles.pill}>
+                                    <View key={skill.skill.id} style={styles.pill}>
                                         <Text style={styles.pill_name}>{skill.skill.name}</Text>
                                     </View>
                                 ))):(

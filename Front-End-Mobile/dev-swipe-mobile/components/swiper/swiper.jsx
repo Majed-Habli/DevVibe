@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native'
+import React, { Component, useEffect, useId, useState } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import Swiper from 'react-native-swiper';
+import axios from 'react-native-axios';
  
-import Swiper from 'react-native-swiper'
  
 const styles = StyleSheet.create({
   wrapper: {},
@@ -35,22 +36,51 @@ const styles = StyleSheet.create({
   }
 })
  
-export default class SwiperComponent extends Component {
-  render() {
+const ProfileSwiper = ({userID, token}) => {
+    const [images, setImages] = useState([]);
+    const fetchUserImages = async () =>{
+
+        try {
+            const response = await axios.get(`https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/retrieve_user_images/${userID}`,
+              {
+              headers: {
+              'Authorization': `Bearer ${token}`
+              }}
+            );
+            const data = response.data;
+            console.log('user images',data)
+            if(data.status == 'success'){
+                setImages(data.data)
+                console.log('user images round 2',data.data)
+            }else{
+                setError('status isnt success')
+            }
+          } catch (error) {
+            console.error("Swipe like users api failed", error);
+          }
+    }
+
+    useEffect(()=>{
+        if(userID){
+            fetchUserImages();
+        }
+    },[useId])
+
     return (
       <Swiper style={styles.wrapper} showsButtons={true}>
-        <View style={styles.slide1}>
-          <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
-        </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
+        {images && images.map((img)=>(
+            <View key={img.id} style={styles.slide1}>
+                <Image style={styles.icons} source={{uri: img.image_url}}/>
+            </View>
+        ))}
+        {/* <View style={styles.slide2}>
+          <Text style={styles.text}>majed</Text>
         </View>
         <View style={styles.slide3}>
           <Text style={styles.text}>And simple</Text>
-        </View>
+        </View> */}
       </Swiper>
     )
-  }
 }
  
-AppRegistry.registerComponent('myproject', () => SwiperComponent)
+export default ProfileSwiper;
