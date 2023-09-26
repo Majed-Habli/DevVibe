@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import {StyleSheet, Text, View, Image, Pressable} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 import SwipeCards from "react-native-swipe-cards-deck";
+import axios from 'react-native-axios';
 
 
 const Card = (props) => {
@@ -43,15 +45,54 @@ class NoMoreCards extends Component {
 }
 
 const CardSwiper = ({users, remove}) => {
-  
-  const handleYup = (card) => {
+  const [token, setToken] = useState('');
+    
+  useEffect(() => {
+      const getData = async () => {
+          try {
+            const value = await AsyncStorage.getItem("user");
+            const user= JSON.parse(value)
+              setToken(user.user.token)
+          } catch (error) {
+            console.log("retrieving data1");
+          }
+        };
+      getData();
+  },[]);
+
+  const handleYup = async (card) => {
     remove(card.id)
-    console.log(`Yup for ${card.id}`)
+    try {
+      const response = await axios.post("https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/swipe",
+        {
+          swiped_user_id: card.id,
+          is_liked: 1
+        },{
+        headers: {
+        'Authorization': `Bearer ${token}`
+        }}
+      );
+    } catch (error) {
+      console.error("Swipe like users api failed", error);
+    }
     return true;
   }
-  const handleNope = (card) =>{
+
+  const handleNope = async (card) =>{
     remove(card.id)
-    console.log(`Nope for ${card.id}`)
+    try {
+      const response = await axios.post("https://39a3-78-40-183-51.ngrok-free.app/api/user/developer/swipe",
+        {
+          swiped_user_id: card.id,
+          is_liked: 0
+        },{
+        headers: {
+        'Authorization': `Bearer ${token}`
+        }}
+      );
+    } catch (error) {
+      console.error("Swipe hate users api failed", error);
+    }
     return true;
   }
 
