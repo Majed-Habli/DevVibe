@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const MatchedCard = ({user}) => {
+const MatchedCard = ({user, index}) => {
     const navigation = useNavigation();
-
+    console.log("index is ",index)
     const goToPage = (id) => {
         navigation.navigate('Chat',{id})
     };
+
+    // useEffect(()=>{
+    //     if(index % 2 == 0){
+    //         setColor('even')
+    //     }
+    // },[index])
 
     return(
         <Pressable onPress={()=>goToPage(user.id)}>
             <View style={styles.container}>
                 {user.matched_with.profile_image_url !=  null ?(
-                <Image
-                    style={styles.profile_image}
-                    source={{uri:`${user.profile_image_url}`}}
-                />):(
-                <Image
-                    style={styles.profile_image}
-                    source={require('../../assets/default-user.png')}
-                />
+                    <View style={[styles.image_container, index % 2 === 0 ? styles.even_profile_image : styles.odd_profile_image]}>
+                        <Image
+                            style={styles.profile_image}
+                            source={{uri:user.matched_with.profile_image_url}}
+                        />
+                    </View>):(
+                    <View style={[styles.image_container, index % 2 === 0 ? styles.image_container : styles.odd_profile_image]}>
+                        <Image
+                            style={styles.profile_image}
+                            source={require('../../assets/default-user.png')}
+                        />
+                    </View>
                 )}
                 <View style={styles.user_info}>
                     <Text style={styles.header}>{user.matched_with.user_name}</Text>
@@ -48,10 +58,28 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#adadad'
     },
-    profile_image: {
+    odd_profile_image: {
         width: 45,
         height: 45,
-        backgroundColor: 'red',
-        borderRadius: 120
+        borderRadius: 120,
+        alignItems: 'center',
+        justifyContent: 'center0',
+        borderWidth: 1,
+        borderColor: 'black'
+    },
+    image_container: {
+        width: 45,
+        height: 45,
+        borderRadius: 120,
+        alignItems: 'center',
+        justifyContent: 'center0',
+        borderWidth: 1,
+        borderColor: '#FCC860'
+    },
+    profile_image: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 120,
+        resizeMode: 'contain'
     }
     });

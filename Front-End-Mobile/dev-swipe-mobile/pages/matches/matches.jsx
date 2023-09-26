@@ -52,11 +52,10 @@ const Matches = () => {
               );
         
               const data = response.data;
-              console.log('matches data', data)
         
                 if(data.status == 'success'){
                     setMatches(data.data)
-                    console.log("yayy3")
+                    console.log("yayy3", data.data)
                 }else{
                     setError("no success3!");
                     console.log(error);
@@ -70,11 +69,6 @@ const Matches = () => {
             getUserMatches();
         }
     },[token])
-
-    
-    // useEffect(()=>{
-
-    // },[user]);
 
     return(
         <SafeAreaView style={styles.container}>
@@ -106,7 +100,7 @@ const Matches = () => {
                         <Text style={styles.header}>Matches</Text>
                     </View>
                     <View style={styles.cards_container}>
-                            {matches ? (matches.map((match)=>(<MatchedCard key={match.id} user={match}/>))):(
+                            {matches ? (matches.map((match, index)=>(<MatchedCard key={match.id} user={match} index={index}/>))):(
                                 <Text>No matches yet</Text>
                             )}
                     </View>
