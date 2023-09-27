@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, RefreshControl} from 'react-native';
-import CustomInput from '../../components/custom input/customInput';
-import CustomButton from '../../components/custom button/customButton';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ProfileSwiper from '../../components/swiper/swiper';
 import { useRoute } from '@react-navigation/native';
@@ -10,7 +8,6 @@ import EditForm from '../../components/editform/editform';
 import { Modal } from 'react-native';
 import Menu from '../../components/logoutModel/logout';
 
-const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const Profile = ({navigation}) => {
@@ -39,7 +36,7 @@ const Profile = ({navigation}) => {
     }
     
     const showMenu =async () => {
-        setShowMenu(true)
+        setShowMenu((current) => !current)
     }
 
     useEffect(() => {
@@ -68,7 +65,6 @@ const Profile = ({navigation}) => {
     
             if(data.status == 'success'){
                 setUser(data.data[0])
-                // console.log("yayy2")
             }else{
                 setError("no success2!");
                 console.log(error);
@@ -90,11 +86,9 @@ const Profile = ({navigation}) => {
                     }}
                   );
                 const data = response;
-                // console.log('user skills response ',data.data.data)
     
                 if(data.data.status == 'success'){
                     const obj = data.data.data;
-                    // console.log('skillssssssssssss     ', obj)
                     setSkills(obj);
                 }else{
                     setError("something went wrong");
@@ -113,7 +107,6 @@ const Profile = ({navigation}) => {
     ])
     
     useEffect(()=>{
-        // console.log('before setting details ',user)
         if(user){
         if(user.user_type_id == 3){
             setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "field is empty",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "field is empty",description : user.rec_details && user.rec_details.description ?user.rec_details.description : "field is empty", company_name : user.rec_details && user.rec_details.company_name? user.rec_details.company_name  : "field is empty"
@@ -133,16 +126,16 @@ const Profile = ({navigation}) => {
     },[cardId])
     
     const reload = () => {
-        // if (value === true){
-            setRefresh(true)
-            getUserProfile()
+        setRefresh(true)
+        getUserProfile()
 
-            setTimeout(()=>{
-                setRefresh(false)
-
-            },4000)
-        // }
+        setTimeout(()=>{
+            setRefresh(false)
+        },4000)
     }
+    useEffect(()=>{
+        console.log(showMenuModel)
+    },[showMenuModel])
 
     return(
         <SafeAreaView style={styles.container}>
@@ -243,8 +236,8 @@ const Profile = ({navigation}) => {
                 </Modal>
             }
             {showMenuModel && 
-                <Modal transparent={true} visible={true}>
-                    <Menu isOpen={setShowMenu}/>
+                <Modal animationType="fade" transparent={true} visible={true}>
+                    <Menu isOpen={setShowMenu} tokenkey={token}/>
                 </Modal>
             }
         </SafeAreaView>
