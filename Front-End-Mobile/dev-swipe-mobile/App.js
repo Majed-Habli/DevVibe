@@ -117,6 +117,7 @@ function TabNavigator() {
         name="Profile"
         component={Profile}
         options={{
+          tabBarStyle: { display: "none" },
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon_container}>

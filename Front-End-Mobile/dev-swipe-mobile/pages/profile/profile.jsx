@@ -6,6 +6,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import ProfileSwiper from '../../components/swiper/swiper';
 import { useRoute } from '@react-navigation/native';
 import axios from 'react-native-axios';
+import EditForm from '../../components/editform/editform';
+import { Modal } from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -18,7 +20,7 @@ const Profile = ({navigation}) => {
     const [details, setDetails] = useState([]);
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
-    const [showSkillsModel, setShowSkillsModel] = useState(false);
+    const [showEditModel, setShowEditModel] = useState(false);
     const [token, setToken] = useState('');
     let cardId = route.params?.cardId || loggedinID;
 
@@ -29,8 +31,8 @@ const Profile = ({navigation}) => {
         console.log(cardId)
     };
 
-    const showSkillModel = () => {
-        setShowSkillsModel(true)
+    const showSkillModel =async () => {
+        setShowEditModel(true)
     }
 
     useEffect(() => {
@@ -166,10 +168,10 @@ const Profile = ({navigation}) => {
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
-                            {showButtons && <View style={styles.model_button} onPress={()=>showSkillModel()}>
+                            {showButtons && <Pressable style={styles.model_button} onPress={()=>showSkillModel()}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>}
+                            </Pressable>}
                         </View>
                         <ScrollView style={styles.scrollable} horizontal={true}>
                             <View style={styles.pill_container}>
@@ -213,7 +215,11 @@ const Profile = ({navigation}) => {
                     </View>
                 </View>
             </ScrollView>
-            {/* show model */}
+            {showEditModel && 
+                <Modal transparent={true} visible={true}>
+                    <EditForm isOpen={setShowEditModel}/>
+                </Modal>
+            }
         </SafeAreaView>
     )
 } 
@@ -345,5 +351,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+    },
+    popup_container: {
+        // width: windowWidth,
+        // height: windowHeight,
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // // backgroundColor: 'black',
+        // opacity: 0.5,
+        // zIndex: 2
+        backgroundColor: 'transparent'
     }
     });
