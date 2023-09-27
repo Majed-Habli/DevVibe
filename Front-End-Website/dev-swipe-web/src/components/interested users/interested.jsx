@@ -66,7 +66,7 @@ const InterestedTable = () => {
             </div>
             {showModel && (
                 <div className={styles.popup_background}>
-                    <ViewAllPopUp isOpen={setShowModel} users={users}/>
+                    <ViewAllPopUp isOpen={setShowModel} users={users} setUsers={setUsers}/>
                 </div>
             )}
         </div>
