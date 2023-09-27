@@ -15,13 +15,13 @@ const windowWidth = Dimensions.get('window').width;
 const Profile = ({navigation}) => {
     const route = useRoute();
     const [user, setUser] = useState([]);
-    const [skills, setSkills] = useState([]);
+    const [token, setToken] = useState('');
     const [error, setError] = useState('');
+    const [skills, setSkills] = useState([]);
     const [details, setDetails] = useState([]);
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
     const [showEditModel, setShowEditModel] = useState(false);
-    const [token, setToken] = useState('');
     let cardId = route.params?.cardId || loggedinID;
 
     const goBack = () => {
@@ -108,10 +108,10 @@ const Profile = ({navigation}) => {
         // console.log('before setting details ',user)
         if(user){
         if(user.user_type_id == 3){
-            setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "",description : user.rec_details && user.rec_details.description ?user.rec_details.description : ""
+            setDetails({github_url : user.rec_details && user.rec_details.github_url ?user.rec_details.github_url : "field is empty",linkedin_url : user.rec_details && user.rec_details.linkedin_url ?user.rec_details.linkedin_url : "field is empty",description : user.rec_details && user.rec_details.description ?user.rec_details.description : "field is empty", company_name : user.rec_details && user.rec_details.company_name? user.rec_details.company_name  : "field is empty"
         })
         }else{
-            setDetails({github_url : user.dev_details && user.dev_details.github_url ?user.dev_details.github_url : "",linkedin_url : user.dev_details && user.dev_details.linkedin_url ?user.dev_details.linkedin_url : "",resume : user.dev_details && user.dev_details.resume ?user.dev_details.resume : "",description : user.dev_details && user.dev_details.description ?user.dev_details.description : ""
+            setDetails({github_url : user.dev_details && user.dev_details.github_url ?user.dev_details.github_url : "field is empty",linkedin_url : user.dev_details && user.dev_details.linkedin_url ?user.dev_details.linkedin_url : "field is empty",resume : user.dev_details && user.dev_details.resume ?user.dev_details.resume : "field is empty",description : user.dev_details && user.dev_details.description ?user.dev_details.description : "field is empty"
         })
         }}
     },[user]);
@@ -168,7 +168,7 @@ const Profile = ({navigation}) => {
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
-                            {showButtons && <Pressable style={styles.model_button} onPress={()=>showSkillModel()}>
+                            {showButtons && <Pressable style={styles.model_button}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
                             </Pressable>}
@@ -188,10 +188,10 @@ const Profile = ({navigation}) => {
                     <View style={styles.bio_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Biography</Text> 
-                            {showButtons && <View style={styles.model_button}>
+                            {showButtons && <Pressable style={styles.model_button}  onPress={()=>showSkillModel()}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
-                            </View>}
+                            </Pressable>}
                         </View>
                         <View style={styles.pill_container}>
                             {details?.description ?(<Text style={styles.description}>{details.description}</Text>):(<Text>No description yet.</Text>)}
@@ -217,7 +217,7 @@ const Profile = ({navigation}) => {
             </ScrollView>
             {showEditModel && 
                 <Modal transparent={true} visible={true}>
-                    <EditForm isOpen={setShowEditModel}/>
+                    <EditForm isOpen={setShowEditModel} user={user} details={details}/>
                 </Modal>
             }
         </SafeAreaView>
@@ -353,13 +353,5 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     popup_container: {
-        // width: windowWidth,
-        // height: windowHeight,
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // // backgroundColor: 'black',
-        // opacity: 0.5,
-        // zIndex: 2
-        backgroundColor: 'transparent'
     }
     });

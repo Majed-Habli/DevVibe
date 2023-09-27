@@ -1,26 +1,195 @@
-import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput} from 'react-native';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
 import axios from 'react-native-axios';
+import CheckBox from "@react-native-community/checkbox";
 import CustomInput from '../../components/custom input/customInput';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from '@react-navigation/native';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const EditForm = ({isOpen}) => {
-    const [description, setDescription] = useState('');
-    const [search, setSearch] = useState('');
+const EditForm = ({isOpen, user, details}) => {
+    // const [companyName, setCompanyName] = useState('');
+    // const [description, setDescription] = useState('');
+    const [userName, setUserName] = useState(user.user_name);
+    // const [linkedin, setLinkedin] = useState('');
+    // const [gender, setGender] = useState('');
+    // const [github, setGithub] = useState('');
+    // let [cardId, setCardId] = useState('');
+    const [token, setToken] = useState('');
 
-    const handleSearchChange = (text) => {
-        setSearch(text)
-    };
+    const [newDetail, setNewDetails] = useState({...details})
+    const navigation = useNavigation();
+
+    const handleTextChanges = (text, key) => {
+        setNewDetails(prev => {
+            return {...prev, [key]: text}
+        })
+    }
+
+
+    // const [search, setSearch] = useState('');
+    // const [skills, setSkills] = useState([])
+    // const [selected, setSelected] = useState([]);
+    // const [userSkills,setUserSkills] = useState([]); //user skill
+    // const [inputs, setInputs] = useState({});
+
+    // const handleSearchChange = (text) => {
+    //     setSearch(text)
+    // };
 
     const hideModel = () =>{
         isOpen(prev => !prev);
     }
 
-    const handleTextChange = (text) => {
+    const handleLinkedinChange = (text) => {
+        setLinkedin(text)
+    };
+    const handleGithubChange = (text) => {
+        setGithub(text)
+    };
+    const handleDescriptionChange = (text) => {
         setDescription(text)
     };
+    const handleGenderChange = (text) => {
+        setGender(text)
+    };
+    const handleUserNameChange = (text) => {
+        setUserName(text)
+    };
+    const handleCompanyNameChange = (text) => {
+        setCompanyName(text)
+    };
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+              const value = await AsyncStorage.getItem("user");
+              const user= JSON.parse(value)
+              console.log("logged in user is :",user)
+                setToken(user.user.token)
+                // setCardId(user.user.id)
+            } catch (error) {
+              console.log("retrieving data2");
+            }
+          };
+        getData();
+    },[]);
+
+    // const onChangeHandler = id => () => {
+    //     selected.includes(id)
+    //       ? setSelected(selected.filter(x => x !== id))
+    //       : setSelected([...selected, id]);
+    //   };
+
+    // const getSkills = async () =>{
+    //     try {
+    //       const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/view_all_skills/${search}`,{
+    //         headers: {
+    //         'Authorization': `Bearer ${token}`
+    //         }}
+    //       );
+    
+    //       const data = response.data;
+    
+    //         if(data.status == 'success'){
+    //             const obj = data.data;
+    //             console.log("skills being called from db are: " , obj)
+    //             setSkills(obj);
+
+    //         }else{
+    //             setError("failed to get user data!");
+    //             console.log(error);
+    //         }
+    //       } catch (error) {
+    //         console.error("get users failed2:", error);
+    //       }
+    // }
+
+    // useEffect(()=>{
+    //     getSkills();
+    // },[])
+
+    // const addUserSkills = async () =>{
+    //     const mySkills = JSON.stringify(selected);
+
+    //     try {
+    //         if(!selected){
+    //             setError('no skills to add');
+    //             console.log(error);
+    //         }else{
+    //             const response = await axios.post(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/add_skills`,{
+    //                 user_skills: mySkills
+    //             },{
+    //                 headers: {
+    //                     'Authorization': `Bearer ${token}`
+    //                 }}
+    //             );
+
+    //             const data = response;
+    //             console.log("res of adding skills", response)
+    //             const token = " ";
+    
+    //             if(data.status == 'success'){
+    //                 console.log("successfully add")
+    //             }else{
+    //                 setError("failed to add!");
+    //                 console.log(error);
+    //             }
+    //         }
+            
+    //       } catch (error) {
+    //         console.error("bad request. failed:", error);
+    //       }
+    // }
+
+    const updateUserInfo = async () =>{
+
+        try {
+            const response = await axios.post(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/update-details`,{
+                user_name: userName,
+                ...newDetail
+            },{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }}
+            );
+
+            const data = response.data;
+            console.log("res of updating", response)
+
+            if(data.status == 'success'){
+                console.log("successfully updated")
+                hideModel();
+                // navigation.navigate('Profile', { cardId });
+                
+            }else{
+                setError("failed to update!");
+                console.log(error);
+            }
+            
+          } catch (error) {
+            console.error("bad request. failed:", error);
+          }
+    }
+    // console.log("my user skills are", userSkills)
+
+    const save = async () =>{
+        try{
+            await updateUserInfo();
+            // await addUserSkills();
+        }catch (error){
+            console.log('faled to save', error);
+        }
+    }
+
+    if(!token)
+    return(
+        <View>
+            <Text>Loading</Text>
+        </View>
+    )
 
     return(
         <View style={styles.container}>
@@ -33,14 +202,30 @@ const EditForm = ({isOpen}) => {
                 </View>
                 <ScrollView style={styles.scroll_view}>
                     <View style={styles.text_area}>
+                        <Text style={styles.input_header}>User Name</Text>
+                        <TextInput style={styles.input} onChangeText={handleUserNameChange} defaultValue={userName}></TextInput>
+                    </View>
+                    {user?.user?.user_type_id == 2 && <View style={styles.text_area}>
                         <Text style={styles.input_header}>Gender</Text>
-                        <TextInput style={styles.input} placeholder='hey' onChangeText={handleTextChange} defaultValue='female'></TextInput>
+                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'gender')} defaultValue={newDetail.gender}></TextInput>
+                    </View>}
+                    {user?.user?.user_type_id == 3 && <View style={styles.text_area}>
+                        <Text style={styles.input_header}>Company Name</Text>
+                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'company_name')} defaultValue={newDetail.company_name}></TextInput>
+                    </View>}
+                    <View style={styles.text_area}>
+                        <Text style={styles.input_header}>Linkedin</Text>
+                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'linkedin_url')} defaultValue={newDetail.linkedin_url}></TextInput>
+                    </View>
+                    <View style={styles.text_area}>
+                        <Text style={styles.input_header}>Github</Text>
+                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'github_url')} defaultValue={newDetail.github_url}></TextInput>
                     </View>
                     <View style={styles.text_area}>
                         <Text style={styles.input_header}>Description</Text>
-                        <TextInput style={styles.input} placeholder='hey' onChangeText={handleTextChange} defaultValue='hey' multiline={true} numberOfLines={4}></TextInput>
+                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'description')} defaultValue={newDetail.description} multiline={true} numberOfLines={4}></TextInput>
                     </View>
-                    <View>
+                    {/* <View>
                         <Text style={styles.input_header}>Skills</Text>
 
                     <View style={styles.searchbar_container}>
@@ -52,7 +237,19 @@ const EditForm = ({isOpen}) => {
                             <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
                         </View>
                     </View>
-
+                    <View className={styles.skill_display}>
+                        {skills.map((skill)=>(
+                            <View key={skill.id} className={styles.box}>
+                                <CheckBox id={`${skill.id}`} name={`${skill.name}`} checked={selected.includes(skill.id)}
+                                    onChange={onChangeHandler(skill.id)}/>
+                                <label htmlFor={`${skill.id}`}> {skill.name}</label>
+                            </View>
+                        ))}
+                    </View> */}
+                    
+                    {/* </View> */}
+                    <View style={styles.button_container}>
+                        <Button title="Save" onPress={()=>save()}></Button>
                     </View>
                 </ScrollView>
             </View>
