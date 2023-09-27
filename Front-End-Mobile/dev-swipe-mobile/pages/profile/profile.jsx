@@ -8,6 +8,7 @@ import { useRoute } from '@react-navigation/native';
 import axios from 'react-native-axios';
 import EditForm from '../../components/editform/editform';
 import { Modal } from 'react-native';
+import Menu from '../../components/logoutModel/logout';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -22,6 +23,7 @@ const Profile = ({navigation}) => {
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
     const [showEditModel, setShowEditModel] = useState(false);
+    const [showMenuModel, setShowMenu] = useState(false);
     const [refresh, setRefresh] = useState(false);
     let cardId = route.params?.cardId || loggedinID;
 
@@ -34,6 +36,10 @@ const Profile = ({navigation}) => {
 
     const showSkillModel =async () => {
         setShowEditModel(true)
+    }
+    
+    const showMenu =async () => {
+        setShowMenu(true)
     }
 
     useEffect(() => {
@@ -150,10 +156,12 @@ const Profile = ({navigation}) => {
                 <View style={styles.header_title}>
                     <Text style={{fontSize: 20}}>{user?.user_name}'s Profile</Text>
                 </View>
-                <Image
-                style={{ width: 28, height: 28, margin: 20 }}
-                source={require("../../assets/Notify-button.png")}
-                />
+                <Pressable onPress={()=>showMenu()}>
+                    <Image
+                    style={{ width: 28, height: 28, margin: 20 }}
+                    source={require("../../assets/menu.png")}
+                    />
+                </Pressable>
             </View>
             <ScrollView style={styles.Scroll_view} refreshControl={ <RefreshControl refreshing={refresh} onRefresh={()=>reload()}/>}>
                 <View style={styles.images_container}>
@@ -164,12 +172,12 @@ const Profile = ({navigation}) => {
                         <Text style={styles.user_name}>{user?.user_name}</Text>
                         <Text style={styles.user_location}>{user.country}</Text>
                         <View style={styles.image_group}>
-                            <View style={styles.image_button}>
+                            {/* <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Send.png")}/>
                             </View>
                             <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Mail.png")}/>
-                            </View>
+                            </View> */}
                             {details?.github_url && <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Github.png")}/>
                             </View>}
@@ -232,6 +240,11 @@ const Profile = ({navigation}) => {
             {showEditModel && 
                 <Modal transparent={true} visible={true}>
                     <EditForm isOpen={setShowEditModel} user={user} details={details}/>
+                </Modal>
+            }
+            {showMenuModel && 
+                <Modal transparent={true} visible={true}>
+                    <Menu isOpen={setShowMenu}/>
                 </Modal>
             }
         </SafeAreaView>

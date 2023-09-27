@@ -59,7 +59,7 @@ const ProfileSwiper = ({userID, token}) => {
     },[useId])
 
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
+      <Swiper style={styles.wrapper} showsButtons={false}>
         {images.length > 0 ? images.map((img)=>(
             <View key={img.id} style={styles.slide}>
                 <Image style={styles.icons} source={{uri: img.image_url}}/>
