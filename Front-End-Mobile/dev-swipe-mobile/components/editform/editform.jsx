@@ -10,14 +10,9 @@ const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const EditForm = ({isOpen, user, details}) => {
-    // const [companyName, setCompanyName] = useState('');
-    // const [description, setDescription] = useState('');
     const [userName, setUserName] = useState(user.user_name);
-    // const [linkedin, setLinkedin] = useState('');
-    // const [gender, setGender] = useState('');
-    // const [github, setGithub] = useState('');
-    // let [cardId, setCardId] = useState('');
     const [token, setToken] = useState('');
+    let cardId = user.id;
 
     const [newDetail, setNewDetails] = useState({...details})
     const navigation = useNavigation();
@@ -33,7 +28,6 @@ const EditForm = ({isOpen, user, details}) => {
     // const [skills, setSkills] = useState([])
     // const [selected, setSelected] = useState([]);
     // const [userSkills,setUserSkills] = useState([]); //user skill
-    // const [inputs, setInputs] = useState({});
 
     // const handleSearchChange = (text) => {
     //     setSearch(text)
@@ -43,23 +37,8 @@ const EditForm = ({isOpen, user, details}) => {
         isOpen(prev => !prev);
     }
 
-    const handleLinkedinChange = (text) => {
-        setLinkedin(text)
-    };
-    const handleGithubChange = (text) => {
-        setGithub(text)
-    };
-    const handleDescriptionChange = (text) => {
-        setDescription(text)
-    };
-    const handleGenderChange = (text) => {
-        setGender(text)
-    };
     const handleUserNameChange = (text) => {
         setUserName(text)
-    };
-    const handleCompanyNameChange = (text) => {
-        setCompanyName(text)
     };
 
     useEffect(() => {
@@ -69,7 +48,6 @@ const EditForm = ({isOpen, user, details}) => {
               const user= JSON.parse(value)
               console.log("logged in user is :",user)
                 setToken(user.user.token)
-                // setCardId(user.user.id)
             } catch (error) {
               console.log("retrieving data2");
             }
@@ -162,7 +140,7 @@ const EditForm = ({isOpen, user, details}) => {
             if(data.status == 'success'){
                 console.log("successfully updated")
                 hideModel();
-                // navigation.navigate('Profile', { cardId });
+                navigation.navigate('Profile', { cardId });
                 
             }else{
                 setError("failed to update!");
@@ -178,7 +156,6 @@ const EditForm = ({isOpen, user, details}) => {
     const save = async () =>{
         try{
             await updateUserInfo();
-            // await addUserSkills();
         }catch (error){
             console.log('faled to save', error);
         }

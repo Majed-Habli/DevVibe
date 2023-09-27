@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, RefreshControl} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -22,6 +22,7 @@ const Profile = ({navigation}) => {
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
     const [showEditModel, setShowEditModel] = useState(false);
+    const [refresh, setRefresh] = useState(false);
     let cardId = route.params?.cardId || loggedinID;
 
     const goBack = () => {
@@ -49,30 +50,31 @@ const Profile = ({navigation}) => {
         getData();
     });
 
+    const getUserProfile = async () =>{
+        try {
+          const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }}
+          );
+    
+          const data = response.data;
+    
+            if(data.status == 'success'){
+                setUser(data.data[0])
+                // console.log("yayy2")
+            }else{
+                setError("no success2!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("get users failed2:", error);
+          }
+    }
+    
     useEffect(()=>{
         console.log('before getting data', cardId)
 
-        const getUserProfile = async () =>{
-            try {
-              const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
-                headers: {
-                'Authorization': `Bearer ${token}`
-                }}
-              );
-        
-              const data = response.data;
-        
-                if(data.status == 'success'){
-                    setUser(data.data[0])
-                    // console.log("yayy2")
-                }else{
-                    setError("no success2!");
-                    console.log(error);
-                }
-              } catch (error) {
-                console.error("get users failed2:", error);
-              }
-        }
 
         const getSkills = async () =>{
             try {
@@ -101,7 +103,7 @@ const Profile = ({navigation}) => {
             getUserProfile();
             getSkills();
         }
-    },[cardId, token
+    },[cardId, token, refresh
     ])
     
     useEffect(()=>{
@@ -122,7 +124,19 @@ const Profile = ({navigation}) => {
         }else{
             setShowButtons(false);
         }
-    },[])
+    },[cardId])
+    
+    const reload = () => {
+        // if (value === true){
+            setRefresh(true)
+            getUserProfile()
+
+            setTimeout(()=>{
+                setRefresh(false)
+
+            },4000)
+        // }
+    }
 
     return(
         <SafeAreaView style={styles.container}>
@@ -141,7 +155,7 @@ const Profile = ({navigation}) => {
                 source={require("../../assets/Notify-button.png")}
                 />
             </View>
-            <ScrollView style={styles.Scroll_view}>
+            <ScrollView style={styles.Scroll_view} refreshControl={ <RefreshControl refreshing={refresh} onRefresh={()=>reload()}/>}>
                 <View style={styles.images_container}>
                     {cardId && <ProfileSwiper userID={cardId} token={token}/>}
                 </View>
