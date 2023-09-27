@@ -13,18 +13,23 @@
 - As a user, I want to swipe on a user, so i can match with them.
 - As a user, I want to upload images, so viewers can make a well informed decision.
 - As a user, I want to view my matches, so i can stay up to date on my contacts list.
-- As a user, I want to keep tabs of my data, so i can find out if people are interested in me or not.
+- As a user, I want to update my skills, so i can grab potential recruiter's attention.
+
+### Admin Stories
+- As an admin, I want to view available users, so i can check their profiles.
+- As an admin, I want to view analytics, so i can stay up to date.
+- As an admin, I want to manage my users, so i can block or unblock them.
+- As an admin, I want to view system skills, so i can edit, remove or add to them.
 
 <br><br>
 
 <!-- Prototyping -->
 <img src="./readme/title3.svg"/>
 
-> We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
-### Wireframes
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+> We created three seperate platforms, each with a goal in mind.
+> The website's intended use is for the users to register and manage their profiles, as well as stay up to date on their analytics.
+> The Desk app's intended use is for the admin to be able to maintain their user base, as well as check up on their data.
+> The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 
 ### Mockups
 | Home screen  | Menu Screen | Order Screen |
@@ -36,7 +41,7 @@
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
+> Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
 ### User Screens (Mobile)
 | Login screen  | Register screen | Landing screen | Loading screen |
 | ---| ---| ---| ---|
@@ -59,6 +64,8 @@
 ###  DevSwipe is built using the following technologies:
 
 - This project uses the [React-Native app development framework](https://flutter.dev/). React-Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
+- This project uses the [React app development framework](https://flutter.dev/). React is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
+- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
 - For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
 
 <br><br>
