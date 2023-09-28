@@ -14,11 +14,11 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!localStorageAction("token")) {
-      navigate("/");
-    }
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   if (!localStorageAction("token")) {
+  //     navigate("/");
+  //   }
+  // }, [location.pathname]);
 
   return (
     <Routes>

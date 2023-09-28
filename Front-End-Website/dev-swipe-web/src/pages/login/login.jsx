@@ -54,14 +54,6 @@ const Login = () =>{
                     localStorageAction("user_type", user_type);
                     localStorageAction("profile_image", profileImageUrl);
 
-                    // console.log(data.user);
-                    // console.log(data.user.token);
-                    // const user = data.user;
-                    // localStorageAction("user", JSON.stringify(user));
-                    // const ahmad = JSON.parse(localStorageAction("user"));
-                    // console.log('her is the user',ahmad.user_name)
-
-                    // localStorage.setItem("userData", JSON.stringify(data));
                     window.location.href = '/dashboard';
                 }else{
                     setError("Email Doesn't exists!");
