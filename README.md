@@ -50,12 +50,24 @@
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
 ### User Screens (Web)
-| Login screen  | Register screen |  Landing screen |
+| Login screen  | Register screen |  Dashboard screen |
 | ---| ---| ---|
 | ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-web.png) | ![fsdaf](./readme/demo/website/dashboard-web.png) |
-| Home screen  | Menu Screen | Order Screen |
+| Interested Modal | Profile Screen | Upload Image Screen |
 | ![Landing](./readme/demo/website/dashboard-web-comp.png) | ![fsdaf](./readme/demo/website/profile-view-web.png) | ![fsdaf](./readme/demo/website/profile-web-modal1.png) |
+| Upload CV  | Update User Details |
 ![fsdaf](./readme/demo/website/profile-web-modal2.png) | ![fsdaf](./readme/demo/website/profile-web-modal3.png)
+
+### Admin Screens (Desk)
+| Login screen  | Dashboard screen |  Stats screen |
+| ---| ---| ---|
+| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
+| Developers screen  | Developers Profile Screen | Info Modal One |
+| ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk.png) | ![fsdaf](./readme/demo/desktop/user-details-desk1.png) |
+| Info Modal Two  | Skills Screen | Skills Modal One |
+![fsdaf](./readme/demo/desktop/user-details-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |
+| Skills Modal Two |
+![fsdaf](./readme/demo/desktop/skills-modal2.png)
 
 <br><br>
 
