@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput} from 'react-native';
 import axios from 'react-native-axios';
-import CheckBox from "@react-native-community/checkbox";
-import CustomInput from '../../components/custom input/customInput';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 
@@ -22,16 +20,6 @@ const EditForm = ({isOpen, user, details}) => {
             return {...prev, [key]: text}
         })
     }
-
-
-    // const [search, setSearch] = useState('');
-    // const [skills, setSkills] = useState([])
-    // const [selected, setSelected] = useState([]);
-    // const [userSkills,setUserSkills] = useState([]); //user skill
-
-    // const handleSearchChange = (text) => {
-    //     setSearch(text)
-    // };
 
     const hideModel = () =>{
         isOpen(prev => !prev);
@@ -54,73 +42,6 @@ const EditForm = ({isOpen, user, details}) => {
           };
         getData();
     },[]);
-
-    // const onChangeHandler = id => () => {
-    //     selected.includes(id)
-    //       ? setSelected(selected.filter(x => x !== id))
-    //       : setSelected([...selected, id]);
-    //   };
-
-    // const getSkills = async () =>{
-    //     try {
-    //       const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/view_all_skills/${search}`,{
-    //         headers: {
-    //         'Authorization': `Bearer ${token}`
-    //         }}
-    //       );
-    
-    //       const data = response.data;
-    
-    //         if(data.status == 'success'){
-    //             const obj = data.data;
-    //             console.log("skills being called from db are: " , obj)
-    //             setSkills(obj);
-
-    //         }else{
-    //             setError("failed to get user data!");
-    //             console.log(error);
-    //         }
-    //       } catch (error) {
-    //         console.error("get users failed2:", error);
-    //       }
-    // }
-
-    // useEffect(()=>{
-    //     getSkills();
-    // },[])
-
-    // const addUserSkills = async () =>{
-    //     const mySkills = JSON.stringify(selected);
-
-    //     try {
-    //         if(!selected){
-    //             setError('no skills to add');
-    //             console.log(error);
-    //         }else{
-    //             const response = await axios.post(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/add_skills`,{
-    //                 user_skills: mySkills
-    //             },{
-    //                 headers: {
-    //                     'Authorization': `Bearer ${token}`
-    //                 }}
-    //             );
-
-    //             const data = response;
-    //             console.log("res of adding skills", response)
-    //             const token = " ";
-    
-    //             if(data.status == 'success'){
-    //                 console.log("successfully add")
-    //             }else{
-    //                 setError("failed to add!");
-    //                 console.log(error);
-    //             }
-    //         }
-            
-    //       } catch (error) {
-    //         console.error("bad request. failed:", error);
-    //       }
-    // }
 
     const updateUserInfo = async () =>{
 
@@ -151,7 +72,6 @@ const EditForm = ({isOpen, user, details}) => {
             console.error("bad request. failed:", error);
           }
     }
-    // console.log("my user skills are", userSkills)
 
     const save = async () =>{
         try{
@@ -202,33 +122,12 @@ const EditForm = ({isOpen, user, details}) => {
                         <Text style={styles.input_header}>Description</Text>
                         <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'description')} defaultValue={newDetail.description} multiline={true} numberOfLines={4}></TextInput>
                     </View>
-                    {/* <View>
-                        <Text style={styles.input_header}>Skills</Text>
-
-                    <View style={styles.searchbar_container}>
-                        <View style={styles.searchbar}>
-                            <Image
-                                style={styles.search_icon}
-                                source={require('../../assets/Search.png')}
-                            />
-                            <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
-                        </View>
-                    </View>
-                    <View className={styles.skill_display}>
-                        {skills.map((skill)=>(
-                            <View key={skill.id} className={styles.box}>
-                                <CheckBox id={`${skill.id}`} name={`${skill.name}`} checked={selected.includes(skill.id)}
-                                    onChange={onChangeHandler(skill.id)}/>
-                                <label htmlFor={`${skill.id}`}> {skill.name}</label>
-                            </View>
-                        ))}
-                    </View> */}
-                    
-                    {/* </View> */}
-                    <View style={styles.button_container}>
-                        <Button title="Save" onPress={()=>save()}></Button>
-                    </View>
                 </ScrollView>
+                <View style={styles.button_container}>
+                    <Pressable style={styles.btn}  onPress={()=>save()}>
+                        <Text style={styles.btn_text}>Save</Text>
+                    </Pressable>
+                </View>
             </View>
         </View>
     )
@@ -245,7 +144,7 @@ const styles = StyleSheet.create({
     },
     form_container: {
         width: windowWidth/1.2,
-        height: windowHeight/1.3,
+        height: windowHeight/1.5,
         backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,
@@ -285,11 +184,11 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     input_header: {
-        fontSize: 14,
-        fontWeight: 'bold'
+        fontSize: 15,
+        fontWeight: '400'
     },
     input: {
-        width: 250,
+        width: 270,
         borderRadius: 4,
         borderWidth: 1,
         borderColor: '#9F8484',
@@ -320,6 +219,26 @@ const styles = StyleSheet.create({
         width: 250,
         paddingLeft: 10,
     },
+    button_container: {
+        width: '100%',
+        marginVertical: 10,
+        alignItems: 'flex-end',
+        position: 'absolute',
+        bottom: 0,
+        right: 10
+    },
+    btn: {
+        width: 80,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#343A40',
+        borderRadius: 4
+    },
+    btn_text: {
+        color: '#FCC860',
+        fontSize: 17
+    }
 });
 
 
