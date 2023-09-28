@@ -3,7 +3,7 @@
 <br><br>
 
 <!-- project philosophy -->
-<img src="./readme/title2.svg"/>
+<img src="./readme/demo/title2.svg"/>
 
 > A multi platform service, that helps developers and recruiters meet their most suited companion easier.
 >
@@ -24,7 +24,7 @@
 <br><br>
 
 <!-- Prototyping -->
-<img src="./readme/title3.svg"/>
+<img src="./readme/demo/title3.svg"/>
 
 > We created three seperate platforms, each with a goal in mind.
 > The website's intended use is for the users to register and manage their profiles, as well as stay up to date on their analytics.
@@ -39,7 +39,7 @@
 <br><br>
 
 <!-- Implementation -->
-<img src="./readme/title4.svg"/>
+<img src="./readme/demo/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
 ### User Screens (Mobile)
@@ -59,7 +59,7 @@
 <br><br>
 
 <!-- Tech stack -->
-<img src="./readme/title5.svg"/>
+<img src="./readme/demo/title5.svg"/>
 
 ###  DevSwipe is built using the following technologies:
 
@@ -71,7 +71,7 @@
 <br><br>
 
 <!-- How to run -->
-<img src="./readme/title6.svg"/>
+<img src="./readme/demo/title6.svg"/>
 
 > To set up Coffee Express locally, follow these steps:
 ### Prerequisites
