@@ -67,13 +67,13 @@ const MatchedTable = () =>{
                     {!error? (<div className={styles.inner_table_body}>
                         {users.map((user,index)=>(
                             <div key={user.id} className={styles.inner_table_row}>
-                                <div className={styles.index}>{index}</div>
+                                <div className={styles.index}>{index+1}</div>
                                 <div className={styles.user_card}>
                                     <div className={styles.card_container}>
                                         <div className={styles.container_left}>
                                             <div className={styles.profile_image_container}>
-                                                {user.profile_image_url ? (
-                                                    <img src={`${user.matched_with.profile_image_url}`} alt="profile image" /> 
+                                                {user.matched_with.profile_image_url ? (
+                                                    <img src={`${user?.matched_with?.profile_image_url}`} alt="profile image" /> 
                                                 ):(
                                                     <img src="/default-user.png" alt="profile image" />
                                                 )}
@@ -90,7 +90,7 @@ const MatchedTable = () =>{
                                     </div>
                                 </div>
                                 <div className={styles.profile_button}>
-                                    <CustomImageButton key={user.id} image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"} onClick={()=>viewProfile({id :user.id})} cursor={'pointer'}/>
+                                    <CustomImageButton key={user.id} image_name={'Profile.png'} width={37} height={37} image_width={27} image_height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#EEEEEE"} onClick={()=>viewProfile({id :user.matched_with.id})} cursor={'pointer'}/>
                                 </div>
                             </div>
                         ))}
