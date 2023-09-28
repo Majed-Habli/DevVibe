@@ -7,6 +7,10 @@ function createMainWindow() {
     title: "Electron",
     width: "1000",
     height: "600",
+    webPreferences: {
+      // Disable web security (not recommended for production)
+      webSecurity: false,
+    },
   });
 
   mainWindow.webContents.openDevTools();
