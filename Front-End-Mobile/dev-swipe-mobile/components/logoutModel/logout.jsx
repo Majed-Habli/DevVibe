@@ -16,7 +16,7 @@ const Menu = ({isOpen,tokenkey}) =>{
     }
     const onLogout = async () =>{
         try {
-            const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/guest/logout`,{
+            const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/guest/logout`,{
                 headers: {
                 'Authorization': `Bearer ${tokenkey}`
                 }}
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         height: 90,
         position: 'absolute',
         right: 0,
-        top: 60
+        top: 60,
     },
     form_container: {
         width:200,

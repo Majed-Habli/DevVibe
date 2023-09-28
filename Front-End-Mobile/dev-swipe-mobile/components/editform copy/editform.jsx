@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
 import axios from 'react-native-axios';
 import CheckBox from "@react-native-community/checkbox";
-import CustomInput from '../../components/custom input/customInput';
+import CustomInput from '../custom input/customInput';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 

@@ -33,7 +33,7 @@ const ProfileSwiper = ({userID, token}) => {
     const fetchUserImages = async () =>{
 
         try {
-            const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/retrieve_user_images/${userID}`,
+            const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/retrieve_user_images/${userID}`,
               {
               headers: {
               'Authorization': `Bearer ${token}`

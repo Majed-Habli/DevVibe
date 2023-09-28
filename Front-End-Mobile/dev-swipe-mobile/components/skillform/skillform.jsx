@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
 import axios from 'react-native-axios';
 import CheckBox from "@react-native-community/checkbox";
-import CustomInput from '../../components/custom input/customInput';
+import CustomInput from '../custom input/customInput';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
-const EditForm = ({isOpen, user, details}) => {
-    const [userName, setUserName] = useState(user.user_name);
+const SkillForm = ({isOpen, userSkills ,setting}) => {
+    // const [userName, setUserName] = useState(user.user_name);
     const [token, setToken] = useState('');
-    let cardId = user.id;
+    // let cardId = user.id;
 
-    const [newDetail, setNewDetails] = useState({...details})
+    // const [newDetail, setNewDetails] = useState({...details})
     const navigation = useNavigation();
 
     const handleTextChanges = (text, key) => {
@@ -23,23 +23,25 @@ const EditForm = ({isOpen, user, details}) => {
         })
     }
 
+    console.log("inner skills",userSkills)
 
-    // const [search, setSearch] = useState('');
+
+    const [search, setSearch] = useState('');
     // const [skills, setSkills] = useState([])
     // const [selected, setSelected] = useState([]);
     // const [userSkills,setUserSkills] = useState([]); //user skill
 
-    // const handleSearchChange = (text) => {
-    //     setSearch(text)
-    // };
+    const handleSearchChange = (text) => {
+        setSearch(text)
+    };
 
     const hideModel = () =>{
         isOpen(prev => !prev);
     }
 
-    const handleUserNameChange = (text) => {
-        setUserName(text)
-    };
+    // const handleUserNameChange = (text) => {
+    //     setUserName(text)
+    // };
 
     useEffect(() => {
         const getData = async () => {
@@ -122,43 +124,19 @@ const EditForm = ({isOpen, user, details}) => {
     //       }
     // }
 
-    const updateUserInfo = async () =>{
-
-        try {
-            const response = await axios.post(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/update-details`,{
-                user_name: userName,
-                ...newDetail
-            },{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }}
-            );
-
-            const data = response.data;
-            console.log("res of updating", response)
-
-            if(data.status == 'success'){
-                console.log("successfully updated")
-                hideModel();
-                navigation.navigate('Profile', { cardId });
-                
-            }else{
-                setError("failed to update!");
-                console.log(error);
-            }
-            
-          } catch (error) {
-            console.error("bad request. failed:", error);
-          }
-    }
-    // console.log("my user skills are", userSkills)
-
     const save = async () =>{
         try{
-            await updateUserInfo();
+            // await updateUserInfo();
         }catch (error){
             console.log('faled to save', error);
         }
+    }
+
+    const filtering = (id) =>{
+        const filtered = userSkills.filter((userSkill)=>{
+            return userSkill.id != id
+        })
+        setting(filtered);
     }
 
     if(!token)
@@ -178,32 +156,20 @@ const EditForm = ({isOpen, user, details}) => {
                     </Pressable>
                 </View>
                 <ScrollView style={styles.scroll_view}>
-                    <View style={styles.text_area}>
-                        <Text style={styles.input_header}>User Name</Text>
-                        <TextInput style={styles.input} onChangeText={handleUserNameChange} defaultValue={userName}></TextInput>
-                    </View>
-                    {user?.user?.user_type_id == 2 && <View style={styles.text_area}>
-                        <Text style={styles.input_header}>Gender</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'gender')} defaultValue={newDetail.gender}></TextInput>
-                    </View>}
-                    {user?.user?.user_type_id == 3 && <View style={styles.text_area}>
-                        <Text style={styles.input_header}>Company Name</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'company_name')} defaultValue={newDetail.company_name}></TextInput>
-                    </View>}
-                    <View style={styles.text_area}>
-                        <Text style={styles.input_header}>Linkedin</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'linkedin_url')} defaultValue={newDetail.linkedin_url}></TextInput>
-                    </View>
-                    <View style={styles.text_area}>
-                        <Text style={styles.input_header}>Github</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'github_url')} defaultValue={newDetail.github_url}></TextInput>
-                    </View>
-                    <View style={styles.text_area}>
-                        <Text style={styles.input_header}>Description</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'description')} defaultValue={newDetail.description} multiline={true} numberOfLines={4}></TextInput>
-                    </View>
-                    {/* <View>
+
+                    <View>
                         <Text style={styles.input_header}>Skills</Text>
+
+                        <View style={styles.my_skills}>
+                            {userSkills.map((skill)=>(
+                                <View key={skill.skill.id} style={styles.pill}>
+                                    <Text style={styles.skill_text}>{skill.skill.name}</Text>
+                                    <Pressable style={styles.image_container} onPress={()=>filtering(skill.id)}>
+                                        <Image style={styles.pill_icons} source={require("../../assets/Close.png")}/>
+                                    </Pressable>
+                                </View>
+                            ))}
+                        </View>
 
                     <View style={styles.searchbar_container}>
                         <View style={styles.searchbar}>
@@ -214,7 +180,7 @@ const EditForm = ({isOpen, user, details}) => {
                             <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
                         </View>
                     </View>
-                    <View className={styles.skill_display}>
+                    {/* <View className={styles.skill_display}>
                         {skills.map((skill)=>(
                             <View key={skill.id} className={styles.box}>
                                 <CheckBox id={`${skill.id}`} name={`${skill.name}`} checked={selected.includes(skill.id)}
@@ -224,7 +190,7 @@ const EditForm = ({isOpen, user, details}) => {
                         ))}
                     </View> */}
                     
-                    {/* </View> */}
+                    </View>
                     <View style={styles.button_container}>
                         <Button title="Save" onPress={()=>save()}></Button>
                     </View>
@@ -297,7 +263,7 @@ const styles = StyleSheet.create({
     },
     searchbar_container: {
         width: 250,
-        height: 70,
+        height: 60,
         alignItems: 'flex-start',
         justifyContent: 'center'
     },
@@ -311,8 +277,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     search_icon: {
-        width: 32,
-        height: 23,
+        width: 28,
+        height: 19,
         objectFit: 'contain'
     },
     searcbar_input: {
@@ -320,7 +286,31 @@ const styles = StyleSheet.create({
         width: 250,
         paddingLeft: 10,
     },
+    my_skills: {
+        width: '100%',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        columnGap: 7,
+        marginTop: 5
+    },
+    pill: {
+        width: 'auto',
+        flexDirection: 'row',
+        columnGap: 7,
+        padding: 5,
+        backgroundColor: '#FCC860',
+        borderRadius: 4,
+        alignItems: 'center'
+    },
+    skill_text: {
+        fontSize: 14,
+        color: 'white'
+    },
+    pill_icons: {
+        width: 20,
+        height: 20
+    }
 });
 
 
-export default EditForm;
+export default SkillForm;

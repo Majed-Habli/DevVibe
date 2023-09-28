@@ -7,6 +7,7 @@ import axios from 'react-native-axios';
 import EditForm from '../../components/editform/editform';
 import { Modal } from 'react-native';
 import Menu from '../../components/logoutModel/logout';
+import SkillForm from '../../components/skillform/skillform';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -20,6 +21,7 @@ const Profile = ({navigation}) => {
     const [loggedinID, setLoggedinID] = useState('');
     const [showButtons, setShowButtons] = useState(false);
     const [showEditModel, setShowEditModel] = useState(false);
+    const [showSkillModel, setShowSkillModel] = useState(false);
     const [showMenuModel, setShowMenu] = useState(false);
     const [refresh, setRefresh] = useState(false);
     let cardId = route.params?.cardId || loggedinID;
@@ -31,12 +33,16 @@ const Profile = ({navigation}) => {
         console.log(cardId)
     };
 
-    const showSkillModel =async () => {
+    const showSkillsModel =async () => {
+        setShowSkillModel(true)
+    }
+    const showEditingModel =async () => {
         setShowEditModel(true)
     }
     
     const showMenu =async () => {
         setShowMenu((current) => !current)
+        console.log("showMenuModel:", showMenuModel);
     }
 
     useEffect(() => {
@@ -55,7 +61,7 @@ const Profile = ({navigation}) => {
 
     const getUserProfile = async () =>{
         try {
-          const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
+          const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/profile/${cardId}`,{
             headers: {
             'Authorization': `Bearer ${token}`
             }}
@@ -80,7 +86,7 @@ const Profile = ({navigation}) => {
 
         const getSkills = async () =>{
             try {
-                const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
+                const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
                     headers: {
                     'Authorization': `Bearer ${token}`
                     }}
@@ -183,7 +189,7 @@ const Profile = ({navigation}) => {
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
-                            {showButtons && <Pressable style={styles.model_button}>
+                            {showButtons && <Pressable style={styles.model_button} onPress={()=>showSkillsModel()}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
                             </Pressable>}
@@ -203,7 +209,7 @@ const Profile = ({navigation}) => {
                     <View style={styles.bio_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Biography</Text> 
-                            {showButtons && <Pressable style={styles.model_button}  onPress={()=>showSkillModel()}>
+                            {showButtons && <Pressable style={styles.model_button} onPress={()=>showEditingModel()}>
                                 <Text>Edit</Text>
                                 <Image source={require("../../assets/Edit-icon.png")}/>
                             </Pressable>}
@@ -235,10 +241,15 @@ const Profile = ({navigation}) => {
                     <EditForm isOpen={setShowEditModel} user={user} details={details}/>
                 </Modal>
             }
-            {showMenuModel && 
-                <Modal animationType="fade" transparent={true} visible={true}>
-                    <Menu isOpen={setShowMenu} tokenkey={token}/>
+            {showSkillModel && 
+                <Modal transparent={true} visible={true}>
+                    <SkillForm isOpen={setShowSkillModel} userSkills={skills} setting={setSkills}/>
                 </Modal>
+            }
+            {showMenuModel && 
+            <View style={styles.show_menu}>
+                <Menu isOpen={setShowMenu} tokenkey={token}/>
+            </View>
             }
         </SafeAreaView>
     )
@@ -366,6 +377,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         borderBottomColor: "#c7c7c7",
+        zIndex:1
     },
     header_title: {
         flex: 1,
@@ -373,5 +385,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     popup_container: {
+    },
+    show_menu:{
+        width: 200,
+        height: 90,
+        position: 'absolute',
+        top: 50,
+        right: 0,
+        backgroundColor: 'red',
+        zIndex: 3
     }
-    });
+});

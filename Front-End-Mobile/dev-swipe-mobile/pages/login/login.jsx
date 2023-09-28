@@ -36,7 +36,7 @@ const Hero = ({navigation}) => {
                 console.log(error);
             }else{
 
-                const response = await axios.post("https://899d-78-40-183-51.ngrok-free.app/api/guest/login", {
+                const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/guest/login", {
                     
                         email: email,
                         password: password
