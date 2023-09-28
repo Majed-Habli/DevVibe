@@ -171,6 +171,7 @@ const EditForm = ({isOpen, data}) =>{
     }
 
     const updateUserInfo = async () =>{
+        const userId = localStorageAction("user_id");
 
         try {
             if(!inputs){
@@ -196,7 +197,7 @@ const EditForm = ({isOpen, data}) =>{
                 if(data.status == 'success'){
                     console.log("successfully updated")
                     hideModel()
-                    window.location.href = '/dashboard/profile';
+                    // window.location.href = `/dashboard/profile/${userId}`;
                     
                 }else{
                     setError("failed to update!");
