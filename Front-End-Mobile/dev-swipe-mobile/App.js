@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Matches from "./pages/matches/matches";
 import Profile from "./pages/profile/profile";
 import Chat from "./pages/chat/chat";
+import Register from "./pages/register/register";
 // import firebase from "firebase/app";
 // import "firebase/firestore";
 // import "firebase/auth";
@@ -41,6 +42,11 @@ function HomeStackNavigator() {
       <Stack.Screen
         name="Home"
         component={Hero}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Registration"
+        component={Register}
         options={{ headerShown: false }}
       />
       <Tab.Screen name="main_navigation" component={TabNavigator} />

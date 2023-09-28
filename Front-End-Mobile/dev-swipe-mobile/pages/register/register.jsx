@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import axios from 'react-native-axios';
@@ -14,7 +14,7 @@ const Register = ({navigation}) => {
     const [error, setError] = useState('');
 
     const handleTextChanges = (text, key) => {
-        setNewDetails(prev => {
+        setUser(prev => {
             return {...prev, [key]: text}
         })
     }
@@ -22,6 +22,13 @@ const Register = ({navigation}) => {
     const handlePasswordChange = (text) => {
         setConfirmPassword(text)
     };
+
+    console.log(user);
+    console.log(confirmPassword);
+
+    const goToPage = () => {
+        navigation.navigate('Home');
+    }
 
     const onRegister = async () =>{
         // event.preventDefault();
@@ -83,29 +90,31 @@ const Register = ({navigation}) => {
                 />
             </View>
             <View style={styles.page_body}>
-                <View style={styles.logo_container}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../../assets/logo1-0.png')}
-                    />
-                </View>
-                <View style={styles.form}>
-                    <CustomInput label={'Name'} value={name} handleChange={(text)=>handleTextChanges(text, 'name')}/>
-                    <CustomInput label={'Email'} value={email} handleChange={(text)=>handleTextChanges(text, 'email')}/>
-                    <CustomInput label={'Country'} value={counrty} handleChange={(text)=>handleTextChanges(text, 'country')}/>
-                    <CustomInput label={'Password'} value={password} handleChange={handlePasswordChange}/>
-                    <CustomInput label={'Comfirm Password'} value={password} handleChange={handlePasswordChange}/>
-                </View>
-                <View style={styles.button_container}>
-                    <CustomButton title='Sign up' route='main_navigation' onPress={onRegister}/>
-                    <View style={styles.line}></View>
-                    <View style={styles.statement}>
-                        <Text>
-                            <Text style={styles.text_content}>Dont have an account?</Text>
-                            <Text style={styles.text_content_span}> Register now</Text>
-                        </Text>
+                <ScrollView style={styles.Scroll_view} showsVerticalScrollIndicator={false}>
+                    <View style={styles.logo_container}>
+                        <Image
+                            style={styles.logo}
+                            source={require('../../assets/logo1-0.png')}
+                        />
                     </View>
-                </View>
+                    <View style={styles.form}>
+                        <CustomInput label={'Name'} value={user.name} handleChange={(text)=>handleTextChanges(text, 'name')}/>
+                        <CustomInput label={'Email'} value={user.email} handleChange={(text)=>handleTextChanges(text, 'email')}/>
+                        <CustomInput label={'Country'} value={user.counrty} handleChange={(text)=>handleTextChanges(text, 'country')}/>
+                        <CustomInput label={'Password'} value={user.password} handleChange={(text)=>handleTextChanges(text, 'password')}/>
+                        <CustomInput label={'Comfirm Password'} value={confirmPassword} handleChange={handlePasswordChange}/>
+                    </View>
+                    <View style={styles.button_container}>
+                        <CustomButton title='Sign up' route='main_navigation' onPress={onRegister}/>
+                        <View style={styles.line}></View>
+                        <View style={styles.statement}>
+                            <Pressable style={styles.centered} onPress={goToPage}>
+                                <Text style={styles.text_content}>Already have an account?</Text>
+                                <Text style={styles.text_content_span}> Login</Text>
+                            </Pressable>
+                        </View>
+                    </View>
+                </ScrollView>
             </View>
 
         </SafeAreaView>
@@ -141,10 +150,13 @@ const styles = StyleSheet.create({
     },
     page_body:{
         width: '75%',
-        height: windowHeight/1.5,
-        paddingTop: 20,
+        height: windowHeight/1.3,
+        paddingTop: 30,
         display: 'flex',
         rowGap: 40,
+    },
+    Scroll_view: {
+        flex: 1,
     },
     logo_container:{
         width: '100%',
@@ -161,7 +173,8 @@ const styles = StyleSheet.create({
     },
     button_container: {
         rowGap: 30,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 40
     },
     line: {
         width: '80%',
@@ -179,5 +192,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: '#FCC860',
-    }
+    },
+    centered: {
+        flexDirection: 'row'
+    },
     });

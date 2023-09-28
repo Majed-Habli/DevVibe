@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Pressable} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
 import axios from 'react-native-axios';
@@ -24,7 +24,7 @@ const Hero = ({navigation}) => {
     // console.log(email)
     // console.log(password)
     const goToPage = () => {
-        window.location.href = '/register';
+        navigation.navigate('Registration');
     }
 
     const onLogin = async () =>{
@@ -111,10 +111,10 @@ const Hero = ({navigation}) => {
                     <CustomButton title='Sign in' route='main_navigation' onPress={onLogin}/>
                     <View style={styles.line}></View>
                     <View style={styles.statement}>
-                        <Text>
-                            <Text style={styles.text_content}>Dont have an account?</Text>
-                            <Text style={styles.text_content_span}> Register now</Text>
-                        </Text>
+                        <Pressable style={styles.centered} onPress={goToPage}>
+                            <Text style={styles.text_content}>Already have an account?</Text>
+                            <Text style={styles.text_content_span}> Login</Text>
+                        </Pressable>
                     </View>
                 </View>
 
@@ -195,5 +195,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         color: '#FCC860',
+    },
+    centered: {
+        flexDirection: 'row'
     }
     });
