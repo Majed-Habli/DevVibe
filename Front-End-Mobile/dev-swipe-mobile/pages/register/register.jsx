@@ -31,10 +31,9 @@ const Register = ({navigation}) => {
     }
 
     const onRegister = async () =>{
-        // event.preventDefault();
 
         try {
-            if(!email || !password){
+            if(!user.email || !user.password || !user.name || !user.counrty || user.password != confirmPassword){
                 setError('All fields required');
                 console.log(error);
             }else{
