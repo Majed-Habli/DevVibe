@@ -156,7 +156,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         <View style={styles.container}>
             <View style={styles.form_container}>
                 <View style={styles.container_header}>
-                    <Text style={styles.txt}>Edit details</Text>
+                    <Text style={styles.txt}>Edit Skills</Text>
                     <Pressable style={styles.image_container} onPress={()=>hideModel()}>
                         <Image style={styles.icons} source={require("../../assets/Close.png")}/>
                     </Pressable>
@@ -262,8 +262,8 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     input_header: {
-        fontSize: 14,
-        fontWeight: 'bold'
+        fontSize: 16,
+        fontWeight: '500'
     },
     input: {
         width: 250,
@@ -288,14 +288,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     search_icon: {
-        width: 28,
+        width: 31,
         height: 19,
         objectFit: 'contain'
     },
     searcbar_input: {
         height: '100%',
         width: 250,
-        paddingLeft: 10,
+        paddingLeft: 5,
     },
     my_skills: {
         width: '100%',
