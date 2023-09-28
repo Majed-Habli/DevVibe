@@ -90,10 +90,10 @@ const HeaderComp = ({data}) =>{
 
     useEffect(()=>{
         if(userType == 3){
-            setUser({github_url : data.rec_details && data.rec_details.github_url ?data.rec_details.github_url : "",linkedin_url : data.rec_details && data.rec_details.linkedin_url ?data.rec_details.linkedin_url : "",profile_image_url: data.profile_image_url,description : data.rec_details && data.rec_details.description ?data.rec_details.description : ""
+            setUser({github_url : data.rec_details && data.rec_details.github_url ?data.rec_details.github_url : "",linkedin_url : data.rec_details && data.rec_details.linkedin_url ?data.rec_details.linkedin_url : "",profile_image_url: data.profile_image_url,description : data.rec_details && data.rec_details.description ?data.rec_details.description : "write something interesting to grab peoples attention"
         })
         }else{
-            setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url,resume : data.dev_details && data.dev_details.resume ?data.dev_details.resume : "",description : data.dev_details && data.dev_details.description ?data.dev_details.description : ""
+            setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url,resume : data.dev_details && data.dev_details.resume ?data.dev_details.resume : "",description : data.dev_details && data.dev_details.description ?data.dev_details.description : "write something interesting to grab peoples attention"
         })
         }
     },[data]);
@@ -133,7 +133,7 @@ const HeaderComp = ({data}) =>{
                     </div>
                 </div>
                 <div className={styles.middle_right}>
-                    {user.description ?(
+                    {data.description ?(
                         <div className={styles.description}>{data.rec_details.description}</div>
                     ):(
                         <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
