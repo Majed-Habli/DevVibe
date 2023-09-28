@@ -49,12 +49,13 @@
 | Home screen  | Menu Screen | Order Screen | Checkout Screen |
 | ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
 
-### Admin Screens (Web)
+### User Screens (Web)
 | Login screen  | Register screen |  Landing screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-web.png) | ![fsdaf](./readme/demo/website/dashboard-web.png) |
 | Home screen  | Menu Screen | Order Screen |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/demo/website/dashboard-web-comp.png) | ![fsdaf](./readme/demo/website/profile-view-web.png) | ![fsdaf](./readme/demo/website/profile-web-modal1.png) |
+![fsdaf](./readme/demo/website/profile-web-modal2.png) | ![fsdaf](./readme/demo/website/profile-web-modal3.png)
 
 <br><br>
 
