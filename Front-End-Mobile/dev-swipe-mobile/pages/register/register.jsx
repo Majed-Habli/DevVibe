@@ -90,10 +90,11 @@ const Register = ({navigation}) => {
                     />
                 </View>
                 <View style={styles.form}>
-
-                    <CustomInput label={'Email'} value={email} handleChange={handleTextChange}/>
-                        <CustomInput label={'Password'} value={password} handleChange={handlePasswordChange}/>
-                        <CustomInput label={'Comfirm Password'} value={password} handleChange={handlePasswordChange}/>
+                    <CustomInput label={'Name'} value={name} handleChange={(text)=>handleTextChanges(text, 'name')}/>
+                    <CustomInput label={'Email'} value={email} handleChange={(text)=>handleTextChanges(text, 'email')}/>
+                    <CustomInput label={'Country'} value={counrty} handleChange={(text)=>handleTextChanges(text, 'country')}/>
+                    <CustomInput label={'Password'} value={password} handleChange={handlePasswordChange}/>
+                    <CustomInput label={'Comfirm Password'} value={password} handleChange={handlePasswordChange}/>
                 </View>
                 <View style={styles.button_container}>
                     <CustomButton title='Sign up' route='main_navigation' onPress={onRegister}/>
