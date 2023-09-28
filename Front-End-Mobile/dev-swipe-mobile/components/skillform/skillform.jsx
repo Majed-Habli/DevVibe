@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
 import axios from 'react-native-axios';
-import CheckBox from "@react-native-community/checkbox";
+import CheckBox from 'expo-checkbox';
 import CustomInput from '../custom input/customInput';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
@@ -27,8 +27,9 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
 
     const [search, setSearch] = useState('');
-    // const [skills, setSkills] = useState([])
-    // const [selected, setSelected] = useState([]);
+    const [skills, setSkills] = useState([])
+    const [selected, setSelected] = useState([]);
+    const [error, setError] = useState('');
     // const [userSkills,setUserSkills] = useState([]); //user skill
 
     const handleSearchChange = (text) => {
@@ -38,10 +39,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
     const hideModel = () =>{
         isOpen(prev => !prev);
     }
-
-    // const handleUserNameChange = (text) => {
-    //     setUserName(text)
-    // };
 
     useEffect(() => {
         const getData = async () => {
@@ -57,39 +54,65 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         getData();
     },[]);
 
-    // const onChangeHandler = id => () => {
-    //     selected.includes(id)
-    //       ? setSelected(selected.filter(x => x !== id))
-    //       : setSelected([...selected, id]);
-    //   };
+    const onChangeHandler = id => () => {
+        selected.includes(id)
+          ? setSelected(selected.filter(x => x !== id))
+          : setSelected([...selected, id]);
+      };
 
-    // const getSkills = async () =>{
-    //     try {
-    //       const response = await axios.get(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/view_all_skills/${search}`,{
-    //         headers: {
-    //         'Authorization': `Bearer ${token}`
-    //         }}
-    //       );
+    const getSkills = async () =>{
+        try {
+          const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/view_all_skills/${search}`,{
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }}
+          );
     
-    //       const data = response.data;
+          const data = response.data;
     
-    //         if(data.status == 'success'){
-    //             const obj = data.data;
-    //             console.log("skills being called from db are: " , obj)
-    //             setSkills(obj);
+            if(data.status == 'success'){
+                const obj = data.data;
+                // console.log("skills being called from db are: " , obj)
+                setSkills(obj);
 
-    //         }else{
-    //             setError("failed to get user data!");
-    //             console.log(error);
-    //         }
-    //       } catch (error) {
-    //         console.error("get users failed2:", error);
-    //       }
-    // }
+            }else{
+                setError("failed to get user data!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("get users failed2:", error);
+          }
+    }
 
-    // useEffect(()=>{
-    //     getSkills();
-    // },[])
+    const removeSkills = async (id) =>{
+        const removeSkills = JSON.stringify([id])
+        try {
+          const response = await axios.post(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/remove_skills`,{
+            user_skills: removeSkills
+          },{
+            headers: {
+            'Authorization': `Bearer ${token}`
+            }}
+          );
+    
+          const data = response.data;
+          console.log(data)
+    
+            if(data.status == 'success'){
+                console.log("skills were removed from db: ")
+
+            }else{
+                setError("failed to get user data!");
+                console.log(error);
+            }
+          } catch (error) {
+            console.error("get users failed2:", error);
+          }
+    }
+
+    useEffect(()=>{
+        getSkills();
+    },[])
 
     // const addUserSkills = async () =>{
     //     const mySkills = JSON.stringify(selected);
@@ -126,16 +149,17 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
     const save = async () =>{
         try{
-            // await updateUserInfo();
+            // await updateUserInfo(); 
         }catch (error){
             console.log('faled to save', error);
         }
     }
 
-    const filtering = (id) =>{
+    const filtering = (id, skillID) =>{
         const filtered = userSkills.filter((userSkill)=>{
             return userSkill.id != id
         })
+        removeSkills(skillID)
         setting(filtered);
     }
 
@@ -164,35 +188,35 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                             {userSkills.map((skill)=>(
                                 <View key={skill.skill.id} style={styles.pill}>
                                     <Text style={styles.skill_text}>{skill.skill.name}</Text>
-                                    <Pressable style={styles.image_container} onPress={()=>filtering(skill.id)}>
+                                    <Pressable style={styles.image_container} onPress={()=>filtering(skill.id, skill.skill.id)}>
                                         <Image style={styles.pill_icons} source={require("../../assets/Close.png")}/>
                                     </Pressable>
                                 </View>
                             ))}
                         </View>
 
-                    <View style={styles.searchbar_container}>
-                        <View style={styles.searchbar}>
-                            <Image
-                                style={styles.search_icon}
-                                source={require('../../assets/Search.png')}
-                            />
-                            <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
-                        </View>
-                    </View>
-                    {/* <View className={styles.skill_display}>
-                        {skills.map((skill)=>(
-                            <View key={skill.id} className={styles.box}>
-                                <CheckBox id={`${skill.id}`} name={`${skill.name}`} checked={selected.includes(skill.id)}
-                                    onChange={onChangeHandler(skill.id)}/>
-                                <label htmlFor={`${skill.id}`}> {skill.name}</label>
+                        <View style={styles.searchbar_container}>
+                            <View style={styles.searchbar}>
+                                <Image
+                                    style={styles.search_icon}
+                                    source={require('../../assets/Search.png')}
+                                />
+                                <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
                             </View>
-                        ))}
-                    </View> */}
+                        </View>
+                        <View className={styles.skill_display}>
+                            {skills.map((skill)=>(
+                                <View key={skill.id} style={styles.box}>
+                                    <CheckBox id={`${skill.id}`} checked={selected.includes(skill.id)}
+                                        onChange={onChangeHandler(skill.id)}/>
+                                    <Text id={`${skill.id}`}> {skill.name}</Text>
+                                </View>
+                            ))}
+                        </View>
                     
                     </View>
                     <View style={styles.button_container}>
-                        <Button title="Save" onPress={()=>save()}></Button>
+                        <Button style={styles.btn} title="Save" onPress={()=>save()}></Button>
                     </View>
                 </ScrollView>
             </View>
@@ -242,8 +266,10 @@ const styles = StyleSheet.create({
         height: 25
     },
     scroll_view: {
+        width: windowWidth/1.2,
         flex: 1,
         padding: 10,
+        paddingBottom: 10
     },
     text_area: {
         width: '100%',
@@ -309,6 +335,24 @@ const styles = StyleSheet.create({
     pill_icons: {
         width: 20,
         height: 20
+    },
+    skill_display: {
+        rowGap: 10,
+        marginVertical: 5
+    },
+    box: {
+        backgroundColor: 'lightyellow',
+        flexDirection: 'row',
+        columnGap: 5,
+        alignItems: 'center'
+    },
+    button_container: {
+        width: '100%',
+        marginVertical: 10
+    },
+    btn: {
+        width: 70,
+        alignSelf: 'flex-start'
     }
 });
 
