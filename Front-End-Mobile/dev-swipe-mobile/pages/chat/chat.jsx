@@ -5,28 +5,56 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
 import Message from '../../components/message/message';
 import { useNavigation } from '@react-navigation/native';
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
-// import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const windowWidth = Dimensions.get('window').width;
-// const firestore = firebase.firestore();
-
+  
 const Chat = () => {
     const route = useRoute();
     const navigation = useNavigation();
-    // const messagesRef = firestore.collection('messages');
-    // const query = messagesRef.orderBy('createdAt').limit(25);
-    // const [messages] = useCollectionData(query, {idField: 'id'});
 
-    // const [users, setUsers] = useState([]);
-    // const [loggedin, setLoggedin] = useState({});
-    let chatId = route.params?.id;
+    const [messages,setMessages] = useState([]);
+    const [input,setInput] = useState('');
+    // let chatId = route.params?.id;
     const [token, setToken] = useState('')
 
     const goBack = () => {
         navigation.navigate('Matches');
-      };
+    };
+
+    const handleTextChanges = (text) => {
+        setInput(text)
+    }
+
+    const apiURL= 'https://api.openai.com/v1/engines/text-davinci-002/completions';
+    const apiKey = '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';
+
+    const handleUserInput = async () => {
+        setMessages(prev => {
+                return [...prev,{ id: 1, content: input }]
+            })
+        try{
+            const userInput = input;
+            const response = await axios.post(apiURL,{
+                // model: 'text-devinci-003',
+                prompt: `You: ${userInput}\nAI:`,
+                temperature: 0,
+                max_tokens: 20,
+                top_p:1.0,
+                frequency_penalty: 0.5,
+                presence_penalty: 0.0,
+                stop: ['You:'],
+            },{
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorrization': `Bearer ${apiKey}`
+                }
+            });
+            setMessages([ ...messages,{ id: 0, content: response.data.choices[0].text }]);
+        }catch(error){
+            console.log(error);
+        }
+            setInput('');
+    }
     
     useEffect(() => {
         const getData = async () => {
@@ -41,99 +69,6 @@ const Chat = () => {
         getData();
     },[]);
 
-    const [messages, setMessages] = useState([
-        {
-            user:0,
-            time:"10:00",
-            content: "hey"
-        },
-        {
-            user:1,
-            time:"10:50",
-            content: "dont talk to me"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-        {
-            user:0,
-            time:"12:00",
-            content: "fine"
-        },
-        {
-            user:1,
-            time:"12:02",
-            content: "bye"
-        },
-    ])
     const user = useRef(0);
     const scrollView = useRef();
 
@@ -154,15 +89,15 @@ const Chat = () => {
             <ScrollView style={styles.scrollable_area} ref={ref => scrollView.current = ref} onContentChange={()=>{
                 scrollView.current.scrollToEnd({animated: true})
             }}> 
-                {messages && messages.map((message)=>(
-                    <Message key={message.id} time={message.time} isLeft={message.user !== user.current} message={message.content}/>
+                {messages && messages.map((message,index)=>(
+                    <Message key={index} isLeft={message.user !== user.current} message={message.content}/>
                 ))}
             </ScrollView>
 
             <KeyboardAvoidingView>
                 <View style={styles.input_field}>
-                    <TextInput style={styles.input_area} placeholder='type here...'></TextInput>
-                    <Pressable style={styles.button_container}>
+                    <TextInput style={styles.input_area} placeholder='type here...' onChangeText={handleTextChanges}></TextInput>
+                    <Pressable style={styles.button_container} onPress={handleUserInput}>
                         <Image
                         style={{ width: 28, height: 28, margin: 20 }}
                         source={require("../../assets/Send.png")}
