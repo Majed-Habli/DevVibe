@@ -13,7 +13,8 @@ const HeaderComp = ({data}) =>{
     const [showButtons, setShowButtons] = useState(false);
     const userId = localStorageAction("user_id")
     
-    const [showModel, setShowModel] = useState(false);    const [showUploadModel, setShowUploadModel] = useState(false);
+    const [showModel, setShowModel] = useState(false);    
+    const [showUploadModel, setShowUploadModel] = useState(false);
     const viewModelUpload = async() =>{
             setShowUploadModel(true)
         }
@@ -85,17 +86,15 @@ const HeaderComp = ({data}) =>{
         document.body.appendChild(alink);
         alink.click();
         alink.remove();
-        // window.location.href = pdfUrl
     }
 
     useEffect(()=>{
-        if(userType == 3){
-            setUser({github_url : data.rec_details && data.rec_details.github_url ?data.rec_details.github_url : "",linkedin_url : data.rec_details && data.rec_details.linkedin_url ?data.rec_details.linkedin_url : "",profile_image_url: data.profile_image_url,description : data.rec_details && data.rec_details.description ?data.rec_details.description : "write something interesting to grab peoples attention"
-        })
-        }else{
-            setUser({github_url : data.dev_details && data.dev_details.github_url ?data.dev_details.github_url : "",linkedin_url : data.dev_details && data.dev_details.linkedin_url ?data.dev_details.linkedin_url : "",profile_image_url: data.profile_image_url,resume : data.dev_details && data.dev_details.resume ?data.dev_details.resume : "",description : data.dev_details && data.dev_details.description ?data.dev_details.description : "write something interesting to grab peoples attention"
-        })
-        }
+
+        setUser({description: userType === 3 ? (data.rec_details?.description || "") : (data.dev_details?.description || ""),
+        github_url: userType === 3 ? (data.rec_details?.github_url || "") : (data.dev_details?.github_url || ""),
+        linkedin_url: userType === 3 ? (data.rec_details?.linkedin_url || "") : (data.dev_details?.linkedin_url || ""),
+        resume: userType === 3 ? data.dev_details?.linkedin_url : "",
+        profile_image_url: data.profile_image_url})
     },[data]);
 
     useEffect(()=>{
@@ -105,8 +104,6 @@ const HeaderComp = ({data}) =>{
             setShowButtons(false);
         }
     })
-
-    // console.log("the resume", data.dev_details.resume)
 
     return(
         <div className={styles.container}>
@@ -133,8 +130,8 @@ const HeaderComp = ({data}) =>{
                     </div>
                 </div>
                 <div className={styles.middle_right}>
-                    {data.description ?(
-                        <div className={styles.description}>{data.rec_details.description}</div>
+                    {user.description ?(
+                        <div className={styles.description}>{user.description}</div>
                     ):(
                         <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
                     )}
@@ -145,7 +142,7 @@ const HeaderComp = ({data}) =>{
                 {data.rec_details?.company_name ? (
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Works at:</div>
-                        <div className={styles.company_name}>{data.rec_details.company_name} ,{data.country}</div>
+                        <div className={styles.company_name}>{user.company_name} ,{data.country}</div>
                     </div>
                 ):(
                     <div className={styles.company_details}>
