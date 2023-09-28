@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable} from 'react-native';
 import CustomInput from '../../components/custom input/customInput';
 import CustomButton from '../../components/custom button/customButton';
-import axios from 'react-native-axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RadioGroup from 'react-native-radio-buttons-group';
+import axios from 'react-native-axios';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -12,6 +13,21 @@ const Register = ({navigation}) => {
     const [user, setUser] = useState([]);
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+
+    const [isPressed, setIsPressed] = useState();
+
+    const radioButtons = useMemo(() => ([
+        {
+            id: '1',
+            label: 'Developer',
+            value: '2'
+        },
+        {
+            id: '2',
+            label: 'Recruiter',
+            value: '3'
+        }
+    ]), []);
 
     const handleTextChanges = (text, key) => {
         setUser(prev => {
@@ -33,45 +49,46 @@ const Register = ({navigation}) => {
     const onRegister = async () =>{
 
         try {
-            if(!user.email || !user.password || !user.name || !user.counrty || user.password != confirmPassword){
+            if(!user.email || !user.password || !user.name || !user.country){
                 setError('All fields required');
                 console.log(error);
             }else{
-
-                const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/guest/register", {
-                        user_name: user.name,
-                        email: user.email,
-                        password: user.password,
-                        country: user.country,
-                        user_type_id: user.userType
-                    }, {
-                        headers: {'Content-Type': 'application/json'}
-                    }
-                );
-
-                const data = response.data;
-                console.log("res", data)
-    
-                if(data.status == 'success'){
-
-                    try {
-                        await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
-                            if(err){
-                                console.log("an error");
-                                throw err;
-                            }
-                            // console.log("success saving");
-                            // navigation.navigate('main_navigation')
-                        }).catch((err)=> {
-                            console.log("error is: " + err);
-                        });
-                    }catch (error){
-                        console.log("didnt save in storage ",error)
-                    }
-
+                if( user.password != confirmPassword){
+                    setError('Passwords dont match')
                 }else{
-                    setError("Email Doesn't exists!");
-                    console.log(error);
+
+                    const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/guest/register", {
+                            user_name: user.name,
+                            email: user.email,
+                            password: user.password,
+                            country: user.country,
+                            user_type_id: isPressed
+                        }, {
+                            headers: {'Content-Type': 'application/json'}
+                        }
+                    );
+    
+                    const data = response.data;
+        
+                    if(data.status == 'success'){
+    
+                        try {
+                            await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
+                                if(err){
+                                    console.log("an error");
+                                    throw err;
+                                }
+                                navigation.navigate('main_navigation')
+                            }).catch((err)=> {
+                                console.log("error is: " + err);
+                            });
+                        }catch (error){
+                            console.log("didnt save in storage ",error)
+                        }
+                    }else{
+                        setError("Email Doesn't exists!");
+                        console.log(error);
+                    }
                 }
             }
             
@@ -102,6 +119,13 @@ const Register = ({navigation}) => {
                         <CustomInput label={'Country'} value={user.counrty} handleChange={(text)=>handleTextChanges(text, 'country')}/>
                         <CustomInput label={'Password'} value={user.password} handleChange={(text)=>handleTextChanges(text, 'password')}/>
                         <CustomInput label={'Comfirm Password'} value={confirmPassword} handleChange={handlePasswordChange}/>
+                    </View>
+                    <View style={styles.user_type_btns}>
+                        <RadioGroup layout='row'
+                            radioButtons={radioButtons} 
+                            onPress={setIsPressed}
+                            selectedId={isPressed}
+                        />
                     </View>
                     <View style={styles.button_container}>
                         <CustomButton title='Sign up' route='main_navigation' onPress={onRegister}/>
@@ -173,7 +197,7 @@ const styles = StyleSheet.create({
     button_container: {
         rowGap: 30,
         alignItems: 'center',
-        marginTop: 40
+        marginTop: 20
     },
     line: {
         width: '80%',
@@ -195,4 +219,22 @@ const styles = StyleSheet.create({
     centered: {
         flexDirection: 'row'
     },
+    user_type_btns: {
+        height: 70,
+        marginTop: 20,
+        // backgroundColor: 'lightgreen',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
+        columnGap: 10
+    },
+    btn: {
+        paddingVertical:10,
+        paddingHorizontal:14,
+        borderWidth: 1,
+        borderColor: 'black'
+    },
+    btnText: {
+        fontSize: 18
+    }
     });

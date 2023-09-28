@@ -113,7 +113,7 @@ const Hero = ({navigation}) => {
                     <View style={styles.statement}>
                         <Pressable style={styles.centered} onPress={goToPage}>
                             <Text style={styles.text_content}>Already have an account?</Text>
-                            <Text style={styles.text_content_span}> Login</Text>
+                            <Text style={styles.text_content_span}> Register now</Text>
                         </Pressable>
                     </View>
                 </View>

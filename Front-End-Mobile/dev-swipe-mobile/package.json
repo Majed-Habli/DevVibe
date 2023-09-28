@@ -23,6 +23,7 @@
     "react-native": "0.72.5",
     "react-native-axios": "^0.17.1",
     "react-native-deck-swiper": "^2.0.16",
+    "react-native-radio-buttons-group": "^3.0.3",
     "react-native-swipe-cards-deck": "^0.3.0",
     "react-native-swiper": "^1.6.0"
   },
