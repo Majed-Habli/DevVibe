@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
 import axios from 'react-native-axios';
 import CheckBox from 'expo-checkbox';
-import CustomInput from '../custom input/customInput';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from '@react-navigation/native';
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -12,26 +10,14 @@ const windowWidth = Dimensions.get('window').width;
 const SkillForm = ({isOpen, userSkills ,setting}) => {
     const [token, setToken] = useState('');
 
-    // const [newDetail, setNewDetails] = useState({...details})
-    const navigation = useNavigation();
-
-    const handleTextChanges = (text, key) => {
-        setNewDetails(prev => {
-            return {...prev, [key]: text}
-        })
-    }
-
-    console.log("inner skills",userSkills)
-
-
     const [search, setSearch] = useState('');
     const [skills, setSkills] = useState([])
     const [selected, setSelected] = useState([]);
     const [error, setError] = useState('');
-    const [newUserSkills,setUserSkills] = useState([]);
 
     const handleSearchChange = (text) => {
         setSearch(text)
+        getSkills()
     };
 
     const hideModel = () =>{
@@ -43,7 +29,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
             try {
               const value = await AsyncStorage.getItem("user");
               const user= JSON.parse(value)
-              console.log("logged in user is :",user)
                 setToken(user.user.token)
             } catch (error) {
               console.log("retrieving data2");
@@ -112,7 +97,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
     const addUserSkills = async () =>{
         const mySkills = JSON.stringify(selected);
-        console.log('setting new skills, ',mySkills)
 
         try {
             if (!selected.length) {
@@ -132,10 +116,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
               const data = response.data;
         
-              console.log('Response from adding skills:', data);
-        
               if (data.status === 'success') {
-                console.log('successfully add skills to user set');
                 hideModel();
               } else {
                 setError('Failed to add skills to user set');
@@ -202,7 +183,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                                     style={styles.search_icon}
                                     source={require('../../assets/Search.png')}
                                 />
-                                <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={handleSearchChange} defaultValue={search}/>
+                                <TextInput style={styles.searcbar_input} placeholder='search here' onChangeText={(text)=>handleSearchChange(text)} defaultValue={search}/>
                             </View>
                         </View>
                         <View className={styles.skill_display}>
@@ -216,10 +197,12 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                         </View>
                     
                     </View>
-                    <View style={styles.button_container}>
-                        <Button style={styles.btn} title="Save" onPress={()=>save()}></Button>
-                    </View>
                 </ScrollView>
+                    <View style={styles.button_container}>
+                        <Pressable style={styles.btn}  onPress={()=>save()}>
+                            <Text style={styles.btn_text}>Save</Text>
+                        </Pressable>
+                    </View>
             </View>
         </View>
     )
@@ -342,18 +325,29 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     box: {
-        backgroundColor: 'lightyellow',
         flexDirection: 'row',
         paddingVertical: 5,
         alignItems: 'center'
     },
     button_container: {
         width: '100%',
-        marginVertical: 10
+        marginVertical: 10,
+        alignItems: 'flex-end',
+        position: 'absolute',
+        bottom: 0,
+        right: 10
     },
     btn: {
-        width: 70,
-        alignSelf: 'flex-start'
+        width: 80,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#343A40',
+        borderRadius: 4
+    },
+    btn_text: {
+        color: '#FCC860',
+        fontSize: 17
     }
 });
 
