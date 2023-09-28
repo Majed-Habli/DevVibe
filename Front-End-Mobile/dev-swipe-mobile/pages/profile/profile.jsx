@@ -153,7 +153,7 @@ const Profile = ({navigation}) => {
                     />
                 </Pressable>
                 <View style={styles.header_title}>
-                    <Text style={{fontSize: 20}}>{user?.user_name}'s Profile</Text>
+                    {user?.user_name && <Text style={{fontSize: 20}}>{user?.user_name}'s Profile</Text>}
                 </View>
                 <Pressable onPress={()=>showMenu()}>
                     <Image

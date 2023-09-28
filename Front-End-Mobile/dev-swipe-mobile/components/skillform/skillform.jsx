@@ -197,12 +197,13 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                         </View>
                     
                     </View>
+                    <View></View>
                 </ScrollView>
-                    <View style={styles.button_container}>
-                        <Pressable style={styles.btn}  onPress={()=>save()}>
-                            <Text style={styles.btn_text}>Save</Text>
-                        </Pressable>
-                    </View>
+                <View style={styles.button_container}>
+                    <Pressable style={styles.btn}  onPress={()=>save()}>
+                        <Text style={styles.btn_text}>Save</Text>
+                    </Pressable>
+                </View>
             </View>
         </View>
     )
@@ -253,7 +254,7 @@ const styles = StyleSheet.create({
         width: windowWidth/1.2,
         flex: 1,
         padding: 10,
-        paddingBottom: 10
+        marginBottomBottom: 10
     },
     text_area: {
         width: '100%',
