@@ -10,9 +10,7 @@ const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
 
 const SkillForm = ({isOpen, userSkills ,setting}) => {
-    // const [userName, setUserName] = useState(user.user_name);
     const [token, setToken] = useState('');
-    // let cardId = user.id;
 
     // const [newDetail, setNewDetails] = useState({...details})
     const navigation = useNavigation();
@@ -30,7 +28,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
     const [skills, setSkills] = useState([])
     const [selected, setSelected] = useState([]);
     const [error, setError] = useState('');
-    // const [userSkills,setUserSkills] = useState([]); //user skill
+    const [newUserSkills,setUserSkills] = useState([]);
 
     const handleSearchChange = (text) => {
         setSearch(text)
@@ -54,7 +52,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         getData();
     },[]);
 
-    const onChangeHandler = id => () => {
+    const onChangeHandler = (id) => {
         selected.includes(id)
           ? setSelected(selected.filter(x => x !== id))
           : setSelected([...selected, id]);
@@ -72,7 +70,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
     
             if(data.status == 'success'){
                 const obj = data.data;
-                // console.log("skills being called from db are: " , obj)
                 setSkills(obj);
 
             }else{
@@ -96,7 +93,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
           );
     
           const data = response.data;
-          console.log(data)
     
             if(data.status == 'success'){
                 console.log("skills were removed from db: ")
@@ -114,42 +110,47 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         getSkills();
     },[])
 
-    // const addUserSkills = async () =>{
-    //     const mySkills = JSON.stringify(selected);
+    const addUserSkills = async () =>{
+        const mySkills = JSON.stringify(selected);
+        console.log('setting new skills, ',mySkills)
 
-    //     try {
-    //         if(!selected){
-    //             setError('no skills to add');
-    //             console.log(error);
-    //         }else{
-    //             const response = await axios.post(`https://899d-78-40-183-51.ngrok-free.app/api/user/developer/add_skills`,{
-    //                 user_skills: mySkills
-    //             },{
-    //                 headers: {
-    //                     'Authorization': `Bearer ${token}`
-    //                 }}
-    //             );
+        try {
+            if (!selected.length) {
+              setError('no skills to add');
+            } else {
+              const response = await axios.post(
+                'https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/add_skills',
+                {
+                  user_skills: mySkills,
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
 
-    //             const data = response;
-    //             console.log("res of adding skills", response)
-    //             const token = " ";
-    
-    //             if(data.status == 'success'){
-    //                 console.log("successfully add")
-    //             }else{
-    //                 setError("failed to add!");
-    //                 console.log(error);
-    //             }
-    //         }
-            
-    //       } catch (error) {
-    //         console.error("bad request. failed:", error);
-    //       }
-    // }
+              const data = response.data;
+        
+              console.log('Response from adding skills:', data);
+        
+              if (data.status === 'success') {
+                console.log('successfully add skills to user set');
+                hideModel();
+              } else {
+                setError('Failed to add skills to user set');
+                console.log(error);
+              }
+            }
+          } catch (error) {
+            setError('Failed to call the backend.');
+            console.log(error);
+          }
+        };
 
     const save = async () =>{
         try{
-            // await updateUserInfo(); 
+            addUserSkills()
         }catch (error){
             console.log('faled to save', error);
         }
@@ -208,7 +209,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                             {skills.map((skill)=>(
                                 <View key={skill.id} style={styles.box}>
                                     <CheckBox id={`${skill.id}`} checked={selected.includes(skill.id)}
-                                        onChange={onChangeHandler(skill.id)}/>
+                                        onValueChange={()=>onChangeHandler(skill.id)}/>
                                     <Text id={`${skill.id}`}> {skill.name}</Text>
                                 </View>
                             ))}
@@ -316,7 +317,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexWrap: 'wrap',
         flexDirection: 'row',
-        columnGap: 7,
+        gap: 7,
         marginTop: 5
     },
     pill: {
@@ -343,7 +344,7 @@ const styles = StyleSheet.create({
     box: {
         backgroundColor: 'lightyellow',
         flexDirection: 'row',
-        columnGap: 5,
+        paddingVertical: 5,
         alignItems: 'center'
     },
     button_container: {
