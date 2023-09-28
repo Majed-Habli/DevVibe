@@ -89,7 +89,7 @@ function TabNavigator() {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#FBC75F" : "#748c94",
                 }}
               />
             </View>
@@ -111,7 +111,7 @@ function TabNavigator() {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#FBC75F" : "#748c94",
                 }}
               />
             </View>
@@ -133,7 +133,7 @@ function TabNavigator() {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#FBC75F" : "#748c94",
                 }}
               />
             </View>

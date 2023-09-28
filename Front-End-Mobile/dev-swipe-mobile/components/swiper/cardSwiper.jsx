@@ -16,7 +16,7 @@ const Card = (props) => {
 
   return (
     <View style={styles.card}>
-    <Image style={styles.user_image} source={require("../../assets/Profileimage.png")}/>
+    <Image style={styles.user_image} source={{uri: props.profile_image_url}}/>
     <Pressable style={styles.pressable_btn} onPress={()=>handleClicked(props.id)}>
       <Image style={styles.icons} source={require("../../assets/profile-btn.png")}/>
     </Pressable>
@@ -118,8 +118,8 @@ export default CardSwiper;
 
 const styles = StyleSheet.create({
   card: {
-    width: 340,
-    height: 450,
+    width: 320,
+    height: 520,
     borderRadius: 54,
     borderWidth: 2,
     borderColor: "#E8E8E8",

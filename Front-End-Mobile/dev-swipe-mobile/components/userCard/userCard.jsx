@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         marginLeft: 10
-    },press_container: {
+    },
+    press_container: {
       display: 'flex',
       flexDirection: 'row',
       columnGap: 20,
@@ -67,8 +68,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     profile_image: {
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         backgroundColor: 'red',
         borderRadius: 120,
         resizeMode: 'cover',

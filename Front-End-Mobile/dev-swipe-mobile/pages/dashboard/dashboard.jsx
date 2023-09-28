@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     swiper_container: {
-        height: 530
+        height: windowHeight,
+        paddingBottom:100,
     },
     swiper_buttons: {
         width: '100%',
