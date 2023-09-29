@@ -10,6 +10,7 @@ const Register = () =>{
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState('');
     const [selected, setSelected] = useState(null);
+    const [isError, setIsError] = useState(false)
 
     const onChangeHandler = (option) => {
         setSelected(option)
@@ -31,9 +32,11 @@ const Register = () =>{
         try {
             if (inputs.password !== inputs.confirm_password){
                 setError('Passwords dont match!');
+                setIsError(true)
                 console.log(error);
             }else if(!inputs.name || !inputs.email || !inputs.password, !inputs.confirm_password || !inputs.country){
                 setError('All fields required');
+                setIsError(true)
                 console.log(error);
             }else{
                 console.log(inputs)
@@ -69,14 +72,24 @@ const Register = () =>{
                     window.location.href = `/dashboard/profile/${id}`
                 }else{
                     setError('Email already exists!');
+                    setIsError(true)
                     console.log(error);
                 }
             }
             
           } catch (error) {
-            console.error("Registration failed:", error);
+                setIsError(true)
+                console.error("Registration failed:", error);
           }
     }
+
+    useEffect(()=>{
+        if(isError){
+        setTimeout(() => {
+            setError(false)
+        }, 3000)
+    }
+    },[isError])
 
     return (
         <div className={styles.container}>
