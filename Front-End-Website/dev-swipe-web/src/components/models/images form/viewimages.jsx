@@ -5,8 +5,11 @@ import PopUpCard from "../../popup card/popupcard";
 import CustomButton from "../../custom button/custombutton";
 import { sendRequest } from "../../../utils/functions/axios";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
+import { localStorageAction } from "../../../utils/functions/localStorage";
 
 const ViewImages = ({isOpen ,imgs}) =>{
+    const userId = localStorageAction('user_id');
+
     console.log("the users",imgs)
     const [error, setError] = useState('');
     const hideModel =() =>{
@@ -21,15 +24,10 @@ const ViewImages = ({isOpen ,imgs}) =>{
             : setSelected([...selected, id]);
         };
 
-        // const onDelete = id => () => {
-        //     selected.includes(id)
-        //       ? setSelected(selected.filter(x => x !== id))
-        //       : setSelected([...selected, id]);
-        //   };
     console.log('deleted images are ', selected);
 
     const removeImages = async () =>{
-        const mySkills = JSON.stringify(selected);
+        const myImages = JSON.stringify(selected) ;
 
         try {
             if(!selected){
@@ -40,7 +38,7 @@ const ViewImages = ({isOpen ,imgs}) =>{
                 const response = await sendRequest({
                     route: "/user/developer/delete_user_image",
                     method: requestMethods.POST,
-                    body:{image_id: mySkills}
+                    body:{image_id: myImages}
                 });
                 const data = response;
                 console.log("res of removing skills", response)
@@ -48,8 +46,8 @@ const ViewImages = ({isOpen ,imgs}) =>{
     
                 if(data.status == 'success'){
                     console.log("successfully removed images")
-                    hideModel()
-                    hideModel()
+                    hideModel();
+                    window.location.href = `/dashboard/profile/${userId}`;
                 }else{
                     setError("failed to remove!");
                     console.log(error);
@@ -79,13 +77,6 @@ const ViewImages = ({isOpen ,imgs}) =>{
                             <img src={`${img.image_url}`} alt="user image" />
                         </div>
                     ))}
-                    {/* {skills.map((skill)=>(
-                        <div key={skill.id} className={styles.box}>
-                            <input id={`${skill.id}`} type="checkbox" name={`${skill.name}`}checked={selected.includes(skill.id)}
-                                onChange={onChangeHandler(skill.id)}/>
-                            <label htmlFor={`${skill.id}`}> {skill.name}</label>
-                        </div>
-                    ))} */}
                 </div>
             </div>
         </div>

@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from "react";
 import styles from './editform.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
-import PopUpCard from "../../popup card/popupcard";
 import CustomInput from "../../custom input/custominput";
 import CustomButton from "../../custom button/custombutton";
 import { localStorageAction } from "../../../utils/functions/localStorage";
@@ -16,7 +15,6 @@ const EditForm = ({isOpen, data}) =>{
     const [error, setError] = useState('');
 
     const [userSkills,setUserSkills] = useState([]); //user skill
-    // const [removeSkills,setRemoveSkills] = useState([]); //remove user skill
     const [selected, setSelected] = useState([]); //add
 
     const [skills, setSkills] = useState([]);
@@ -50,7 +48,6 @@ const EditForm = ({isOpen, data}) =>{
             });
         }
     },[search, userType]);
-    console.log(inputs.linkedin_url)
 
     const inputChange = (event) => {
         setSearch(event.target.value);
@@ -62,13 +59,15 @@ const EditForm = ({isOpen, data}) =>{
         ? setSelected(selected.filter(x => x !== id))
         : setSelected([...selected, id]);
     };
-
-    // const remove = id => () => {
-    //     userSkills.includes(id)
-    //       ? setUserSkills(userSkills.filter(x => x !== id))
-    //       : setError('skills doesnt exist, cant remove');
-    //     };
-    //     console.log(userSkills)   onClick={() => remove(skill.skill_id)}
+        
+    const filtering = (id) =>{
+        console.log(id, userSkills)
+        console.log("mohammad hussein")
+        const filtered = userSkills.filter(row => row.skill.id !== id)
+        console.log("filtered",filtered);
+        setUserSkills(filtered)
+        console.log(userSkills, 'useeerskiliss')
+    }
 
     const hideModel =() =>{
         isOpen(prev => !prev);
@@ -170,6 +169,33 @@ const EditForm = ({isOpen, data}) =>{
           }
     }
 
+    const removeUserSkills = async (id) =>{
+        const removeSkill = JSON.stringify([id]);
+
+        try {
+            const response = await sendRequest({
+                route: "/user/developer/remove_skills",
+                method: requestMethods.POST,
+                body:{user_skills: removeSkill}
+            });
+            const data = response;
+            console.log("res of removing skills", response)
+            const token = " ";
+
+            if(data.status == 'successfully deleted skills'){
+                console.log("majeeed")
+                console.log("successfully removed", id)
+                filtering(id)
+            }else{
+                setError("failed to add!");
+                console.log(error);
+            }
+            
+          } catch (error) {
+            console.error("bad request. failed:", error);
+          }
+    }
+
     const updateUserInfo = async () =>{
         const userId = localStorageAction("user_id");
 
@@ -248,7 +274,7 @@ const EditForm = ({isOpen, data}) =>{
                     <div className={styles.header}>Skills</div>
                     <div className={styles.scrollable_container}>
                     {userSkills && userSkills.map((skill)=>(
-                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'} cursor={'pointer'}/>
+                        <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} image_name={'Close.png'} display={'flex'} flexDirection={'row-reverse'} alignItems={'center'} backgroundColor={'#C2D0FF'} padding={'0.6rem 1rem'} borderRadius={8} image_height={18} image_width={18} width={'fit-content'} cursor={'pointer'} onClick={()=> removeUserSkills(skill.skill.id)}/>
                     ))}
                     {!userSkills ?(
                         <div>Starting adding skills to you profile</div>
