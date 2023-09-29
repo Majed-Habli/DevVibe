@@ -77,7 +77,7 @@ const Login = () =>{
                     <div className={styles.input_container}>
                         <div className={styles.col}>
                             <CustomInput label={'Email'} name={'email'} value={inputs.email} handleChange={handleChange} width={323} height={38} fontSize={12} fontWeight={600}/>
-                            <CustomInput label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={600}/>
+                            <CustomInput type={'password'} label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={600}/>
                         </div>
                     </div>
                     <div className={styles.button_container}>
