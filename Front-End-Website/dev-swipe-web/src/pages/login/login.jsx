@@ -5,10 +5,12 @@ import CustomButton from "../../components/custom button/custombutton";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
+import { useEffect } from "react";
 
 const Login = () =>{
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState('');
+    const [isError, setIsError] = useState(false)
 
     const handleChange = (e) => {
         setInputs((prev) => ({
@@ -27,6 +29,7 @@ const Login = () =>{
         try {
             if(!inputs.email || !inputs.password){
                 setError('All fields required');
+                setIsError(true)
                 console.log(error);
             }else{
 
@@ -60,8 +63,17 @@ const Login = () =>{
             
           } catch (error) {
             setError("Wrong credentials!");
+            setIsError(true)
           }
     }
+
+    useEffect(()=>{
+        if(isError){
+            setTimeout(() => {
+                setError(false)
+            }, 3000)
+        }
+    },[isError])
 
     return (
         <div className={styles.container}>
@@ -72,7 +84,7 @@ const Login = () =>{
                         <CustomInput label={'Email'} name={'email'} value={inputs.email} handleChange={handleChange} width={323} height={38} fontSize={12} fontWeight={600}/>
                         <CustomInput type={'password'} label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={600}/>
                     </div>
-                    {error  && (<div styles={styles.error_text}>{error}</div>)}
+                    {isError  && (<div className={styles.error_text}>{error}</div>)}
                 </div>
                 <div className={styles.cto}>Don't have an account? <span onClick={goToPage}>Register now</span></div>
                 <div className={styles.button_container}>
