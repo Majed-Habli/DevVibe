@@ -142,7 +142,7 @@ const HeaderComp = ({data}) =>{
                 {data.rec_details?.company_name ? (
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Works at:</div>
-                        <div className={styles.company_name}>{user.company_name} ,{data.country}</div>
+                        <div className={styles.company_name}>{user.company_name} {data.country}</div>
                     </div>
                 ):(
                     <div className={styles.company_details}>
