@@ -108,8 +108,8 @@ const Register = () =>{
                         <CustomInput label={'Country'} name={'country'} value={inputs.country} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
                     </div>
                     <div className={styles.row}>
-                        <CustomInput label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
-                        <CustomInput label={'Confirm Password'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
+                        <CustomInput type={'password'} label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
+                        <CustomInput type={'password'} label={'Confirm Password'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
                     </div>
                 </div>
                 <div className={styles.cto}>Already have an account? <span onClick={goToPage}>Login now</span></div>
