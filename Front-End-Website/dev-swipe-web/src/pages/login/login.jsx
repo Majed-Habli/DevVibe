@@ -55,14 +55,11 @@ const Login = () =>{
                     localStorageAction("profile_image", profileImageUrl);
 
                     window.location.href = '/dashboard';
-                }else{
-                    setError("Email Doesn't exists!");
-                    console.log(error);
                 }
             }
             
           } catch (error) {
-            console.error("Login failed:", error);
+            setError("Wrong credentials!");
           }
     }
 
@@ -75,6 +72,7 @@ const Login = () =>{
                         <CustomInput label={'Email'} name={'email'} value={inputs.email} handleChange={handleChange} width={323} height={38} fontSize={12} fontWeight={600}/>
                         <CustomInput type={'password'} label={'Password'} name={'password'} value={inputs.password} handleChange={handleChange} width={323} height={38}fontSize={12} fontWeight={600}/>
                     </div>
+                    {error  && (<div styles={styles.error_text}>{error}</div>)}
                 </div>
                 <div className={styles.cto}>Don't have an account? <span onClick={goToPage}>Register now</span></div>
                 <div className={styles.button_container}>
