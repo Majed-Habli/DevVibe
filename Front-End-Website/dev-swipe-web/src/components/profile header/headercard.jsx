@@ -76,7 +76,7 @@ const HeaderComp = ({data, images}) =>{
         }else{
             setShowButtons(false);
         }
-    })
+    },[data])
 
     useEffect(()=>{
         if(data.length <= 0){

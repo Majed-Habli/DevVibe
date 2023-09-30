@@ -25,6 +25,7 @@ const Profile = () =>{
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
+    const [userData, setUserData] = useState([]);
     const params = useParams();
     const userId = localStorageAction("user_id");
 
@@ -149,23 +150,19 @@ const Profile = () =>{
         }else{
             setShowButtons(false);
         }
-    })
+    },[params.id])
 
-    useEffect(()=>{
-        if(skills.length <= 0){
-            setLoading(true)
-        }else{
-            setLoading(false)
-        }
-    },[skills]);
+    // useEffect(()=>{
 
-    useEffect(()=>{
-        if(images.length <= 0){
-            setLoadingImages(true)
-        }else{
-            setLoadingImages(false)
-        }
-    },[images]);
+    // },[skills]);
+
+    // useEffect(()=>{
+    //     if(images.length <= 0){
+    //         setLoadingImages(true)
+    //     }else{
+    //         setLoadingImages(false)
+    //     }
+    // },[images]);
 
     useEffect(()=>{
         if(!user.length > 0){
@@ -173,11 +170,25 @@ const Profile = () =>{
         }else{
             setLoading(false)
         }
-    },[user])
+
+        if(images.length <= 0){
+            setLoadingImages(true)
+        }else{
+            setLoadingImages(false)
+        }
+
+        if(skills.length <= 0){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[user,images, skills])
 
     useEffect(()=>{
-        setUser({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
-    },[]);
+        setUserData({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
+    },[user]);
+
+    console.log(userData)
 
     return(
         <div className={styles.page_container}>
@@ -195,7 +206,7 @@ const Profile = () =>{
                     </div>
                     <div className={styles.description_text}>
                         <div>Biography</div>
-                        <div>{user.description}</div>
+                        <div>{userData.description}</div>
                     </div>
                 </div>
             </div>

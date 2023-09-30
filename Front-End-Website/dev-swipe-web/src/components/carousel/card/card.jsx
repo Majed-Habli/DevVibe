@@ -42,12 +42,12 @@ const CardCarouselComp = ({information ,issue}) => {
         {information.map((val)=>(
             <SwiperSlide key={val.id} className={styles.swiper_slide2}>
                 <img src={`${val.matched_with.profile_image_ur}`} alt="user images" />
-                <div className='{styles.text_container}'>
+                <div className={styles.text_container}>
                   
                   <div>{val.matched_with.user_name}</div>
-                  {val.matched_with.user_type_id === 2 ? (<div className='{styles.user_title}'>Developer</div>):(<div className='{styles.user_title}'>Recruiter</div>)}
+                  {val.matched_with.user_type_id === 2 ? (<div className={styles.user_title}>Developer</div>):(<div className={styles.user_title}>Recruiter</div>)}
                 </div>
-                <div className='{styles.button_container2}'>
+                <div className={styles.button_container2}>
                   <CustomButton title={'Profile'} width={120} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={'bold'} backgroundColor={'#FCC860'} onClick={()=>goToPage(val.matched_with.id)}/> 
                 </div>
             </SwiperSlide>

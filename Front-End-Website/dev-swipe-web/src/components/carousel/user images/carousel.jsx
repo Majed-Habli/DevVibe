@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import styles from './carousel.css';
+import './carousel.css';
 import SyncLoader from "react-spinners/ClipLoader";
 
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -51,7 +51,7 @@ const CarouselComp = ({value ,issue}) => {
         }}
 
         modules={[Pagination, Navigation]}
-        className={styles.mySwiper}
+        className='mySwiper'
       >
         {value.map((val)=>(
             <SwiperSlide key={val.id}>
