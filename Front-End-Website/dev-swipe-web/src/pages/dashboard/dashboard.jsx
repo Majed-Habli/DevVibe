@@ -10,7 +10,6 @@ const Dashboard = () =>{
         <div className={styles.page_container}>
             <div className={styles.page_header}>
                 <div className={styles.statement}>Dashboard</div>
-
             </div>
             <div className={styles.component_container}>
                 <div className={styles.component_container_left}>
