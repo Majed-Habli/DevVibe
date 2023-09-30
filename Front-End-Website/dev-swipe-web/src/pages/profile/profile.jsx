@@ -167,6 +167,18 @@ const Profile = () =>{
         }
     },[images]);
 
+    useEffect(()=>{
+        if(!user.length > 0){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[user])
+
+    useEffect(()=>{
+        setUser({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
+    },[]);
+
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
@@ -175,12 +187,15 @@ const Profile = () =>{
                     <HeaderComp data={user} images={images}/>
                 </div>
                 <div className={styles.body_container}>
-                    {/* <HeaderComp data={user}/> */}
                     <div className={styles.carousel_container}>
                         {!loadingImages ? (<CarouselComp value={images} issue={errorImages}/>):
                         (<div className={styles.loading_container}>
                             <SyncLoader color="#36d7b7" />
                         </div>)}
+                    </div>
+                    <div className={styles.description_text}>
+                        <div>Biography</div>
+                        <div>{user.description}</div>
                     </div>
                 </div>
             </div>

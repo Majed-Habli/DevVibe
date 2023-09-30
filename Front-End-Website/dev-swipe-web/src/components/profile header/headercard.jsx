@@ -65,11 +65,9 @@ const HeaderComp = ({data, images}) =>{
 
     useEffect(()=>{
 
-        setUser({description: userType === 3 ? (data.rec_details?.description || "") : (data.dev_details?.description || ""),
-        github_url: userType === 3 ? (data.rec_details?.github_url || "") : (data.dev_details?.github_url || ""),
+        setUser({github_url: userType === 3 ? (data.rec_details?.github_url || "") : (data.dev_details?.github_url || ""),
         linkedin_url: userType === 3 ? (data.rec_details?.linkedin_url || "") : (data.dev_details?.linkedin_url || ""),
-        resume: userType === 3 ? data.dev_details?.linkedin_url : "",
-        profile_image_url: data.profile_image_url})
+        resume: userType === 3 ? data.dev_details?.linkedin_url : ""})
     },[data]);
 
     useEffect(()=>{
@@ -90,22 +88,16 @@ const HeaderComp = ({data, images}) =>{
 
     return(
         <>
-        {loading ?(<div className={styles.container}>
-            <div>
-                <SyncLoader color="#36d7b7" />
-            </div>
-        </div>):
-        (<div className={styles.container}>
-            {/* <div className={styles.middle_row}> */}
-            <div className={styles.container_body}>
+        <div className={styles.container}>
+            {!loading ?(<div className={styles.container_body}>
                 <div className={styles.image_container}>
                     <div className={styles.inner_container}>
                         <CustomImageButton image_width={20} image_height={20} cursor={'hover'} image_name={'profile-upload.png'} onClick={()=>viewModelUpload()}/>
                     </div>
-                    {!user.profile_image_url ? (
+                    {!data.profile_image_url ? (
                         <img src="/default-user.png" alt="user profile image" />
                     ):(
-                        <img src={`${user.profile_image_url}`} alt="recipe img" />
+                        <img src={`${data.profile_image_url}`} alt="recipe img" />
                     )}
                 </div>
                 <div className={styles.details}>
@@ -113,12 +105,13 @@ const HeaderComp = ({data, images}) =>{
                         <div className={styles.user_name}>{data.user_name}</div>
                         <div className={styles.user_email}>{data.email}</div>
                     </div>
-                    {data.rec_details?.company_name ? (
+                    {data.rec_details?.company_name && (
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Works at:</div>
                         <div className={styles.company_name}>{user.company_name} {data.country}</div>
                     </div>
-                    ):(
+                    )}
+                    {data.country &&(
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Lives in:</div>
                         <div className={styles.company_name}>{data.country}</div>
@@ -145,12 +138,16 @@ const HeaderComp = ({data, images}) =>{
 
                     <CustomImageButton text={'View Images'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'black'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} onClick={()=>ViewModelImages()} cursor={'pointer'}/>
 
-                    <CustomImageButton text={'Upload New Image'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'black'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} onClick={()=>viewModelUpload()} cursor={'pointer'}/>
+                    <CustomImageButton text={'Upload New Image'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'black'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} onClick={()=>showUploadImagesModel()} cursor={'pointer'}/>
 
                 
                     <CustomImageButton text={'Upload New Resume'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={14} image_width={14} backgroundColor={'black'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
                 </div>}
-            </div>
+            </div>):(<div className={styles.container}>
+                <div>
+                    <SyncLoader color="#36d7b7" />
+                </div>
+            </div>)}
                 {/* <div className={styles.middle_right}>
                     {user.description ?(
                         <div className={styles.description}>{user.description}</div>
@@ -192,7 +189,7 @@ const HeaderComp = ({data, images}) =>{
 
             {showUploadImages && (
                 <div className={styles.popup_background}>
-                    <ViewUpload isOpen={setShowUploadModel} type={'2'} />
+                    <ViewUpload isOpen={setShowUploadImagesModel} type={'2'} />
                 </div>
             )}
 
@@ -201,7 +198,7 @@ const HeaderComp = ({data, images}) =>{
                     <ViewUploadResume isOpen={setShowUploadResume}/>
                 </div>
             )}
-        </div>)}
+        </div>
         </>
     )
 }
