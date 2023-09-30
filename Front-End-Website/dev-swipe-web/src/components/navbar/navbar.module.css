@@ -41,10 +41,15 @@
 
 .container_left{
     display: flex;
+    flex-flow: row-reverse;
     column-gap: 0.5rem;
     align-items: center;
     cursor: pointer;
     color: white;
+}
+
+.container_right{
+    cursor: pointer;
 }
 
 .profile_image_container{

@@ -67,19 +67,18 @@ const Navbar = () => {
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} display={'flex'} justifyContent={'center'} alignItems={'center'} backgroundColor={'#FCC860'}/>
                 ):(
                     <div>
-                        {/* <div className={styles.route} onClick={()=>goToPage({value:path})}>Dashboard</div> */}
                         <div className={styles.card_container}>
-                            <div className={styles.container_left} onClick={()=>goToPage({})}>
-                                <div className={styles.profile_image_container}>
+                            <div className={styles.container_left}>
+                                <CustomImageButton image_name={'arrow_white.png'} image_height={20}
+                                image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={()=>showView()} cursor={'pointer'}/>
+                                <div className={styles.user_name} onClick={()=>goToPage({})}>{userName}</div>
+                            </div>
+                            <div className={styles.container_right}>
+                                <div className={styles.profile_image_container} onClick={()=>goToPage({})}>
                                     {profileImageUrl != null ?(<img src={`${profileImageUrl}`} alt="profile image" />):(
                                         <img src='/default-user.png' alt="profile image" />
                                     )}
                                 </div>
-                                <div className={styles.user_name}>{userName}</div>
-                            </div>
-                            <div className={styles.container_right}>
-                                <CustomImageButton image_name={'arrow_white.png'} image_height={20}
-                                image_width={20} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={()=>showView()} cursor={'pointer'}/>
                             </div>
                         </div>
                     </div>
