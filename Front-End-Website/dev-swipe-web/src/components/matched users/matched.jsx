@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from './matched.module.css';
+import CardCarouselComp from "../carousel/card/card";
 import CustomButton from "../custom button/custombutton";
 import Card from "../user card/card";
 import CustomImageButton from "../custom button/customImageButton";
@@ -53,12 +54,14 @@ const MatchedTable = () =>{
     useEffect(()=>{
         getMatched();
     },[]);
+
+    console.log(users)
     return(
         <div className={styles.matched_container}>
             <div className={styles.table_header}>Matched with</div>
             <div className={styles.table_body}>
                 <div className={styles.inner_table_container}>
-                    <div className={styles.inner_table_header}>
+                    {/* <div className={styles.inner_table_header}>
                         <div className={styles.space}></div>
                         <div className={`${styles.cell} ${styles.width_username}`}>Developer</div>
                         <div className={`${styles.cell} ${styles.width_skill}`}>Skills</div>
@@ -96,7 +99,11 @@ const MatchedTable = () =>{
                         ))}
                     </div>):(
                         <div className={styles.error_message}>{error}</div>
-                    )}
+                    )} */}
+                    {!error? 
+                        <CardCarouselComp information={users} issue={error}/>
+                        :(<div className={styles.error_message}>{error}</div>)
+                    }
                 </div>
             </div>
         </div>

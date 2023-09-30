@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import './carousel.css';
+import styles from './carousel.css';
 
 // import required modules
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -66,7 +66,7 @@ const CarouselComp = ({value ,issue}) => {
         //   },
         // }} EffectCoverflow
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className={styles.mySwiper}
       >
         {value.map((val)=>(
             <SwiperSlide key={val.id} onClick={openImage}>
@@ -85,7 +85,7 @@ const CarouselComp = ({value ,issue}) => {
             <div className='swiper-pagination'></div>
         </div> */}
       </Swiper>):(
-        <div className='error_message'>{error}</div>
+        <div className={styles.error_message}>{error}</div>
       )}
     </>
   );

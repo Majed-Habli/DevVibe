@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from './profile.module.css';
 import HeaderComp from "../../components/profile header/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
-import CarouselComp from "../../components/carousel/carousel";
+import CarouselComp from "../../components/carousel/user images/carousel";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
