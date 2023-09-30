@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './profile.module.css';
 import HeaderComp from "../../components/profile header/headercard";
 import CustomImageButton from "../../components/custom button/customImageButton";
@@ -45,7 +45,6 @@ const Profile = () =>{
                 if(data.status == 'success'){
                     if(data.data == ''){
                         setErrorSkills(`${user.user_name}, has no skills yet.`)
-                        // console.log(error)
                     }
 
                     const obj = data.data;
@@ -111,7 +110,6 @@ const Profile = () =>{
                 if(data.status == 'success'){
                     if(data.data == ''){
                         setErrorImages(`${user.user_name}, has no pics yet.`)
-                        // console.log(error)
                     }
                     const obj = data.data;
                     setImages(obj);
@@ -160,13 +158,11 @@ const Profile = () =>{
                 </div>
                 {showButtons && <div className={styles.button_container}>
                     <CustomImageButton text={'view images'} width={'fit-content'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"gallery.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModel()} cursor={'pointer'}/>
-                    {/* <input type="file" name="upload_file[]" id="upload_file" multiple="multiple" className="{styles.form_control}" hidden/>
-                    <label class="upload_label" htmlFor="upload_file">
-                    </label> */}
-                        <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModelUpload()} cursor={'pointer'}/>
 
-                    
-                        <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
+                    <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModelUpload()} cursor={'pointer'}/>
+
+                
+                    <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
                 </div>}
             </div>
             <div className={styles.component_container}>
