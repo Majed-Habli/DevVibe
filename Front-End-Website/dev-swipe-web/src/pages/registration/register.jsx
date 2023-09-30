@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import styles from './register.module.css';
 import CustomInput from "../../components/custom input/custominput";
 import CustomButton from "../../components/custom button/custombutton";
@@ -124,6 +124,7 @@ const Register = () =>{
                         <CustomInput type={'password'} label={'Confirm Password'} name={'confirm_password'} value={inputs.confirm_password} handleChange={handleChange} width={200} height={38}fontSize={12} fontWeight={600}/>
                     </div>
                 </div>
+                {isError  && (<div className={styles.error_text}>{error}</div>)}
                 <div className={styles.cto}>Already have an account? <span onClick={goToPage}>Login now</span></div>
                 <div className={styles.button_container}>
                     <CustomButton width={220} height={50} title={'Register'} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={18} fontWeight={600} borderRadius={4} backgroundColor={'#FCC860'} onClick={onRegister}/>
