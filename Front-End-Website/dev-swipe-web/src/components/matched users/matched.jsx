@@ -5,15 +5,24 @@ import CustomButton from "../custom button/custombutton";
 import Card from "../user card/card";
 import CustomImageButton from "../custom button/customImageButton";
 import { localStorageAction } from "../../utils/functions/localStorage";
-import { sendRequest } from "../../utils/functions/axios";
-
 import { requestMethods } from "../../utils/functions/requestMethods.";
+import { sendRequest } from "../../utils/functions/axios";
+import SyncLoader from "react-spinners/ClipLoader";
+
 
 const MatchedTable = () =>{
     const [users, setUsers] = useState([]);
     const [error,setError] = useState('');
     const [skills, setSkills] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+    useEffect(()=>{
+        if(users.length <= 0){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[users])
 
     const getMatched = async () =>{
         const token = localStorageAction("token");
@@ -60,7 +69,7 @@ const MatchedTable = () =>{
         <div className={styles.matched_container}>
             <div className={styles.table_header}>Matched with</div>
             <div className={styles.table_body}>
-                <div className={styles.inner_table_container}>
+                {!loading ? (<div className={styles.inner_table_container}>
                     {/* <div className={styles.inner_table_header}>
                         <div className={styles.space}></div>
                         <div className={`${styles.cell} ${styles.width_username}`}>Developer</div>
@@ -100,11 +109,16 @@ const MatchedTable = () =>{
                     </div>):(
                         <div className={styles.error_message}>{error}</div>
                     )} */}
-                    {!error? 
+                    {!error?
                         <CardCarouselComp information={users} issue={error}/>
                         :(<div className={styles.error_message}>{error}</div>)
                     }
-                </div>
+                </div>):(
+                    <div className={styles.inner_table_container}>
+                        <SyncLoader color="#36d7b7" />
+                    </div>
+
+                )}
             </div>
         </div>
     )
