@@ -51,9 +51,14 @@ const AnalyticsComponent = () =>{
                 Statistics
             </div>
             <div className={styles.container_body}>
-                <div className={`${styles.chart_container} ${styles.spacing}`}>
-                    <Donut value={stats.view_count} backgroundColor={'#F56954'}/>
-                    <div>Viewed</div>
+                <div className={styles.row_container}>
+                    <div className={styles.count_container}>
+                        <div className={styles.box_container}>
+                            <div className={styles.txt}>{stats.view_count}</div>
+                        </div>
+                        <div className={styles.component_text}>Viewed</div>
+                    </div>
+                    <div className={styles.vertical_line}></div>
                 </div>
                 <div className={styles.chart_container}>
                     <Donut value={stats.matched_count} backgroundColor={'#3C8DBC'}/>
