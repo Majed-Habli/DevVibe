@@ -60,14 +60,14 @@ const Navbar = () => {
     return(
         <div className={styles.navbar_container}>
             <div className={styles.navbar_content}>
-                <div className={styles.logo_container}>
+                <div className={styles.logo_container} onClick={()=>goToPage({value:path})}>
                     <img src="/Logo2-0.png" alt="brand logo" />
                 </div>
                 {token == null ? (
                     <CustomButton title={'Login'} width={93} height={27} borderRadius={4} display={'flex'} justifyContent={'center'} alignItems={'center'} backgroundColor={'#FCC860'}/>
                 ):(
-                    <div className={styles.routing_pressables}>
-                        <div className={styles.route} onClick={()=>goToPage({value:path})}>Dashboard</div>
+                    <div>
+                        {/* <div className={styles.route} onClick={()=>goToPage({value:path})}>Dashboard</div> */}
                         <div className={styles.card_container}>
                             <div className={styles.container_left} onClick={()=>goToPage({})}>
                                 <div className={styles.profile_image_container}>

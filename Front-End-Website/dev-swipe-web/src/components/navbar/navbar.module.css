@@ -25,6 +25,7 @@
 .logo_container{
     width: 150px;
     height: 35px;
+    cursor: pointer;
 }
 
 .logo_container img{
@@ -43,6 +44,7 @@
     column-gap: 0.5rem;
     align-items: center;
     cursor: pointer;
+    color: white;
 }
 
 .profile_image_container{
