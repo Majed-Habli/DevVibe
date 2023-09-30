@@ -24,9 +24,6 @@ const HeaderComp = ({data}) =>{
 
     const [user, setUser] = useState({});
 
-    const [uploadImage, setUploadImage] = useState('');
-    const [tempView, setTempView] = useState('');
-
     const ViewModel = () =>{
         setShowModel(true);
     }
@@ -38,7 +35,6 @@ const HeaderComp = ({data}) =>{
     }
 
     const downloadPdf = (url) => {
-        console.log(url)
         const pdfName = url.split('/').pop();
         const alink = document.createElement('a');
         alink.href = url;
@@ -88,7 +84,7 @@ const HeaderComp = ({data}) =>{
                 <div className={styles.middle_left}>
                     <div className={styles.image_container}>
                         <div className={styles.inner_container}>
-                            <CustomImageButton image_width={20} image_height={20} image_name={'profile-upload.png'} onClick={()=>viewModelUpload()}/>
+                            <CustomImageButton image_width={20} image_height={20} cursor={'hover'} image_name={'profile-upload.png'} onClick={()=>viewModelUpload()}/>
                         </div>
                         
 
@@ -144,7 +140,7 @@ const HeaderComp = ({data}) =>{
                 </div>
             )}
             {showUploadModel && (
-                <div className={styles.popup_background}>hey
+                <div className={styles.popup_background}>
                     <ViewUpload isOpen={setShowUploadModel} type={'1'}/>
                 </div>
             )}
