@@ -143,7 +143,7 @@ const HeaderComp = ({data, images}) =>{
                 
                     <CustomImageButton text={'Upload New Resume'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={14} image_width={14} backgroundColor={'black'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
                 </div>}
-            </div>):(<div className={styles.container}>
+            </div>):(<div className={styles.loading}>
                 <div>
                     <SyncLoader color="#36d7b7" />
                 </div>

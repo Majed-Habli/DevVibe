@@ -41,7 +41,13 @@
 
 .skills_list{
     display: flex;
+    flex-wrap: wrap;
+    overflow-x: scroll;
     column-gap: 1rem;
+}
+
+.skills_list::-webkit-scrollbar{
+    display: none;
 }
 
 .description_text{
