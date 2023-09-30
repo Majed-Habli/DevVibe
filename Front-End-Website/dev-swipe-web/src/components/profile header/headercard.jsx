@@ -108,7 +108,7 @@ const HeaderComp = ({data}) =>{
     return(
         <div className={styles.container}>
             <div className={styles.top_row}>
-                {showButtons && <CustomButton title={'Edit'} onClick={ViewModel}/>}
+                {showButtons && <CustomButton title={'Edit'} image_url={'/Edit.png'} image_width={24} image_height={24} onClick={ViewModel}/>}
             </div>
             <div className={styles.middle_row}>
                 <div className={styles.middle_left}>
@@ -153,9 +153,7 @@ const HeaderComp = ({data}) =>{
                 {user && userType == 2 && (
                     <div className={styles.flex}>
                         {user.resume && (
-                            // <a href = {`${user.resume}`} download = {`${user.resume}`}>
-                                <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} cursor={'pointer'} onClick={()=>{downloadPdf(user.resume)}}/>
-                            // </a>
+                            <CustomImageButton image_name={'Uploadfile.png'} image_width={36} image_height={36} cursor={'pointer'} onClick={()=>{downloadPdf(user.resume)}}/>
                         )}
                         {user.github_url && (
                             <CustomImageButton image_name={'Github.png'} image_width={36} image_height={36} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
