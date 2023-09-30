@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 import styles from './carousel.css';
+import SyncLoader from "react-spinners/ClipLoader";
 
-// import required modules
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 
 const CarouselComp = ({value ,issue}) => {
   const [error,setError] = useState('');
-  const openImage = () =>{
-      console.log('hi')
-  }
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=>{
+      if(value.length <= 0){
+          setLoading(true)
+      }else{
+          setLoading(false)
+      }
+  },[value])
 
   useEffect(()=>{
     if(issue){
@@ -25,7 +28,7 @@ const CarouselComp = ({value ,issue}) => {
 
   return (
     <>
-      {!error ? (<Swiper
+      {!error ?( !loading ?(<Swiper
         centeredSlides={true}
         effect={'coverflow'}
         slidesPerView={3}
@@ -37,7 +40,6 @@ const CarouselComp = ({value ,issue}) => {
         }}
         pagination={{
           clickable: false,
-        //   el: '.swiper-pagination'
         }}
         loop= { true}
         initialSlide={1}
@@ -47,45 +49,21 @@ const CarouselComp = ({value ,issue}) => {
             depth: 100,
             modifier: 2.5
         }}
-        // breakpoints={{
-        //   '@0.00': {
-        //     slidesPerView: 1,
-        //     spaceBetween: 10,
-        //   },
-        //   '@0.75': {
-        //     slidesPerView: 2,
-        //     spaceBetween: 20,
-        //   },
-        //   '@1.00': {
-        //     slidesPerView: 3,
-        //     spaceBetween: 40,
-        //   },
-        //   '@1.50': {
-        //     slidesPerView: 4,
-        //     spaceBetween: 50,
-        //   },
-        // }} EffectCoverflow
+
         modules={[Pagination, Navigation]}
         className={styles.mySwiper}
       >
         {value.map((val)=>(
-            <SwiperSlide key={val.id} onClick={openImage}>
+            <SwiperSlide key={val.id}>
                 <img src={`${val.image_url}`} alt="user images" />
             </SwiperSlide>
         ))}
-        
-        {/* <div className='slider-controler'>
-            <div className='swiper-button-prev slider-arrow'>
-                <ion-icon nmme="arrow-back-outline"></ion-icon>
-                <img src="/arrow.png" alt="" />
-            </div>
-            <div className='swiper-button-next slider-arrow'>
-                <ion-icon na  me="arrow-forward-outline"></ion-icon>
-            </div>
-            <div className='swiper-pagination'></div>
-        </div> */}
-      </Swiper>):(
-        <div className={styles.error_message}>{error}</div>
+                
+      </Swiper>):( <div className='container'><SyncLoader color="#36d7b7" /></div>)):(
+        <div className='error_message'>
+          <img src='/images.png'/>
+          <div>{error}</div>
+        </div>
       )}
     </>
   );

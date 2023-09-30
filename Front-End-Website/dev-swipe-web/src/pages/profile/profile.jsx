@@ -45,7 +45,7 @@ const Profile = () =>{
     
                 if(data.status == 'success'){
                     if(data.data == ''){
-                        setErrorSkills(`${user.user_name}, has no skills yet.`)
+                        setErrorSkills(`user, has no skills yet.`)
                     }
 
                     const obj = data.data;
@@ -110,7 +110,7 @@ const Profile = () =>{
     
                 if(data.status == 'success'){
                     if(data.data == ''){
-                        setErrorImages(`${user.user_name}, has no pics yet.`)
+                        setErrorImages(`user, has no pics yet.`)
                     }
                     const obj = data.data;
                     setImages(obj);
@@ -182,7 +182,7 @@ const Profile = () =>{
                             {!loading ? (skills.map((skill)=>(
                                 <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={213} height={56} display={'flex'} alignItems={'center'} columnGap={'1rem'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
                             ))):(<div className={styles.loading_container}> <SyncLoader color="#36d7b7" /></div>)}
-                            {errorSkills &&(<div className={styles.error_container}>{errorSkills}</div>)}
+                            {errorSkills &&(<div className={styles.loading_container}>{errorSkills}</div>)}
                         </div>
                     </div>
                     <div className={styles.right_container}>
