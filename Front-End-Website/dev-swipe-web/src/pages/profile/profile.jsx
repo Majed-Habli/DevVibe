@@ -170,20 +170,53 @@ const Profile = () =>{
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
-            <div className={styles.header_comp}>
-                <div className={styles.head}>
-                    <HeaderComp data={user}/>
+            <div className={styles.component_body}>
+                {/* <div> */}
+                    {/* <div>
+                        <img></img>
+                    </div> */}
+                    {/* <div className={styles.image_container}>
+                        <div className={styles.inner_container}>
+                            <CustomImageButton image_width={20} image_height={20} cursor={'hover'} image_name={'profile-upload.png'} onClick={()=>viewModelUpload()}/>
+                        </div>
+                        
+
+                        {!user.profile_image_url ? (
+                            <img src="/default-user.png" alt="user profile image" />
+                        ):(
+                            <img src={`${user.profile_image_url}`} alt="recipe img" />
+                        )}
+                    </div>
+                    <div>
+                        <div>
+                            <div>majed habli</div>
+                            <div>majedhabli@gmail.com</div>
+                        </div>
+                        <div>Beirut, lebanon</div>
+                        <div>socials comps</div>
+                    </div>
+                    <div>button groups</div>
+
+                </div> */}
+{/* //////////////////// */}
+
+                <div className={styles.header}>
+                    <HeaderComp data={user} images={images}/>
                 </div>
-                {showButtons && <div className={styles.button_container}>
+                <div className={styles.body_container}>
+                    {/* <HeaderComp data={user}/> */}
+                </div>
+                
+                {/* {showButtons && <div className={styles.button_container}>
                     <CustomImageButton text={'view images'} width={'fit-content'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"gallery.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModel()} cursor={'pointer'}/>
 
                     <CustomImageButton text={'upload new image'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Vector.png"} image_height={16} image_width={16} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} onClick={()=>viewModelUpload()} cursor={'pointer'}/>
 
                 
                     <CustomImageButton text={'upload new resume'} width={190} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"upload-arrow.png"} image_height={14} image_width={14} backgroundColor={'white'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} cursor={'pointer'} onClick={()=>viewModelUploadResume()}/>
-                </div>}
+                </div>} */}
             </div>
-            <div className={styles.component_container}>
+            {/* <div className={styles.component_container}>
                 <div className={styles.componenet_body}>
                     <div className={styles.left_container}>
                         <div className={styles.title}>Skills: </div>
@@ -201,9 +234,9 @@ const Profile = () =>{
                         </div>)}
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            {showModel && (
+            {/* {showModel && (
                 <div className={styles.popup_background}>
                     <ViewImages isOpen={setShowModel} imgs={images}/>
                 </div>
@@ -219,7 +252,7 @@ const Profile = () =>{
                 <div className={styles.popup_background}>
                     <ViewUploadResume isOpen={setShowUploadResume}/>
                 </div>
-            )}
+            )} */}
         </div>
     )
 }

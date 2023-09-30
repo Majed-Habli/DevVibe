@@ -1,6 +1,6 @@
 import React from "react";
 
-const CustomImageButton = ({image_name, width, height, backgroundColor, borderRadius, display, alignItems, justifyContent, onClick ,image_width, image_height, text, columnGap, padding, boxShadow, flexDirection, cursor}) => {
+const CustomImageButton = ({image_name, width, height, backgroundColor, borderRadius, display, alignItems, justifyContent, onClick ,image_width, image_height, text, columnGap, padding, boxShadow, flexDirection, cursor, color}) => {
 
     const image_url = `/${image_name}`;
     const txt = text;
@@ -11,7 +11,7 @@ const CustomImageButton = ({image_name, width, height, backgroundColor, borderRa
         onClick={onClick}>
             <img style={{width: image_width,height: image_height}} src= {image_url} alt="" />
             {txt &&(
-                <div>{text}</div>
+                <div style={{color}}>{text}</div>
             )}
         </div>
     )
