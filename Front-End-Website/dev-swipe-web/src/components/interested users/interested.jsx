@@ -57,7 +57,7 @@ const InterestedTable = () => {
         <div className={styles.table_container}>
             <div className={styles.table_header}>
                 <div className={styles.header}>People interested in me</div>
-                <CustomButton title={'view all'} onClick={veiwAll}/>
+                <CustomButton title={'view all'} onClick={veiwAll} grow={true}/>
             </div>
             <div className={styles.table_body}>
                 {!errorDisplay ?(<Card data={users} button={true}/>):(
