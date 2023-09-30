@@ -9,7 +9,7 @@ const Dashboard = () =>{
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}>
-                <div className={styles.statement}>Welcome, </div> {/*{localStorageAction("user_name")}*/}
+                <div className={styles.statement}>Dashboard</div>
 
             </div>
             <div className={styles.component_container}>
