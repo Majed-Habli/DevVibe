@@ -18,10 +18,9 @@
 
 .statement{
     width: fit-content;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
     padding-bottom: 1rem;
-    border-bottom: 4px solid black;
 }
 
 .component_container{
