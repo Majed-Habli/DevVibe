@@ -7,9 +7,6 @@ import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { useParams } from "react-router-dom";
-import ViewImages from "../../components/models/images form/viewimages";
-import ViewUpload from "../../components/models/view upload/viewUpload";
-import ViewUploadResume from "../../components/models/view upload copy/viewUpload";
 import SyncLoader from "react-spinners/ClipLoader";
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -128,16 +125,6 @@ const Profile = () =>{
           }
     }
     
-    const viewModel = async() =>{
-        setShowModel(true)
-    }
-    const viewModelUpload = async() =>{
-        setShowUploadModel(true)
-    }
-    const viewModelUploadResume = async() =>{
-        setShowUploadResume(true)
-    }
-
     useEffect(()=>{
         getUser();
         getSkills();
@@ -205,43 +192,6 @@ const Profile = () =>{
                     </div>
                 </div>
             </div>
-            {/* <div className={styles.component_container}>
-                <div className={styles.componenet_body}>
-                    <div className={styles.left_container}>
-                        <div className={styles.title}>Skills: </div>
-                        <div className={styles.skill_cotainer}>
-                            {!loading ? (skills.map((skill)=>(
-                                <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={213} height={56} display={'flex'} alignItems={'center'} columnGap={'1rem'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
-                            ))):(<div className={styles.loading_container}> <SyncLoader color="#36d7b7" /></div>)}
-                            {errorSkills &&(<div className={styles.loading_container}>{errorSkills}</div>)}
-                        </div>
-                    </div>
-                    <div className={styles.right_container}>
-                        {!loadingImages ? (<CarouselComp value={images} issue={errorImages}/>):
-                        (<div className={styles.loading_container}>
-                            <SyncLoader color="#36d7b7" />
-                        </div>)}
-                    </div>
-                </div>
-            </div> */}
-
-            {/* {showModel && (
-                <div className={styles.popup_background}>
-                    <ViewImages isOpen={setShowModel} imgs={images}/>
-                </div>
-            )}
-
-            {showUploadModel && (
-                <div className={styles.popup_background}>
-                    <ViewUpload isOpen={setShowUploadModel} type={'2'} />
-                </div>
-            )}
-
-            {showUploadResume && (
-                <div className={styles.popup_background}>
-                    <ViewUploadResume isOpen={setShowUploadResume}/>
-                </div>
-            )} */}
         </div>
     )
 }
