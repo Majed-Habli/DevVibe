@@ -19,6 +19,7 @@ const Profile = () =>{
     const [showButtons, setShowButtons] = useState(false);
     const [showUploadModel, setShowUploadModel] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [loadingImages, setLoadingImages] = useState(false);
     const [showUploadResume, setShowUploadResume] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
@@ -156,7 +157,15 @@ const Profile = () =>{
         }else{
             setLoading(false)
         }
-    },[skills])
+    },[skills]);
+
+    useEffect(()=>{
+        if(images.length <= 0){
+            setLoadingImages(true)
+        }else{
+            setLoadingImages(false)
+        }
+    },[images]);
 
     return(
         <div className={styles.page_container}>
@@ -186,8 +195,10 @@ const Profile = () =>{
                         </div>
                     </div>
                     <div className={styles.right_container}>
-                        {!loading ? (<CarouselComp value={images} issue={errorImages}/>):
-                        (<div className={styles.loading_container}><SyncLoader color="#36d7b7" /></div>)}
+                        {!loadingImages ? (<CarouselComp value={images} issue={errorImages}/>):
+                        (<div className={styles.loading_container}>
+                            <SyncLoader color="#36d7b7" />
+                        </div>)}
                     </div>
                 </div>
             </div>
