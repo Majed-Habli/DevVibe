@@ -18,6 +18,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
+    font-weight: 600;
+    color: #525252;
     border-bottom: 1px solid #D4D4D4;
 }
 
