@@ -56,7 +56,7 @@ const InterestedTable = () => {
     return(
         <div className={styles.table_container}>
             <div className={styles.table_header}>
-                <div>People interested in me</div>
+                <div className={styles.header}>People interested in me</div>
                 <CustomButton title={'view all'} onClick={veiwAll}/>
             </div>
             <div className={styles.table_body}>
