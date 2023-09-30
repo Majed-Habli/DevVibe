@@ -64,7 +64,7 @@ const AnalyticsComponent = () =>{
                     <Donut value={stats.matched_count} backgroundColor={'#3C8DBC'}/>
                     <div>matched</div>
                 </div>
-                <div className={`${styles.chart_container} ${styles.spacing}`}>
+                <div className={styles.chart_container}>
                     <Donut value={stats.skipped_count} backgroundColor={'#00A65A'}/>
                     <div>skipped</div>
                 </div>
