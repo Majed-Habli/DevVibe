@@ -19,6 +19,8 @@
     justify-content: space-between;
     padding: 0 1rem;
     border-bottom: 1px solid #D4D4D4;
+    font-weight: 600;
+    color: #525252;
 }
 
 .popup_body{

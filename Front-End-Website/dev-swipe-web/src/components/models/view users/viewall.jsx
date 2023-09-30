@@ -4,7 +4,6 @@ import CustomImageButton from "../../custom button/customImageButton";
 import PopUpCard from "../../popup card/popupcard";
 
 const ViewAllPopUp = ({isOpen ,users ,setUsers}) =>{
-    // const [userData, setUserData] = useState([]);
     const hideModel =() =>{
         isOpen(prev => !prev);
     }
@@ -15,10 +14,6 @@ const ViewAllPopUp = ({isOpen ,users ,setUsers}) =>{
         })
         setUsers(filtered);
     }
-
-    // useEffect(()=>{
-    //     setUserData(users);
-    // },[users])
 
     return(
         <div className={styles.popup_container}>
