@@ -6,7 +6,6 @@ import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
 import SyncLoader from "react-spinners/ClipLoader";
 
-
 const MatchedTable = () =>{
     const [users, setUsers] = useState([]);
     const [error,setError] = useState('');

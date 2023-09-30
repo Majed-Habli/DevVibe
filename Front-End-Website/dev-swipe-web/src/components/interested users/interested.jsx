@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import styles from './interested.module.css'
 import CustomButton from "../custom button/custombutton";
 import Card from "../user card/card";
-import PopUpCard from "../popup card/popupcard";
 import ViewAllPopUp from "../models/view users/viewall";
 import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
+import SyncLoader from "react-spinners/ClipLoader";
 
 const InterestedTable = () => {
     const [showModel, setShowModel] = useState(false);
     const  [errorDisplay,setErrorDisplay] =useState('');
     const [users, setUsers] = useState([]);
     const [error,setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+        useEffect(()=>{
+            if(users.length <= 0){
+                setLoading(true)
+            }else{
+                setLoading(false)
+            }
+        },[users])
 
     const veiwAll = async () =>{
         setShowModel(true);
@@ -60,7 +69,12 @@ const InterestedTable = () => {
                 <CustomButton title={'view all'} onClick={veiwAll} grow={true}/>
             </div>
             <div className={styles.table_body}>
-                {!errorDisplay ?(<Card data={users} button={true}/>):(
+                {!errorDisplay ?(!loading ?(<Card data={users} button={true}/>):(
+                    <div className={styles.loader}>
+                        <SyncLoader color="#36d7b7" />
+                    </div>
+                )):(
+                    
                     <div className={styles.error_message}>{errorDisplay}</div>
                 )}
             </div>
