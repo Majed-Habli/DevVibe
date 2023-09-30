@@ -76,7 +76,7 @@ const HeaderComp = ({data}) =>{
     return(
         <>
         {loading ?(<div className={styles.container}>
-            <div className={styles.loading_container}>
+            <div>
                 <SyncLoader color="#36d7b7" />
             </div>
         </div>):

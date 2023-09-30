@@ -16,7 +16,7 @@ const CardCarouselComp = ({information ,issue}) => {
   console.log(information)
   const goToPage = (id) =>{
     console.log(id)
-    nav(`/dashboard/users/profile/${id}`)
+    nav(`/dashboard/profile/${id}`)
   }
 
   useEffect(()=>{
@@ -48,7 +48,7 @@ const CardCarouselComp = ({information ,issue}) => {
                   {val.matched_with.user_type_id === 2 ? (<div className='{styles.user_title}'>Developer</div>):(<div className='{styles.user_title}'>Recruiter</div>)}
                 </div>
                 <div className='{styles.button_container2}'>
-                  <CustomButton title={'Profile'} width={120} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={'bold'} backgroundColor={'#FCC860'} onClick={()=>goToPage(val.user.id)}/> 
+                  <CustomButton title={'Profile'} width={120} height={32} display={'flex'} alignItems={'center'} justifyContent={'center'} fontSize={14} fontWeight={'bold'} backgroundColor={'#FCC860'} onClick={()=>goToPage(val.matched_with.id)}/> 
                 </div>
             </SwiperSlide>
         ))}
