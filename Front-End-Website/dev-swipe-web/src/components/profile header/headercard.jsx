@@ -7,6 +7,7 @@ import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
 import ViewUpload from "../models/view upload/viewUpload";
+import SyncLoader from "react-spinners/ClipLoader";
 
 const HeaderComp = ({data}) =>{
     const userType = localStorageAction('user_type');
@@ -15,6 +16,8 @@ const HeaderComp = ({data}) =>{
     
     const [showModel, setShowModel] = useState(false);    
     const [showUploadModel, setShowUploadModel] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     const viewModelUpload = async() =>{
             setShowUploadModel(true)
         }
@@ -23,49 +26,6 @@ const HeaderComp = ({data}) =>{
 
     const [uploadImage, setUploadImage] = useState('');
     const [tempView, setTempView] = useState('');
-
-    // const postImage = async () =>{
-
-    //     try {
-    //         const response = await sendRequest({
-    //             route: "/user/developer/upload_profile_pic/",
-    //             method: requestMethods.POST,
-    //             body:{image: uploadImage,
-    //                 type:"png",
-    //                 }
-    //         });
-    //         const data = response;
-    //         const token = " ";
-
-    //         if(data.status == 'success'){
-    //             window.location.href = `/dashboard/profile/${data.id}`;
-    //         }
-            
-    //       } catch (error) {
-    //         console.error("api calling failed:", error);
-    //       }
-    // }
-
-    // const fileRef = useRef(null);
-    // const handleInput = (e) => {
-    //     if (e.target.files.length > 0) {
-    //         function getBase64(file) {
-    //             return new Promise((resolve, reject) => {
-    //                 const reader = new FileReader();
-    //                 reader.readAsDataURL(file);
-    //                 reader.onload = () => resolve(reader.result);
-    //                 reader.onerror = (error) => reject(error);
-    //             });
-    //         }
-    //         getBase64(e.target.files[0]).then((data) => {
-    //             setTempView(data)
-    //             const refStringArray = data.split(",");
-    //             refStringArray.shift();
-    //             const result = refStringArray.join('');
-    //             setUploadImage(result);
-    //         });
-    //     }
-    // };
 
     const ViewModel = () =>{
         setShowModel(true);
@@ -105,8 +65,22 @@ const HeaderComp = ({data}) =>{
         }
     })
 
+    useEffect(()=>{
+        if(data.length <= 0){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[data])
+
     return(
-        <div className={styles.container}>
+        <>
+        {loading ?(<div className={styles.container}>
+            <div className={styles.loading_container}>
+                <SyncLoader color="#36d7b7" />
+            </div>
+        </div>):
+        (<div className={styles.container}>
             <div className={styles.top_row}>
                 {showButtons && <CustomButton title={'Edit'} image_url={'/Edit.png'} image_width={24} image_height={24} onClick={ViewModel}/>}
             </div>
@@ -174,7 +148,8 @@ const HeaderComp = ({data}) =>{
                     <ViewUpload isOpen={setShowUploadModel} type={'1'}/>
                 </div>
             )}
-        </div>
+        </div>)}
+        </>
     )
 }
 
