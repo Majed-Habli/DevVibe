@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import ViewImages from "../../components/models/images form/viewimages";
 import ViewUpload from "../../components/models/view upload/viewUpload";
 import ViewUploadResume from "../../components/models/view upload copy/viewUpload";
-
+import SyncLoader from "react-spinners/ClipLoader";
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
     const [errorImages, setErrorImages] = useState('');
@@ -18,6 +18,7 @@ const Profile = () =>{
     const [showModel, setShowModel] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
     const [showUploadModel, setShowUploadModel] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [showUploadResume, setShowUploadResume] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
@@ -149,6 +150,14 @@ const Profile = () =>{
         }
     })
 
+    useEffect(()=>{
+        if(skills.length <= 0){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[skills])
+
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
@@ -170,14 +179,15 @@ const Profile = () =>{
                     <div className={styles.left_container}>
                         <div className={styles.title}>Skills: </div>
                         <div className={styles.skill_cotainer}>
-                            {skills.map((skill)=>(
+                            {!loading ? (skills.map((skill)=>(
                                 <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={213} height={56} display={'flex'} alignItems={'center'} columnGap={'1rem'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
-                            ))}
+                            ))):(<div className={styles.loading_container}> <SyncLoader color="#36d7b7" /></div>)}
                             {errorSkills &&(<div className={styles.error_container}>{errorSkills}</div>)}
                         </div>
                     </div>
                     <div className={styles.right_container}>
-                        <CarouselComp value={images} issue={errorImages}/>
+                        {!loading ? (<CarouselComp value={images} issue={errorImages}/>):
+                        (<div className={styles.loading_container}><SyncLoader color="#36d7b7" /></div>)}
                     </div>
                 </div>
             </div>
