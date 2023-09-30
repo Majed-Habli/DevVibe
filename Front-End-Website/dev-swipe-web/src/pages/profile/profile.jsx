@@ -152,18 +152,6 @@ const Profile = () =>{
         }
     },[params.id])
 
-    // useEffect(()=>{
-
-    // },[skills]);
-
-    // useEffect(()=>{
-    //     if(images.length <= 0){
-    //         setLoadingImages(true)
-    //     }else{
-    //         setLoadingImages(false)
-    //     }
-    // },[images]);
-
     useEffect(()=>{
         if(!user.length > 0){
             setLoading(true)
@@ -188,8 +176,6 @@ const Profile = () =>{
         setUserData({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
     },[user]);
 
-    console.log(userData)
-
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}></div>
@@ -205,8 +191,8 @@ const Profile = () =>{
                         </div>)}
                     </div>
                     <div className={styles.description_text}>
-                        <div>Biography</div>
-                        <div>{userData.description}</div>
+                        <div className={styles.section_title}>Biography</div>
+                        <div className={styles.description}>{userData.description}</div>
                     </div>
                 </div>
             </div>
