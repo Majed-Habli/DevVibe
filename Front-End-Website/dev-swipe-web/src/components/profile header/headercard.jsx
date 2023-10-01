@@ -63,6 +63,8 @@ const HeaderComp = ({data, images}) =>{
         resume: userType === 3 ? data.dev_details?.linkedin_url : ""})
     },[data]);
 
+    console.log(user)
+
     useEffect(()=>{
         if(`${data.id}` === userId){
             setShowButtons(true);

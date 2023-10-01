@@ -15,6 +15,9 @@ const CarouselComp = ({value ,issue}) => {
   useEffect(()=>{
       if(value.length <= 0){
           setLoading(true)
+          setTimeout(() => {
+            setLoading(false)
+        }, 3000)
       }else{
           setLoading(false)
       }

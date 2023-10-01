@@ -142,18 +142,27 @@ const Profile = () =>{
     useEffect(()=>{
         if(!user.length > 0){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }
 
         if(images.length <= 0){
             setLoadingImages(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoadingImages(false)
         }
 
         if(skills.length <= 0){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }
