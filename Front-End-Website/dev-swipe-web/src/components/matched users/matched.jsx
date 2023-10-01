@@ -33,14 +33,11 @@ const MatchedTable = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
                     const obj = data.data;
                     setUsers(obj);
-                    console.log(obj)
-
                 }else{
                     setError("no matches yet!");
                 }
