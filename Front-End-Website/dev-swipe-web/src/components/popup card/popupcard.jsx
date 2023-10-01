@@ -3,6 +3,8 @@ import styles from './popupcard.module.css';
 import CustomImageButton from "../custom button/customImageButton";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
+import Tooltip from '@mui/material/Tooltip';
+
 
 const PopUpCard = ({user, fun}) =>{
     const date = user.created_at;
@@ -51,8 +53,17 @@ const PopUpCard = ({user, fun}) =>{
                 </div>
             </div>
             <div className={styles.container_right}>
-                <CustomImageButton image_name={"Close.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}onClick={()=>swipe({id:user.id, value: 0})} cursor={'pointer'}/>
-                <CustomImageButton image_name={"Done.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}onClick={()=>swipe({id:user.id, value: 1})} cursor={'pointer'}/>
+            <Tooltip title="pass" placement="top">
+                <div>
+                    <CustomImageButton image_name={"arrow-left.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#F47878"}onClick={()=>swipe({id:user.id, value: 0})} cursor={'pointer'}/>
+                </div>
+            </Tooltip>
+            <Tooltip title="connect" placement="top">
+                <div>
+                    <CustomImageButton image_name={"arrow-right.png"} width={23} height={23} image_width={20} image_height={20} display={"flex"} alignItems={"center"} justifyContent={"center"} backgroundColor={"#A7E392"}onClick={()=>swipe({id:user.id, value: 1})} cursor={'pointer'}/>
+                </div>
+            </Tooltip>
+                
             </div>
         </div>
     )
