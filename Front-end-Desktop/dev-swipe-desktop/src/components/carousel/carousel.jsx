@@ -10,9 +10,6 @@ import { Navigation, Pagination, EffectCoverflow, Mousewheel } from 'swiper/modu
 
 const CarouselComp = ({value ,issue}) => {
   const [error,setError] = useState('');
-  const openImage = () =>{
-      console.log('hi')
-  }
 
   useEffect(()=>{
     if(issue){
@@ -35,7 +32,7 @@ const CarouselComp = ({value ,issue}) => {
         className="mySwiper"
       >
         {value.map((val)=>(
-            <SwiperSlide key={val.id} onClick={openImage}>
+            <SwiperSlide key={val.id}>
                 <img src={`${val.image_url}`} alt="user images" />
             </SwiperSlide>
         ))}
