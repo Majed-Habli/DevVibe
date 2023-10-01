@@ -26,7 +26,6 @@ const UserCard = ({data,url}) =>{
                 }
         });
         const data = response;
-        console.log("res", response)
         const token = " ";
 
         if(data.status == 'success'){
@@ -36,7 +35,6 @@ const UserCard = ({data,url}) =>{
             console.log(error);
         }
     }
-    console.log("theeeeeeeee ", data)
 
     return(
         <div className={styles.container}>
