@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from '../../styles/headercard.module.css';
-import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
-import { localStorageAction } from "../../utils/functions/localStorage";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { sendRequest } from "../../utils/functions/axios";
 import SyncLoader from "react-spinners/ClipLoader";
