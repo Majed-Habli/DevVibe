@@ -102,3 +102,9 @@
     flex-direction: column;
     row-gap: 1rem;
 }
+
+.group_row{
+    display: flex;
+    align-items: flex-end;
+    column-gap: 10px;
+}

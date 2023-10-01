@@ -6,22 +6,28 @@ import CustomButton from "../../custom button/custombutton";
 import { localStorageAction } from "../../../utils/functions/localStorage";
 import { sendRequest } from "../../../utils/functions/axios";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
+import Select from 'react-select';
 
 const EditForm = ({isOpen, data}) =>{
     const userType = localStorageAction('user_type');
-    console.log('my data is' , data)
 
+    const [selectedGender, setSelectedGender] = useState(null);
+    
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
-
-    const [userSkills,setUserSkills] = useState([]); //user skill
-    const [selected, setSelected] = useState([]); //add
-
+    
+    const [userSkills,setUserSkills] = useState([]);
+    const [selected, setSelected] = useState([]);
+    
     const [skills, setSkills] = useState([]);
     console.log("selected are",selected)
-
-    const [name,setName]= useState('');
+    
+    // const [name,setName]= useState('');
     const [inputs, setInputs] = useState({});
+    
+    const onChangeGenderHandel = (selectedOption) =>{
+        setSelectedGender(selectedOption);
+    }
     
     const handleChange = (e) => {
         setInputs((prev) => ({
@@ -29,6 +35,12 @@ const EditForm = ({isOpen, data}) =>{
             [e.target.name]: e.target.value
         }));
     };
+
+    const options = [
+    { value: 'male', label: 'Male' },
+    { value: 'female', label: 'Female' },
+    ];
+
 
     console.log("inputs",inputs)
 
@@ -61,12 +73,8 @@ const EditForm = ({isOpen, data}) =>{
     };
         
     const filtering = (id) =>{
-        console.log(id, userSkills)
-        console.log("mohammad hussein")
         const filtered = userSkills.filter(row => row.skill.id !== id)
-        console.log("filtered",filtered);
         setUserSkills(filtered)
-        console.log(userSkills, 'useeerskiliss')
     }
 
     const hideModel =() =>{
@@ -75,7 +83,6 @@ const EditForm = ({isOpen, data}) =>{
 
     const getSkills = async () => {
         const token = localStorageAction("token");
-        const userId = localStorageAction("user_id");
 
         try {
             if(!token){
@@ -120,7 +127,6 @@ const EditForm = ({isOpen, data}) =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log("res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -153,7 +159,6 @@ const EditForm = ({isOpen, data}) =>{
                     body:{user_skills: mySkills}
                 });
                 const data = response;
-                console.log("res of adding skills", response)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -179,12 +184,9 @@ const EditForm = ({isOpen, data}) =>{
                 body:{user_skills: removeSkill}
             });
             const data = response;
-            console.log("res of removing skills", response)
             const token = " ";
 
             if(data.status == 'successfully deleted skills'){
-                console.log("majeeed")
-                console.log("successfully removed", id)
                 filtering(id)
             }else{
                 setError("failed to add!");
@@ -197,7 +199,6 @@ const EditForm = ({isOpen, data}) =>{
     }
 
     const updateUserInfo = async () =>{
-        const userId = localStorageAction("user_id");
 
         try {
             if(!inputs){
@@ -217,14 +218,11 @@ const EditForm = ({isOpen, data}) =>{
                     }
                 });
                 const data = response;
-                console.log("res of updating", response)
                 const token = " ";
     
                 if(data.status == 'success'){
                     console.log("successfully updated")
                     hideModel()
-                    // window.location.href = `/dashboard/profile/${userId}`;
-                    
                 }else{
                     setError("failed to update!");
                     console.log(error);
@@ -253,18 +251,45 @@ const EditForm = ({isOpen, data}) =>{
                 <CustomImageButton image_name={"Close.png"} width={27} height={27} display={"flex"} alignItems={"center"} justifyContent={"center"} onClick={hideModel} cursor={'pointer'}/>
             </div>
             <div className={styles.popup_body}>
-                <CustomInput label={"Name"} name={'user_name'} placeholder={data.user_name} value={inputs.user_name} handleChange={handleChange} width={275} height={35}/>
+                <div className={styles.group_row}>
+                    <CustomInput label={"Name"} name={'user_name'} placeholder={data.user_name} value={inputs.user_name} handleChange={handleChange} width={225} height={38}/>
+                    {userType == 3  ?(<CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>):(
+                    <Select
+                        value={selectedGender}
+                        onChange={onChangeGenderHandel}
+                        options={options}
+                        styles={{
+                            control: (provided, state) => ({
+                                ...provided,
+                                width: '225px',
+                                height: '35px',
+                                borderColor: '#9F8484'
+                            }),
+                            menu: (provided, state) => ({
+                                ...provided,
+                                width: '225px',
+                                borderColor: state.isFocused ? 'black' : 'grey'
+                            }),
+                            }}
+                    />
+                    )}
+                </div>
+                {userType == 2 && (
+                    <div>
+                        <div className={styles.group_row}>
+                        <CustomInput label={"Github"} name={'github_url'} value={inputs.github_url} placeholder={data.github_url} handleChange={handleChange} width={225} height={38}/>
+                        <CustomInput label={"Linked in"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={225} height={38}/>
+                        </div>
+                    </div>
+                )}
                 {userType == 3 ?(
-                    <div className={styles.grouping}>
+                    <div>
                         <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>
                         <CustomInput label={"Description"} name={'description'} placeholder={data.rec_details.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     
                 ):(
-                    <div className={styles.grouping}>
-                        <CustomInput label={"Gender"} name={'gender'} value={inputs.gender} placeholder={data.gender} handleChange={handleChange} width={275} height={35}/>
-                        <CustomInput label={"Github"} name={'github_url'} value={inputs.github_url} placeholder={data.github_url} handleChange={handleChange} width={275} height={35}/>
-                        <CustomInput label={"Linked in"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={275} height={35}/>
+                    <div>
                         <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     
