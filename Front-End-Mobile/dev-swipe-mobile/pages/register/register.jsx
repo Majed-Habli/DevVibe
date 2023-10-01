@@ -222,7 +222,6 @@ const styles = StyleSheet.create({
     user_type_btns: {
         height: 70,
         marginTop: 20,
-        // backgroundColor: 'lightgreen',
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
