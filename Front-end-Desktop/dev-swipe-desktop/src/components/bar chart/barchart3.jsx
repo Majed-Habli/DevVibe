@@ -17,6 +17,7 @@ const BarChart3 = ({lab,chartss}) =>{
         plugins: {
           legend: {
             position: 'top',
+            display: false
           },
           title: {
             display: true,
