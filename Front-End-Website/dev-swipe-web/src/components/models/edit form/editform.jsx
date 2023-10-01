@@ -255,6 +255,7 @@ const EditForm = ({isOpen, data}) =>{
                     {userType == 3  ?(<CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>):(
                     <Select
                         value={selectedGender}
+                        placeholder= 'Gender'
                         onChange={onChangeGenderHandel}
                         options={options}
                         styles={{
@@ -274,11 +275,9 @@ const EditForm = ({isOpen, data}) =>{
                     )}
                 </div>
                 {userType == 2 && (
-                    <div>
-                        <div className={styles.group_row}>
-                        <CustomInput label={"Github"} name={'github_url'} value={inputs.github_url} placeholder={data.github_url} handleChange={handleChange} width={225} height={38}/>
-                        <CustomInput label={"Linked in"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={225} height={38}/>
-                        </div>
+                    <div className={styles.group_row}>
+                    <CustomInput label={"Github"} name={'github_url'} value={inputs.github_url} placeholder={data.github_url} handleChange={handleChange} width={225} height={38}/>
+                    <CustomInput label={"LinkedIn"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={225} height={38}/>
                     </div>
                 )}
                 {userType == 3 ?(

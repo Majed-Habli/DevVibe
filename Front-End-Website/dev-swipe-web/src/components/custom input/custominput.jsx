@@ -15,7 +15,7 @@ const CustomInput = ({label, type, name, value, width, height, color, handleChan
                 style={{width, height, padding: '1rem', backgroundColor: '#ffffff', border: '1px solid #9F8484', borderRadius: 4, color}}
                 type={type}
                 value={value}/>):(
-                    <textarea id={label} name={name} placeholder={placeholder} cols="30" rows="10" style={{width, height, padding: '1rem', backgroundColor: '#ffffff', border: '1px solid #9F8484', borderRadius: 4, color, resize: 'none'}} 
+                    <textarea id={label} name={name} placeholder={placeholder} cols="30" rows="10" style={{width, height, padding: '1rem', backgroundColor: '#ffffff', border: '1px solid #9F8484', borderRadius: 4, color, resize: 'none', fontFamily: 'sans-serif'}} 
                     value={value} onChange={handleChange}/>
                 )}
         </div>
