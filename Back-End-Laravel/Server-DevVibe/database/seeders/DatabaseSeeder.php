@@ -425,5 +425,102 @@ class DatabaseSeeder extends Seeder
             'updated_at' => date('Y-m-d')
         ]);
 
+        DB::table('user_skills')->insert([
+            'user_id' => 3,
+            'skill_id' => 2,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 3,
+            'skill_id' => 7,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 7,
+            'skill_id' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 7,
+            'skill_id' => 5,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 20,
+            'skill_id' => 11,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 11,
+            'skill_id' => 13,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 15,
+            'skill_id' => 18,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 18,
+            'skill_id' => 3,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 9,
+            'skill_id' => 11,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 10,
+            'skill_id' => 3,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 15,
+            'skill_id' => 12,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 6,
+            'skill_id' => 3,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 8,
+            'skill_id' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 9,
+            'skill_id' => 9,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 18,
+            'skill_id' => 14,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_skills')->insert([
+            'user_id' => 14,
+            'skill_id' => 3,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
     }
 }
