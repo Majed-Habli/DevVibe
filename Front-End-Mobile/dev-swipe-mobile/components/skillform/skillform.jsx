@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, ScrollView, Pressable, TextInput} from 'react-native';
 import axios from 'react-native-axios';
 import CheckBox from 'expo-checkbox';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -37,12 +37,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
           };
         getData();
     },[]);
-
-    // const onChangeHandler = (id) => {
-    //     selected.includes(id)
-    //       ? setSelected(selected.filter(x => x !== id))
-    //       : setSelected([...selected, id]);
-    //   };
 
     const onChangeHandler = (id) => {
     if (selected.includes(id)) {
@@ -148,17 +142,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         }
     }
 
-    const filtering = (id, skillID) =>{
-        const filtered = userSkills.filter((userSkill)=>{
-            return userSkill.id != id
-        })
-        removeSkills(skillID)
-        setting(filtered);
-    }
-
-    console.log(selected)
-    console.log(unselectedSkills)
-
     if(!token)
     return(
         <View>
@@ -179,18 +162,6 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
                     <View>
                         <Text style={styles.input_header}>Skills</Text>
-
-                        {/* <View style={styles.my_skills}>
-                            {userSkills.map((skill)=>(
-                                <View key={skill.skill.id} style={styles.pill}>
-                                    <Text style={styles.skill_text}>{skill.skill.name}</Text>
-                                    <Pressable style={styles.image_container} onPress={()=>filtering(skill.id, skill.skill.id)}>
-                                        <Image style={styles.pill_icons} source={require("../../assets/Close.png")}/>
-                                    </Pressable>
-                                </View>
-                            ))}
-                        </View> */}
-
                         <View style={styles.searchbar_container}>
                             <View style={styles.searchbar}>
                                 <Image
