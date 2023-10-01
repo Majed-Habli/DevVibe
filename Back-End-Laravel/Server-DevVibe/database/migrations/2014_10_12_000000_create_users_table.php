@@ -18,10 +18,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('country');
-            // $table->string('gender');
-            // $table->string('resume')->nullable();
-            // $table->string('description')->nullable();
-            // $table->string('company_name')->nullable();
             $table->string('profile_image_url')->nullable();
             $table->boolean('has_access')->default(false);
             $table->integer('view_count')->default(0);

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class DatabaseSeeder extends Seeder
@@ -162,5 +163,267 @@ class DatabaseSeeder extends Seeder
             'created_at' => date('Y-m-d'),
             'updated_at' => date('Y-m-d')
         ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Ahmad habli',
+            'email' => 'ahmad@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Ali habli',
+            'email' => 'Ali@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Alaa Samya',
+            'email' => 'alaa@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Jomaa Allawi',
+            'email' => 'Joumaa@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Omar Accoume',
+            'email' => 'Omar@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Thouraya Nabawe',
+            'email' => 'thouraya@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Mike Taisen',
+            'email' => 'Mike@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Jules Moon',
+            'email' => 'Jules@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Hioumi Faiez',
+            'email' => 'Hioumi@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Marry Anne',
+            'email' => 'Marry@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'Micheal Kile',
+            'email' => 'micheal@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 2,
+            'user_name' => 'James lias',
+            'email' => 'james@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Alex Farrow',
+            'email' => 'alex@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Fiona Kaleb',
+            'email' => 'fiona@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Fissure baraa',
+            'email' => 'Fissure@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Nabil Hamza',
+            'email' => 'nabil@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Barry Alan',
+            'email' => 'berry@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Sam Aloha',
+            'email' => 'sam@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Shawn Matiaz',
+            'email' => 'Shawn@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('users')->insert([
+            'user_type_id' => 3,
+            'user_name' => 'Diaz Anderson',
+            'email' => 'diaz@gmail.com',
+            'password' => Hash::make('12345'),
+            'country' => 'KE',
+            'profile_image_url' => '',
+            'view_count' => 0,
+            'has_access' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
     }
 }
