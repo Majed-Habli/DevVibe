@@ -34,7 +34,6 @@ const EditForm = ({isOpen, user, details}) => {
             try {
               const value = await AsyncStorage.getItem("user");
               const user= JSON.parse(value)
-              console.log("logged in user is :",user)
                 setToken(user.user.token)
             } catch (error) {
               console.log("retrieving data2");
@@ -56,10 +55,8 @@ const EditForm = ({isOpen, user, details}) => {
             );
 
             const data = response.data;
-            console.log("res of updating", response)
 
             if(data.status == 'success'){
-                console.log("successfully updated")
                 hideModel();
                 navigation.navigate('Profile', { cardId });
                 
