@@ -10,7 +10,6 @@ const Card = (props) => {
   const navigation = useNavigation();
 
   const handleClicked = (cardId) => {
-    console.log(`got clicked ${cardId}`)
     navigation.navigate('Profile', { cardId });
   }
 
