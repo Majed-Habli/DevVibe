@@ -67,10 +67,9 @@
 
 ###  DevSwipe is built using the following technologies:
 
-- This project uses the [React-Native app development framework](https://flutter.dev/). React-Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- This project uses the [React app development framework](https://flutter.dev/). React is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
+- This project uses the [React-Native app development framework](https://flutter.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
+- This project uses the [React app development framework](https://flutter.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
+- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
 
 <br><br>
 
