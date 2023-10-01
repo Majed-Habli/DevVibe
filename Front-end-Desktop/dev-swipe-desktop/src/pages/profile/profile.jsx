@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import CustomButton from "../../components/custom button/custombutton";
 import ViewSkills from "../../components/model/skillModel/viewSkills";
 import EditForm from "../../components/edit form/editform";
+import StatsComp from "../../components/Stats component/statscomp";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -190,6 +191,11 @@ const Profile = () =>{
                         <CustomImageButton text={'user info'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"details.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'} onClick={()=>showUserInfo()}/>
                         <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'} onClick={()=>showUserSkills()}/>
                     </div> */}
+                </div>
+                <div className={styles.bofy_left}>
+                    <div className={styles.body_top}>
+                        <StatsComp data={skills} stats={stats}/>
+                    </div>
                 </div>
                 <div className={styles.body_right}>
                     <CarouselComp value={images} issue={errorImages}/>
