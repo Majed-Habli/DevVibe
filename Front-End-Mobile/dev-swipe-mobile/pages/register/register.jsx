@@ -39,9 +39,6 @@ const Register = ({navigation}) => {
         setConfirmPassword(text)
     };
 
-    console.log(user);
-    console.log(confirmPassword);
-
     const goToPage = () => {
         navigation.navigate('Home');
     }
