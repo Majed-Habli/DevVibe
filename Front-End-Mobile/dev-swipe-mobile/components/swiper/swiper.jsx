@@ -40,10 +40,8 @@ const ProfileSwiper = ({userID, token}) => {
               }}
             );
             const data = response.data;
-            console.log('user images',data)
             if(data.status == 'success'){
                 setImages(data.data)
-                console.log('user images round 2',data.data)
             }else{
                 setError('status isnt success')
             }
