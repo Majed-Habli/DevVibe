@@ -13,9 +13,7 @@ const CardCarouselComp = ({information ,issue}) => {
   const [error,setError] = useState('');
   const nav = useNavigate();
 
-  console.log(information)
   const goToPage = (id) =>{
-    console.log(id)
     nav(`/dashboard/users/profile/${id}`)
   }
 
