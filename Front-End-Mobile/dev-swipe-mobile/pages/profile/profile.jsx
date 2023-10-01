@@ -29,8 +29,6 @@ const Profile = ({navigation}) => {
     const goBack = () => {
         cardId = loggedinID;
         navigation.navigate('Dashboard');
-        console.log('hey')
-        console.log(cardId)
     };
 
     const showSkillsModel =async () => {
@@ -42,7 +40,6 @@ const Profile = ({navigation}) => {
     
     const showMenu =async () => {
         setShowMenu((current) => !current)
-        console.log("showMenuModel:", showMenuModel);
     }
 
     useEffect(() => {
@@ -53,7 +50,7 @@ const Profile = ({navigation}) => {
                 setToken(user.user.token)
                 setLoggedinID(user.user.id)
             } catch (error) {
-              console.log("retrieving data2");
+              console.log("retrieving data");
             }
           };
         getData();
@@ -72,18 +69,15 @@ const Profile = ({navigation}) => {
             if(data.status == 'success'){
                 setUser(data.data[0])
             }else{
-                setError("no success2!");
+                setError("no success!");
                 console.log(error);
             }
           } catch (error) {
-            console.error("get users failed2:", error);
+            console.error("get users failed:", error);
           }
     }
     
     useEffect(()=>{
-        console.log('before getting data', cardId)
-
-
         const getSkills = async () =>{
             try {
                 const response = await axios.get(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/view_user_skills/${cardId}`,{
