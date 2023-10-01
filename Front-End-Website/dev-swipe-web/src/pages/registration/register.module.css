@@ -37,6 +37,7 @@
 
 .row{
     display: flex;
+    align-items: flex-end;
     column-gap: 1.5rem;
 }
 

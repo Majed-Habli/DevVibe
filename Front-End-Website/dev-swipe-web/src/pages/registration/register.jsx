@@ -5,16 +5,25 @@ import CustomButton from "../../components/custom button/custombutton";
 import { sendRequest } from "../../utils/functions/axios";
 import { requestMethods } from "../../utils/functions/requestMethods.";
 import { localStorageAction } from "../../utils/functions/localStorage";
+import Select from 'react-select';
 
 const Register = () =>{
     const [inputs, setInputs] = useState([]);
     const [error, setError] = useState('');
     const [selected, setSelected] = useState(null);
-    const [isError, setIsError] = useState(false)
+    const [selectedGender, setSelectedGender] = useState(null);
+    const [isError, setIsError] = useState(false);
+
+    const onChangeGenderHandel = (selectedOption) =>{
+        setSelectedGender(selectedOption);
+    }
+
+    console.log(selectedGender)
 
     const onChangeHandler = (option) => {
         setSelected(option)
     };
+
     const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
@@ -25,6 +34,11 @@ const Register = () =>{
     const goToPage = () => {
         window.location.href = '/';
     }
+
+    const options = [
+        { value: 'male', label: 'Male' },
+        { value: 'female', label: 'Female' },
+      ];
 
     const onRegister = async (event) =>{
         event.preventDefault();
@@ -48,7 +62,7 @@ const Register = () =>{
                         password: inputs.password,
                         country: inputs.country,
                         company_name: inputs.company_name,
-                        gender: inputs.gender,
+                        gender: selectedGender.value,
                         user_type_id: selected,}
                 });
                 const data = response;
@@ -59,7 +73,6 @@ const Register = () =>{
                     const token = data.data.token;
                     const id = data.data.id;
                     const userName = data.data.user_name;
-                    console.log(userName)
                     const profileImageUrl = data.data.profile_image_url;
                     const user_type = data.data.user_type_id;
     
@@ -110,9 +123,27 @@ const Register = () =>{
                 <div className={styles.input_container}>
                     <div className={styles.row}>
                         <CustomInput label={'Name'} name={'name'} value={inputs.name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
-                        {selected == 2 ?(<CustomInput label={'Gender'} name={'gender'} value={inputs.gender} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                        {selected == 2 ?(
+                        <Select
+                            value={selectedGender}
+                            onChange={onChangeGenderHandel}
+                            options={options}
+                            styles={{
+                                control: (provided, state) => ({
+                                  ...provided,
+                                  width: '200px',
+                                  borderColor: '#9F8484'
+                                }),
+                            
+                                menu: (provided, state) => ({
+                                  ...provided,
+                                  width: '200px',
+                                  borderColor: state.isFocused ? 'black' : 'grey'
+                                }),
+                              }}
+                        />
                         ):(
-                            <CustomInput label={'Conpany_name'} name={'company_name'} value={inputs.company_name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={500}/>
+                            <CustomInput label={'Conpany_name'} name={'company_name'} value={inputs.company_name} handleChange={handleChange} width={200} height={38} fontSize={12} fontWeight={600}/>
                             )}
                     </div>
                     <div className={styles.row}>
