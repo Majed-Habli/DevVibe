@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button, TextInput, Pressable, ScrollView, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, Pressable, ScrollView, KeyboardAvoidingView} from 'react-native';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from '@react-navigation/native';
@@ -14,7 +14,6 @@ const Chat = () => {
 
     const [messages,setMessages] = useState([]);
     const [input,setInput] = useState('');
-    // let chatId = route.params?.id;
     const [token, setToken] = useState('')
 
     const goBack = () => {
@@ -26,7 +25,7 @@ const Chat = () => {
     }
 
     const apiURL= 'https://api.openai.com/v1/engines/text-davinci-002/completions';
-    const apiKey = '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';
+    const apiKey = '';
 
     const handleUserInput = async () => {
         setMessages(prev => {
@@ -35,7 +34,6 @@ const Chat = () => {
         try{
             const userInput = input;
             const response = await axios.post(apiURL,{
-                // model: 'text-devinci-003',
                 prompt: `You: ${userInput}\nAI:`,
                 temperature: 0,
                 max_tokens: 20,
