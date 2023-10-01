@@ -12,12 +12,12 @@ const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
     const [errorImages, setErrorImages] = useState('');
     
-    const [showModel, setShowModel] = useState(false);
+    // const [showModel, setShowModel] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
-    const [showUploadModel, setShowUploadModel] = useState(false);
+    // const [showUploadModel, setShowUploadModel] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loadingImages, setLoadingImages] = useState(false);
-    const [showUploadResume, setShowUploadResume] = useState(false);
+    // const [showUploadResume, setShowUploadResume] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
