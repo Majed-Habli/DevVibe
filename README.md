@@ -31,23 +31,14 @@
 > The Desk app's intended use is for the admin to be able to maintain their user base, as well as check up on their data.
 > The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 
-### Mockups
-| Home screen  | Menu Screen | Order Screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-<br><br>
-
 <!-- Implementation -->
 <img src="./readme/demo/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
 ### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
+| Login screen  | Register screen | Landing screen | Profile |
 | ---| ---| ---| ---|
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
 
 ### User Screens (Web)
 | Login screen  | Register screen |  Dashboard screen |
