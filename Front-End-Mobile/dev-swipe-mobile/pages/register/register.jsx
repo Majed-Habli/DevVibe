@@ -118,7 +118,7 @@ const Register = ({navigation}) => {
                         <CustomInput label={'Email'} value={user.email} handleChange={(text)=>handleTextChanges(text, 'email')}/>
                         <CustomInput label={'Country'} value={user.counrty} handleChange={(text)=>handleTextChanges(text, 'country')}/>
                         <CustomInput label={'Password'} value={user.password} handleChange={(text)=>handleTextChanges(text, 'password')}/>
-                        <CustomInput label={'Comfirm Password'} value={confirmPassword} handleChange={handlePasswordChange}/>
+                        <CustomInput label={'Confirm Password'} value={confirmPassword} handleChange={handlePasswordChange}/>
                     </View>
                     <View style={styles.user_type_btns}>
                         <RadioGroup layout='row'

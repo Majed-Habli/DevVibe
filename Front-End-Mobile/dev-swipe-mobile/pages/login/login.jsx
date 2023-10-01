@@ -20,15 +20,12 @@ const Hero = ({navigation}) => {
     const handlePasswordChange = (text) => {
         setPassword(text)
     };
-    
-    // console.log(email)
-    // console.log(password)
+
     const goToPage = () => {
         navigation.navigate('Registration');
     }
 
     const onLogin = async () =>{
-        // event.preventDefault();
 
         try {
             if(!email || !password){
@@ -46,7 +43,6 @@ const Hero = ({navigation}) => {
                 );
 
                 const data = response.data;
-                // console.log("res", data)
     
                 if(data.status == 'success'){
                     const token = data.user.token;
@@ -54,7 +50,6 @@ const Hero = ({navigation}) => {
                     const userName = data.user.user_name;
                     const profileImageUrl = data.user.profile_image_url;
                     const user_type = data.user.user_type_id;
-                    // console.log("token is ", token)
 
                     try {
                         await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
@@ -62,7 +57,6 @@ const Hero = ({navigation}) => {
                                 console.log("an error");
                                 throw err;
                             }
-                            // console.log("success saving");
                             navigation.navigate('main_navigation')
                         }).catch((err)=> {
                             console.log("error is: " + err);
@@ -98,12 +92,9 @@ const Hero = ({navigation}) => {
                     />
                 </View>
                 <View style={styles.form}>
-                    {/* <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/> */}
                     <CustomInput label={'Email'} value={email} handleChange={handleTextChange}/>
                     <View style={styles.password_container}>
                         <CustomInput label={'Password'} istrue={true} value={password} handleChange={handlePasswordChange}/>
-
-                        {/* <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/> */}
                         <Text style={styles.cto}>Forgot password?</Text>
                     </View>
                 </View>
