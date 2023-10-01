@@ -6,34 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   wrapper: {},
-//   slide1: {
-//     width: '80%',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#9DD6EB'
-//   },
-//   slide2: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#97CAE5'
-//   },
-//   slide3: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#92BBD9'
-//   },
-//   text: {
-//     color: '#fff',
-//     fontSize: 30,
-//     fontWeight: 'bold'
-//   },
-//   icons: {
-//     width: '100%',
-//     height: '100%',
-//     resizeMode: 'cover'
-//   }
 card: {
     width: 340,
     height: 450,
@@ -89,19 +61,12 @@ const DashboardCards = ({users})=> {
     const navigation = useNavigation();
 
     const handleClicked = (cardId) => {
-        console.log(`got clicked ${cardId}`)
         navigation.navigate('Profile', { cardId });
     }
-//   render() {
     return (
       <Swiper loop={false} showsButtons={true} style={styles.wrapper} dotStyle={{display: 'none'}}
       nextButton={<Text style={styles.buttonText}>next</Text>} buttonWrapperStyle={{backgroundColor: 'transparent', flexDirection: 'row', position: 'absolute', top: 0, left: 0, flex: 1, paddingHorizontal: 10, paddingVertical: 10, justifyContent: 'space-between', alignItems: 'center'}}>
         {users.map((user)=>(
-            // <View style={styles.slide1}>
-            //     <Text>{user.user_name}</Text>
-            // <Image style={styles.icons} source={require("../../assets/Profileimage.png")}/>
-            // </View>
-
             <View style={styles.card}>
                 <Image style={styles.user_image} source={require("../../assets/Profileimage.png")}/>
                 <Pressable style={styles.pressable_btn} onPress={()=>handleClicked(user.id)}>
@@ -115,15 +80,8 @@ const DashboardCards = ({users})=> {
                 </View>
             </View>
         ))}
-        {/* <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View> */}
       </Swiper>
     )
-//   }
 }
 
 export default DashboardCards;
