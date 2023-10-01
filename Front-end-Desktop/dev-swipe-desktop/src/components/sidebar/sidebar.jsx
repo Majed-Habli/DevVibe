@@ -155,24 +155,21 @@ const Sidebar = ({status}) => {
                             <div>
                             {isCategoryExpanded("Skills") ?(
                                     <label className={styles.treatitle} htmlFor="usersToggle">
-                                        <AiOutlineUser fill="white" />
+                                        <img className={styles.icon} src="/sidebar-white-skill.png" alt="" />
                                         <a href="/dashboard/skills">
-                                        <img src="" alt="" />
                                             <span className={styles.selected}>Skills</span>
                                         </a>
                                     </label>
                                     ):(
                                         <label className={styles.treatitle} htmlFor="usersToggle" >
-                                            <AiOutlineUser/>
+                                                <img className={styles.icon} src="/sidebar-default-skill.png" alt="" />
                                             <a href="/dashboard/skills">
-                                                <img src="" alt="" />
                                                 <span>Skills</span>
                                             </a>
                                         </label >
                                     )
                                 }
                             </div>
-                            {/* <img className={`${styles.arrow} ${isCategoryExpanded("Skills") ? 'expanded' : ''}`} src="/arrow.png" alt="arrow icon"/> */}
                         </div>
                         
                     </li>

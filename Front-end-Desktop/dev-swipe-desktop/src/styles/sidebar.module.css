@@ -129,3 +129,8 @@ li a{
     align-items: center;
     justify-content: center;
 }
+
+.icon{
+    width: 15px;
+    height: 15px;
+}
