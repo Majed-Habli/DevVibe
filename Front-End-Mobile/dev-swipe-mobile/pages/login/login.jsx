@@ -101,7 +101,7 @@ const Hero = ({navigation}) => {
                     {/* <CustomInput name={'email'} label='Email' placeholder='Enter your email' onChange={handleChange} value={inputs.email}/> */}
                     <CustomInput label={'Email'} value={email} handleChange={handleTextChange}/>
                     <View style={styles.password_container}>
-                        <CustomInput label={'Password'} value={password} handleChange={handlePasswordChange}/>
+                        <CustomInput label={'Password'} istrue={true} value={password} handleChange={handlePasswordChange}/>
 
                         {/* <CustomInput label='Password' name={'password'} placeholder='Password' onChange={handleChange} value={inputs.password}/> */}
                         <Text style={styles.cto}>Forgot password?</Text>
