@@ -77,8 +77,6 @@ const Stats = () =>{
     }
     },[chart])
 
-    console.log('carosuel',carousel)
-
     return(
         <div className={styles.container}>
             <div className={styles.page_header}>
