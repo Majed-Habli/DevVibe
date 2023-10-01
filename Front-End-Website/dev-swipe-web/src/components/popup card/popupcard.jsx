@@ -21,16 +21,13 @@ const PopUpCard = ({user, fun}) =>{
                     }
             });
             const data = response;
-            console.log("res here it si", data)
             const token = " ";
 
             if(data.status == 'success'){
-                console.log(data)
                 setMessage('liked')
                 fun(id)
             }else{
                 setMessage('disliked');
-                console.log(message);
             }
             
           } catch (error) {
