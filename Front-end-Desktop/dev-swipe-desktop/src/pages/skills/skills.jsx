@@ -69,11 +69,9 @@ const Skills = () => {
                 body:{skill_id: id}
             });
             const data = response;
-            console.log("res of updating", response)
             const token = " ";
 
             if(data.status == 'success'){
-                console.log("successfully deleted")
                 window.location.href = '/dashboard/skills';
             }else{
                 setError("failed to delete!");
