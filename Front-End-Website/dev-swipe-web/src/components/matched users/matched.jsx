@@ -52,7 +52,6 @@ const MatchedTable = () =>{
         getMatched();
     },[]);
 
-    console.log(users)
     return(
         <div className={styles.matched_container}>
             <div className={styles.table_header}>Matched with</div>
