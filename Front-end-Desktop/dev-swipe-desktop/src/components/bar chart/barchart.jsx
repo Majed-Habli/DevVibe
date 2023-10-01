@@ -20,7 +20,7 @@ const BarChart = ({label1, label2, data1, data2}) =>{
           },
           title: {
             display: true,
-            text: 'Developers vs Recruiters /year',
+            text: 'Developers V.S. Recruiters /year',
           },
         },
       };
@@ -33,12 +33,12 @@ const BarChart = ({label1, label2, data1, data2}) =>{
           {
             label:`${label1}`,
             data: data1 ? Object.values(data1).map((dat)=>dat.count) : [],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: '#FCC860',
           },
           {
             label: `${label2}`,
             data: data2 ? Object.values(data2).map((da)=>da.count) : [],
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: '#1E282C',
           },
         ],
       };

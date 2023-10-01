@@ -16,7 +16,7 @@ import { VectorMap } from "react-jvectormap";
           zoomOnScroll={true}
           containerStyle={{
             width: "100%",
-            height: "450px",
+            height: "416px",
           }}
           onRegionClick={handleClick}
           containerClassName="map"
@@ -33,7 +33,7 @@ import { VectorMap } from "react-jvectormap";
               cursor: "pointer"
             },
             selected: {
-              fill: "#2938bc" //color for the clicked country
+              fill: "#2938bc"
             },
             selectedHover: {}
           }}
@@ -42,7 +42,7 @@ import { VectorMap } from "react-jvectormap";
             regions: [
               {
                 values: mapData, 
-                scale: ["#ff0000","#146804", "#ADD8E6"],
+                scale: ["#42FF00", "#FFF500"],
                 normalizeFunction: "polynomial"
               }
             ]

@@ -83,7 +83,7 @@ const Dashboard = () =>{
                 </div>
                 <div className={styles.right_container}>
                     <BarChart label1={'Developers'} label2={"Recruiters"} data1={info.developers_chart_count} data2={info.recruiters_chart_count}/>
-                    <BarChart2 label1={'male'} label2={"female"} data1={info.male_count} data2={info.female_count}/>
+                    <BarChart2 label1={'Male'} label2={"Female"} data1={info.male_count} data2={info.female_count}/>
                 </div>
             </div>
 

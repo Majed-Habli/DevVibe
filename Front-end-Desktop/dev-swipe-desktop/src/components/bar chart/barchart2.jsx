@@ -20,12 +20,12 @@ const BarChart2 = ({label1, label2, data1, data2}) =>{
           },
           title: {
             display: true,
-            text: 'Male vs Female',
+            text: 'Male V.S. Female',
           },
         },
       };
       
-      const labels = ['gender'];
+      const labels = [' '];
       
       const data = {
         labels,
@@ -33,12 +33,12 @@ const BarChart2 = ({label1, label2, data1, data2}) =>{
           {
             label:`${label1}`,
             data:  `${data1}`,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: '#FCC860',
           },
           {
             label: `${label2}`,
             data:  `${data2}`,
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: '#1E282C',
           },
         ],
       };
