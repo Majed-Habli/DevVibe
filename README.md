@@ -36,9 +36,9 @@
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
 ### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Profile |
+| Login screen  | Landing screen | Profile |
 | ---| ---| ---| ---|
-| ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
+| ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
 
 ### User Screens (Web)
 | Login screen  | Register screen |  Dashboard screen |
