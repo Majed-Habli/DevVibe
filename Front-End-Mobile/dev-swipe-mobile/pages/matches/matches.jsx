@@ -33,7 +33,6 @@ const Matches = () => {
               const value = await AsyncStorage.getItem("user");
               const user= JSON.parse(value)
                 setToken(user.user.token)
-                // setLoggedinID(user.user.id)
             } catch (error) {
               console.log("retrieving data2");
             }
@@ -86,7 +85,7 @@ const Matches = () => {
 
             <ScrollView style={styles.scroll_view} automaticallyAdjustContentInsets={true} showsVerticalScrollIndicator={false}>
 
-                <View style={styles.searchbar_container}>
+                {/* <View style={styles.searchbar_container}>
                     <View style={styles.searchbar}>
                         <Image
                             style={styles.search_icon}
@@ -94,7 +93,7 @@ const Matches = () => {
                         />
                         <TextInput name="{name} "style={styles.searcbar_input} placeholder='search here' onChangeText={handleTextChange} defaultValue={search} />
                     </View>
-                </View>
+                </View> */}
                 <View style={styles.page_body}>
                     <View style={styles.header_container}>
                         <Text style={styles.header}>Matches</Text>
@@ -115,7 +114,6 @@ export default Matches;
 const styles = StyleSheet.create({
     container: {
     width: windowWidth,
-    // height: windowHeight,
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
@@ -178,6 +176,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     scroll_view: {
+        width: '100%',
         flex: 1,
     }
     });
