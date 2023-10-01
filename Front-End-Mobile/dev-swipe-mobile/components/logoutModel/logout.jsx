@@ -53,9 +53,6 @@ const styles = StyleSheet.create({
     container: {
         width:200,
         height: 90,
-        position: 'absolute',
-        right: 0,
-        top: 60,
     },
     form_container: {
         width:200,

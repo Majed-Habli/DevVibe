@@ -171,12 +171,6 @@ const Profile = ({navigation}) => {
                         <Text style={styles.user_name}>{user?.user_name}</Text>
                         <Text style={styles.user_location}>{user.country}</Text>
                         <View style={styles.image_group}>
-                            {/* <View style={styles.image_button}>
-                                <Image style={styles.icons} source={require("../../assets/Send.png")}/>
-                            </View>
-                            <View style={styles.image_button}>
-                                <Image style={styles.icons} source={require("../../assets/Mail.png")}/>
-                            </View> */}
                             {details?.github_url && <View style={styles.image_button}>
                                 <Image style={styles.icons} source={require("../../assets/Github.png")}/>
                             </View>}
@@ -388,11 +382,10 @@ const styles = StyleSheet.create({
     },
     show_menu:{
         width: 200,
-        height: 90,
+        height: 60,
         position: 'absolute',
-        top: 50,
+        top: 100,
         right: 0,
-        backgroundColor: 'red',
         zIndex: 3
     }
 });
