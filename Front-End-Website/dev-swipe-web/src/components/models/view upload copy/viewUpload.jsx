@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from './viewUpload.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
@@ -59,7 +59,6 @@ const ViewUploadResume = ({isOpen ,type}) =>{
                 refStringArray.shift();
                 const result = refStringArray.join('');
                 setUploadResume(result);
-                console.log(result)
             });
         }
     };
