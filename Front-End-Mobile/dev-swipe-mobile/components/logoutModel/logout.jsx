@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, TouchableWithoutFeedback, Button, Pressable} from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, Text, View, Dimensions, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import axios from 'react-native-axios';
-
-const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
 
 const Menu = ({isOpen,tokenkey}) =>{
     const navigation = useNavigation();
@@ -24,7 +20,6 @@ const Menu = ({isOpen,tokenkey}) =>{
             const data = response.data;
 
             if(data.status == 'success'){
-                console.log(data.status)
                 hideModel()
                 navigation.navigate('Home')
             }else{
