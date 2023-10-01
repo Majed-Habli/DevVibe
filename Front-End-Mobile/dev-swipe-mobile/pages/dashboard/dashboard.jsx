@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, Button} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Dimensions} from 'react-native';
 import axios from 'react-native-axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CardSwiper from '../../components/swiper/cardSwiper';
