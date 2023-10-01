@@ -28,7 +28,6 @@ const NewRecruites = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log('data.data',data.data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -44,7 +43,6 @@ const NewRecruites = () => {
             console.error("Api returned with a fail:", error);
           }
     }
-    console.log('infooooo',recruites)
     
     useEffect(()=>{
         getNewRecruiters();
