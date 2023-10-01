@@ -170,7 +170,7 @@ const Profile = () =>{
                 <div className={styles.header}>
                     <HeaderComp data={user} images={images}/>
                 </div>
-                <div className={styles.body_container}>
+                <div className={`${!loading ? styles.body_container: styles.transparent_container}`}>
                     <div className={styles.carousel_container}>
                         {!loadingImages ? (<CarouselComp value={images} issue={errorImages}/>):
                         (<div className={styles.loading_container}>
@@ -178,7 +178,7 @@ const Profile = () =>{
                         </div>)}
                     </div>
                     <div className={styles.skill_section}>
-                        <div className={styles.section_title}>Skills</div>
+                        {!loading && <div className={styles.section_title}>Skills</div>}
                         <div className={styles.skills_list}>
                             {!loading ? (skills.map((skill)=>(
                                     <CustomImageButton key={skill.skill_id} text={`${skill.skill.name}`} width={'fit-content'} height={36} display={'flex'} alignItems={'center'} backgroundColor={'#FCC860'} padding={'0.5rem .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'}/>
@@ -187,7 +187,7 @@ const Profile = () =>{
                         </div>
                     </div>
                     <div className={styles.description_text}>
-                        <div className={styles.section_title}>Biography</div>
+                        {!loading &&<div className={styles.section_title}>Biography</div>}
                         <div className={styles.description}>{userData.description}</div>
                     </div>
                 </div>
