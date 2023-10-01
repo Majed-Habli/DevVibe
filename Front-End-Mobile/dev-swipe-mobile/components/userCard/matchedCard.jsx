@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, Pressable} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, Dimensions, TextInput, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const MatchedCard = ({user, index}) => {
     const navigation = useNavigation();
-    console.log("index is ",index)
-    const goToPage = (id) => {
-        navigation.navigate('Chat',{id})
+    
+    const goToPage = (cardId) => {
+        navigation.navigate('Profile', { cardId });
     };
-
-    // useEffect(()=>{
-    //     if(index % 2 == 0){
-    //         setColor('even')
-    //     }
-    // },[index])
 
     return(
         <Pressable onPress={()=>goToPage(user.id)}>
