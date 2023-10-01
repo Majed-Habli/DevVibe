@@ -163,7 +163,6 @@ const EditForm = ({ isOpen, data }) => {
 
   const removeUserSkills = async () => {
     const removeSkill =  JSON.stringify(unselectedSkills);
-    console.log('my skills to be removeed arteeeeeee', removeSkill)
 
     try {
       const response = await sendRequest({
@@ -209,7 +208,6 @@ const EditForm = ({ isOpen, data }) => {
         const token = " ";
 
         if (data.status == "success") {
-          console.log("successfully updated");
           hideModel();
         } else {
           setError("failed to update!");
@@ -280,7 +278,6 @@ const EditForm = ({ isOpen, data }) => {
                     <div>
                         <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
-                    
                 )}
                 
                 <div className={styles.skill_container}>
