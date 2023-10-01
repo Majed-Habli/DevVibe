@@ -1,18 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from './headercard.module.css';
-import CustomButton from "../custom button/custombutton";
 import CustomImageButton from "../custom button/customImageButton";
 import EditForm from "../models/edit form/editform";
 import { localStorageAction } from "../../utils/functions/localStorage";
-import { requestMethods } from "../../utils/functions/requestMethods.";
-import { sendRequest } from "../../utils/functions/axios";
 import ViewUpload from "../models/view upload/viewUpload";
 import SyncLoader from "react-spinners/ClipLoader";
-// import { useParams } from "react-router-dom";
 import ViewImages from "../../components/models/images form/viewimages";
-// import ViewUpload from "../../components/models/view upload/viewUpload";
 import ViewUploadResume from "../../components/models/view upload copy/viewUpload";
-
 
 const HeaderComp = ({data, images}) =>{
     const userType = localStorageAction('user_type');
@@ -30,7 +24,6 @@ const HeaderComp = ({data, images}) =>{
         setShowUploadImagesModel(true)
     }
     
-    // const params = useParams();
     const [user, setUser] = useState({});
 
     const ViewModelImages = () =>{
@@ -148,29 +141,6 @@ const HeaderComp = ({data, images}) =>{
                     <SyncLoader color="#36d7b7" />
                 </div>
             </div>)}
-                {/* <div className={styles.middle_right}>
-                    {user.description ?(
-                        <div className={styles.description}>{user.description}</div>
-                    ):(
-                        <div className={styles.description}>"Writing something catchy can help get you noticed"</div>
-                    )}
-                    
-                </div> */}
-            {/* </div> */}
-            {/* <div className={styles.bottom_row}> */}
-                {/* {data.rec_details?.company_name ? (
-                    <div className={styles.company_details}>
-                        <div className={styles.company_label}>Works at:</div>
-                        <div className={styles.company_name}>{user.company_name} {data.country}</div>
-                    </div>
-                ):(
-                    <div className={styles.company_details}>
-                        <div className={styles.company_label}>Lives in:</div>
-                        <div className={styles.company_name}>{data.country}</div>
-                    </div>
-                )} */}
-                
-            {/* </div> */}
             {showModel && (
                 <div className={styles.popup_background}>
                     <EditForm isOpen={setShowModel} data={data}/>

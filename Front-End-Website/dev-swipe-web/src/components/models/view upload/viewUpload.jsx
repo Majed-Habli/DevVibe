@@ -82,7 +82,10 @@ const ViewUpload = ({isOpen ,type}) =>{
             <div className={styles.popup_body}>
                 <div className={styles.image_container}>
                     {tempView ?(<img src={tempView} alt="" />) : (
-                        <div>Choose an image</div>
+                        <div className={styles.response_message}>
+                            <img src="/images.png"/>
+                            <div>Choose an image</div>
+                        </div>
                     )}
                 </div>
 
