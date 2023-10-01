@@ -11,8 +11,6 @@ const AddSkill = ({isOpen, type, data}) =>{
     const [error, setError] = useState('');
     const [skillID, setSkillID] = useState('');
 
-    // console.log("my skill data", data.name)
-
     const handleChange = (e) => {
         setInputs((prev) => ({
             ...prev,
@@ -34,11 +32,9 @@ const AddSkill = ({isOpen, type, data}) =>{
                     body:{name: inputs.name}
                 });
                 const data = response;
-                console.log("res of updating", response)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    console.log("successfully updated")
                     hideModel()
                     window.location.href = '/dashboard/skills';
                     
@@ -69,11 +65,9 @@ const AddSkill = ({isOpen, type, data}) =>{
                     }
                 });
                 const data = response;
-                console.log("res of updating", response)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    console.log("successfully updated")
                     hideModel()
                     window.location.href = '/dashboard/skills';
                     
