@@ -120,7 +120,7 @@ const EditForm = ({isOpen, user, details}) => {
                     </View>
                     <View style={styles.text_area}>
                         <Text style={styles.input_header}>Description</Text>
-                        <TextInput style={styles.input} onChangeText={(text)=>handleTextChanges(text, 'description')} defaultValue={newDetail.description} multiline={true} numberOfLines={4}></TextInput>
+                        <TextInput style={styles.text_area_input} onChangeText={(text)=>handleTextChanges(text, 'description')} defaultValue={newDetail.description} multiline={true} numberOfLines={4}></TextInput>
                     </View>
                 </ScrollView>
                 <View style={styles.button_container}>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
         width: windowWidth/1.2,
         height: windowHeight/1.5,
         backgroundColor: 'white',
-        borderColor: 'black',
+        borderColor: '#dedede',
         borderWidth: 1,
         borderRadius: 8,
         alignItems: 'flex-start',
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         justifyContent: 'space-between',
         borderBottomWidth: 1,
-        borderBottomColor: 'black'
+        borderBottomColor: '#dedede'
     },
     image_container: {
         width: 25,
@@ -168,7 +168,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     txt: {
-        fontSize: 17
+        fontSize: 17,
+        fontWeight: '600'
     },
     icons: {
         width: 25,
@@ -185,9 +186,17 @@ const styles = StyleSheet.create({
     },
     input_header: {
         fontSize: 15,
-        fontWeight: '400'
+        fontWeight: '500'
     },
     input: {
+        width: 270,
+        height:35,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: '#9F8484',
+        paddingLeft: 12
+    },
+    text_area_input: {
         width: 270,
         borderRadius: 4,
         borderWidth: 1,
@@ -232,12 +241,13 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#343A40',
+        backgroundColor: '#FCC860',
         borderRadius: 4
     },
     btn_text: {
-        color: '#FCC860',
-        fontSize: 17
+        color: 'black',
+        fontSize: 17,
+        fontWeight: '500'
     }
 });
 
