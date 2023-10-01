@@ -188,7 +188,7 @@ const Profile = ({navigation}) => {
                                 <Image source={require("../../assets/Edit-icon.png")}/>
                             </Pressable>}
                         </View>
-                        <ScrollView style={styles.scrollable} horizontal={true}>
+                        <ScrollView style={styles.scrollable} horizontal={true} showsHorizontalScrollIndicator={false}>
                             <View style={styles.pill_container}>
                                 {skills.length > 0 ? (skills.map((skill)=>(
                                     <View key={skill.skill.id} style={styles.pill}>
@@ -330,6 +330,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         columnGap: 5,
         gap: 10,
+
     },
     pill: {
         alignSelf: "flex-start",
@@ -371,7 +372,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         borderBottomColor: "#c7c7c7",
-        zIndex:1
+        zIndex:0
     },
     header_title: {
         flex: 1,
