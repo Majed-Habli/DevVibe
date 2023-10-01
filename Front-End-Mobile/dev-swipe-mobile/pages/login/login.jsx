@@ -34,7 +34,6 @@ const Hero = ({navigation}) => {
             }else{
 
                 const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/guest/login", {
-                    
                         email: email,
                         password: password
                     }, {
@@ -45,12 +44,6 @@ const Hero = ({navigation}) => {
                 const data = response.data;
     
                 if(data.status == 'success'){
-                    const token = data.user.token;
-                    const id = data.user.id;
-                    const userName = data.user.user_name;
-                    const profileImageUrl = data.user.profile_image_url;
-                    const user_type = data.user.user_type_id;
-
                     try {
                         await AsyncStorage.setItem("user", JSON.stringify(data), (err)=> {
                             if(err){
@@ -110,8 +103,6 @@ const Hero = ({navigation}) => {
                 </View>
 
             </View>
-            
-
         </SafeAreaView>
     )
 } 
