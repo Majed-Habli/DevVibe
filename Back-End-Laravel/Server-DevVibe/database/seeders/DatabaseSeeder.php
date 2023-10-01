@@ -522,5 +522,301 @@ class DatabaseSeeder extends Seeder
             'updated_at' => date('Y-m-d')
         ]);
 
+        DB::table('swipes')->insert([
+            'user_id' => 1,
+            'swiped_user_id' => 13,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 2,
+            'swiped_user_id' => 13,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 2,
+            'swiped_user_id' => 14,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 1,
+            'swiped_user_id' => 18,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 1,
+            'swiped_user_id' => 15,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 2,
+            'swiped_user_id' => 16,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 3,
+            'swiped_user_id' => 13,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 3,
+            'swiped_user_id' => 14,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 5,
+            'swiped_user_id' => 15,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('swipes')->insert([
+            'user_id' => 5,
+            'swiped_user_id' => 19,
+            'is_liked' => 1,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('user_matches')->insert([
+            'user_one_id' => 5,
+            'user_two_id' => 19,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 1,
+            'user_two_id' => 12,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 1,
+            'user_two_id' => 19,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 1,
+            'user_two_id' => 17,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 1,
+            'user_two_id' => 15,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 7,
+            'user_two_id' => 15,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('user_matches')->insert([
+            'user_one_id' => 7,
+            'user_two_id' => 13,
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
+        DB::table('developer_details')->insert([
+            'user_id' => 7,
+            'gender' => 'Male',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 8,
+            'gender' => 'Female',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 9,
+            'gender' => 'Male',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 6,
+            'gender' => 'Female',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 5,
+            'gender' => 'Male',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 4,
+            'gender' => 'Female',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 3,
+            'gender' => 'Male',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 1,
+            'gender' => 'Female',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 2,
+            'gender' => 'Male',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('developer_details')->insert([
+            'user_id' => 10,
+            'gender' => 'Female',
+            'resume' => '',
+            'description' => 'hello this is my description',
+            'github_url' => '',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 12,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 13,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 14,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 15,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 16,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 17,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 18,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 19,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+        DB::table('recruiter_details')->insert([
+            'user_id' => 20,
+            'company_name' => 'tripple aaa',
+            'description' => 'hello this is my description',
+            'linkedin_url' => '',
+            'created_at' => date('Y-m-d'),
+            'updated_at' => date('Y-m-d')
+        ]);
+
     }
 }
