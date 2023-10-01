@@ -179,7 +179,10 @@ const Profile = ({navigation}) => {
                             </View>}
                         </View>
                     </View>
-                    {/* add company name here */}
+                    {details?.company_name && <View style={styles.work_container}>
+                        <Text style={styles.category_header}>Works At</Text>
+                        <Text style={styles.statement}>{details.company_name}</Text>
+                    </View>}
                     <View style={styles.skill_container}>
                         <View style={styles.container_header}>
                             <Text style={styles.category_header}>Skills</Text> 
@@ -257,6 +260,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: 'white',
+    },
+    work_container: {
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
+        gap: 10
     },
     Scroll_view: {
         flex: 1,
