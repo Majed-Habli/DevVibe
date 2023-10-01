@@ -11,7 +11,6 @@ const CustomImageButton = ({image_name, width, height, backgroundColor, borderRa
         <View style={{width, height, backgroundColor, borderRadius, 
         cursor, display, alignItems, justifyContent, columnGap, padding, boxShadow, flexDirection, margin}}
         onClick={onClick}>
-            {/* <Image style={{width: image_width,height: image_height}} source={require('../../assets/Notify-button.png')} /> */}
             {txt &&(
                 <Text>{text}</Text>
             )}
