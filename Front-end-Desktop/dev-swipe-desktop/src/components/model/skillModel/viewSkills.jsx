@@ -1,12 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styles from '../../../styles/viewSkill.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
-import { requestMethods } from "../../../utils/functions/requestMethods.";
-import { sendRequest } from "../../../utils/functions/axios";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import CustomButton from "../../custom button/custombutton";
-import { localStorageAction } from "../../../utils/functions/localStorage";
 
 const ViewSkills = ({isOpen, skills}) =>{
 
