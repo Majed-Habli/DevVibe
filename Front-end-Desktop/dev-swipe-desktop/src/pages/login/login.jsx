@@ -18,10 +18,6 @@ const Login = () =>{
         }));
     };
 
-    const goToPage = () => {
-        window.location.href = '/register';
-    }
-
     const onLogin = async (event) =>{
         event.preventDefault();
 
