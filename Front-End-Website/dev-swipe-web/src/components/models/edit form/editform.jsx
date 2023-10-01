@@ -22,7 +22,6 @@ const EditForm = ({isOpen, data}) =>{
     const [skills, setSkills] = useState([]);
     console.log("selected are",selected)
     
-    // const [name,setName]= useState('');
     const [inputs, setInputs] = useState({});
     
     const onChangeGenderHandel = (selectedOption) =>{
