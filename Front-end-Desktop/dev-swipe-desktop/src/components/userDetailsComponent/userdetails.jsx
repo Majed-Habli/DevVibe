@@ -26,7 +26,7 @@ const UserDetails = ({data, images, issue}) =>{
         if(data){
             setDescription({description: data?.dev_details?.description || data?.rec_details?.description})
         }
-    })
+    },[data])
 
     return(
         <div className={`${!loading ? styles.body_container: styles.transparent_container}`}>
