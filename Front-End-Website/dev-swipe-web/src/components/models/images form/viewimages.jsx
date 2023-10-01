@@ -9,7 +9,6 @@ import { localStorageAction } from "../../../utils/functions/localStorage";
 const ViewImages = ({isOpen ,imgs}) =>{
     const userId = localStorageAction('user_id');
 
-    console.log("the users",imgs)
     const [error, setError] = useState('');
     const hideModel =() =>{
         isOpen(prev => !prev);
@@ -21,8 +20,6 @@ const ViewImages = ({isOpen ,imgs}) =>{
             ? setSelected(selected.filter(x => x !== id))
             : setSelected([...selected, id]);
         };
-
-    console.log('deleted images are ', selected);
 
     const removeImages = async () =>{
         const myImages = JSON.stringify(selected) ;
@@ -39,11 +36,9 @@ const ViewImages = ({isOpen ,imgs}) =>{
                     body:{image_id: myImages}
                 });
                 const data = response;
-                console.log("res of removing skills", response)
                 const token = " ";
     
                 if(data.status == 'success'){
-                    console.log("successfully removed images")
                     hideModel();
                     window.location.href = `/dashboard/profile/${userId}`;
                 }else{
