@@ -13,7 +13,4 @@ class Message extends Model
         return $this->belongsTo(UserMatch::class, 'id');
     }
 
-    // public function Matchs(){
-    //     return $this->belongsTo(User::class, 'id');
-    // }
 }
