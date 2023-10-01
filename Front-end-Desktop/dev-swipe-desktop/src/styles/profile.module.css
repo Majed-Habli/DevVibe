@@ -55,13 +55,13 @@
 
 .body_right{
     flex: 2;
-    height: 550px;
+    height: 525px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
     border: 1px solid #CCCCCC;
-    border-radius: 4px;
+    border-radius: 15px;
 }
 
 .popup_background{

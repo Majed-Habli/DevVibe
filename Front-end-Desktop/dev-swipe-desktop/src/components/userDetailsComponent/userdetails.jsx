@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from '../../styles/userdetails.module.css';
-import CustomButton from "../custom button/custombutton";
-import CustomImageButton from "../custom button/customImageButton";
-import { localStorageAction } from "../../utils/functions/localStorage";
-import { requestMethods } from "../../utils/functions/requestMethods.";
-import { sendRequest } from "../../utils/functions/axios";
 import SyncLoader from "react-spinners/ClipLoader";
+import CarouselComp from "../carousel/imagescarousel";
 
 const UserDetails = ({data, images, issue}) =>{
 
     const [loading, setLoading] = useState(false);
+    const [userDescription, setDescription] = useState([]);
     const [loadingImages, setLoadingImages] = useState(false);
 
     useEffect(()=>{
@@ -25,6 +22,12 @@ const UserDetails = ({data, images, issue}) =>{
         }
     },[data,images])
 
+    useEffect(()=>{
+        if(data){
+            setDescription({description: data?.dev_details?.description || data?.rec_details?.description})
+        }
+    })
+
     return(
         <div className={`${!loading ? styles.body_container: styles.transparent_container}`}>
             <div className={styles.carousel_container}>
@@ -35,7 +38,7 @@ const UserDetails = ({data, images, issue}) =>{
             </div>
             <div className={styles.description_text}>
                 {!loading &&<div className={styles.section_title}>Biography</div>}
-                <div className={styles.description}>{data.description}</div>
+                <div className={styles.description}>{userDescription.description}</div>
             </div>
         </div>
     )
