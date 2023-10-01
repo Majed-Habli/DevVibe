@@ -27,11 +27,9 @@ const Sidebar = ({status}) => {
                 method: requestMethods.GET,
             });
             const data = response;
-            console.log("res", response)
             const token = " ";
 
             if(data.status == 'success'){
-                console.log("bye")
                 localStorage.clear();
                 window.location.href = '/';
             }else{
