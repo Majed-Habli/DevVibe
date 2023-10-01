@@ -9,7 +9,7 @@ const Users = () => {
     const [search, setSearch] = useState('');
     const [error, setError] = useState('');
     const [info,setInfo] = useState([]);
-    // `/user/developer/view_all_skills/
+
     const inputChange = (event) => {
         setSearch(event.target.value);
     };
@@ -28,12 +28,10 @@ const Users = () => {
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
                     setInfo(data.data);
-                    console.log(info)
 
                 }else{
                     setError("failed to get data!");
