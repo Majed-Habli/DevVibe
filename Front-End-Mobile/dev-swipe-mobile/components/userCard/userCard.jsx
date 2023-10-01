@@ -24,10 +24,8 @@ const UserCard = () =>{
       getData();
     });
 
-  console.log('the user object is ',user)
 
   const handleClicked = (cardId) => {
-    console.log(`got clicked ${cardId}`)
     navigation.navigate('Profile', { cardId });
   }
 
