@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, TextInput, ScrollView, Pressable} from 'react-native';
-import CustomInput from '../../components/custom input/customInput';
-import CustomButton from '../../components/custom button/customButton';
+import { StyleSheet, SafeAreaView, Text, View, Image, Dimensions, ScrollView, Pressable} from 'react-native';
 import MatchedCard from '../../components/userCard/matchedCard';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from 'react-native-axios';
@@ -22,10 +20,6 @@ const Matches = () => {
     const goBack = () => {
         navigation.navigate('Dashboard');
       };
-
-    const handleTextChange = (text) => {
-        setSearch(text)
-    };
 
     useEffect(() => {
         const getData = async () => {
@@ -54,7 +48,6 @@ const Matches = () => {
         
                 if(data.status == 'success'){
                     setMatches(data.data)
-                    console.log("yayy3", data.data)
                 }else{
                     setError("no success3!");
                     console.log(error);
@@ -84,16 +77,6 @@ const Matches = () => {
             </View>
 
             <ScrollView style={styles.scroll_view} automaticallyAdjustContentInsets={true} showsVerticalScrollIndicator={false}>
-
-                {/* <View style={styles.searchbar_container}>
-                    <View style={styles.searchbar}>
-                        <Image
-                            style={styles.search_icon}
-                            source={require('../../assets/Search.png')}
-                        />
-                        <TextInput name="{name} "style={styles.searcbar_input} placeholder='search here' onChangeText={handleTextChange} defaultValue={search} />
-                    </View>
-                </View> */}
                 <View style={styles.page_body}>
                     <View style={styles.header_container}>
                         <Text style={styles.header}>Matches</Text>
