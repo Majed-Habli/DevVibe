@@ -12,6 +12,7 @@ import ViewSkills from "../../components/model/skillModel/viewSkills";
 import EditForm from "../../components/edit form/editform";
 import StatsComp from "../../components/Stats component/statscomp";
 import UserDetails from "../../components/userDetailsComponent/userdetails";
+import SyncLoader from "react-spinners/ClipLoader";
 
 const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
@@ -22,6 +23,7 @@ const Profile = () =>{
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
     const [user, setUser] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [showSkillModel, setShowSkillModel] = useState(false);
     const [showInfoModel, setShowInfoModel] = useState(false);
     const params = useParams();
@@ -157,14 +159,6 @@ const Profile = () =>{
           }
     }
 
-    const showUserSkills = () => {
-        setShowSkillModel(true)
-    }
-
-    const showUserInfo = () => {
-        setShowInfoModel(true)
-    }
-
     useEffect(()=>{
         getUser();
         getSkills();
@@ -178,12 +172,20 @@ const Profile = () =>{
         getStats();
     },[]);
 
+    useEffect(()=>{
+        if(!user){
+            setLoading(true)
+        }else{
+            setLoading(false)
+        }
+    },[user])
+
     return(
         <div className={styles.page_container}>
             <div className={styles.page_header}>
                 <span>Profile</span>
             </div>
-            <div className={styles.page_body}>
+            {!loading ? (<div className={styles.page_body}>
                 <div className={styles.body_left}>
                     <div className={styles.body_top}>
                         <HeaderComp data={user} stats={stats}/>
@@ -197,7 +199,11 @@ const Profile = () =>{
                 <div className={styles.body_right}>
                     <UserDetails data={user} images={images} issue={setErrorImages}/>
                 </div>
-            </div>
+            </div>):(<div className={styles.loading}>
+                <div>
+                    <SyncLoader color="#FCC860" />
+                </div>
+            </div>)}
             {showSkillModel && (
                 <div className={styles.popup_background}>
                     <ViewSkills isOpen={setShowSkillModel} skills={skills}/>

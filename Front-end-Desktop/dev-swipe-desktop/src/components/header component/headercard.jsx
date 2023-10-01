@@ -120,12 +120,12 @@ const HeaderComp = ({data, stats}) =>{
                 {user && data.user_type_id == 2 && (
                     <div>
                         {user.github_url && (
-                            <CustomImageButton width={36} height={36} image_name={'Github.png'} alignItems={'center'} display={'flex'} backgroundColor={'#E8E8E8'}borderRadius={10} justifyContent={'center'} image_width={26} image_height={26} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
+                            <CustomImageButton width={40} height={40} image_name={'Github.png'} alignItems={'center'} display={'flex'} backgroundColor={'#E8E8E8'}borderRadius={10} justifyContent={'center'} image_width={26} image_height={26} onClick={() => goTo(user.github_url)} cursor={'pointer'}/>
                         )}
                     </div>
                         )}
                         {user.linkedin_url &&(
-                            <CustomImageButton image_name={'Linkedin.png'} image_width={30} image_height={30} backgroundColor={'#E8E8E8'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={10} width={36} height={36} onClick={() => goTo(user.linkedin_url)} cursor={'pointer'}/>
+                            <CustomImageButton image_name={'Linkedin.png'} image_width={30} image_height={30} backgroundColor={'#E8E8E8'} display={'flex'} alignItems={'center'} justifyContent={'center'} borderRadius={10} width={40} height={40} onClick={() => goTo(user.linkedin_url)} cursor={'pointer'}/>
                         )}
                 </div>
                 <div className={styles.button_container}>
