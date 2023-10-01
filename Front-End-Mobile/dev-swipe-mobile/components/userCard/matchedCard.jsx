@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TextInput, Pressable} from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const MatchedCard = ({user, index}) => {
