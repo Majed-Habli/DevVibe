@@ -62,12 +62,12 @@
 | Login screen  | Dashboard screen |  Stats screen |
 | ---| ---| ---|
 | ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
-| Developers screen  | Developers Profile Screen | Info Modal One |
-| ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk.png) | ![fsdaf](./readme/demo/desktop/user-details-desk1.png) |
-| Info Modal Two  | Skills Screen | Skills Modal One |
-![fsdaf](./readme/demo/desktop/user-details-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |
-| Skills Modal Two |
-![fsdaf](./readme/demo/desktop/skills-modal2.png)
+| Developers screen  | Developers Profile Screen | Skills Screen 
+| ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
+| Skills Modal One | Skills Modal Two |
+| ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
+
+
 
 <br><br>
 
