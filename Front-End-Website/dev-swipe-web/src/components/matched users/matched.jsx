@@ -67,7 +67,7 @@ const MatchedTable = () =>{
                     }
                 </div>):(
                     <div className={styles.inner_table_container}>
-                        <SyncLoader color="#36d7b7" />
+                        <SyncLoader color="#FCC860" />
                     </div>
 
                 )}

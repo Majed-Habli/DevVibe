@@ -174,7 +174,7 @@ const Profile = () =>{
                     <div className={styles.carousel_container}>
                         {!loadingImages ? (<CarouselComp value={images} issue={errorImages}/>):
                         (<div className={styles.loading_container}>
-                            <SyncLoader color="#36d7b7" />
+                            <SyncLoader color="#FCC860" />
                         </div>)}
                     </div>
                     <div className={styles.skill_section}>

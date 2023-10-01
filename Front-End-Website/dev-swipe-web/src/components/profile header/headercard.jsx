@@ -138,7 +138,7 @@ const HeaderComp = ({data, images}) =>{
                 </div>}
             </div>):(<div className={styles.loading}>
                 <div>
-                    <SyncLoader color="#36d7b7" />
+                    <SyncLoader color="#FCC860" />
                 </div>
             </div>)}
             {showModel && (

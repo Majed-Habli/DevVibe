@@ -71,7 +71,7 @@ const InterestedTable = () => {
             <div className={styles.table_body}>
                 {!errorDisplay ?(!loading ?(<Card data={users} button={true}/>):(
                     <div className={styles.loader}>
-                        <SyncLoader color="#36d7b7" />
+                        <SyncLoader color="#FCC860" />
                     </div>
                 )):(
                     
