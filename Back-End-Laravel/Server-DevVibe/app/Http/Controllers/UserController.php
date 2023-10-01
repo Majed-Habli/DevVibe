@@ -112,8 +112,6 @@ class UserController extends Controller
 
     function addSkills(Request $request){
 
-        //sending the ids of skills as an array json encode
-
         $user = Auth::user();
         $dataArray = json_decode($request->input('user_skills'), true);
 
@@ -129,15 +127,7 @@ class UserController extends Controller
     
                 $user_skills->save();
 
-                // return response()->json(['status' => 'added'. $data]);
             }
-            // else{
-
-            //     return response()->json([
-            //         'status' => $data .'already in user skill set.',
-            //         'user existing' => $is_existing
-            //     ]);
-            // }
         }
 
         return response()->json([
@@ -227,7 +217,6 @@ class UserController extends Controller
 
     function uploadUserImages(Request $request){
         
-        // $user_id = Auth::id();
         $user_id = $request->user_id;
 
         $path = public_path('storage/users/' . $user_id . '/user_images');
@@ -254,7 +243,6 @@ class UserController extends Controller
 
     function uploadUserResume(Request $request){
         
-        // $user_id = Auth::id();
         $user_id = $request->user_id;
         
         $path = public_path('storage/users/' . $user_id . '/user_resume');
@@ -325,20 +313,7 @@ class UserController extends Controller
                 ]);
             }
         }
-        // $image_id = $request->image_id;
-        // $image = Image::where('id', '=', $image_id)->first();
-        // $image_url = $image->image_url;
-        // $image_path = public_path('storage/users/' . $user_id . '/user_images'. '/'. $image_url);
-
-        // if (\File::exists($image_path)) {
-        //     unlink($image_path);
-        // }
-
-        // $image->delete();
-
-        // return response()->json([
-        //     'status' => 'success'
-        // ]);
+        
     }
 
     function swipe(Request $request){
@@ -428,13 +403,6 @@ class UserController extends Controller
 
         $user_id = Auth::id();
 
-        // $is_interested = Swipe::whereNot(function ($query) use ($user_id){
-        //     $query->where('user_id', $user_id);
-        // })->where(function ($query) use ($user_id){
-        //     $query->where('swiped_user_id', $user_id)
-        //     ->where('is_liked', 1);
-        // })->get();
-
         $is_interested = Swipe::where(function ($query) use ($user_id){
             $query->where('swiped_user_id', $user_id)
             ->where('is_liked', 1);
@@ -481,8 +449,6 @@ class UserController extends Controller
 
         $view_count = $user->view_count;
 
-        // $matched_count = UserMatch::where('user_one_id', '=', $user_id)->orWhere('user_two_id', '=', $user_id)->get()->count();
-
         return response()->json([
             'status' => 'success',
             'matched_count' => $matched_count,
@@ -506,13 +472,10 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'success',
-            // 'user' => $user_id,
-            // 'data' => $swiped_user,
             'compare' => $compare_user
         ]);
     }
 
-    //notification 2nd try
     public function sendNotificationrToUser(Request $request)
     {
        
