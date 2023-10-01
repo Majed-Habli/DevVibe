@@ -159,7 +159,7 @@ const HeaderComp = ({data, stats}) =>{
         //     </div>
         // </div>
         <>
-        <div className={styles.container}>
+        <div className={`${styles.container} ${styles.padding}`}>
             {!loading ?(<div className={styles.container_body}>
                 <div className={styles.image_container}>
                     {!data.profile_image_url ? (

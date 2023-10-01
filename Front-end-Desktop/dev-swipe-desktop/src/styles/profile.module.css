@@ -24,7 +24,7 @@
     padding: 1rem 0 0 0;
 }
 
-.bofy_left{
+.body_left{
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,6 @@
     background-color: white;
     border: 1px solid #CCCCCC;
     border-radius: 15px;
-    padding: 20px;
 }
 
 .body_bottom{

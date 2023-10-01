@@ -183,7 +183,7 @@ const Profile = () =>{
                 <span>Profile</span>
             </div>
             <div className={styles.page_body}>
-                <div className={styles.bofy_left}>
+                <div className={styles.body_left}>
                     <div className={styles.body_top}>
                         <HeaderComp data={user} stats={stats}/>
                     </div>
@@ -192,7 +192,7 @@ const Profile = () =>{
                         <CustomImageButton text={'user skills'} width={'100%'} height={65} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"skill.png"} image_height={20} image_width={20} padding={'0 1rem'} borderRadius={4} cursor={'pointer'} onClick={()=>showUserSkills()}/>
                     </div> */}
                 </div>
-                <div className={styles.bofy_left}>
+                <div className={styles.body_left}>
                     <div className={styles.body_top}>
                         <StatsComp data={skills} stats={stats}/>
                     </div>
