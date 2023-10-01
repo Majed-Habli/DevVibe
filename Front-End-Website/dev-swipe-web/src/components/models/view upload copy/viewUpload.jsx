@@ -77,7 +77,11 @@ const ViewUploadResume = ({isOpen ,type}) =>{
             <div className={styles.popup_body}>
                 <div className={styles.message_container}>
                     {tempView ?(<div>{tempView}</div>) : (
-                        <div>Choose an file</div>
+                        <div className={styles.response_message}>
+                            <img src="/Upload-arrow.png"/>
+                            <div>Choose an file</div>
+                        </div>
+                    
                     )}
                 </div>
 

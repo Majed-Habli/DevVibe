@@ -42,7 +42,6 @@
 }
 
 .upload_button input{
-    /* position: absolute; */
     background-color: transparent;
     color: transparent;
 }
@@ -71,4 +70,9 @@
 
 .container_two{
     height: 271px;
+}
+
+.response_message img {
+    width: 100%;
+    height: 60%;
 }
