@@ -41,7 +41,6 @@ const Login = () =>{
                         }
                 });
                 const data = response;
-                console.log("res", response)
                 const token = " ";
     
                 if(data.status == 'success'){
