@@ -18,8 +18,6 @@ const Register = () =>{
         setSelectedGender(selectedOption);
     }
 
-    console.log(selectedGender)
-
     const onChangeHandler = (option) => {
         setSelected(option)
     };
@@ -66,7 +64,6 @@ const Register = () =>{
                         user_type_id: selected,}
                 });
                 const data = response;
-                console.log(data)
                 const token = " ";
     
                 if(data.status == 'Success'){
