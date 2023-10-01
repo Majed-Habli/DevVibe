@@ -29,7 +29,6 @@ const Dashboard = () =>{
                     method: requestMethods.GET,
                 });
                 const data = response;
-                console.log(data)
                 const token = " ";
     
                 if(data.status == 'success'){
@@ -48,7 +47,6 @@ const Dashboard = () =>{
     }
 
     function transformCountryPeopleCount(countryPeopleCount) {
-        console.log(countryPeopleCount)
         return countryPeopleCount.reduce((result, item) => {
           result[item.country] = item.count;
           return result;
