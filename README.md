@@ -43,11 +43,11 @@
 ### User Screens (Web)
 | Login screen  | Register screen |  Dashboard screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-web.png) | ![fsdaf](./readme/demo/website/dashboard-web.png) |
-| Interested Modal | Profile Screen | Upload Image Screen |
-| ![Landing](./readme/demo/website/dashboard-web-comp.png) | ![fsdaf](./readme/demo/website/profile-view-web.png) | ![fsdaf](./readme/demo/website/profile-web-modal1.png) |
-| Upload CV  | Update User Details |
-![fsdaf](./readme/demo/website/profile-web-modal2.png) | ![fsdaf](./readme/demo/website/profile-web-modal3.png)
+| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-desk.png) | ![fsdaf](./readme/demo/website/dashboard-desk.png) |
+|  Update User Details | Profile Screen | Upload Image Screen |
+|  ![fsdaf](./readme/demo/website/model-edit-desk.png) | ![fsdaf](./readme/demo/website/profile-desk.png) | ![fsdaf](./readme/demo/website/model-upload1-desk.png) |
+| Upload CV
+![fsdaf](./readme/demo/website/model-upload2-desk.png)
 
 ### Admin Screens (Desk)
 | Login screen  | Dashboard screen |  Stats screen |
