@@ -14,6 +14,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
     const [skills, setSkills] = useState([])
     const [selected, setSelected] = useState([]);
     const [error, setError] = useState('');
+    const [unselectedSkills, setUnselectedSkills] = useState([]);
 
     const handleSearchChange = (text) => {
         setSearch(text)
@@ -37,11 +38,20 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         getData();
     },[]);
 
+    // const onChangeHandler = (id) => {
+    //     selected.includes(id)
+    //       ? setSelected(selected.filter(x => x !== id))
+    //       : setSelected([...selected, id]);
+    //   };
+
     const onChangeHandler = (id) => {
-        selected.includes(id)
-          ? setSelected(selected.filter(x => x !== id))
-          : setSelected([...selected, id]);
-      };
+    if (selected.includes(id)) {
+        setSelected(selected.filter((x) => x !== id));
+        setUnselectedSkills((prevIds) => [...prevIds, id]);
+    } else {
+        setSelected([...selected, id]);
+    }
+    };
 
     const getSkills = async () =>{
         try {
@@ -67,7 +77,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
     }
 
     const removeSkills = async (id) =>{
-        const removeSkills = JSON.stringify([id])
+        const removeSkills = JSON.stringify(unselectedSkills)
         try {
           const response = await axios.post(`https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/remove_skills`,{
             user_skills: removeSkills
@@ -131,7 +141,8 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
 
     const save = async () =>{
         try{
-            addUserSkills()
+            addUserSkills();
+            removeSkills();
         }catch (error){
             console.log('faled to save', error);
         }
@@ -144,6 +155,9 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
         removeSkills(skillID)
         setting(filtered);
     }
+
+    console.log(selected)
+    console.log(unselectedSkills)
 
     if(!token)
     return(
@@ -166,7 +180,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                     <View>
                         <Text style={styles.input_header}>Skills</Text>
 
-                        <View style={styles.my_skills}>
+                        {/* <View style={styles.my_skills}>
                             {userSkills.map((skill)=>(
                                 <View key={skill.skill.id} style={styles.pill}>
                                     <Text style={styles.skill_text}>{skill.skill.name}</Text>
@@ -175,7 +189,7 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                                     </Pressable>
                                 </View>
                             ))}
-                        </View>
+                        </View> */}
 
                         <View style={styles.searchbar_container}>
                             <View style={styles.searchbar}>
@@ -189,8 +203,8 @@ const SkillForm = ({isOpen, userSkills ,setting}) => {
                         <View className={styles.skill_display}>
                             {skills.map((skill)=>(
                                 <View key={skill.id} style={styles.box}>
-                                    <CheckBox id={`${skill.id}`} checked={selected.includes(skill.id)}
-                                        onValueChange={()=>onChangeHandler(skill.id)}/>
+                                    <CheckBox id={`${skill.id}`} value={selected.includes(skill.id)}
+                                        onValueChange={()=>onChangeHandler(skill.id)} />
                                     <Text id={`${skill.id}`}> {skill.name}</Text>
                                 </View>
                             ))}
@@ -222,7 +236,7 @@ const styles = StyleSheet.create({
         width: windowWidth/1.2,
         height: windowHeight/1.3,
         backgroundColor: 'white',
-        borderColor: 'black',
+        borderColor: '#dedede',
         borderWidth: 1,
         borderRadius: 8,
         alignItems: 'flex-start',
@@ -235,7 +249,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         justifyContent: 'space-between',
         borderBottomWidth: 1,
-        borderBottomColor: 'black'
+        borderBottomColor: '#dedede'
     },
     image_container: {
         width: 25,
@@ -244,7 +258,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     txt: {
-        fontSize: 17
+        fontSize: 17,
+        fontWeight: '600'
     },
     icons: {
         width: 25,
@@ -343,12 +358,13 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#343A40',
+        backgroundColor: '#FCC860',
         borderRadius: 4
     },
     btn_text: {
-        color: '#FCC860',
-        fontSize: 17
+        color: 'black',
+        fontSize: 17,
+        fontWeight: '500'
     }
 });
 
