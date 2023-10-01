@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from './viewimages.module.css';
 import CustomImageButton from "../../custom button/customImageButton";
-import PopUpCard from "../../popup card/popupcard";
 import CustomButton from "../../custom button/custombutton";
 import { sendRequest } from "../../../utils/functions/axios";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
@@ -16,8 +15,7 @@ const ViewImages = ({isOpen ,imgs}) =>{
         isOpen(prev => !prev);
     }
 
-    // useEffect
-    const [selected, setSelected] = useState([]); //add
+    const [selected, setSelected] = useState([]);
     const onChangeHandler = id => () => {
           selected.includes(id)
             ? setSelected(selected.filter(x => x !== id))
