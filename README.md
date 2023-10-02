@@ -56,8 +56,14 @@
 | Skills Modal One | Skills Modal Two |
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
 
-
-
+### Mobile interactions
+| Login screen  | Dashboard screen |  Stats screen |
+| ---| ---| ---|
+| ![Landing](./readme/demo/mobile/mobile-gif/login-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/swipe-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/profile-mobile.gif) |
+| Developers screen  | Developers Profile Screen | Skills Screen 
+| ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
+| Skills Modal One | Skills Modal Two |
+| ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
 <br><br>
 
 <!-- Tech stack -->
