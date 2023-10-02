@@ -31,37 +31,28 @@
 > The Desk app's intended use is for the admin to be able to maintain their user base, as well as check up on their data.
 > The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 
-### Mockups
-| Home screen  | Menu Screen | Order Screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-<br><br>
-
 <!-- Implementation -->
 <img src="./readme/demo/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
 ### User Screens (Mobile)
-| Login screen  | Register screen | Landing screen | Loading screen |
-| ---| ---| ---| ---|
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen  | Menu Screen | Order Screen | Checkout Screen |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
+| Login screen  | Landing screen | Profile |
+| ---| ---| ---|
+| ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
 
 ### User Screens (Web)
 | Login screen  | Register screen |  Dashboard screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-web.png) | ![fsdaf](./readme/demo/website/dashboard-web.png) |
-| Interested Modal | Profile Screen | Upload Image Screen |
-| ![Landing](./readme/demo/website/dashboard-web-comp.png) | ![fsdaf](./readme/demo/website/profile-view-web.png) | ![fsdaf](./readme/demo/website/profile-web-modal1.png) |
-| Upload CV  | Update User Details |
-![fsdaf](./readme/demo/website/profile-web-modal2.png) | ![fsdaf](./readme/demo/website/profile-web-modal3.png)
+| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-desk.png) | ![fsdaf](./readme/demo/website/dashboard-desk.png) |
+|  Update User Details | Profile Screen | Upload Image Screen |
+|  ![fsdaf](./readme/demo/website/model-edit-desk.png) | ![fsdaf](./readme/demo/website/profile-desk.png) | ![fsdaf](./readme/demo/website/model-upload1-desk.png) |
+| Upload CV
+![fsdaf](./readme/demo/website/model-upload2-desk.png)
 
 ### Admin Screens (Desk)
 | Login screen  | Dashboard screen |  Stats screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
+| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk1.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
 | Developers screen  | Developers Profile Screen | Skills Screen 
 | ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
 | Skills Modal One | Skills Modal Two |
@@ -76,10 +67,9 @@
 
 ###  DevSwipe is built using the following technologies:
 
-- This project uses the [React-Native app development framework](https://flutter.dev/). React-Native is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- This project uses the [React app development framework](https://flutter.dev/). React is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
+- This project uses the [React-Native app development framework](https://flutter.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
+- This project uses the [React app development framework](https://flutter.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
+- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
 
 <br><br>
 
