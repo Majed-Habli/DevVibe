@@ -26,9 +26,12 @@ const HeaderComp = ({data, stats}) =>{
             const token = " ";
 
             if(data.status == 'success'){
+                console.log('blocked')
                 setBlocked(true);
             }else{
                 setBlocked(false);
+                console.log('false bloack')
+
             }
             
           } catch (error) {
@@ -129,7 +132,7 @@ const HeaderComp = ({data, stats}) =>{
                 <div className={styles.button_container}>
 
                     {blocked ? (
-                        <CustomImageButton text={'Block'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'#DC3545'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} fontweight={600} onClick={()=>BlockPerson()} cursor={'pointer'}/>
+                        <CustomImageButton text={'UnBlock'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'#DC3545'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} fontweight={600} onClick={()=>BlockPerson()} cursor={'pointer'}/>
                     ):(
                         <CustomImageButton text={'Block'} width={'100%'} height={34} display={'flex'} alignItems={'center'} columnGap={'1rem'} image_name={"Add-icon.png"} image_height={16} image_width={16} backgroundColor={'#DC3545'} padding={'0 .5rem'} borderRadius={4} boxShadow={'0 2px 16px 0 rgba(0, 0, 0, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.1)'} color={'white'} fontweight={600} onClick={()=>BlockPerson()} cursor={'pointer'}/>
                     )}

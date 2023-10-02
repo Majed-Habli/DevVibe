@@ -9,6 +9,9 @@ const StatsComp = ({data, stats}) =>{
     useEffect(()=>{
         if(!data){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }
@@ -52,11 +55,15 @@ const StatsComp = ({data, stats}) =>{
                     <div className={styles.section_header}>Skills</div>
                     <div className={styles.skills_container}>
                         <div className={styles.skill_cont}>
-                            {data.map((dat)=>(
+                            {data.length > 0 ? (data.map((dat)=>(
                                 <div key={dat.id} className={styles.box}>
                                     <div key={dat.id} className={styles.skill_name}> {dat.skill.name}</div>
                                 </div>
-                            ))}
+                            ))):(
+                                <div className={styles.error_message}>
+                                    <div>user has no skills</div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ const CarouselComp = ({value ,issue}) => {
 
   useEffect(()=>{
     if(issue){
-      setError(issue);
+      setError('no images here');
     }
   },[issue])
 
