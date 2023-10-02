@@ -11,7 +11,7 @@ import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 const CarouselComp = ({value ,issue}) => {
   const [error,setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+console.log('inner', value)
   useEffect(()=>{
       if(value.length <= 0){
           setLoading(true)
@@ -23,15 +23,16 @@ const CarouselComp = ({value ,issue}) => {
       }
   },[value])
 
-  useEffect(()=>{
-    if(issue){
-      setError('no images here');
-    }
-  },[issue])
+  // useEffect(()=>{
+  //   if(issue.length > 0){
+  //     setError('no images here');
+  //   }
+  // },[issue])
+  // console.log(issue)
 
   return (
     <>
-      {!error ?( !loading ?(<Swiper
+      {!loading ?( !error ?(<Swiper
         centeredSlides={true}
         effect={'coverflow'}
         slidesPerView={3}
@@ -62,11 +63,12 @@ const CarouselComp = ({value ,issue}) => {
             </SwiperSlide>
         ))}
                 
-      </Swiper>):( <div className='container'><SyncLoader color="#36d7b7" /></div>)):(
-        <div className='error_message'>
+      </Swiper>):(<div className='error_message'>
           <img src='/images.png'/>
           <div>{error}</div>
-        </div>
+        </div> )):(
+        
+        <div className='container'><SyncLoader color="#36d7b7" /></div>
       )}
     </>
   );

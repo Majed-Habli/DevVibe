@@ -34,6 +34,8 @@ const UserDetails = ({data, images, issue}) =>{
         }
     },[data])
 
+    console.log('images mid',images)
+
     return(
         <div className={`${!loading ? styles.body_container: styles.transparent_container}`}>
             <div className={styles.carousel_container}>

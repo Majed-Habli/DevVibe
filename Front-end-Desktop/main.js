@@ -17,7 +17,7 @@ function createMainWindow() {
     e.preventDefault();
   });
 
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   const startUrl = url.format({
     protocol: "file",

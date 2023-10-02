@@ -46,7 +46,7 @@ const Profile = () =>{
     
                 if(data.status == 'success'){
                     if(data.data == ''){
-                        setErrorSkills(`${user.user_name}, has no skills yet.`)
+                        setErrorSkills(`has no skills yet.`)
                     }
 
                     const obj = data.data;
@@ -111,7 +111,7 @@ const Profile = () =>{
     
                 if(data.status == 'success'){
                     if(data.data == ''){
-                        setErrorImages(`${user.user_name}, has no pics yet.`)
+                        setErrorImages(`has no pics yet.`)
                     }
                     const obj = data.data;
                     setImages(obj);
@@ -156,6 +156,7 @@ const Profile = () =>{
             console.error("failed to get user:", error);
           }
     }
+    console.log(images, "outer")
 
     useEffect(()=>{
         getUser();
