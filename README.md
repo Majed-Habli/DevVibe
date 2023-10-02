@@ -37,11 +37,13 @@
 | ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
 
 ### User Screens (Web)
-| Login screen  | Register screen |  Dashboard screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-desk.png) | ![fsdaf](./readme/demo/website/dashboard-desk.png) |
-|  Update User Details | Profile Screen | Upload Image Screen |
-|  ![fsdaf](./readme/demo/website/model-edit-desk.png) | ![fsdaf](./readme/demo/website/profile-desk.png) | ![fsdaf](./readme/demo/website/model-upload1-desk.png) |
+| Login screen  | Register screen 
+| ---| ---|
+| ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-desk.png) 
+|  Dashboard screen | Profile Screen 
+| ![fsdaf](./readme/demo/website/dashboard-desk.png) |![fsdaf](./readme/demo/website/profile-desk.png) |
+|  Update User Details | Upload Image Screen 
+|  ![fsdaf](./readme/demo/website/model-edit-desk.png) | ![fsdaf](./readme/demo/website/model-upload1-desk.png)
 | Upload CV
 ![fsdaf](./readme/demo/website/model-upload2-desk.png)
 
