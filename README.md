@@ -97,10 +97,16 @@
 <!-- How to run -->
 <img src="./readme/demo/title6.svg"/>
 
-> To set up Coffee Express locally, follow these steps:
+> To set up DevSwipe locally, follow these steps:
+>
+Postman
+
+This is a JSON file for the postman APIs collection for this project HemaConnect.postman_collection.json and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
+
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Mentioned bellow is the list of dependancies you'll need to use to run the project on your device.
+
 * npm
   ```sh
   npm install npm@latest -g
@@ -108,20 +114,35 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+  This project is divided into 4 Projects, with the first being a laravel project as a back-end for the remaining 3 projects.
+  To run laravel, you will first have to 
+  
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Majed-Habli/DevVibe.git
    ```
-3. Install NPM packages
+2. Navigate to
+   ```sh
+   cd DevVibe/Back-End-Laravel/Server-DevVibe
+   ```
+4. Run composer install
+   ```sh
+   composer install
+   ```
+Project number 2 is a website developed using React. To run the React project (assuming you've already cloned the repo), you will need to 
+  
+1. Navigate to
+   ```sh
+   cd DevVibe/Front-End-Website/dev-swipe-web
+   ```
+2. Run
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Run composer install
+   ```sh
+   composer install
    ```
+5. 
 
 Now, you should be able to run Coffee Express locally and explore its features.
