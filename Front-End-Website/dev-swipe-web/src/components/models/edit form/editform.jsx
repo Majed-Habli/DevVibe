@@ -240,7 +240,7 @@ const EditForm = ({ isOpen, data, user }) => {
             <div className={styles.popup_body}>
                 <div className={styles.group_row}>
                     <CustomInput label={"Name"} name={'user_name'} placeholder={user.user_name} value={inputs.user_name} handleChange={handleChange} width={225} height={38}/>
-                    {userType == 3  ?(<CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>):(
+                    {userType == 3  ?(<CustomInput label={"Company Name"} name={'company_name'} placeholder={data.company_name} value={inputs.company_name} handleChange={handleChange} width={225} height={35}/>):(
                     <Select
                         value={selectedGender}
                         placeholder= 'Gender'
@@ -269,8 +269,8 @@ const EditForm = ({ isOpen, data, user }) => {
                     </div>
                 )}
                 {userType == 3 ?(
-                    <div>
-                        <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>
+                    <div className={styles.space}>
+                        <CustomInput label={"LinkedIn"} name={'linkedin_url'} value={inputs.linkedin_url} placeholder={data.linkedin_url} handleChange={handleChange} width={225} height={38}/>
                         <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     

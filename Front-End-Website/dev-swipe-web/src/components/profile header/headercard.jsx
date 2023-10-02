@@ -104,18 +104,18 @@ const HeaderComp = ({data, images}) =>{
                         <div className={styles.user_name}>{data.user_name}</div>
                         <div className={styles.user_email}>{data.email}</div>
                     </div>
-                    {data.rec_details?.company_name && (
+                    {data.rec_details?.company_name ? (
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Works at:</div>
                         <div className={styles.company_name}>{user.company_name} {data.country}</div>
                     </div>
-                    )}
-                    {data.country &&(
+                    ):(data.country &&(
                     <div className={styles.company_details}>
                         <div className={styles.company_label}>Lives in:</div>
                         <div className={styles.company_name}>{data.country}</div>
                     </div>
-                    )}
+                    ))
+                    }
                 </div>
                 <div className={styles.socials_container}>
                 {user && userType == 2 && (

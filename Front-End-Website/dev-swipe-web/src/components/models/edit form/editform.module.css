@@ -108,3 +108,9 @@
     align-items: flex-end;
     column-gap: 10px;
 }
+
+.space{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
