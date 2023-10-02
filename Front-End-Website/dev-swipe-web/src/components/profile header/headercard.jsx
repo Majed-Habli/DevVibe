@@ -65,9 +65,6 @@ const HeaderComp = ({data, images}) =>{
         }
     },[data]);
 
-    console.log(data.rec_details)
-
-
     useEffect(()=>{
         if(`${data.id}` === userId){
             setShowButtons(true);
