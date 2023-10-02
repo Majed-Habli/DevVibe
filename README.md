@@ -62,7 +62,7 @@
 | ![Landing](./readme/demo/mobile/mobile-gif/login-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/swipe-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-profile-carousel.gif) |
 | Edit skills screen  | Edit Details Screen
 | ---| ---| ---|
-| ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit1.gif)
+| ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit1.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit2.gif)
 
 <br><br>
 
