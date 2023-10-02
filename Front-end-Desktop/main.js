@@ -1,22 +1,25 @@
-const { app, BrowserWindow } = require("electron");
+const { app, screen, BrowserWindow } = require("electron");
 const url = require("url");
 const path = require("path");
 
 function createMainWindow() {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   const mainWindow = new BrowserWindow({
-    title: "Electron",
-    width: "1000",
-    height: "600",
+    autoHideMenuBar: true,
+    icon: "./dev-swipe-desktop/public/Logo1-0.ico",
+    width,
+    height,
     webPreferences: {
-      // Disable web security (not recommended for production)
       webSecurity: false,
     },
   });
+  mainWindow.on("page-title-updated", function (e) {
+    e.preventDefault();
+  });
 
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   const startUrl = url.format({
-    pathname: path.join(__dirname, "index.html"),
     protocol: "file",
   });
   mainWindow.loadURL("http://localhost:3000");
