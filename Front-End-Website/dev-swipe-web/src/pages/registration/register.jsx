@@ -51,7 +51,6 @@ const Register = () =>{
                 setIsError(true)
                 console.log(error);
             }else{
-                console.log(inputs)
                 const response = await sendRequest({
                     route: "/guest/register",
                     method: requestMethods.POST,
@@ -60,7 +59,7 @@ const Register = () =>{
                         password: inputs.password,
                         country: inputs.country,
                         company_name: inputs.company_name,
-                        gender: selectedGender.value,
+                        gender: selectedGender? selectedGender.value : '',
                         user_type_id: selected,}
                 });
                 const data = response;
