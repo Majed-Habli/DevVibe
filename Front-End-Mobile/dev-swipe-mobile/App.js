@@ -10,24 +10,6 @@ import Matches from "./pages/matches/matches";
 import Profile from "./pages/profile/profile";
 import Chat from "./pages/chat/chat";
 import Register from "./pages/register/register";
-// import firebase from "firebase/app";
-// import "firebase/firestore";
-// import "firebase/auth";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { useCollectionData } from "react-firebase-hooks/firestore";
-
-// const FirebaseConfig = {
-//   apiKey: "AIzaSyC_MKizVvzV82pxz0V7ZvqititnEYW_NGc",
-//   authDomain: "push-notifications-tryout.firebaseapp.com",
-//   projectId: "push-notifications-tryout",
-//   storageBucket: "push-notifications-tryout.appspot.com",
-//   messagingSenderId: "640579993418",
-//   appId: "1:640579993418:web:7a02cec0e11edc14ed8bb3",
-//   measurementId: "G-Q8C50YR2G8",
-// };
-// firebase.initializeApp(FirebaseConfig);
-
-// const auth = firebase.auth();
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
