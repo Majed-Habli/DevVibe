@@ -12,12 +12,9 @@ const Profile = () =>{
     const [errorSkills, setErrorSkills] = useState('');
     const [errorImages, setErrorImages] = useState('');
     
-    // const [showModel, setShowModel] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
-    // const [showUploadModel, setShowUploadModel] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loadingImages, setLoadingImages] = useState(false);
-    // const [showUploadResume, setShowUploadResume] = useState(false);
     const [skills, setSkills] = useState([]);
     const [images, setImages] = useState([]);
     const [error, setError] = useState('');
@@ -152,7 +149,7 @@ const Profile = () =>{
         if(images.length <= 0){
             setLoadingImages(true)
             setTimeout(() => {
-                setLoading(false)
+                setLoadingImages(false)
             }, 3000)
         }else{
             setLoadingImages(false)
@@ -171,6 +168,8 @@ const Profile = () =>{
     useEffect(()=>{
         setUserData({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
     },[user]);
+
+    console.log(userData)
 
     return(
         <div className={styles.page_container}>

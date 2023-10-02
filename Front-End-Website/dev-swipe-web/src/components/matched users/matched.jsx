@@ -14,6 +14,9 @@ const MatchedTable = () =>{
     useEffect(()=>{
         if(users.length <= 0){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }
