@@ -1,7 +1,3 @@
-# DevSwipe: find your match at a finger's touch
-
-<br><br>
-
 <!-- project philosophy -->
 <img src="./readme/demo/title2.svg"/>
 
