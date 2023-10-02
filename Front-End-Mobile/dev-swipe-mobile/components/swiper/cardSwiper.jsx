@@ -60,7 +60,6 @@ const CardSwiper = ({users, remove}) => {
   },[]);
 
   const handleYup = async (card) => {
-    remove(card.id)
     try {
       const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/swipe",
         {
@@ -78,7 +77,6 @@ const CardSwiper = ({users, remove}) => {
   }
 
   const handleNope = async (card) =>{
-    remove(card.id)
     try {
       const response = await axios.post("https://d79e-78-40-183-51.ngrok-free.app/api/user/developer/swipe",
         {

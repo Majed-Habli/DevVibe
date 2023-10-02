@@ -23,6 +23,7 @@ const UserCard = () =>{
         };
       getData();
     });
+    console.log(profileImage)
 
 
   const handleClicked = (cardId) => {
@@ -32,10 +33,10 @@ const UserCard = () =>{
     return(
         <View style={styles.container}>
           <Pressable style={styles.press_container} onPress={()=>handleClicked(user)}>
-            {profileImage !=  '' ?(
+            {profileImage.length > 0 ?(
             <Image
                 style={styles.profile_image}
-                source={{uri:`${profileImage}`}}
+                source={{uri: profileImage}}
             />):(
             <Image
                 style={styles.profile_image}
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     profile_image: {
         width: 45,
         height: 45,
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         borderRadius: 120,
         resizeMode: 'cover',
         borderWidth: 1,
