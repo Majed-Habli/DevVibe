@@ -149,7 +149,7 @@ const HeaderComp = ({data, images}) =>{
             </div>)}
             {showModel && (
                 <div className={styles.popup_background}>
-                    <EditForm isOpen={setShowModel} data={user}/>
+                    <EditForm isOpen={setShowModel} data={user} user={data}/>
                 </div>
             )}
             {showUploadModel && (

@@ -8,7 +8,7 @@ import { sendRequest } from "../../../utils/functions/axios";
 import { requestMethods } from "../../../utils/functions/requestMethods.";
 import Select from "react-select";
 
-const EditForm = ({ isOpen, data }) => {
+const EditForm = ({ isOpen, data, user }) => {
   const userType = localStorageAction("user_type");
   const userId = localStorageAction("user_id");
 
@@ -239,7 +239,7 @@ const EditForm = ({ isOpen, data }) => {
             </div>
             <div className={styles.popup_body}>
                 <div className={styles.group_row}>
-                    <CustomInput label={"Name"} name={'user_name'} placeholder={data.user_name} value={inputs.user_name} handleChange={handleChange} width={225} height={38}/>
+                    <CustomInput label={"Name"} name={'user_name'} placeholder={user.user_name} value={inputs.user_name} handleChange={handleChange} width={225} height={38}/>
                     {userType == 3  ?(<CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>):(
                     <Select
                         value={selectedGender}
