@@ -173,6 +173,9 @@ const Profile = () =>{
     useEffect(()=>{
         if(!user){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }

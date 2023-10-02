@@ -12,11 +12,17 @@ const UserDetails = ({data, images, issue}) =>{
     useEffect(()=>{
         if(!data){
             setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
         }else{
             setLoading(false)
         }
         if(!images){
             setLoadingImages(true)
+            setTimeout(() => {
+                setLoadingImages(false)
+            }, 3000)
         }else{
             setLoadingImages(false)
         }
