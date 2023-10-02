@@ -270,8 +270,8 @@ const EditForm = ({ isOpen, data }) => {
                 )}
                 {userType == 3 ?(
                     <div>
-                        <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.rec_details.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>
-                        <CustomInput label={"Description"} name={'description'} placeholder={data.rec_details.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
+                        <CustomInput label={"Company Name"} name={'company_name'} placeholder={data.company_name} value={inputs.company_name} handleChange={handleChange} width={275} height={35}/>
+                        <CustomInput label={"Description"} name={'description'} placeholder={data.description} value={inputs.description} handleChange={handleChange} width={'100%'} textArea={true} height={135}/>
                     </div>
                     
                 ):(

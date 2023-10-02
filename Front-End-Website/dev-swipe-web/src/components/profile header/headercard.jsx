@@ -57,13 +57,14 @@ const HeaderComp = ({data, images}) =>{
     }
 
     useEffect(()=>{
-
-        setUser({github_url: userType === 3 ? (data.rec_details?.github_url || "") : (data.dev_details?.github_url || ""),
-        linkedin_url: userType === 3 ? (data.rec_details?.linkedin_url || "") : (data.dev_details?.linkedin_url || ""),
-        resume: userType === 3 ? data.dev_details?.linkedin_url : ""})
+        if(data){
+            setUser({github_url: data.rec_details?.github_url  || data.dev_details?.github_url ,
+            linkedin_url: data.rec_details?.linkedin_url  || data.dev_details?.linkedin_url,
+            description: data?.dev_details?.description || data?.rec_details?.description,
+            resume: userType === 2 && data.dev_details?.resume })
+        }
     },[data]);
 
-    console.log(user)
 
     useEffect(()=>{
         if(`${data.id}` === userId){
@@ -148,7 +149,7 @@ const HeaderComp = ({data, images}) =>{
             </div>)}
             {showModel && (
                 <div className={styles.popup_background}>
-                    <EditForm isOpen={setShowModel} data={data}/>
+                    <EditForm isOpen={setShowModel} data={user}/>
                 </div>
             )}
             {showUploadModel && (

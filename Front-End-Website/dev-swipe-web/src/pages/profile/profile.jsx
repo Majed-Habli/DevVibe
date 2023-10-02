@@ -166,10 +166,8 @@ const Profile = () =>{
     },[user,images, skills])
 
     useEffect(()=>{
-        setUserData({description: user.user_type_id === 3 ? (user.rec_details?.description || "") : (user.dev_details?.description || "")})
+        setUserData({description: user?.dev_details?.description || user?.rec_details?.description})
     },[user]);
-
-    console.log(userData)
 
     return(
         <div className={styles.page_container}>
