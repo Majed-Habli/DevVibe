@@ -55,6 +55,15 @@
 | Upload CV
 ![fsdaf](./readme/demo/website/model-upload2-desk.png)
 
+### Website interactions
+| Register screen  | Profile screen 
+| ---| ---|
+| ![Landing](./readme/demo/website/web-gif/web-login.gif) | ![fsdaf](./readme/demo/website/web-gif/web-upload.gif) 
+| Profile interactions screen |  Profile-Edit screen |
+| ---|
+| ![fsdaf](./readme/demo/website/web-gif/web-carousel.gif) | ![fsdaf](./readme/demo/website/web-gif/web-profile-update.gif) |
+
+
 ### Admin Screens (Desk)
 | Login screen  | Dashboard screen |  Stats screen |
 | ---| ---| ---|
