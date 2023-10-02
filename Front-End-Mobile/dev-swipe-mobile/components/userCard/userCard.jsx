@@ -23,8 +23,6 @@ const UserCard = () =>{
         };
       getData();
     });
-    console.log(profileImage)
-
 
   const handleClicked = (cardId) => {
     navigation.navigate('Profile', { cardId });
@@ -69,7 +67,6 @@ const styles = StyleSheet.create({
     profile_image: {
         width: 45,
         height: 45,
-        // backgroundColor: 'red',
         borderRadius: 120,
         resizeMode: 'cover',
         borderWidth: 1,
