@@ -60,7 +60,7 @@
 | ---| ---|
 | ![Landing](./readme/demo/website/web-gif/web-login.gif) | ![fsdaf](./readme/demo/website/web-gif/web-upload.gif) 
 | Profile interactions screen |  Profile-Edit screen |
-| ---|
+| ---| --|
 | ![fsdaf](./readme/demo/website/web-gif/web-carousel.gif) | ![fsdaf](./readme/demo/website/web-gif/web-profile-update.gif) |
 
 
@@ -72,6 +72,14 @@
 | ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
 | Skills Modal One | Skills Modal Two |
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
+
+### Admin interactions
+| Login-Dashboard screen  | Stats screen 
+| ---| ---|
+| ![Landing](./readme/demo/desktop/admin-gif/desk-login.gif) | ![Landing](./readme/demo/desktop/admin-gif/desk-stats.gif) 
+| Users screen |  Profile screen |
+| ---| ---|
+| ![fsdaf](./readme/demo/desktop/admin-gif/desk-users.gif) | ![fsdaf](./readme/demo/desktop/admin-gif/desk-profile.gif) |
 
 <br><br>
 
