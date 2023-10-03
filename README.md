@@ -40,8 +40,7 @@
 | Login screen  | Dashboard screen |  Profile screen |
 | ---| ---| ---|
 | ![Landing](./readme/demo/mobile/mobile-gif/login-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/swipe-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-profile-carousel.gif) |
-| Edit skills screen  | Edit Details Screen
-| ---| ---| ---|
+| Edit skills screen  | Edit Details Screen |
 | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit1.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit2.gif)
 
 ### User Screens (Web)
@@ -60,14 +59,13 @@
 | ---| ---|
 | ![Landing](./readme/demo/website/web-gif/web-login.gif) | ![fsdaf](./readme/demo/website/web-gif/web-upload.gif) 
 | Profile interactions screen |  Profile-Edit screen |
-| ---| --|
 | ![fsdaf](./readme/demo/website/web-gif/web-carousel.gif) | ![fsdaf](./readme/demo/website/web-gif/web-profile-update.gif) |
 
 
 ### Admin Screens (Desk)
 | Login screen  | Dashboard screen |  Stats screen |
 | ---| ---| ---|
-| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk1.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
+| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk2.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
 | Developers screen  | Developers Profile Screen | Skills Screen 
 | ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
 | Skills Modal One | Skills Modal Two |
@@ -78,7 +76,6 @@
 | ---| ---|
 | ![Landing](./readme/demo/desktop/admin-gif/desk-login.gif) | ![Landing](./readme/demo/desktop/admin-gif/desk-stats.gif) 
 | Users screen |  Profile screen |
-| ---| ---|
 | ![fsdaf](./readme/demo/desktop/admin-gif/desk-users.gif) | ![fsdaf](./readme/demo/desktop/admin-gif/desk-profile.gif) |
 
 <br><br>
@@ -101,7 +98,7 @@
 >
 Postman
 
-This is a JSON file for the postman APIs collection for this project HemaConnect.postman_collection.json and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
+This is a JSON file for the postman APIs collection for this project [DevSwipe.postman_collection.json](readme%2DevSwipe.postman_collection.json) and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
 
 ### Prerequisites
 
