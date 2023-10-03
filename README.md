@@ -83,6 +83,31 @@
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
 
 <br><br>
+
+<!-- Tech stack -->
+<a name="tech-stack"></a>
+<img src="./readme/demo/title5.svg"/>
+
+###  DevSwipe is built using the following technologies:
+
+- This project uses the [React-Native](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
+- This project uses the [React](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
+- This project uses the [Electron](https://www.electronjs.org/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
+- This project uses the [Laravel](https://www.electronjs.org/). Laravel is a free and open-source PHP web framework that is designed with expressive, elegant syntax, enabling the development of web applications and APIs
+- This project uses the [MySQL](https://www.mysql.com/). MySQL is a widely used open-source relational database management system (RDBMS). It is used as the database for storing and managing data.
+
+###  DevSwipe also uses the following libraries:
+
+<a name="libraries"></a>
+#### Website and desktop applications
+- chart.js
+- country-list
+- react-chartjs-2
+- react-jvectormap
+- react-spinners
+- swiper
+- react-select
+<br><br>
 <!-- Demo -->
 <a name="Demo"></a>
 <img src="./readme/demo/title4.svg"/>
@@ -149,30 +174,6 @@ PASS: Response content type is JSON
 
 ```
 <br><br>
-
-<!-- Tech stack -->
-<a name="tech-stack"></a>
-<img src="./readme/demo/title5.svg"/>
-
-###  DevSwipe is built using the following technologies:
-
-- This project uses the [React-Native](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
-- This project uses the [React](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
-- This project uses the [Electron](https://www.electronjs.org/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
-- This project uses the [Laravel](https://www.electronjs.org/). Laravel is a free and open-source PHP web framework that is designed with expressive, elegant syntax, enabling the development of web applications and APIs
-- This project uses the [MySQL](https://www.mysql.com/). MySQL is a widely used open-source relational database management system (RDBMS). It is used as the database for storing and managing data.
-
-###  DevSwipe also uses the following libraries:
-
-<a name="libraries"></a>
-#### Website and desktop applications
-- chart.js
-- country-list
-- react-chartjs-2
-- react-jvectormap
-- react-spinners
-- swiper
-- react-select
 
 #### Mobile
 - expo-checkbox
