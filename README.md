@@ -1,6 +1,21 @@
 <img src="./readme/demo/title1.svg"/>
 
+- [Project Description](#project-description)
+- [User Types](#user-types)
+- [Features of the App](#features-of-the-app)
+- [Tech Stack](#tech-stack)
+  - [Frontend](#Frontend)
+  - [Backend](#Backend)
+- [Prototyping](#prototyping)
+- [Demo](#Demo)
+- [OpenAi](#OpenAi)
+- [Performance](#Performance)
+- [How to Run](#how-to-run)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  
 <!-- project philosophy -->
+<a name="project-description"></a>
 <img src="./readme/demo/title2.svg"/>
 
 > A multi platform service, that helps developers and recruiters meet their most suited companion easier.
@@ -25,7 +40,8 @@
 
 <br><br>
 
-<!-- Implementation -->
+<!-- Demo -->
+<a name="Demo"></a>
 <img src="./readme/demo/title4.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
