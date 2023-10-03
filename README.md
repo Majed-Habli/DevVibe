@@ -98,6 +98,7 @@
 <br><br>
 
 <!-- Tech stack -->
+<a name="tech-stack"></a>
 <img src="./readme/demo/title5.svg"/>
 
 ###  DevSwipe is built using the following technologies:
