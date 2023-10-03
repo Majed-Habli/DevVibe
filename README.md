@@ -113,12 +113,14 @@ Mentioned bellow is the list of dependancies you'll need to use to run the proje
 
   This project is divided into 4 Projects, with the first being a laravel project as a back-end for the remaining 3 projects.
   To run laravel, you will first have to 
+
+1. Ensure you have Node.js installed. We recommend using the latest LTS version available.
   
-1. Clone the repo
+2. Clone the repo
    ```sh
    git clone https://github.com/Majed-Habli/DevVibe.git
    ```
-2. Navigate to
+3. Navigate to
    ```sh
    cd DevVibe/Back-End-Laravel/Server-DevVibe
    ```
@@ -144,7 +146,7 @@ Project number 2 is a website developed using React. To run the React project (a
    ```sh
    npm install
    ```
-4. Start the client
+3. Start the client
    ```sh
    npm start
    ```
@@ -192,7 +194,7 @@ Project number 4 is a Mobile app developed using React-Native. To run the projec
 
    > [Apple Store](https://apps.apple.com/us/app/expo-go/id982107779)
    
-3. Start the client
+4. Start the client
    ```sh
    expo start
    ```
