@@ -2,6 +2,10 @@
 <img src="./readme/demo/title2.svg"/>
 
 > A multi platform service, that helps developers and recruiters meet their most suited companion easier.
+> We created three seperate platforms, each with a goal in mind.
+> The website's intended use is for the users to register and manage their profiles, as well as stay up to date on their analytics.
+> The Desk app's intended use is for the admin to be able to maintain their user base, as well as check up on their data.
+> The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 >
 > DevSwipe.
 ### User Stories
@@ -18,14 +22,6 @@
 - As an admin, I want to view system skills, so i can edit, remove or add to them.
 
 <br><br>
-
-<!-- Prototyping -->
-<img src="./readme/demo/title3.svg"/>
-
-> We created three seperate platforms, each with a goal in mind.
-> The website's intended use is for the users to register and manage their profiles, as well as stay up to date on their analytics.
-> The Desk app's intended use is for the admin to be able to maintain their user base, as well as check up on their data.
-> The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 
 <!-- Implementation -->
 <img src="./readme/demo/title4.svg"/>
@@ -85,9 +81,11 @@
 
 ###  DevSwipe is built using the following technologies:
 
-- This project uses the [React-Native app development framework](https://flutter.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
-- This project uses the [React app development framework](https://flutter.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
-- This project uses the [Electron app development framework](https://flutter.dev/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
+- This project uses the [React-Native app development framework](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
+- This project uses the [React app library](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
+- This project uses the [Electron app development framework](https://www.electronjs.org/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
+- This project uses the [Electron app development framework](https://www.electronjs.org/). Electron is a free and open-source software framework that is designed to create desktop applications using web technologies that are rendered using a version of the Chromium browser engine and a back end using the Node.js runtime environment.
+- This project uses the [Laravel framework](https://www.electronjs.org/). Laravel is a free and open-source PHP web framework that is designed with expressive, elegant syntax, enabling the development of web applications and APIs
 
 <br><br>
 
