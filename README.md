@@ -92,8 +92,8 @@
 <a name="tech-stack"></a>
 <img src="./readme/demo/title5.svg"/>
 
-###  DevSwipe is built using the following technologies:
 <a name="stacks"></a>
+###  DevSwipe is built using the following technologies:
 
 - This project uses the [React-Native](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
 - This project uses the [React](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
