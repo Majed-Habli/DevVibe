@@ -5,9 +5,10 @@
 - [Project Description](#project-description)
 - [User Types](#user-types)
 - [Features of the App](#features-of-the-app)
-- [Tech Stack](#tech-stack)
-  - [Libraries](#libraries) 
 - [Prototyping](#prototyping)
+- [Tech Stack](#tech-stack)
+  - [Stacks](#stacks) 
+  - [Libraries](#libraries) 
 - [Demo](#Demo)
 - [Performance](#Performance)
 - [How to Run](#how-to-run)
@@ -31,8 +32,8 @@
 <a name="user-types"></a>
 ### User Types
 
-1.Admin
-2.General users (Recruiters/Developers)
+1. Admin
+2. General users (Recruiters/Developers)
 
 <a name="features-of-the-app"></a>
 ### User Stories
