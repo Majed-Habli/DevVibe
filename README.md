@@ -6,7 +6,7 @@
 - [User Types](#user-types)
 - [Features of the App](#features-of-the-app)
 - [Tech Stack](#tech-stack)
-  -[Libraries](#libraries) 
+  - [Libraries](#libraries) 
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
 - [Performance](#Performance)
