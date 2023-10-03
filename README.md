@@ -2,7 +2,6 @@
 
 <img src="./readme/demo/title7.svg"/>
 
-
 - [Project Description](#project-description)
 - [User Types](#user-types)
 - [Features of the App](#features-of-the-app)
@@ -48,24 +47,17 @@
 
 <br><br>
 
-<!-- Demo -->
-<a name="Demo"></a>
-<img src="./readme/demo/title4.svg"/>
+<!-- Prototyping -->
+<a name="prototyping"></a>
+<img src="./readme/demo/title3.svg"/>
 
 > Using the wireframes and mockups as a guide, we implemented the DevSwipe app with the following features:
-### User Screens (Mobile)
+### Mobile Mockups
 | Login screen  | Landing screen | Profile |
 | ---| ---| ---|
 | ![Landing](./readme/demo/mobile/login-mobile.png) | ![fsdaf](./readme/demo/mobile/dashboard-mpbile.png) | ![fsdaf](./readme/demo/mobile/profile-mobile.png) |
 
-### Mobile interactions
-| Login screen  | Dashboard screen |  Profile screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/mobile/mobile-gif/login-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/swipe-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-profile-carousel.gif) |
-| Edit skills screen  | Edit Details Screen |
-| ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit1.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit2.gif)
-
-### User Screens (Web)
+### Website Mockups
 | Login screen  | Register screen 
 | ---| ---|
 | ![Landing](./readme/demo/website/login-web.png) | ![fsdaf](./readme/demo/website/register-desk.png) 
@@ -76,15 +68,7 @@
 | Upload CV
 ![fsdaf](./readme/demo/website/model-upload2-desk.png)
 
-### Website interactions
-| Register screen  | Profile screen 
-| ---| ---|
-| ![Landing](./readme/demo/website/web-gif/web-login.gif) | ![fsdaf](./readme/demo/website/web-gif/web-upload.gif) 
-| Profile interactions screen |  Profile-Edit screen |
-| ![fsdaf](./readme/demo/website/web-gif/web-carousel.gif) | ![fsdaf](./readme/demo/website/web-gif/web-profile-update.gif) |
-
-
-### Admin Screens (Desk)
+### Desk App Mockups
 | Login screen  | Dashboard screen | 
 | ---| ---|
 | ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk2.png) |
@@ -94,6 +78,25 @@
 | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
 | Skills Modal One | Skills Modal Two |
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
+
+<!-- Demo -->
+<a name="Demo"></a>
+<img src="./readme/demo/title4.svg"/>
+
+### Mobile interactions
+| Login screen  | Dashboard screen |  Profile screen |
+| ---| ---| ---|
+| ![Landing](./readme/demo/mobile/mobile-gif/login-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/swipe-mobile.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-profile-carousel.gif) |
+| Edit skills screen  | Edit Details Screen |
+| ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit1.gif) | ![fsdaf](./readme/demo/mobile/mobile-gif/mobile-edit2.gif)
+
+
+### Website interactions
+| Register screen  | Profile screen 
+| ---| ---|
+| ![Landing](./readme/demo/website/web-gif/web-login.gif) | ![fsdaf](./readme/demo/website/web-gif/web-upload.gif) 
+| Profile interactions screen |  Profile-Edit screen |
+| ![fsdaf](./readme/demo/website/web-gif/web-carousel.gif) | ![fsdaf](./readme/demo/website/web-gif/web-profile-update.gif) |
 
 ### Admin interactions
 | Login-Dashboard screen  | Stats screen 
