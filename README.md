@@ -8,7 +8,6 @@
   - [Backend](#Backend)
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
-- [OpenAi](#OpenAi)
 - [Performance](#Performance)
 - [How to Run](#how-to-run)
   - [Prerequisites](#prerequisites)
@@ -25,6 +24,8 @@
 > The mobile app's intended use is for the users to be able to interact with each other, swiping, viewing picks and getting background information about them.
 >
 > DevSwipe.
+
+<a name="user-types"></a>
 ### User Stories
 - As a user, I want to view opposite type users, so i can potentially find a person i am interested in.
 - As a user, I want to swipe on a user, so i can match with them.
@@ -130,6 +131,7 @@
 <br><br>
 
 <!-- How to run -->
+<a name="how-to-run"></a>
 <img src="./readme/demo/title6.svg"/>
 
 > To set up DevSwipe locally, follow these steps:
