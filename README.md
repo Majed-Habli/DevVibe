@@ -4,7 +4,7 @@
 
 - [Project Description](#project-description)
 - [User Types](#user-types)
-- [Features of the App](#features-of-the-app)
+- [User Stories](#features-of-the-app)
 - [Prototyping](#prototyping)
 - [Tech Stack](#tech-stack)
   - [Stacks](#stacks) 
