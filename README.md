@@ -2,7 +2,8 @@
 
 <img src="./readme/demo/title7.svg"/>
 
-- [Project Description](#project-description)
+- [Project philosophy](#project-philosophy)
+  - [Project Description](#description) 
 - [User Types](#user-types)
 - [User Stories](#features-of-the-app)
 - [Prototyping](#prototyping)
@@ -18,8 +19,10 @@
 <br><br>
 
 <!-- project philosophy -->
-<a name="project-description"></a>
+<a name="project-philosophy"></a>
 <img src="./readme/demo/title2.svg"/>
+
+<a name="description"></a>
 
 > A multi platform service, that helps developers and recruiters meet their most suited companion easier.
 > We created three seperate platforms, each with a goal in mind.
@@ -90,6 +93,7 @@
 <img src="./readme/demo/title5.svg"/>
 
 ###  DevSwipe is built using the following technologies:
+<a name="stacks"></a>
 
 - This project uses the [React-Native](https://reactnative.dev/). React Native is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android.
 - This project uses the [React](https://react.dev/). React is a free and open-source front-end JavaScript library for building user interfaces based on components, it can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js.
