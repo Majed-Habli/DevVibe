@@ -109,9 +109,6 @@
 - swiper
 - react-select
 
-<br><br>
-
-
 #### Mobile
 - expo-checkbox
 - react-native-swiper
