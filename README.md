@@ -59,11 +59,13 @@
 
 
 ### Admin Screens (Desk)
-| Login screen  | Dashboard screen |  Stats screen |
-| ---| ---| ---|
-| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk2.png) | ![fsdaf](./readme/demo/desktop/stats-desk.png) |
-| Developers screen  | Developers Profile Screen | Skills Screen 
-| ![Landing](./readme/demo/desktop/developers-desk.png) | ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
+| Login screen  | Dashboard screen | 
+| ---| ---|
+| ![Landing](./readme/demo/desktop/login-desk.png) | ![fsdaf](./readme/demo/desktop/dashboard-desk2.png) |
+| Stats screen | Developers screen 
+| ![fsdaf](./readme/demo/desktop/stats-desk.png) | ![Landing](./readme/demo/desktop/developers-desk.png) 
+| Developers Profile Screen | Skills Screen 
+| ![fsdaf](./readme/demo/desktop/profile-desk2.png) | ![fsdaf](./readme/demo/desktop/skills.png) 
 | Skills Modal One | Skills Modal Two |
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
 
