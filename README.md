@@ -129,20 +129,51 @@ Mentioned bellow is the list of dependancies you'll need to use to run the proje
    ```sh
    composer install
    ```
+5. Serve to start the server
+   ```sh
+   php artisan serve
+   ```
 Project number 2 is a website developed using React. To run the React project (assuming you've already cloned the repo), you will need to 
   
 1. Navigate to
    ```sh
    cd DevVibe/Front-End-Website/dev-swipe-web
    ```
-2. Run
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Run composer install
+4. Start the client
    ```sh
-   composer install
+   npm start
    ```
-5. 
+
+Project number 3 is a desktop app developed using Electron.js framework and React for the user interface. To run the project (assuming you've already cloned the repo), you will need to 
+
+1. Navigate to
+   ```sh
+   cd DevVibe/Front-end-Desktop/dev-swipe-desktop
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the client
+   ```sh
+   npm run start
+   ```
+   
+4. Navigate to
+   ```sh
+   cd DevVibe/Front-end-Desktop/
+   ```
+5. Install NPM packages
+   ```sh
+   npm install
+   ```
+6. Start the client
+   ```sh
+   npm run dev:watch
+   ```
 
 Now, you should be able to run Coffee Express locally and explore its features.
