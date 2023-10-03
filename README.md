@@ -26,6 +26,12 @@
 > DevSwipe.
 
 <a name="user-types"></a>
+### User Types
+
+1.Admin
+2.General users (Recruiters/Developers)
+
+<a name="features-of-the-app"></a>
 ### User Stories
 - As a user, I want to view opposite type users, so i can potentially find a person i am interested in.
 - As a user, I want to swipe on a user, so i can match with them.
