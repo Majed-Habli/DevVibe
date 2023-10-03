@@ -129,7 +129,11 @@ Mentioned bellow is the list of dependancies you'll need to use to run the proje
    ```sh
    composer install
    ```
-5. Serve to start the server
+5. Initialize the database
+   ```sh
+   php artisan migrate
+   ```
+6. Serve to start the server
    ```sh
    php artisan serve
    ```
@@ -176,4 +180,24 @@ Project number 3 is a desktop app developed using Electron.js framework and Reac
    npm run dev:watch
    ```
 
-Now, you should be able to run Coffee Express locally and explore its features.
+Project number 4 is a Mobile app developed using React-Native. To run the project (assuming you've already cloned the repo), you will need to 
+
+1. Navigate to
+   ```sh
+   cd DevVibe/Front-End-Mobile/dev-swipe-mobile
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Install Expo to run on mobile
+   > [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
+
+   > [Apple Store](https://apps.apple.com/us/app/expo-go/id982107779)
+   
+3. Start the client
+   ```sh
+   expo start
+   ```
+
+Now, you should be able to run DevSwipe locally and explore its features.
