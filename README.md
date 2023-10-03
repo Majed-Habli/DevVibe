@@ -1,11 +1,12 @@
 <img src="./readme/demo/title1.svg"/>
 
+<img src="./readme/demo/title7.svg"/>
+
+
 - [Project Description](#project-description)
 - [User Types](#user-types)
 - [Features of the App](#features-of-the-app)
 - [Tech Stack](#tech-stack)
-  - [Frontend](#Frontend)
-  - [Backend](#Backend)
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
 - [Performance](#Performance)
@@ -148,6 +149,7 @@ Postman
 This is a JSON file for the postman APIs collection for this project [DevSwipe.postman_collection.json](readme/demo/DevSwipe.postman_collection.json) and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
 
 ### Prerequisites
+<a name="prerequisites"></a>
 
 Mentioned bellow is the list of dependancies you'll need to use to run the project on your device.
 
@@ -157,6 +159,7 @@ Mentioned bellow is the list of dependancies you'll need to use to run the proje
   ```
 
 ### Installation
+<a name="installation"></a>
 
   This project is divided into 4 Projects, with the first being a laravel project as a back-end for the remaining 3 projects.
   To run laravel, you will first have to 
