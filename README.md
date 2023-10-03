@@ -98,7 +98,7 @@
 >
 Postman
 
-This is a JSON file for the postman APIs collection for this project [DevSwipe.postman_collection.json](readme%2DevSwipe.postman_collection.json) and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
+This is a JSON file for the postman APIs collection for this project [DevSwipe.postman_collection.json](readme/demo/DevSwipe.postman_collection.json) and it is hosted on the IP Address "3.253.104.27". You can change the address of the APIs to test them online with postman.
 
 ### Prerequisites
 
