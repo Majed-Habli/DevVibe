@@ -111,6 +111,45 @@
 
 <br><br>
 
+<a name="Performance" ></a>
+<img src="./readme/title9.svg"/> 
+> The following tests were conducted in Postman to assess the functionality of my application's primary APIs
+<br>
+
+URL: http://3.253.104.27:8080/api/user/developer/view_matches
+
+```sh 
+PASS: Response time is within acceptable range //485 ms
+PASS: Response content type is JSON
+PASS: Response schema is valid
+PASS: Response has the required field - message
+PASS: Response content type is JSON
+
+```
+
+URL: http://3.253.104.27:8080/api/user/developer/view_user_skills/26
+
+```sh 
+PASS: Response time is within acceptable range //401 ms
+PASS: Response content type is JSON
+PASS: Response schema is valid
+PASS: Response has the required field - message
+PASS: Response content type is JSON
+
+```
+
+URL: http://3.253.104.27:8080/api/user/developer/swipe
+
+```sh 
+PASS: Response time is within acceptable range //478 ms
+PASS: Response content type is JSON
+PASS: Response schema is valid
+PASS: Response has the required field - message
+PASS: Response content type is JSON
+
+```
+<br><br>
+
 <!-- Tech stack -->
 <a name="tech-stack"></a>
 <img src="./readme/demo/title5.svg"/>
