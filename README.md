@@ -6,13 +6,16 @@
 - [User Types](#user-types)
 - [Features of the App](#features-of-the-app)
 - [Tech Stack](#tech-stack)
+  -[Libraries](#libraries) 
 - [Prototyping](#prototyping)
 - [Demo](#Demo)
 - [Performance](#Performance)
 - [How to Run](#how-to-run)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  
+
+<br><br>
+
 <!-- project philosophy -->
 <a name="project-description"></a>
 <img src="./readme/demo/title2.svg"/>
@@ -79,6 +82,7 @@
 | Skills Modal One | Skills Modal Two |
 | ![fsdaf](./readme/demo/desktop/skills-modal1.png) |![fsdaf](./readme/demo/desktop/skills-modal2.png)
 
+<br><br>
 <!-- Demo -->
 <a name="Demo"></a>
 <img src="./readme/demo/title4.svg"/>
@@ -121,6 +125,7 @@
 
 ###  DevSwipe also uses the following libraries:
 
+<a name="libraries"></a>
 #### Website and desktop applications
 - chart.js
 - country-list
