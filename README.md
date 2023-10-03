@@ -108,7 +108,21 @@
 - react-spinners
 - swiper
 - react-select
+
 <br><br>
+
+
+#### Mobile
+- expo-checkbox
+- react-native-swiper
+- react-native-deck-swiper
+- react-native-swipe-cards-deck
+- react-native-radio-buttons-group
+- @react-native-community/checkbox
+- @react-native-async-storage/async-storage
+
+<br><br>
+
 <!-- Demo -->
 <a name="Demo"></a>
 <img src="./readme/demo/title4.svg"/>
@@ -174,17 +188,6 @@ PASS: Response has the required field - message
 PASS: Response content type is JSON
 
 ```
-<br><br>
-
-#### Mobile
-- expo-checkbox
-- react-native-swiper
-- react-native-deck-swiper
-- react-native-swipe-cards-deck
-- react-native-radio-buttons-group
-- @react-native-community/checkbox
-- @react-native-async-storage/async-storage
-
 <br><br>
 
 <!-- How to run -->
